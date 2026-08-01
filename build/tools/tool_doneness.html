@@ -1,0 +1,244 @@
+<div class="tool" id="td-tool">
+  <div class="card" style="max-width:760px;margin:0 auto">
+    <h3 style="margin-bottom:10px">Doneness &amp; carryover</h3>
+    <p style="font-family:var(--f-body);color:var(--ink-soft);font-size:15.5px;margin-bottom:20px">
+      Meat responds to <em>internal</em> temperature, not the number on the dial — and it keeps cooking for
+      several minutes after you pull it off heat as residual heat migrates inward from the hotter outer layers.
+      That rise is <b>carryover</b>: pull below your target by the carryover offset, and the center drifts up
+      to meet it while it rests.
+    </p>
+
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;margin-bottom:6px">
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);flex:1;min-width:190px">
+        Cut
+        <select id="td-cut" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13px"></select>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);flex:1;min-width:190px">
+        Doneness
+        <select id="td-level" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13px"></select>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);flex:1;min-width:190px">
+        Thickness
+        <select id="td-thickness" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13px">
+          <option value="thin">Thin (&lt;2cm)</option>
+          <option value="medium" selected>Medium (2–4cm)</option>
+          <option value="thick">Thick (&gt;4cm)</option>
+        </select>
+      </label>
+    </div>
+
+    <div id="td-crit-note" style="display:none;border-left:3px solid var(--crit);background:color-mix(in srgb,var(--crit) 8%,var(--panel));border-radius:0 3px 3px 0;padding:12px 16px;margin:18px 0;font-size:14.5px;color:var(--ink)">
+      <span style="font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--crit);display:block;margin-bottom:4px">Safety — not negotiable</span>
+      Ground meat is contaminated throughout its mass by grinding, not just on the surface — searing the outside
+      does not make the center safe. 71°C/160°F is a required minimum, not a target to hover near. Rare burgers
+      are only safe if you grind whole-muscle meat fresh yourself and control the process.
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:22px 0 8px">
+      <div class="spec" style="margin:0">
+        <div class="spec-h">Pull at</div>
+        <div style="padding:16px 18px">
+          <div id="td-pull-c" class="mono num" style="font-size:36px;font-weight:700;color:var(--probe);line-height:1.1">--°C</div>
+          <div id="td-pull-f" class="mono num" style="font-size:18px;color:var(--ink-soft);margin-top:2px">--°F</div>
+        </div>
+      </div>
+      <div class="spec" style="margin:0">
+        <div class="spec-h">Target / rest to</div>
+        <div style="padding:16px 18px">
+          <div id="td-target-c" class="mono num" style="font-size:36px;font-weight:700;color:var(--ember);line-height:1.1">--°C</div>
+          <div id="td-target-f" class="mono num" style="font-size:18px;color:var(--ink-soft);margin-top:2px">--°F</div>
+        </div>
+      </div>
+    </div>
+
+    <p id="td-note" style="font-size:14.5px;color:var(--ink-soft);margin-bottom:22px"></p>
+
+    <div class="callout callout--heat">
+      <span class="lbl">Why carryover happens</span>
+      <p>The center of a piece of meat is always cooler than its surface while it's on heat; once removed, heat
+      keeps conducting inward from the hot exterior toward the cooler core until they equalize. Bigger, thicker,
+      denser cuts store more residual heat and have farther to conduct it, so they carry over more and for longer
+      — a thick roast can climb 5°C/9°F or more, a thin cutlet barely 1–2°C/2–4°F.</p>
+    </div>
+
+    <div class="spec" id="td-ref">
+      <div class="spec-h">Reference — target (rest-to) internal temperatures</div>
+      <div class="spec-row"><span class="spec-key">Beef / lamb steak</span><span class="spec-val">Rare 52°C/125°F · Medium-rare 54°C/130°F · Medium 60°C/140°F · Medium-well 65°C/150°F · Well 71°C/160°F</span></div>
+      <div class="spec-row"><span class="spec-key">Chicken breast</span><span class="spec-val">74°C/165°F instant-safe <span class="tag probe" style="margin-left:4px">advanced</span> 65°C/150°F held ≥3 min</span></div>
+      <div class="spec-row"><span class="spec-key">Chicken thigh</span><span class="spec-val">82°C/180°F (range 74–88°C / 165–190°F) — forgiving, collagen must render</span></div>
+      <div class="spec-row"><span class="spec-key">Pork chop / loin</span><span class="spec-val">63°C/145°F, then rest — medium, slightly pink</span></div>
+      <div class="spec-row"><span class="spec-key">Burger / ground beef</span><span class="spec-val"><span class="tag ember">required</span> 71°C/160°F — not negotiable, ground meat is contaminated throughout</span></div>
+      <div class="spec-row"><span class="spec-key">Ground poultry</span><span class="spec-val">74°C/165°F</span></div>
+      <div class="spec-row"><span class="spec-key">Salmon</span><span class="spec-val">52°C/125°F medium/buttery — 60°C/140°F firm</span></div>
+      <div class="spec-row"><span class="spec-key">White flaky fish</span><span class="spec-val">60–63°C/140–145°F</span></div>
+      <div class="spec-row"><span class="spec-key">Carryover offset</span><span class="spec-val">Thin +2°C/4°F · Medium +3°C/5°F (default) · Thick +5°C/9°F</span></div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  "use strict";
+
+  var CUTS = [
+    { id:"steak", label:"Beef / lamb steak (whole muscle)",
+      note:"Whole-muscle beef and lamb are sterile inside — doneness here is purely a texture choice, not a safety threshold.",
+      levels:[
+        { id:"rare",   label:"Rare",         c:52, f:125 },
+        { id:"mrare",  label:"Medium-rare",  c:54, f:130 },
+        { id:"medium", label:"Medium",       c:60, f:140 },
+        { id:"mwell",  label:"Medium-well",  c:65, f:150 },
+        { id:"well",   label:"Well",         c:71, f:160 }
+      ]
+    },
+    { id:"chicken_breast", label:"Chicken breast",
+      note:"74°C/165°F is instant-safe. Pulling to 65°C/150°F and holding at or above that temperature for at least 3 minutes is equally safe via time-at-temperature pasteurization, and noticeably juicier — an advanced technique that requires a reliable probe.",
+      levels:[
+        { id:"safe",  label:"Standard (instant-safe)", c:74, f:165 },
+        { id:"juicy", label:"Juicier — advanced, hold ≥3 min", c:65, f:150, advanced:true }
+      ]
+    },
+    { id:"chicken_thigh", label:"Chicken thigh",
+      note:"Range 74–88°C/165–190°F is acceptable — thigh is forgiving because its connective tissue needs to render, and its higher fat content resists drying out even well past the minimum.",
+      levels:[ { id:"thigh", label:"Rendered (collagen melted)", c:82, f:180 } ]
+    },
+    { id:"pork", label:"Pork chop / loin",
+      note:"63°C/145°F then rest is the modern safe target — medium, still slightly pink at the center.",
+      levels:[ { id:"pork", label:"Medium, slightly pink", c:63, f:145 } ]
+    },
+    { id:"burger", label:"Burger / ground beef",
+      note:"71°C/160°F is a required minimum, not a target to approach — see the note above.",
+      crit:true,
+      levels:[ { id:"burger", label:"Required minimum", c:71, f:160 } ]
+    },
+    { id:"ground_poultry", label:"Ground poultry",
+      note:"74°C/165°F — grinding distributes surface bacteria through the whole mass, same logic as ground beef.",
+      levels:[ { id:"gp", label:"Required minimum", c:74, f:165 } ]
+    },
+    { id:"salmon", label:"Salmon",
+      note:"Below 52°C/125°F the texture is essentially raw/sushi-grade; above 60°C/140°F it turns chalky and starts weeping albumin.",
+      levels:[
+        { id:"med",  label:"Medium, buttery", c:52, f:125 },
+        { id:"firm", label:"Firm",            c:60, f:140 }
+      ]
+    },
+    { id:"white_fish", label:"White flaky fish (cod, etc.)",
+      note:"Lean white fish has a narrow window — it goes from underdone to dry/flaky-mush within a few degrees.",
+      levels:[
+        { id:"lo", label:"Lower end", c:60, f:140 },
+        { id:"hi", label:"Upper end", c:63, f:145 }
+      ]
+    }
+  ];
+
+  var THICKNESS = {
+    thin:   { label:"thin",   c:2, f:4 },
+    medium: { label:"medium", c:3, f:5 },
+    thick:  { label:"thick",  c:5, f:9 }
+  };
+
+  var root = document.getElementById("td-tool");
+  if (!root) return;
+
+  var cutSel   = root.querySelector("#td-cut");
+  var levelSel = root.querySelector("#td-level");
+  var thickSel = root.querySelector("#td-thickness");
+  var pullC    = root.querySelector("#td-pull-c");
+  var pullF    = root.querySelector("#td-pull-f");
+  var targetC  = root.querySelector("#td-target-c");
+  var targetF  = root.querySelector("#td-target-f");
+  var noteEl   = root.querySelector("#td-note");
+  var critEl   = root.querySelector("#td-crit-note");
+
+  function findCut(id){
+    for (var i = 0; i < CUTS.length; i++) if (CUTS[i].id === id) return CUTS[i];
+    return CUTS[0];
+  }
+
+  function findLevel(cut, id){
+    if (!cut || !cut.levels || !cut.levels.length) return null;
+    for (var i = 0; i < cut.levels.length; i++) if (cut.levels[i].id === id) return cut.levels[i];
+    return cut.levels[0];
+  }
+
+  function populateCuts(){
+    cutSel.innerHTML = "";
+    for (var i = 0; i < CUTS.length; i++){
+      var opt = document.createElement("option");
+      opt.value = CUTS[i].id;
+      opt.textContent = CUTS[i].label;
+      cutSel.appendChild(opt);
+    }
+  }
+
+  function populateLevels(cut){
+    levelSel.innerHTML = "";
+    var levels = (cut && cut.levels) ? cut.levels : [];
+    if (!levels.length){
+      var opt = document.createElement("option");
+      opt.textContent = "(no doneness options)";
+      levelSel.appendChild(opt);
+      levelSel.disabled = true;
+      return;
+    }
+    for (var i = 0; i < levels.length; i++){
+      var o = document.createElement("option");
+      o.value = levels[i].id;
+      o.textContent = levels[i].label;
+      levelSel.appendChild(o);
+    }
+    levelSel.disabled = levels.length === 1;
+  }
+
+  function fmt(n){
+    return (Math.round(n * 10) / 10).toString();
+  }
+
+  function render(){
+    var cut = findCut(cutSel.value);
+    var level = findLevel(cut, levelSel.value);
+    var thickKey = thickSel.value;
+    var off = THICKNESS[thickKey] || THICKNESS.medium;
+
+    critEl.style.display = cut.crit ? "block" : "none";
+
+    if (!level){
+      pullC.textContent = "--°C";
+      pullF.textContent = "--°F";
+      targetC.textContent = "--°C";
+      targetF.textContent = "--°F";
+      noteEl.textContent = "";
+      return;
+    }
+
+    var pc = level.c - off.c;
+    var pf = level.f - off.f;
+
+    pullC.textContent = fmt(pc) + "°C";
+    pullF.textContent = fmt(pf) + "°F";
+    targetC.textContent = fmt(level.c) + "°C";
+    targetF.textContent = fmt(level.f) + "°F";
+
+    var parts = [];
+    parts.push("Pull " + off.label + "-cut carryover: " + off.c + "°C / " + off.f + "°F below target.");
+    if (level.advanced) parts.push("Advanced hold-time technique — verify with a reliable probe.");
+    if (level.note) parts.push(level.note);
+    else if (cut.note) parts.push(cut.note);
+    noteEl.textContent = parts.join(" ");
+  }
+
+  function onCutChange(){
+    var cut = findCut(cutSel.value);
+    populateLevels(cut);
+    render();
+  }
+
+  populateCuts();
+  populateLevels(findCut(cutSel.value));
+
+  cutSel.addEventListener("change", onCutChange);
+  levelSel.addEventListener("change", render);
+  thickSel.addEventListener("change", render);
+
+  render();
+})();
+</script>
