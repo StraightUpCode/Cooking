@@ -1,0 +1,526 @@
+<section class="lesson" id="p0">
+  <header class="lesson-head">
+    <p class="eyebrow">PHASE 0 · KITCHEN FOUNDATION</p>
+    <h1>The Sharp, Organised Base</h1>
+    <p class="lede">Cooking feels chaotic until two things are handled — a sharp knife and mise en place.
+      This is the precision layer everything else in the manual sits on: get it right and every later
+      lesson runs faster, safer, and with fewer variables drifting out of range.</p>
+    <div class="kicker-row">
+      <span class="tag ember">~2 weeks</span>
+      <span class="tag">4 core skills</span>
+      <span class="tag probe">Precision: high</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">01</span><h2>Why this matters</h2></div>
+    <p>You already know this feeling from coffee: a badly-aligned burr and an unlevelled scale don't
+      just make a worse cup — they make the whole process <em>unreadable</em>. You can't tell whether
+      the shot ran fast because of grind or because of a channel. The kitchen has the same failure mode.
+      A dull knife and an unprepared bench inject noise into everything downstream, so you can never
+      tell whether the dish failed because of your technique or because your onion was in six different
+      sizes.</p>
+    <p>Phase 0 removes that noise. It buys you two things before you cook a single serious dish: an edge
+      that cuts on its own weight, and a workflow where every ingredient is prepped, weighed, and
+      arranged <em>before</em> the pan gets hot. Neither is glamorous. Both are the difference between a
+      kitchen that feels like a lab and one that feels like a fire drill.</p>
+    <div class="callout callout--why"><span class="lbl">Why this framing works for you</span>
+      <p>Sharpness and mise en place are the two variables with the highest transfer in the entire
+        curriculum. They touch <em>every</em> later session. Two weeks spent here compounds across the
+        next twelve months; skipping it taxes every dish you'll ever cook.</p></div>
+    <div class="levels">
+      <span class="level level--1"><b>L1 · Functional</b> — I cut safely and my bench is set before heat</span>
+      <span class="level level--2"><b>L2 · Consistent</b> — my dice is uniform and I can put a working edge on a knife</span>
+      <span class="level level--3"><b>L3 · Optimisation</b> — I match bevel angle, grit, and cut size to the job</span>
+      <span class="level level--4"><b>L4 · Mastery</b> — I diagnose a bad edge or a sticking pan by feel and fix it fast</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">02</span><h2>Mental model — the system</h2></div>
+    <p>Three subsystems, one goal: get raw material into the pan in a controlled, uniform state, then
+      apply heat you can read. Sharpness is <em>edge geometry</em>. Mise en place is <em>workstation setup</em>.
+      Heat control is <em>reading thermal state</em>. Understand each as a set of variables, not a set of rules.</p>
+
+    <p><b>Sharpness is geometry, not magic.</b> An edge is simply where two bevels meet. When they meet at
+      a fine line — an <em>apex</em> only a fraction of a micron wide — the edge concentrates your hand force
+      onto almost no area, so it parts fibres instead of crushing them. "Dull" isn't the metal getting
+      soft; it's the apex rounding over into a tiny cylinder. Now the same hand force is spread over a
+      wider contact patch, pressure collapses, and the blade skates and crushes. The counter-intuitive
+      consequence: <b>a sharp knife is safer</b>, because it needs less force, and less force means less
+      slip.</p>
+
+    <figure>
+      <svg viewBox="0 0 720 300" role="img" aria-label="Cross-section of a sharp edge versus a dull rounded edge, showing the apex and bevel angle">
+        <g font-family="ui-monospace,Menlo,monospace" font-size="12">
+          <!-- SHARP -->
+          <text x="30" y="34" fill="#2f7d57" font-size="11" letter-spacing="1.5">SHARP EDGE — FINE APEX</text>
+          <!-- steel body as a wedge coming to a point -->
+          <path d="M40,70 L200,70 L60,210 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <!-- second bevel line to show the two faces meeting -->
+          <line x1="40" y1="70" x2="60" y2="210" stroke="currentColor" stroke-opacity=".35"/>
+          <!-- apex marker -->
+          <circle cx="60" cy="210" r="3" fill="#2f7d57"/>
+          <text x="72" y="216" fill="#2f7d57">apex ≈ 0.2 µm — parts fibres</text>
+          <!-- bevel angle arc -->
+          <path d="M60,190 A20,20 0 0 1 76,196" fill="none" stroke="#c2481d" stroke-width="1.2"/>
+          <text x="82" y="182" fill="#c2481d">bevel ~15–20°/side</text>
+          <!-- downward force, small -->
+          <line x1="120" y1="40" x2="120" y2="66" stroke="#191c1d" stroke-width="1.4" marker-end="url(#p0ah)"/>
+          <text x="128" y="52" fill="currentColor" fill-opacity=".7">low force</text>
+
+          <!-- DULL -->
+          <text x="430" y="34" fill="#bb3a2c" font-size="11" letter-spacing="1.5">DULL EDGE — ROUNDED APEX</text>
+          <path d="M440,70 L600,70 L470,205 Q456,214 452,196 Q450,186 460,190 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <!-- rounded tip highlight -->
+          <path d="M452,196 Q450,186 460,190" fill="none" stroke="#bb3a2c" stroke-width="2.4"/>
+          <text x="474" y="212" fill="#bb3a2c">rounded — crushes, needs 3–5× force</text>
+          <!-- downward force, large -->
+          <line x1="520" y1="30" x2="520" y2="66" stroke="#bb3a2c" stroke-width="3" marker-end="url(#p0ah2)"/>
+          <text x="528" y="50" fill="#bb3a2c">high force → slip risk</text>
+        </g>
+        <defs>
+          <marker id="p0ah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#191c1d"/></marker>
+          <marker id="p0ah2" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#bb3a2c"/></marker>
+        </defs>
+      </svg>
+      <figcaption>Fig. P0.1 — Same steel, same hand. The only difference is the geometry at the very tip.
+        Sharpening is the act of re-forming that apex; honing just straightens it when it rolls sideways.</figcaption>
+    </figure>
+
+    <p><b>Sharpening removes metal to re-form the apex; honing only realigns it.</b> Under use, a thin edge
+      rolls over to one side long before it truly wears away — that's why a knife feels dull after a week
+      but doesn't actually need a stone. A honing steel (or ceramic rod) pushes that rolled edge back into
+      line. A whetstone is different in kind: it abrades steel off both bevels until they meet again at a
+      fresh apex. Confusing the two is the single most common beginner error — people "sharpen" on a steel
+      forever and wonder why nothing improves.</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Operation</th><th>What it does</th><th>Removes metal?</th><th>When</th><th>Frequency</th></tr></thead>
+      <tbody>
+        <tr><td>Honing (steel/rod)</td><td>Realigns a rolled edge</td><td>No (negligible)</td><td>Edge feels grabby but was recently sharp</td><td>Every use / weekly</td></tr>
+        <tr><td>Stropping</td><td>Polishes apex, removes final burr</td><td>Trace</td><td>Finish after stone work</td><td>After sharpening</td></tr>
+        <tr><td>Sharpening (whetstone)</td><td>Re-forms the apex on both bevels</td><td>Yes</td><td>Honing no longer restores bite</td><td>Every 1–3 months</td></tr>
+        <tr><td>Reprofiling</td><td>Resets a chipped/obtuse bevel</td><td>Yes, a lot</td><td>Damage or wrong angle</td><td>Rarely</td></tr>
+      </tbody>
+    </table></div>
+
+    <p><b>Mise en place is workstation setup.</b> It is the exact analog of dosing, levelling, and lining up
+      your portafilter, tamper, and cup <em>before</em> you pull the shot. Once the pan is at temperature you
+      have seconds, not minutes — garlic goes from raw to burnt in under 30 s in a hot pan. Chopping while
+      cooking guarantees something scorches. So all cutting, weighing, and measuring happens first, arranged
+      in the order you'll add it. The bench becomes a queue; cooking becomes execution.</p>
+
+    <p><b>Heat control is reading thermal state.</b> Heat reaches food three ways, and knowing which one
+      dominates tells you what to expect. <b>Conduction</b> (metal-to-food, a searing pan) is fast and
+      intense — this is where browning lives. <b>Convection</b> (hot air or oil moving) is gentler and more
+      even — ovens, deep-frying. <b>Radiation</b> (glowing element, grill, broiler) cooks the facing surface
+      hard. A pan has <em>thermal mass</em>: it stores energy, so a properly preheated heavy pan barely dips
+      when cold food lands, while a thin cold pan crashes and the food steams in its own juices instead of
+      searing.</p>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">03</span><h2>Key concepts</h2></div>
+    <div class="grid cols-2">
+      <div class="card"><h4>The apex &amp; bevel angle</h4><p><b>What:</b> the edge is two bevels meeting at a line; the included angle sets the trade-off. <b>Why it matters:</b> a thinner angle (Japanese ~10–15°/side) cuts finer but chips; a wider angle (Western ~15–20°/side) is tougher but drags more. <b>Common mistake:</b> putting a delicate 12° edge on a knife you use to hack squash — it chips within a week.</p></div>
+      <div class="card"><h4>The burr</h4><p><b>What:</b> a thin flap of displaced steel that forms on the <em>opposite</em> side when your grinding has finally reached the apex. <b>Why it matters:</b> it's your only reliable signal that a bevel is fully sharpened, edge-to-edge. <b>Common mistake:</b> stopping before the burr forms (edge still rounded) or leaving the burr on (feels sharp, folds over instantly in use).</p></div>
+      <div class="card"><h4>Grit progression</h4><p><b>What:</b> coarse stones cut fast and rough; fine stones refine and polish. <b>Why it matters:</b> ~400 grit <em>sets</em> the bevel and raises a burr fast; ~1000 <em>sharpens</em> a working edge; ~3000–6000 <em>refines</em> to a push-cutting polish. <b>Common mistake:</b> starting too fine — spending 20 minutes at 1000 grit trying to fix damage that a 400 would remove in two.</p></div>
+      <div class="card"><h4>The claw &amp; pinch grip</h4><p><b>What:</b> guiding hand curls fingertips under (knuckles guide the blade); knife hand pinches the blade just ahead of the handle. <b>Why it matters:</b> the claw makes it geometrically impossible to cut a fingertip, and the pinch gives blade control instead of wrist-flail. <b>Common mistake:</b> gripping the handle like a hammer — no control, and fingers extended into the path.</p></div>
+      <div class="card"><h4>Slice, don't press</h4><p><b>What:</b> cutting is a draw or push stroke, letting the edge's length do the work, not a guillotine chop straight down. <b>Why it matters:</b> a slicing motion needs a fraction of the downward force and severs cleanly instead of crushing (which is why tomatoes explode under a dull, pressed blade). <b>Common mistake:</b> pushing straight down and bruising herbs into a black paste.</p></div>
+      <div class="card"><h4>Uniform size = even cooking</h4><p><b>What:</b> every piece the same dimension so they hit doneness together. <b>Why it matters:</b> a pan of mixed 3 mm and 12 mm onion gives you burnt shreds and raw chunks in one bite — the <em>real</em> reason chefs obsess over knife cuts. <b>Common mistake:</b> thinking uniformity is aesthetic. It's thermal.</p></div>
+    </div>
+    <div class="callout callout--heat"><span class="lbl">The variable that matters most here</span>
+      <p>Size uniformity is a heat-control variable in disguise. Cook time is set by the <em>largest</em>
+        piece; overcook is set by the <em>smallest</em>. Tighten the spread and both problems shrink at once.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">04</span><h2>Tools &amp; equipment</h2></div>
+    <p>Buy few things, buy them once, and spend the saved money on a practice knife you're allowed to
+      wreck. The whole starter kit costs less than one mid-range espresso grinder.</p>
+
+    <div class="spec">
+      <div class="spec-h">Starter kit — necessary</div>
+      <div class="spec-row"><span class="spec-key">8" chef's knife</span><span class="spec-val">One good all-rounder. Full tang, comfortable pinch grip. This does 90% of all cutting. Budget the most here.</span></div>
+      <div class="spec-row"><span class="spec-key">Cutting board</span><span class="spec-val">Large end-grain or edge-grain wood, or thick HDPE plastic. Big enough to hold prep without crowding. Kind to your edge.</span></div>
+      <div class="spec-row"><span class="spec-key">Digital scale</span><span class="spec-val">0.1 g resolution, ≥3 kg capacity, tare button. Weight beats volume for reproducibility — same reason you dose by mass in coffee.</span></div>
+      <div class="spec-row"><span class="spec-key">Instant-read thermometer</span><span class="spec-val">Fast (&lt;4 s) thermocouple-style probe. Turns "is it done?" from guesswork into a number.</span></div>
+      <div class="spec-row"><span class="spec-key">Whetstone</span><span class="spec-val">One combination stone, ~1000/6000 grit, plus a cheap practice knife to learn on before touching the good one.</span></div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-h">Optional — buy later, when a real need appears</div>
+      <div class="spec-row"><span class="spec-key">Paring knife</span><span class="spec-val">Handy for small in-hand work (hulling, peeling). The chef's knife covers most of it at first.</span></div>
+      <div class="spec-row"><span class="spec-key">Honing steel / ceramic rod</span><span class="spec-val">Realigns the edge between sharpenings. Useful, not urgent — a fresh stone edge lasts weeks.</span></div>
+      <div class="spec-row"><span class="spec-key">Coarse stone (~400)</span><span class="spec-val">Add when you need to reset a damaged or badly-angled bevel. The 1000 side handles routine sharpening.</span></div>
+      <div class="spec-row"><span class="spec-key">Bench scraper</span><span class="spec-val">Moves prepped piles cleanly into bowls — small mise en place quality-of-life win.</span></div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-h">Waste of money — actively skip</div>
+      <div class="spec-row"><span class="spec-key">Knife block sets</span><span class="spec-val">You pay for 12 mediocre knives to get one usable one, plus a santoku and 8 steak knives you'll never sharpen. Buy the single good chef's knife instead.</span></div>
+      <div class="spec-row"><span class="spec-key">Electric pull-through sharpeners</span><span class="spec-val">Fixed carbide wheels grind a crude, over-wide bevel and tear metal. Fast, satisfying, and they shorten your knife's life. Skip.</span></div>
+      <div class="spec-row"><span class="spec-key">Manual pull-through "V" sharpeners</span><span class="spec-val">Same problem, less power. They set a random angle and gouge the apex. A stone costs the same and teaches you the mechanism.</span></div>
+      <div class="spec-row"><span class="spec-key">Gadget cutters / dicers</span><span class="spec-val">The skill you're building <em>is</em> the tool. Every gadget is a thing to store, clean, and not learn from.</span></div>
+    </div>
+    <div class="callout callout--mistake"><span class="lbl">What beginners get wrong buying tools</span>
+      <p>Spending on breadth (a huge set) instead of depth (one good knife you maintain). A single sharp
+        8" chef's knife outperforms a $300 block of dull ones on day one and every day after.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">05</span><h2>Technique breakdown</h2></div>
+
+    <div class="level-band"><span class="tag level--1"><b>L1</b> Functional — cut without failing or bleeding</span><span class="ln"></span></div>
+    <figure>
+      <svg viewBox="0 0 720 220" role="img" aria-label="Claw grip: guiding hand with curled fingertips, knuckles guiding the flat of the blade">
+        <g font-family="ui-monospace,Menlo,monospace" font-size="12">
+          <text x="24" y="28" fill="#c2481d" font-size="11" letter-spacing="1.5">THE CLAW — GUIDING HAND</text>
+          <!-- board -->
+          <line x1="20" y1="180" x2="360" y2="180" stroke="currentColor" stroke-width="2"/>
+          <!-- curled fingers as arcs -->
+          <path d="M120,180 C120,140 150,138 150,178" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M150,178 C150,134 182,132 182,176" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M182,176 C182,138 210,138 210,178" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <!-- knuckle line where blade rides -->
+          <line x1="150" y1="150" x2="210" y2="150" stroke="#c2481d" stroke-width="1.4" stroke-dasharray="3 3"/>
+          <text x="216" y="150" fill="#c2481d">blade rides on knuckles</text>
+          <!-- fingertip tuck marker -->
+          <circle cx="150" cy="176" r="3" fill="#2f7d57"/>
+          <text x="60" y="200" fill="#2f7d57" font-size="11">fingertips tucked BEHIND knuckles</text>
+          <!-- blade -->
+          <rect x="150" y="96" width="12" height="54" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="168" y="104" fill="currentColor" fill-opacity=".7">flat of blade</text>
+
+          <!-- pinch grip on right -->
+          <text x="430" y="28" fill="#1f7982" font-size="11" letter-spacing="1.5">THE PINCH — KNIFE HAND</text>
+          <rect x="470" y="70" width="180" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="560" y="88" fill="currentColor" text-anchor="middle" font-size="11">blade (heel)</text>
+          <rect x="640" y="66" width="60" height="34" rx="8" fill="none" stroke="currentColor" stroke-opacity=".5"/>
+          <text x="670" y="88" fill="currentColor" fill-opacity=".6" text-anchor="middle" font-size="10">handle</text>
+          <!-- pinch point -->
+          <circle cx="486" cy="83" r="4" fill="#1f7982"/>
+          <text x="470" y="128" fill="#1f7982" font-size="11">thumb + forefinger pinch the</text>
+          <text x="470" y="146" fill="#1f7982" font-size="11">blade, NOT the handle → control</text>
+        </g>
+      </svg>
+      <figcaption>Fig. P0.2 — The claw makes cutting your fingertip geometrically impossible; the pinch
+        turns the knife into an extension of your forearm instead of a hammer.</figcaption>
+    </figure>
+    <ol class="steps">
+      <li><b>Prep.</b> Stabilise the board — a damp paper towel or thin silicone mat underneath kills all
+        slide. An unstable board is the number-one cause of cuts. Wipe the handle and your hands dry.</li>
+      <li><b>Prep.</b> Create a flat. Never cut on a round surface — halve the onion, potato, or carrot
+        first and set it cut-side down so it can't roll. Stability before speed, always.</li>
+      <li><b>Execute.</b> Pinch the blade, claw the food, and let the edge <em>slice</em> — push forward and
+        down, or draw back and down, riding your knuckles as a guide rail. Never press straight down.</li>
+      <li><b>Execute.</b> Keep the tip on the board for chopping (a pivot); lift only the heel. Move the
+        food into the blade with the claw; don't chase it with the knife.</li>
+      <li><b>Evaluate.</b> If pieces vary in size, you're cutting from feel, not from a reference face.
+        If the blade skates, it's dull or you're pressing not slicing.</li>
+      <li><b>Correct.</b> Slow down to 60% speed until the size is uniform, <em>then</em> rebuild pace.
+        Speed is a by-product of consistency, never a target you chase directly. And never — ever —
+        try to catch a falling knife. Step back, let it drop, pick it up.</li>
+    </ol>
+
+    <div class="level-band"><span class="tag level--2"><b>L2</b> Consistent — a working edge on demand</span><span class="ln"></span></div>
+    <ol class="steps">
+      <li><b>Prep.</b> Soak a soaking-type whetstone 5–10 min until bubbles stop. Set it on a non-slip
+        base. Decide your angle: lay the blade flat, lift the spine ~2 coins high (~15°) for a Japanese
+        knife, ~3 coins (~20°) for a Western one. Consistency of angle beats the exact number.</li>
+      <li><b>Execute.</b> On the coarse/1000 side, push the edge across the stone as if shaving a thin layer
+        off the surface, keeping the angle locked. Cover the whole edge, heel to tip, ~10–15 passes per
+        section. Keep the stone wet.</li>
+      <li><b>Evaluate.</b> Feel for the <b>burr</b>: run a fingertip <em>off</em> the edge (never along it) on
+        the opposite side. A tiny catching flap the full length of the blade means that side is done.
+        No burr = apex not reached; keep going.</li>
+      <li><b>Execute.</b> Flip and repeat on the other side until the burr forms on the first side. Then
+        alternate light passes to work the burr thinner.</li>
+      <li><b>Evaluate.</b> Move to the 3000–6000 side; a few light alternating passes refine the apex and
+        knock the burr off. Strop on the edge of the board or denim to remove the last of it.</li>
+      <li><b>Correct.</b> Test: the edge should catch and cut printer paper cleanly, or shave arm hair with
+        no pressure. If it tears paper, the burr is still on or the apex isn't met — return to 1000.</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">06</span><h2>Beginner mistakes — troubleshooting</h2></div>
+
+    <details class="trouble"><summary>Diced onion falls apart into a mess <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>You cut off the root end (the natural clamp), or your horizontal/vertical cuts didn't go through the same layers.</dd>
+        <dt>Diagnose</dt><dd>Look at the onion half: is the root intact and pointing at your guiding hand?</dd>
+        <dt>Fix</dt><dd>Halve pole-to-pole, leave the root end attached, make vertical cuts toward (not through) the root, then cross-cut. The root holds all the layers together until the last second.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>Dice is uneven — burnt shreds and raw chunks in the pan <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Inconsistent spacing because you're eyeballing, or a dull knife wandering off line.</dd>
+        <dt>Diagnose</dt><dd>Lay ten pieces in a row. If they range more than ~2× smallest-to-largest, that's the problem.</dd>
+        <dt>Fix</dt><dd>Use the previous cut face as your ruler — space each cut to match it. Slow to 60% pace. Sharpen the knife; a wandering blade can't be precise no matter how steady your hand.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>Knife won't get sharp on the stone <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Inconsistent angle (rocking your wrist), stone dried out, or you stopped before raising a burr.</dd>
+        <dt>Diagnose</dt><dd>Colour the bevel with marker and take two passes — if the marker is removed unevenly, your angle is wandering.</dd>
+        <dt>Fix</dt><dd>Lock the angle with your whole arm, not your wrist. Keep the stone flooded. Grind one side until a full-length burr appears — no burr means the apex isn't reached yet, so nothing you do downstream will sharpen it.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>Burr won't form no matter how long I grind <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Angle too low (spine dropping, so you polish the shoulder not the apex), or the stone is glazed/too fine to cut.</dd>
+        <dt>Diagnose</dt><dd>Marker test again: if only the top of the bevel loses ink and the very edge keeps it, you're grinding above the apex.</dd>
+        <dt>Fix</dt><dd>Raise the spine slightly and commit to the angle. Switch to a coarser (~400) stone to actually remove metal; refresh a glazed stone by rubbing with a coarse plate or a second stone.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>Food sticks and tears in the pan <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Pan not hot enough (proteins bond to cool metal), too little/too-cold oil, or you moved the food before the crust released.</dd>
+        <dt>Diagnose</dt><dd>Water-drop test: flick a few drops in. If they sizzle and vanish, too cool. If they bead and skate like mercury (Leidenfrost), it's hot enough.</dd>
+        <dt>Fix</dt><dd>Preheat the empty pan, add oil, wait for it to shimmer, then add food and <em>leave it</em>. A properly seared surface releases itself — sticking is the food telling you it isn't done yet.</dd>
+      </dl></div></details>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">07</span><h2>Controlled experiments</h2></div>
+    <p>Change exactly one variable. Everything else held constant. This is how you build intuition you can
+      trust instead of folklore you repeat.</p>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E1 — sharp vs dull</div>
+      <dl>
+        <dt>Goal</dt><dd>Feel, directly, that sharp is safer and cleaner — not just "nicer".</dd>
+        <dt>Keep constant</dt><dd>Same onion variety, same size, same grip, same board.</dd>
+        <dt>Change</dt><dd>One freshly-sharpened knife vs one deliberately dulled (drag the edge across a ceramic mug base a few times).</dd>
+        <dt>Expected</dt><dd>The dull knife needs 3–5× the downward force, crushes cells (more tears, weeping onion), and slips more. The sharp knife glides on its own weight.</dd>
+        <dt>Observe</dt><dd>Force required, how much the onion weeps, whether the blade skates off the skin, cleanliness of the cut faces.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E2 — board stability</div>
+      <dl>
+        <dt>Goal</dt><dd>Quantify how much a stable board matters for control and safety.</dd>
+        <dt>Keep constant</dt><dd>Same knife, same carrot, same cutting speed.</dd>
+        <dt>Change</dt><dd>Board sitting bare on the counter vs board on a damp towel/silicone mat.</dd>
+        <dt>Expected</dt><dd>The bare board creeps and micro-slides on each stroke; the damped board is dead-still, and your cuts get instantly more uniform because the target isn't moving.</dd>
+        <dt>Observe</dt><dd>Board movement per stroke, size consistency of the pieces, how tense your guiding hand is.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E3 — pan preheat &amp; the water-drop test</div>
+      <dl>
+        <dt>Goal</dt><dd>See thermal mass and Leidenfrost with your own eyes, then link it to sticking.</dd>
+        <dt>Keep constant</dt><dd>Same pan, same burner setting, same amount of water/oil, same food.</dd>
+        <dt>Change</dt><dd>Cold pan (food in immediately) vs pan preheated ~2–3 min first.</dd>
+        <dt>Expected</dt><dd>Cold pan: water sizzles flat and food glues down and steams grey. Hot pan: water beads and dances (drops surviving on their own vapour ≈ 160 °C+ / 320 °F+), food sears and releases cleanly.</dd>
+        <dt>Observe</dt><dd>Droplet behaviour, whether food sticks, colour and crust development, how far the pan temperature dips when food lands.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E4 — press vs slice on a tomato</div>
+      <dl>
+        <dt>Goal</dt><dd>Prove that motion, not just sharpness, determines a clean cut.</dd>
+        <dt>Keep constant</dt><dd>Same knife (freshly sharp), same tomato, same slice thickness target.</dd>
+        <dt>Change</dt><dd>Straight-down press vs a single long drawing stroke.</dd>
+        <dt>Expected</dt><dd>The press crushes the skin and squeezes out seeds and juice; the draw stroke parts the skin with almost no force and leaves an intact slice.</dd>
+        <dt>Observe</dt><dd>Skin resistance, juice loss, cleanliness of the cut face.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">08</span><h2>Practice system</h2></div>
+    <p>Short, repeatable, measurable. Do one or two per session as a warm-up before real cooking. The point
+      is reps against a clear success criterion, not finishing a dish.</p>
+
+    <div class="drill">
+      <div class="drill-h">Practice drill · L1→L2</div>
+      <h4>Uniform onion dice</h4>
+      <dl>
+        <dt>Goal</dt><dd>A bowl of ~5 mm dice where pieces are within ±1 mm of each other.</dd>
+        <dt>Difficulty</dt><dd>Beginner</dd>
+        <dt>Materials</dt><dd>2–3 onions, sharp chef's knife, stable board.</dd>
+        <dt>Steps</dt><dd>Halve pole-to-pole, root intact → vertical cuts toward the root → horizontal cut(s) → cross-cut into dice. Use each prior face as the ruler for the next.</dd>
+        <dt>Success</dt><dd>Lay ten random pieces in a row: max/min size ratio under ~1.5. Root end left as a clean handle.</dd>
+        <dt>Failure modes</dt><dd>Falls apart (root removed) · uneven (eyeballing spacing) · sliding onion (unstable board).</dd>
+        <dt>Improve</dt><dd>Drop to 60% speed until uniform, then rebuild pace. Sharpen if the blade wanders.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Practice drill · L1→L2</div>
+      <h4>Paper-thin garlic slices</h4>
+      <dl>
+        <dt>Goal</dt><dd>Translucent slices ~1 mm thick, even enough to fry without some burning first.</dd>
+        <dt>Difficulty</dt><dd>Beginner</dd>
+        <dt>Materials</dt><dd>A head of garlic, sharp knife.</dd>
+        <dt>Steps</dt><dd>Flatten a clove face for stability, claw grip, draw the blade through with light strokes — let sharpness do the work.</dd>
+        <dt>Success</dt><dd>Slices you can nearly see through, consistent thickness; a test batch fries to gold evenly with no black pieces.</dd>
+        <dt>Failure modes</dt><dd>Wedge-shaped slices (angled blade) · crushed clove (pressing) · uneven fry (thickness spread).</dd>
+        <dt>Improve</dt><dd>Sharpen; this drill exposes a dull edge instantly. Focus on a consistent knuckle-guide height.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Practice drill · L2</div>
+      <h4>Herb chopping without bruising</h4>
+      <dl>
+        <dt>Goal</dt><dd>Finely chopped parsley/coriander that stays green, not a wet black paste.</dd>
+        <dt>Difficulty</dt><dd>Beginner–Intermediate</dd>
+        <dt>Materials</dt><dd>Bunch of soft herbs, very sharp knife, dry board.</dd>
+        <dt>Steps</dt><dd>Dry the herbs well, gather into a tight pile, rock-chop with the tip anchored, re-gathering — but chop <em>few</em> times, not many. Slice, never mash.</dd>
+        <dt>Success</dt><dd>Bright green herb, dry board (no green smear = you sliced, not crushed), even fineness.</dd>
+        <dt>Failure modes</dt><dd>Black paste (dull knife or over-chopping) · wet smear (herbs not dried, or pressing).</dd>
+        <dt>Improve</dt><dd>Sharpen and chop fewer strokes. If the board turns green, that's cell juice — you crushed it.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Practice drill · L2→L3</div>
+      <h4>Sharpen a cheap knife to paper-cutting</h4>
+      <dl>
+        <dt>Goal</dt><dd>Take a blunt practice knife to an edge that slices printer paper cleanly and shaves arm hair.</dd>
+        <dt>Difficulty</dt><dd>Intermediate</dd>
+        <dt>Materials</dt><dd>Cheap knife (never the good one, first few times), combination whetstone, marker.</dd>
+        <dt>Steps</dt><dd>Marker the bevel → set angle → grind one side to a full-length burr → flip → refine on the fine side → strop off the burr.</dd>
+        <dt>Success</dt><dd>Clean paper cut with zero tearing; hairs pop off forearm; marker removed evenly right to the apex.</dd>
+        <dt>Failure modes</dt><dd>No burr (angle too low / stone too fine) · edge tears paper (burr still attached) · wavy edge (wandering angle).</dd>
+        <dt>Improve</dt><dd>Use the marker test every session until your angle is repeatable. Only then graduate to your real knife.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">09</span><h2>Projects</h2></div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Project · Beginner</div>
+      <h4>Timed mise en place: sofrito base</h4>
+      <dl>
+        <dt>Objective</dt><dd>Prep a full aromatic base — diced onion, sliced garlic, chopped herbs, measured oil and salt — all bowled and lined up in cooking order <em>before</em> any heat.</dd>
+        <dt>Skills trained</dt><dd>Dice, slice, chop, mise en place discipline, working from a queue.</dd>
+        <dt>Expected result</dt><dd>Everything staged so the actual cook is 3–4 minutes of pure execution with nothing left to chop.</dd>
+        <dt>Evaluation</dt><dd>Did you have to stop and cut anything after the pan was hot? If yes, your mise wasn't complete. Nothing scorched while you scrambled = pass.</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Project · Intermediate</div>
+      <h4>Sear something with a read pan</h4>
+      <dl>
+        <dt>Objective</dt><dd>Sear a protein (chicken thigh, a firm mushroom, or tofu) using the water-drop test to judge readiness, and build fond.</dd>
+        <dt>Skills trained</dt><dd>Preheating &amp; thermal mass, Leidenfrost reading, patience (leaving food to release), recognising fond.</dd>
+        <dt>Expected result</dt><dd>A deep-brown crust that releases itself, and browned bits (<em>fond</em>) stuck to the pan — the flavour base for a future sauce.</dd>
+        <dt>Evaluation</dt><dd>Even golden-brown crust, no grey steaming, food released without tearing. Fond is browned (flavour) not black (bitter).</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Project · Advanced</div>
+      <h4>Restore and maintain your good knife</h4>
+      <dl>
+        <dt>Objective</dt><dd>Full sharpen of your primary chef's knife — correct angle set, burr raised and removed, polished — then establish a maintenance rhythm.</dd>
+        <dt>Skills trained</dt><dd>Angle consistency, grit progression, burr control, honing-vs-sharpening judgement.</dd>
+        <dt>Expected result</dt><dd>A knife that push-cuts paper and falls through an onion, plus a written rule for when you hone vs when you go back to the stone.</dd>
+        <dt>Evaluation</dt><dd>Clean paper slice, shaving-sharp, no chips. You can state — from feel — whether an edge needs honing or sharpening.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">10</span><h2>Visual learning</h2></div>
+    <p>Train your eye on what a good edge and a good cut actually look like before you try to make one.</p>
+
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>sharpened knife edge under microscope</code>
+      <p style="margin:.4em 0 0">Look for: a consistent bevel meeting at a clean, unbroken apex line — no reflective flat band along the very edge (a reflective line = a rounded, dull apex catching light).</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>burr on knife edge sharpening macro</code>
+      <p style="margin:.4em 0 0">Look for: the thin flap of steel bent over to one side. This is the signal you're chasing on the stone — recognise it visually so you trust the finger test.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>brunoise dice julienne knife cuts comparison</code>
+      <p style="margin:.4em 0 0">Look for: how uniform professional cuts are, and the named size steps (see table below). Notice they're all cubes/sticks of one dimension — that's the standard you're calibrating against.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>Leidenfrost effect water droplet hot pan</code>
+      <p style="margin:.4em 0 0">Look for: droplets balling up and skating on their own vapour cushion. This is the visual signal your pan is sear-ready.</p></div>
+    </div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Cut</th><th class="num">Size</th><th>Use</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Brunoise</td><td class="num">1–3 mm cube</td><td>Fine garnish, quick-cook aromatics</td><td>Cut a julienne first, then cross-cut</td></tr>
+        <tr><td>Fine dice</td><td class="num">~5 mm cube</td><td>Sofrito, sauces, even melting</td><td>The default onion dice you'll drill</td></tr>
+        <tr><td>Medium dice</td><td class="num">~12 mm cube</td><td>Stews, roasts</td><td>Bigger = slower, more forgiving</td></tr>
+        <tr><td>Julienne</td><td class="num">~2 mm × 4 cm stick</td><td>Stir-fry, slaw, garnish</td><td>Square the vegetable first for uniform sticks</td></tr>
+        <tr><td>Batonnet</td><td class="num">~6 mm × 6 cm stick</td><td>Fries, crudité</td><td>The thick cousin of julienne</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">11</span><h2>External resources</h2></div>
+
+    <div class="resource"><span class="rm">Video · Adam Ragusea</span>
+      <span class="rt">Search: "Adam Ragusea knife skills" and "how to cut an onion"</span>
+      <p>Why: pragmatic, no-nonsense grip and dicing technique for home cooks — the claw and pinch shown plainly.</p></div>
+
+    <div class="resource"><span class="rm">Video · Burrfection</span>
+      <span class="rt">Search: "Burrfection whetstone sharpening for beginners"</span>
+      <p>Why: obsessive, mechanism-first channel on stones, angles, and raising a burr. Watch a few before your first sharpen.</p></div>
+
+    <div class="resource"><span class="rm">Video · Ethan Chlebowski</span>
+      <span class="rt">Search: "Ethan Chlebowski heat control" and "why your food sticks to the pan"</span>
+      <p>Why: data-and-mechanism explanations of preheating, Maillard, and searing — exactly your learning style.</p></div>
+
+    <div class="resource"><span class="rm">Book · Focused</span>
+      <span class="rt">An Edge in the Kitchen — Chad Ward</span>
+      <p>The definitive home-cook book on knives, steel, bevels, and sharpening. Read the sharpening chapters before you touch a stone.</p></div>
+
+    <div class="resource"><span class="rm">Book · Reference</span>
+      <span class="rt">The Food Lab — J. Kenji López-Alt</span>
+      <p>Use the intro and heat-transfer sections for conduction/convection/radiation and searing done rigorously.</p></div>
+
+    <div class="resource"><span class="rm">Book · Principles</span>
+      <span class="rt">Salt, Fat, Acid, Heat — Samin Nosrat</span>
+      <p>The "Heat" section builds the intuition layer: how to read what heat is doing to food, not just follow times.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">12</span><h2>Assessment</h2></div>
+
+    <div class="callout callout--why"><span class="lbl">Knowledge check — understanding, not recall</span>
+      <p>Answer these in your own words; if you can, you own the mechanism:</p></div>
+    <ol class="steps">
+      <li><b>Q.</b> Explain, in terms of force and contact area, why a <em>sharper</em> knife is <em>safer</em> — not just more effective.</li>
+      <li><b>Q.</b> A friend "sharpens" their knife on a honing steel every day and it's still dull after a month. What's actually happening, and what do they need instead?</li>
+      <li><b>Q.</b> Why does uneven dice cause both burnt and raw pieces in the same pan? Frame it as a heat-control problem, not an aesthetic one.</li>
+      <li><b>Q.</b> Your food is steaming grey and sticking instead of browning. Name three variables you'd check, and the test you'd run to decide the pan is ready.</li>
+      <li><b>Q.</b> What is a burr, why do you want to raise one on the stone, and why must it be gone before you use the knife?</li>
+    </ol>
+
+    <div class="callout callout--pro"><span class="lbl">Practical challenge</span>
+      <p>Cold start to plated in one continuous run: sharpen a knife to paper-cutting, then dice one onion
+        to within ±1 mm uniformity, slice garlic paper-thin, chop a handful of herbs bright and dry, and
+        sear one item in a properly-read pan until it releases itself with visible fond. No stopping to
+        cut after the pan is hot — that's the mise en place half of the test.</p></div>
+
+    <div class="callout callout--heat"><span class="lbl">Reflection</span>
+      <p>Where did the process feel <em>unreadable</em> — a moment you couldn't tell why something went
+        wrong? That's your next variable to isolate. Which single change (sharper edge, more complete mise,
+        hotter pan) removed the most chaos? Note it; that's the leverage point you'll return to in Module 01
+        when the food gets less forgiving.</p></div>
+  </section>
+
+  <nav class="pager">
+    <a class="prev" href="#home"><span class="d">Previous</span>Syllabus</a>
+    <a class="next" href="#m1"><span class="d">Next</span>Proteins</a>
+  </nav>
+</section>

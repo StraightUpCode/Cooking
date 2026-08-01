@@ -1,0 +1,36 @@
+  <script>
+  (function(){
+    var stage = document.getElementById('stage');
+    var lessons = Array.prototype.slice.call(document.querySelectorAll('.lesson'));
+    var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+    function show(id){
+      var found=false;
+      lessons.forEach(function(s){
+        var on = ('#'+s.id)===id;
+        s.classList.toggle('show', on);
+        if(on) found=true;
+      });
+      if(!found){ // default to home
+        var h=document.getElementById('home'); if(h) h.classList.add('show'); id='#home';
+      }
+      links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href')===id); });
+      if(stage) stage.scrollTop=0;
+      window.scrollTo(0,0);
+    }
+    window.addEventListener('hashchange', function(){ show(location.hash||'#home'); });
+    show(location.hash||'#home');
+
+    // theme toggle
+    var btn=document.getElementById('themeBtn');
+    if(btn){
+      btn.addEventListener('click', function(){
+        var root=document.documentElement;
+        var cur=root.getAttribute('data-theme');
+        if(!cur){ // infer current from media query
+          cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light';
+        }
+        root.setAttribute('data-theme', cur==='dark'?'light':'dark');
+      });
+    }
+  })();
+  </script>
