@@ -1,0 +1,616 @@
+<section class="lesson" id="m7">
+  <header class="lesson-head">
+    <p class="eyebrow">MODULE 07 · MEAT &amp; FIRE</p>
+    <h1>Direct, Indirect, and the Rest</h1>
+    <p class="lede">The grill is not a hot box — it is a heat-control instrument with two
+      zones. Master where to put the meat, when to pull it, and how long to rest it, and
+      the barbecue hosts itself.</p>
+    <div class="kicker-row">
+      <span class="tag ember">Month 7–9</span>
+      <span class="tag probe">Two-zone fire</span>
+      <span class="tag">Social payoff</span>
+    </div>
+  </header>
+
+  <!-- ===================================================== 01 -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">01</span><h2>Why this matters</h2></div>
+    <p>Every grilling disaster reduces to a single geometry problem: heat arrives at the
+      surface far faster than it can conduct to the centre. Push the fire hard enough to
+      brown the outside of a thick steak and you overshoot the core; back the fire off to
+      protect the core and you get grey, flabby meat with no crust. Beginners treat this as
+      a skill they lack. It is not — it is a control problem with a clean solution.</p>
+    <p>That solution is the <b>two-zone fire</b>: build one hot side for browning and one
+      cool side for gentle cook-through, then move the food between them on your schedule
+      rather than the fire's. It is the same move as pulling a shot and then diluting to
+      taste — you separate the two variables (surface reaction and internal temperature) so
+      you can dial each independently. Once you internalise that, "steak, burgers, ribs,
+      chicken, kebabs, pork chops" stop being six recipes and become one instrument played
+      six ways.</p>
+    <div class="callout callout--why"><span class="lbl">Why it works</span>
+      <p>Browning (the Maillard reaction) runs fast above ~150 °C / 300 °F at the surface.
+        Cooking the interior is heat <em>conduction</em> through meat — slow, roughly
+        0.1&nbsp;cm² per minute of thermal diffusivity. A single fire hot enough for the
+        first is far too hot to control the second. Two zones let you run each reaction in
+        its own place at its own pace.</p></div>
+  </section>
+
+  <!-- ===================================================== 02 -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">02</span><h2>Mental model — the grill as two instruments</h2></div>
+    <p>Picture the grill from above as two territories. Over the coals (or lit burners) is
+      the <b>direct zone</b>: radiant + conductive heat, 230–320 °C / 450–600 °F at the
+      grate, the searing station. Beside it, over no fuel, is the <b>indirect zone</b>: with
+      the lid down it becomes a convection oven at 120–180 °C / 250–350 °F, the gentle
+      cook-through station. Food is not "on the grill" — it is in one of two rooms, and your
+      whole job is deciding which room and for how long.</p>
+
+    <figure>
+      <svg viewBox="0 0 720 300" role="img" aria-label="Top-down view of a two-zone grill showing a hot direct zone with coals and a cool indirect zone, with food placement">
+        <g font-family="ui-monospace,Menlo,monospace" font-size="12">
+          <!-- kettle outline -->
+          <rect x="20" y="24" width="680" height="252" rx="14" fill="none" stroke="currentColor" stroke-opacity=".5"/>
+          <!-- divider -->
+          <line x1="360" y1="34" x2="360" y2="266" stroke="currentColor" stroke-opacity=".25" stroke-dasharray="4 5"/>
+          <!-- direct zone -->
+          <rect x="34" y="38" width="312" height="224" rx="8" fill="#c2481d" fill-opacity=".08" stroke="#c2481d" stroke-opacity=".55"/>
+          <text x="52" y="62" fill="#c2481d" font-size="11" letter-spacing="2">DIRECT ZONE · OVER FUEL</text>
+          <text x="52" y="80" fill="currentColor" fill-opacity=".7" font-size="10.5">230–320 °C / 450–600 °F · sear · Maillard</text>
+          <!-- coal dots -->
+          <g fill="#c2481d" fill-opacity=".8">
+            <circle cx="70" cy="150" r="7"/><circle cx="96" cy="132" r="7"/><circle cx="120" cy="160" r="7"/>
+            <circle cx="150" cy="140" r="7"/><circle cx="176" cy="166" r="7"/><circle cx="130" cy="196" r="7"/>
+            <circle cx="90" cy="188" r="7"/><circle cx="168" cy="126" r="7"/><circle cx="200" cy="150" r="7"/>
+          </g>
+          <!-- searing steak on direct -->
+          <rect x="238" y="120" width="88" height="60" rx="5" fill="#9c3612" fill-opacity=".7" stroke="#c2481d"/>
+          <text x="282" y="154" fill="#faf9f5" font-size="10.5" text-anchor="middle">SEAR</text>
+          <!-- indirect zone -->
+          <rect x="374" y="38" width="312" height="224" rx="8" fill="#1f7982" fill-opacity=".07" stroke="#1f7982" stroke-opacity=".5"/>
+          <text x="392" y="62" fill="#1f7982" font-size="11" letter-spacing="2">INDIRECT ZONE · NO FUEL</text>
+          <text x="392" y="80" fill="currentColor" fill-opacity=".7" font-size="10.5">120–180 °C / 250–350 °F · lid down · convection</text>
+          <!-- big roast on indirect -->
+          <rect x="410" y="110" width="120" height="90" rx="8" fill="#1f7982" fill-opacity=".25" stroke="#1f7982"/>
+          <text x="470" y="150" fill="currentColor" font-size="10.5" text-anchor="middle">RIBS /</text>
+          <text x="470" y="166" fill="currentColor" font-size="10.5" text-anchor="middle">THICK CUT</text>
+          <!-- probe -->
+          <line x1="470" y1="155" x2="640" y2="70" stroke="#1f7982" stroke-width="1.4"/>
+          <circle cx="470" cy="155" r="4" fill="#1f7982"/>
+          <text x="560" y="238" fill="#1f7982" font-size="10.5">safe-harbour: park here to hold or</text>
+          <text x="560" y="252" fill="#1f7982" font-size="10.5">rescue anything cooking too fast</text>
+          <!-- move arrow -->
+          <path d="M330 150 h34" stroke="currentColor" stroke-opacity=".6" stroke-width="1.6" fill="none" marker-end="url(#m7ah)"/>
+          <path d="M370 200 h-34" stroke="currentColor" stroke-opacity=".6" stroke-width="1.6" fill="none" marker-end="url(#m7ah2)"/>
+          <defs>
+            <marker id="m7ah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="currentColor"/></marker>
+            <marker id="m7ah2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="currentColor"/></marker>
+          </defs>
+          <text x="352" y="140" fill="currentColor" fill-opacity=".55" font-size="9" text-anchor="middle">move</text>
+        </g>
+      </svg>
+      <figcaption>Fig. 1 — Two-zone fire, top-down. Fuel banked to one side; food shuttles
+        between the sear station and the gentle convection room.</figcaption>
+    </figure>
+
+    <p>The single most useful consequence: the indirect side is a <b>safe harbour</b>.
+      Flare-up? Move to indirect. Cooking too fast? Move to indirect. Guests not ready?
+      Hold at indirect. You are never trapped by the fire because there is always a cooler
+      room to retreat to. Coffee analogy: it is the bypass valve — a place to divert flow
+      when the shot is running too fast.</p>
+
+    <h3 style="margin-top:34px">Two routes to the same target</h3>
+    <p>Given two zones, there are two orderings. <b>Sear-then-finish</b>: brown on direct
+      first, move to indirect to coast up to temperature. <b>Reverse sear</b>: cook slowly
+      on indirect almost all the way, then finish with a short blast on direct. For anything
+      thicker than about 3 cm / 1¼&nbsp;in, reverse sear wins, and the temperature trace
+      shows why.</p>
+
+    <figure>
+      <svg viewBox="0 0 720 300" role="img" aria-label="Internal temperature versus time for sear-first versus reverse sear, showing reverse sear produces a more even interior">
+        <g font-family="ui-monospace,Menlo,monospace" font-size="11">
+          <!-- axes -->
+          <line x1="60" y1="250" x2="680" y2="250" stroke="currentColor" stroke-opacity=".6"/>
+          <line x1="60" y1="40" x2="60" y2="250" stroke="currentColor" stroke-opacity=".6"/>
+          <text x="360" y="284" fill="currentColor" fill-opacity=".7" text-anchor="middle">time →</text>
+          <text x="24" y="150" fill="currentColor" fill-opacity=".7" transform="rotate(-90 24 150)" text-anchor="middle">core temp →</text>
+          <!-- target line 54C -->
+          <line x1="60" y1="96" x2="680" y2="96" stroke="#2f7d57" stroke-dasharray="4 4" stroke-opacity=".8"/>
+          <text x="668" y="90" fill="#2f7d57" text-anchor="end" font-size="10">target 54 °C / 130 °F</text>
+          <!-- sear-first: fast surface spike then slow core, steep gradient -->
+          <path d="M60 250 C 90 250, 110 245, 140 235 C 200 215, 300 150, 420 118 C 520 104, 600 99, 660 97" fill="none" stroke="#c2481d" stroke-width="2.2"/>
+          <text x="150" y="222" fill="#c2481d" font-size="10.5">sear first</text>
+          <!-- reverse sear: gentle rise, plateau near target, small final sear bump -->
+          <path d="M60 250 C 160 236, 260 190, 380 130 C 470 108, 540 100, 600 99 L 618 99 C 630 99, 640 96, 650 94" fill="none" stroke="#1f7982" stroke-width="2.2"/>
+          <text x="300" y="210" fill="#1f7982" font-size="10.5">reverse sear</text>
+          <!-- sear window marker -->
+          <rect x="612" y="60" width="56" height="196" fill="#c2481d" fill-opacity=".06" stroke="#c2481d" stroke-opacity=".3" stroke-dasharray="3 3"/>
+          <text x="640" y="52" fill="#c2481d" font-size="9" text-anchor="middle">final</text>
+          <text x="640" y="270" fill="#c2481d" font-size="9" text-anchor="middle">sear</text>
+        </g>
+      </svg>
+      <figcaption>Fig. 2 — Reverse sear (teal) approaches the target on a shallow gradient,
+        so the interior cooks edge-to-edge before the brief final sear. Sear-first (ember)
+        drives a steep gradient: a thick grey band forms under the crust.</figcaption>
+    </figure>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Zone</th><th>Heat mode</th><th class="num">Grate temp</th><th>Use it for</th></tr></thead>
+      <tbody>
+        <tr><td><b>Direct</b>, lid off/open</td><td>Radiant + conduction</td><td class="num">230–320 °C<br>450–600 °F</td><td>Searing, burgers, thin cuts, kebabs, final crust, charring skin</td></tr>
+        <tr><td><b>Indirect</b>, lid down</td><td>Convection (oven)</td><td class="num">120–180 °C<br>250–350 °F</td><td>Reverse-sear coast-up, thick chops, bone-in chicken, holding, rescue</td></tr>
+        <tr><td><b>Indirect low</b>, vents pinched</td><td>Convection + smoke</td><td class="num">105–135 °C<br>225–275 °F</td><td>Ribs, pork shoulder, brisket — collagen conversion over hours</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ===================================================== 03 -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">03</span><h2>Key concepts</h2></div>
+    <div class="grid cols-2">
+      <div class="card"><h4>Maillard on live fire</h4>
+        <p><b>What:</b> the browning cascade of amino acids + sugars that builds crust,
+          colour, and hundreds of aroma compounds, above ~150 °C / 300 °F.
+          <b>Why it matters:</b> it is the entire reason to grill rather than boil — flavour
+          lives on the surface. <b>Common mistake:</b> a wet surface. Water must boil off
+          before the surface can climb past 100 °C / 212 °F, so a damp steak steams while it
+          wastes fuel. Pat bone-dry, oil the <em>food</em>, and let a crust form before you
+          touch it.</p></div>
+      <div class="card"><h4>Doneness = internal temperature</h4>
+        <p><b>What:</b> texture and juiciness are set by peak core temperature, not by time
+          or colour. <b>Why it matters:</b> it makes doneness a measured number, not a guess
+          — an instant-read probe is your scale. <b>Common mistake:</b> cutting to peek (you
+          release juice) or trusting the thumb-poke. Rare ~52 °C / 125 °F, medium-rare
+          ~54–57 °C / 130–135 °F, medium ~60 °C / 140 °F. Probe the thickest point, away
+          from bone.</p></div>
+      <div class="card"><h4>Carryover cook</h4>
+        <p><b>What:</b> after you pull the meat, heat stored in the outer layers keeps
+          conducting inward; the core coasts up another 3–5 °C / 5–9 °F (more in big roasts,
+          up to 6–8 °C). <b>Why it matters:</b> if you pull at target you overshoot.
+          <b>Common mistake:</b> ignoring it. Pull ~3 °C / 5 °F <em>below</em> target for
+          steaks, more for roasts, and let the rest finish the job.</p></div>
+      <div class="card"><h4>Ground meat is different</h4>
+        <p><b>What:</b> grinding takes surface bacteria — which on a whole steak stay on the
+          outside where the sear kills them — and folds them throughout the patty.
+          <b>Why it matters:</b> the interior is now the risky part, so it must reach a
+          safer temperature. <b>Common mistake:</b> a "medium-rare" burger from
+          shop-ground beef. Cook to ~71 °C / 160 °F <em>unless</em> you grind fresh from
+          seared-then-cooled whole muscle yourself.</p></div>
+      <div class="card"><h4>Resting = juice retention</h4>
+        <p><b>What:</b> heat makes muscle fibres contract and squeeze fluid toward the
+          centre and out; resting lets them relax and reabsorb it. <b>Why it matters:</b>
+          the difference between juice in the meat and a puddle on the board is a few
+          minutes of patience. <b>Common mistake:</b> slicing hot. Rest a steak 5–10 min, a
+          roast 15–30 min, tented loosely so the crust doesn't steam soft.</p></div>
+      <div class="card"><h4>Collagen → gelatin (low &amp; slow)</h4>
+        <p><b>What:</b> tough cuts (ribs, shoulder, brisket) are full of connective-tissue
+          collagen that only melts to silky gelatin when held ~70–90 °C / 160–195 °F for
+          hours. <b>Why it matters:</b> you cannot rush it with higher heat — that just dries
+          the muscle. <b>Common mistake:</b> pulling ribs at "steak" temperature and finding
+          them chewy. They need <em>time</em> at low temp, not more heat.</p></div>
+    </div>
+
+    <div class="callout callout--heat"><span class="lbl">Variable that matters most</span>
+      <p>Thickness. Below ~2.5 cm / 1 in, the interior heats almost as fast as the surface
+        browns, so a single hot direct zone is fine (burgers, thin steaks, kebabs). Above
+        ~3 cm / 1¼ in, the surface-to-core gradient dominates and you <em>need</em> two
+        zones. Measure the cut, not the recipe.</p></div>
+
+    <div class="callout callout--mistake"><span class="lbl">What beginners get wrong about marinades</span>
+      <p>Acid, salt, and enzymes penetrate only a few millimetres in hours — a marinade
+        mostly seasons and flavours the <em>surface</em>, it does not tenderise the core.
+        Worse, excess acid (citrus, vinegar) denatures surface proteins and turns the outer
+        layer mushy and pale — the ceviche effect. Salt is the exception: given time it
+        diffuses deeper. For big cuts, a <b>dry brine</b> (salt 1–24 h ahead, uncovered in
+        the fridge) beats a wet marinade for both seasoning depth and crust.</p></div>
+  </section>
+
+  <!-- ===================================================== 04 -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">04</span><h2>Tools &amp; equipment</h2></div>
+    <p>You need less than the shops want you to buy. The instrument that actually changes
+      your results is a thermometer, because it turns doneness from folklore into a reading.</p>
+
+    <div class="spec">
+      <div class="spec-h">Kit — necessary / optional / waste of money</div>
+      <div class="spec-row"><span class="spec-key">Instant-read probe</span><span class="spec-val"><b>Necessary.</b> Fast (2–3 s) thermocouple or thermistor. The single highest-leverage tool in this module. ~£15–100.</span></div>
+      <div class="spec-row"><span class="spec-key">Charcoal chimney</span><span class="spec-val"><b>Necessary</b> (charcoal). Lights coals evenly in ~15 min, no lighter fluid, no petrochemical taint. Replaces fire-starting guesswork.</span></div>
+      <div class="spec-row"><span class="spec-key">Long tongs + fish slice</span><span class="spec-val"><b>Necessary.</b> Control without stabbing (stabbing vents juice). A wide spatula for burgers/fish.</span></div>
+      <div class="spec-row"><span class="spec-key">Kettle grill w/ vents</span><span class="spec-val"><b>Necessary-ish.</b> A lid and adjustable top+bottom vents give you a real oven and airflow control. This is the platform.</span></div>
+      <div class="spec-row"><span class="spec-key">Leave-in dual probe</span><span class="spec-val"><b>Optional, excellent.</b> Tracks pit + core over hours for ribs/roasts without opening the lid. Earns its keep once you cook low &amp; slow.</span></div>
+      <div class="spec-row"><span class="spec-key">Chunk hardwood</span><span class="spec-val"><b>Optional.</b> Oak, hickory, fruitwoods for smoke flavour. A fist-sized chunk or two — not a bonfire.</span></div>
+      <div class="spec-row"><span class="spec-key">Grill press / branding gimmicks</span><span class="spec-val"><b>Waste of money.</b> Pressing burgers squeezes out the fat and juice you want. Sear marks are cosmetic; even browning beats stripes.</span></div>
+      <div class="spec-row"><span class="spec-key">Lighter fluid</span><span class="spec-val"><b>Avoid.</b> Off-flavours and inconsistent lighting. A chimney is faster and cleaner.</span></div>
+    </div>
+    <div class="callout callout--pro"><span class="lbl">Mediocre → Excellent</span>
+      <p>The tell of a competent griller is not the rig — it is that they probe. Guessing
+        gets you 60 % right; a £20 thermometer gets you 95 %. Buy the boring tool before the
+        exciting one.</p></div>
+  </section>
+
+  <!-- ===================================================== spec: doneness datasheet -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">04·b</span><h2>Doneness datasheet</h2></div>
+    <p>This is the reference you will actually return to. Pull temperatures already subtract
+      carryover — pull at the "pull" number and let the rest coast you to "final".</p>
+
+    <div class="spec">
+      <div class="spec-h">Steak / whole-muscle beef &amp; lamb · pull ≈ 3 °C / 5 °F below final</div>
+      <div class="spec-row"><span class="spec-key">Rare</span><span class="spec-val">Pull 49 °C / 120 °F → final ~52 °C / 125 °F · cool red centre, very soft</span></div>
+      <div class="spec-row"><span class="spec-key">Medium-rare ★</span><span class="spec-val">Pull 51–54 °C / 124–129 °F → final ~54–57 °C / 130–135 °F · warm red, springy — the sweet spot</span></div>
+      <div class="spec-row"><span class="spec-key">Medium</span><span class="spec-val">Pull 57 °C / 135 °F → final ~60 °C / 140 °F · pink, firmer, fat well rendered</span></div>
+      <div class="spec-row"><span class="spec-key">Medium-well</span><span class="spec-val">Pull 63 °C / 145 °F → final ~66 °C / 150 °F · faint pink, drier</span></div>
+      <div class="spec-row"><span class="spec-key">Well</span><span class="spec-val">68 °C+ / 155 °F+ · grey through, use a fattier cut to survive it</span></div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-h">Ground, poultry, pork · safety-driven targets (no early pull below these)</div>
+      <div class="spec-row"><span class="spec-key">Burgers / ground beef</span><span class="spec-val">71 °C / 160 °F (shop-ground). Fresh home-ground from seared whole muscle can go lower at your own risk.</span></div>
+      <div class="spec-row"><span class="spec-key">Chicken / turkey breast</span><span class="spec-val">74 °C / 165 °F instant — or hold 60 °C / 140 °F for a few min (pasteurises, stays juicier)</span></div>
+      <div class="spec-row"><span class="spec-key">Chicken thigh / leg</span><span class="spec-val">Take to 82–88 °C / 180–190 °F — connective tissue softens, texture improves past "safe"</span></div>
+      <div class="spec-row"><span class="spec-key">Pork chop</span><span class="spec-val">Pull 60 °C / 140 °F → final ~63 °C / 145 °F, blush of pink, rest 3 min</span></div>
+      <div class="spec-row"><span class="spec-key">Ribs / shoulder / brisket</span><span class="spec-val">"Done" is texture, ~90–96 °C / 195–205 °F, probe slides in like warm butter</span></div>
+    </div>
+  </section>
+
+  <!-- ===================================================== comparison table -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">04·c</span><h2>Choosing a method</h2></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Method</th><th>Best for</th><th>Mechanism</th><th class="num">Time</th></tr></thead>
+      <tbody>
+        <tr><td><b>Sear then finish</b></td><td>Thin–medium steaks, chops (2–3 cm); when you're in a hurry</td><td>Crust first on direct while surface is dry; coast to temp on indirect</td><td class="num">8–15 min</td></tr>
+        <tr><td><b>Reverse sear</b></td><td>Thick steaks (3 cm+), whole roasts; best edge-to-edge evenness</td><td>Slow indirect rise → dries surface + evens interior → brief hot sear for crust</td><td class="num">30–60 min</td></tr>
+        <tr><td><b>Low &amp; slow</b></td><td>Ribs, pork shoulder, brisket, tough cuts</td><td>Hold 105–135 °C for hours → collagen melts to gelatin → tender &amp; moist</td><td class="num">3–14 h</td></tr>
+        <tr><td><b>Straight direct</b></td><td>Burgers, kebabs, sausages, thin cuts, veg</td><td>Thin enough that interior heats as fast as the crust forms</td><td class="num">4–10 min</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ===================================================== 05 -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">05</span><h2>Technique — the reverse sear, worked</h2></div>
+    <p>Once you can execute a reverse-sear steak, every other cook is a variation. Here is
+      the full loop with the reasoning attached.</p>
+
+    <div class="levels">
+      <span class="level level--1"><b>L1</b> — I get a sear and a safe interior</span>
+      <span class="level level--2"><b>L2</b> — edge-to-edge even, repeatable</span>
+      <span class="level level--3"><b>L3</b> — I tune zones, timing, smoke</span>
+      <span class="level level--4"><b>L4</b> — I improvise across cuts &amp; host</span>
+    </div>
+
+    <ol class="steps">
+      <li><b>Prep — dry brine.</b> Salt the steak (about 1 % of its weight, ~1 tsp coarse
+        per 450 g) 1–24 h ahead, uncovered on a rack in the fridge. Salt seasons deep and
+        the airflow dries the surface — pre-loading both flavour and crust. Pat bone-dry
+        before it goes on.</li>
+      <li><b>Prep — build two zones.</b> Bank lit coals to one side (or light half the gas
+        burners). Confirm a hot direct side and an indirect side with the lid vents open.
+        Target ~135 °C / 275 °F in the indirect chamber.</li>
+      <li><b>Execute — coast on indirect.</b> Steak on the cool side, lid down, probe in the
+        thickest point. Let the core climb slowly to ~6–8 °C / ~12 °F below your target
+        (e.g. ~46 °C / 115 °F for medium-rare). Slow rise = even interior + drying surface.</li>
+      <li><b>Execute — rest the fire, dry the meat.</b> Pull the steak, open the lid, let the
+        direct side rip hot. A brief pause lets the surface dry further — dry surface browns
+        faster and hotter.</li>
+      <li><b>Execute — sear.</b> Onto screaming direct heat, ~45–60 s per side, flipping when
+        it releases cleanly (it tells you the crust has formed — don't force it). Optionally
+        baste with butter/aromatics in the last 30 s. You want colour, not more interior
+        cooking.</li>
+      <li><b>Evaluate — probe.</b> Instant-read the centre. Because you seared briefly and
+        the interior was already near target, carryover is small (~2–3 °C). If you're a few
+        degrees short, another 20 s on direct; if over, you've learned to pull earlier next
+        time.</li>
+      <li><b>Correction — rest.</b> Board or rack, tented loosely, 5–8 min. Fibres relax and
+        reabsorb juice; slicing before this dumps it on the board. Slice against the grain to
+        shorten the fibres you chew.</li>
+    </ol>
+
+    <div class="callout callout--why"><span class="lbl">Why reverse sear beats sear-first here</span>
+      <p>Searing a cold steak first drives a steep temperature gradient — the outer layer
+        races ahead and forms a thick grey overcooked band before the centre catches up.
+        Starting gently means the whole interior is already close to target and nearly
+        uniform, so the final sear adds crust without adding a grey band. The dried surface
+        also browns faster, so you spend less time searing and overcook even less.</p></div>
+  </section>
+
+  <!-- ===================================================== 06 -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">06</span><h2>Beginner mistakes &amp; troubleshooting</h2></div>
+
+    <details class="trouble"><summary>Charred outside, raw inside <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>One hot zone only; thick cut cooked entirely on direct heat. Surface hits browning temp long before the core warms.</dd>
+        <dt>Diagnose</dt><dd>Crust is dark/black but a probe reads cold in the centre.</dd>
+        <dt>Fix</dt><dd>Build two zones. For thick cuts, coast on indirect first (reverse sear) or move off direct the moment a crust forms and finish on indirect with the lid down. Probe, don't guess.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>Ribs came out tough and chewy <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Cooked too hot and/or too short. Collagen never got the hours at 70–90 °C it needs to convert to gelatin; you dried the muscle instead of melting the connective tissue.</dd>
+        <dt>Diagnose</dt><dd>Meat is dry <em>and</em> rubbery; probe went in with resistance. If you pulled at ~74 °C thinking "cooked", that's the tell.</dd>
+        <dt>Fix</dt><dd>Low &amp; slow: 105–120 °C / 225–250 °F for 4–6 h (spare ribs). Done is texture, ~90–96 °C / 195–205 °F, probe slides like butter. Wrap in foil partway to power through the stall.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>Grilled chicken is dry / rubbery <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Breast overshot 74 °C on direct heat; or thighs pulled too early so connective tissue stayed tight. Lean breast has almost no fat buffer.</dd>
+        <dt>Diagnose</dt><dd>Breast: stringy, pale, dry. Thigh: safe temp but chewy tendons.</dd>
+        <dt>Fix</dt><dd>Cook bone-in pieces mostly indirect, finish skin on direct. Pull breast right at 74 °C / 165 °F (or hold 60 °C to pasteurise juicier). Take thighs further, to 82–88 °C / 180–190 °F. Brine or dry-brine ahead.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>Meat sticks and tears on the grate <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Flipped too early — the crust hadn't formed and released yet. Cold grate, wet surface, or unoiled food also glue proteins to metal.</dd>
+        <dt>Diagnose</dt><dd>It resists lifting and leaves skin/crust behind.</dd>
+        <dt>Fix</dt><dd>Preheat the grate hot, oil the <em>food</em> not just the bars, pat surfaces dry, and wait. A properly seared surface releases itself — when it lifts cleanly, it's ready to flip.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>Flare-ups torching the food <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Rendered fat drips onto flame; the fire finds oxygen and flares. Fatty cuts + all-direct heat = grease fire.</dd>
+        <dt>Diagnose</dt><dd>Sudden flames, black sooty spots, acrid taste.</dd>
+        <dt>Fix</dt><dd>Move to the indirect safe harbour until it dies down — never squirt water (spreads grease). Keep a fat-heavy cook mostly indirect; trim excessive fat caps; lid down starves flare-ups of oxygen.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>Thick grey overcooked band under the crust <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Steep thermal gradient from searing a cold cut hard on direct heat: the outer layers overcook while the centre catches up.</dd>
+        <dt>Diagnose</dt><dd>Cross-section shows a wide dull band between crust and the rosy centre.</dd>
+        <dt>Fix</dt><dd>Reverse sear. Bring the interior up gently on indirect first so it's near-uniform, then a short hot sear. Thin grey band, wide even centre.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>Acrid, bitter smoke flavour <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Dirty white/grey billowing smoke from smouldering, oxygen-starved wood, or too much wood. Creosote deposits on the meat.</dd>
+        <dt>Diagnose</dt><dd>Harsh, ashtray-bitter finish; thick white smoke rather than faint blue.</dd>
+        <dt>Fix</dt><dd>Aim for <b>thin blue smoke</b>: clean combustion with enough airflow. Open vents (oxygen = fuel), use a modest amount of dry hardwood, and let the fire breathe. If it's billowing white, it needs more air, not more wood.</dd>
+      </dl></div></details>
+  </section>
+
+  <!-- ===================================================== 07 -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">07</span><h2>Controlled experiments</h2></div>
+    <p>Change exactly one variable, hold the rest, and read the result off a probe or a
+      knife cut. This is how the mechanisms stop being claims and become things you've seen.</p>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E1 — reverse sear vs sear-first</div>
+      <dl>
+        <dt>Goal</dt><dd>See the grey band form and the interior even out.</dd>
+        <dt>Keep constant</dt><dd>Two steaks from one piece, same thickness (≥3 cm), same salt, same grill, same final target 54 °C / 130 °F.</dd>
+        <dt>Change</dt><dd>Steak A: sear hard on direct first, finish indirect. Steak B: coast on indirect, then brief sear.</dd>
+        <dt>Expected</dt><dd>B is rosy edge-to-edge with a thin crust; A shows a wider grey band under the crust.</dd>
+        <dt>Observe</dt><dd>Cut both in cross-section side by side. Photograph the gradient. Note which crust is darker for less searing time.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E2 — rested vs cut immediately</div>
+      <dl>
+        <dt>Goal</dt><dd>Quantify juice retention from resting.</dd>
+        <dt>Keep constant</dt><dd>Two identical steaks cooked identically to the same temp, same board.</dd>
+        <dt>Change</dt><dd>Steak A: slice immediately off the fire. Steak B: rest 8 min tented, then slice.</dd>
+        <dt>Expected</dt><dd>A leaves a visible puddle; B leaves noticeably less liquid on the board.</dd>
+        <dt>Observe</dt><dd>Cut on paper towels or a tared plate and compare the wet area / weigh the runoff. B should lose clearly less.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E3 — marinade penetration, 30 min vs 8 h</div>
+      <dl>
+        <dt>Goal</dt><dd>See how shallow marinade penetration really is.</dd>
+        <dt>Keep constant</dt><dd>Same cut, same marinade (with visible colour — soy/paprika), same fridge.</dd>
+        <dt>Change</dt><dd>Piece A marinated 30 min; piece B marinated 8 h.</dd>
+        <dt>Expected</dt><dd>Both show colour only a few mm deep; extra time barely deepens it (salt goes furthest).</dd>
+        <dt>Observe</dt><dd>Slice each in half and measure the coloured rim with a ruler. Note that flavour is a surface effect — this reframes what a marinade is for.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E4 — burger safety logic (temp ladder)</div>
+      <dl>
+        <dt>Goal</dt><dd>Feel the texture change that safety costs in ground meat.</dd>
+        <dt>Keep constant</dt><dd>Same grind, same patty weight/thickness, same direct heat.</dd>
+        <dt>Change</dt><dd>Pull three patties at 60, 66, and 71 °C / 140, 150, 160 °F.</dd>
+        <dt>Expected</dt><dd>Juicier at 60 but the interior is the un-seared, higher-risk part; 71 °C is the shop-ground safe target.</dd>
+        <dt>Observe</dt><dd>Note juiciness vs your risk tolerance, and why the same logic does not apply to a whole steak (surface bacteria, seared away).</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ===================================================== 08 -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">08</span><h2>Practice system</h2></div>
+
+    <div class="level-band"><span class="tag level--1"><b>L1</b> Functional</span><span class="ln"></span></div>
+    <div class="drill">
+      <div class="drill-h">Practice drill</div>
+      <h4>The two-zone burger</h4>
+      <dl>
+        <dt>Goal</dt><dd>A deep-brown crust and a safe, juicy interior, on demand.</dd>
+        <dt>Difficulty</dt><dd>Beginner</dd>
+        <dt>Materials</dt><dd>80/20 chuck patties ~2 cm, coarse salt, probe, two-zone fire.</dd>
+        <dt>Steps</dt><dd>Salt just before cooking; sear both sides on direct until a crust releases cleanly; move to indirect if flaring; probe to 71 °C / 160 °F; rest 2–3 min.</dd>
+        <dt>Success</dt><dd>Even mahogany crust, no stuck bits, juicy but reads 71 °C.</dd>
+        <dt>Failure modes</dt><dd>Pressing with the spatula (squeezes out fat); flipping before release (tears); over/undershooting temp.</dd>
+        <dt>Improve</dt><dd>Salt only at the last second (early salt firms the texture); handle the meat as little as possible.</dd>
+      </dl>
+    </div>
+
+    <div class="level-band"><span class="tag level--2"><b>L2</b> Consistent</span><span class="ln"></span></div>
+    <div class="drill">
+      <div class="drill-h">Practice drill</div>
+      <h4>Reverse-sear steak to a called number</h4>
+      <dl>
+        <dt>Goal</dt><dd>Hit a stated doneness (say medium-rare, 54 °C / 130 °F) three times running.</dd>
+        <dt>Difficulty</dt><dd>Intermediate</dd>
+        <dt>Materials</dt><dd>Thick steaks (3 cm+), dry brine ahead, probe, two-zone fire.</dd>
+        <dt>Steps</dt><dd>Coast on indirect to ~46 °C; rest fire hot; sear 45–60 s/side; probe; rest 6 min.</dd>
+        <dt>Success</dt><dd>Cross-section rosy edge-to-edge, thin crust, final temp within 2 °C of the call.</dd>
+        <dt>Failure modes</dt><dd>Searing too long (grey band creeps back); forgetting carryover; wet surface = weak crust.</dd>
+        <dt>Improve</dt><dd>Log pull-temp vs final-temp each time; adjust your early-pull offset until it's dialled.</dd>
+      </dl>
+    </div>
+
+    <div class="level-band"><span class="tag level--3"><b>L3</b> Optimization</span><span class="ln"></span></div>
+    <div class="drill">
+      <div class="drill-h">Practice drill</div>
+      <h4>Hold a pit temperature for two hours</h4>
+      <dl>
+        <dt>Goal</dt><dd>Keep an indirect chamber steady at 120 °C / 250 °F ± 10 °C using only vents.</dd>
+        <dt>Difficulty</dt><dd>Advanced</dd>
+        <dt>Materials</dt><dd>Kettle with vents, chimney of coals, leave-in pit probe, one wood chunk.</dd>
+        <dt>Steps</dt><dd>Light a modest fire; set bottom vent as the throttle, top vent mostly open; nudge in small increments and wait 10 min to see the effect before touching again.</dd>
+        <dt>Success</dt><dd>Two hours within band; thin blue smoke, not white.</dd>
+        <dt>Failure modes</dt><dd>Over-correcting (oxygen = fuel, temp lags your changes); choking the fire into acrid smoke.</dd>
+        <dt>Improve</dt><dd>Treat the vent like a PID loop: small inputs, wait for the response, converge. Log vent position vs temp.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ===================================================== 09 -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">09</span><h2>Projects</h2></div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Project · Beginner</div>
+      <h4>Burgers &amp; kebabs with a real sear</h4>
+      <dl>
+        <dt>Objective</dt><dd>Feed four with two-zone burgers and vegetable/chicken kebabs, everything crusted and cooked to temp.</dd>
+        <dt>Skills trained</dt><dd>Building two zones, direct searing, flare-up management, probing burgers to 71 °C.</dd>
+        <dt>Expected result</dt><dd>Juicy burgers with even crust; kebabs charred outside, cooked through, not dried.</dd>
+        <dt>Evaluation</dt><dd>No raw centres, no charred-black outsides, no flare damage; you used the safe harbour at least once on purpose.</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Project · Intermediate</div>
+      <h4>Reverse-sear steaks + grilled chicken, plated together</h4>
+      <dl>
+        <dt>Objective</dt><dd>Run two cuts with different targets off one fire, resting timed so both land together.</dd>
+        <dt>Skills trained</dt><dd>Reverse sear, bone-in chicken indirect-then-direct, carryover budgeting, resting logistics.</dd>
+        <dt>Expected result</dt><dd>Steak edge-to-edge medium-rare; chicken juicy at 74 °C breast / 85 °C thigh; both rested, none cold.</dd>
+        <dt>Evaluation</dt><dd>Every piece within 2–3 °C of its target; you sequenced the cook so nothing sat cooling.</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Project · Advanced — the module goal</div>
+      <h4>Host a full barbecue: low-and-slow ribs for a crowd</h4>
+      <dl>
+        <dt>Objective</dt><dd>Cook ribs (and/or pork shoulder) low &amp; slow, plus quick-fire sides, and serve 6–8 guests on time.</dd>
+        <dt>Skills trained</dt><dd>Fire &amp; vent control over hours, thin-blue-smoke management, riding the stall (wrap to push through), reading doneness by feel (probe like butter, ~93 °C / 200 °F), holding &amp; resting while you finish direct-heat sides.</dd>
+        <dt>Expected result</dt><dd>Tender, moist ribs with clean smoke flavour and bark; sides hot; guests fed within a 30-min window.</dd>
+        <dt>Evaluation</dt><dd>Meat pulls cleanly but doesn't fall to mush; no acrid smoke; you held pit temp without babysitting every minute; timeline worked backward from serving hour.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ===================================================== 10 -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">10</span><h2>Visual learning</h2></div>
+    <p>Train your eye on the things a thermometer can't tell you — smoke colour, crust,
+      the fire's layout.</p>
+
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>two zone charcoal grill setup coals banked</code>
+      <p style="margin:.4em 0 0">Look for: coals piled to one side, empty grate on the other. Note how much of the kettle is left as safe harbour.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>thin blue smoke vs white smoke bbq</code>
+      <p style="margin:.4em 0 0">Look for: the barely-visible blue haze (good) versus thick billowing white/grey (acrid). This is the single best smoke tell.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>reverse sear steak cross section grey band comparison</code>
+      <p style="margin:.4em 0 0">Look for: edge-to-edge pink of a reverse sear vs the wide dull band of a hard sear-first cook.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>charcoal chimney starter lit coals ashed over</code>
+      <p style="margin:.4em 0 0">Look for: coals greyed with ash on top before dumping — that's "ready", not black-and-flaming.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>pork ribs bend test bark done</code>
+      <p style="margin:.4em 0 0">Look for: the rack bending and cracking on the surface when lifted — a visual doneness cue alongside the probe.</p></div>
+    </div>
+  </section>
+
+  <!-- ===================================================== 11 -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">11</span><h2>External resources</h2></div>
+
+    <div class="resource"><span class="rm">Book · The reference</span>
+      <span class="rt">Meathead: The Science of Great Barbecue and Grilling — Meathead Goldwyn</span>
+      <p>The mechanism bible for this whole module — heat, smoke, and the myths debunked with data. Pair with the AmazingRibs.com site (search the site name) for temperature charts.</p></div>
+
+    <div class="resource"><span class="rm">Book · Steak chapter</span>
+      <span class="rt">The Food Lab — J. Kenji López-Alt</span>
+      <p>Read the steak / reverse-sear section for the interior-evenness argument and the carryover data behind pulling early.</p></div>
+
+    <div class="resource"><span class="rm">Video · Kenji López-Alt</span>
+      <span class="rt">Search: "Kenji reverse sear steak" and "Kenji food lab burgers"</span>
+      <p>Why: shows the cross-section difference and the ground-meat safety logic first-hand.</p></div>
+
+    <div class="resource"><span class="rm">Video · Chuds BBQ</span>
+      <span class="rt">Search: "Chuds BBQ fire management" and "Chuds ribs"</span>
+      <p>Why: practical vent control, thin-blue-smoke, and low-and-slow technique without mysticism.</p></div>
+
+    <div class="resource"><span class="rm">Video · Guga Foods / Sous Vide Everything</span>
+      <span class="rt">Search: "Guga reverse sear experiment" / "Sous Vide Everything steak experiment"</span>
+      <p>Why: side-by-side controlled steak experiments — a good model for running your own E1–E4.</p></div>
+
+    <div class="resource"><span class="rm">Video · Meathead / AmazingRibs</span>
+      <span class="rt">Search: "AmazingRibs two zone fire" and "Meathead thermometer"</span>
+      <p>Why: the two-zone setup and why an instant-read probe outperforms every other tool.</p></div>
+  </section>
+
+  <!-- ===================================================== 12 -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">12</span><h2>Assessment</h2></div>
+
+    <h3>Knowledge check — understanding, not recall</h3>
+    <div class="check">
+      <div class="q"><p>Why can you safely eat a rare steak but not a rare burger ground from
+        the <em>same</em> piece of beef? What single number changes, and why?</p></div>
+      <div class="q"><p>A 4 cm steak comes off a hard direct-heat sear with a black crust and a
+        cold centre. Explain the mechanism, and describe the two-zone fix and why it works.</p></div>
+      <div class="q"><p>Two identical steaks: one sliced immediately, one rested 8 minutes.
+        Predict what the cutting board looks like under each, and explain the fibre mechanism.</p></div>
+      <div class="q"><p>Ribs pulled at 74 °C / 165 °F are tough; the same ribs held for hours to
+        94 °C / 200 °F are tender. Why does <em>more heat, faster</em> not fix the first batch?</p></div>
+      <div class="q"><p>You marinated a thick cut for 8 hours and the centre still tastes plain.
+        Explain why, and say what you'd change to actually flavour/season deeper.</p></div>
+      <div class="q"><p>Your pit is billowing thick white smoke and the meat tastes bitter. Is the
+        fix more wood or more air? Justify it in terms of combustion.</p></div>
+    </div>
+
+    <div class="callout callout--why" style="margin-top:26px"><span class="lbl">Answer key (mechanisms)</span>
+      <p><b>Q1</b> Surface bacteria on whole muscle stay outside where the sear kills them; grinding
+        mixes them throughout, so the interior must reach ~71 °C / 160 °F. <b>Q2</b> Surface browns
+        far faster than heat conducts inward; two zones let you sear on direct then coast on
+        indirect (or reverse-sear) to decouple crust from core. <b>Q3</b> Sliced-hot leaves a puddle;
+        rested reabsorbs — heat contracts fibres and squeezes juice out, resting relaxes them. <b>Q4</b>
+        Toughness is collagen, which only melts to gelatin over hours at 70–90 °C; higher heat just
+        dries muscle. <b>Q5</b> Marinades penetrate only a few mm; salt/dry-brine ahead diffuses deeper.
+        <b>Q6</b> More air — white billowing smoke is oxygen-starved smouldering; open the vents for
+        clean thin-blue combustion.</p></div>
+
+    <h3 style="margin-top:34px">Practical challenge</h3>
+    <p>Run E1 (reverse sear vs sear-first) and E2 (rested vs immediate) on one cook, photograph
+      both cross-sections and both cutting boards, and log your pull-temp vs final-temp. Then cook a
+      rack of ribs low &amp; slow, holding pit temp within ±10 °C for the duration, and take them to
+      probe-tender by feel. Pass = even reverse-sear interior, visibly less board-juice on the rested
+      steak, and tender (not mushy, not chewy) ribs with clean smoke.</p>
+
+    <h3 style="margin-top:26px">Reflection</h3>
+    <p>Where did you have to <em>retreat to the safe harbour</em>, and what was the fire telling you?
+      Which reading surprised you most — the marinade penetration depth, the grey band, or the rested
+      board? And having done it once: what would you change about your <em>timeline</em> to host eight
+      people without the food ever sitting cold?</p>
+  </section>
+
+  <nav class="pager">
+    <a class="prev" href="#m6"><span class="d">Previous</span>Fermentation</a>
+    <a class="next" href="#m8"><span class="d">Next</span>Restaurant Projects</a>
+  </nav>
+</section>
