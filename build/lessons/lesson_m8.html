@@ -1,0 +1,613 @@
+<section class="lesson" id="m8">
+  <header class="lesson-head">
+    <p class="eyebrow">MODULE 08 · RESTAURANT PROJECTS</p>
+    <h1>Cook Because You Want To</h1>
+    <p class="lede">Every technique in Modules 1–7 was a component. This capstone teaches the only skill left:
+      <em>orchestration</em> — reading a whole menu as a project, working backwards from serving time, and
+      staging the prep so that service is mostly assembly and heat. The dish was never the hard part. The
+      schedule is.</p>
+    <div class="kicker-row">
+      <span class="tag ember">Month 9–12</span>
+      <span class="tag">Integration</span>
+      <span class="tag probe">Themed nights</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">01</span><h2>Why this matters</h2></div>
+    <p>You can already sear a steak, build a sauce, ferment a dough, and cook rice you'd be proud of. And yet
+      the first time you try to put three of those on one plate <em>at the same temperature, at the same
+      minute</em>, it falls apart. The steak rests too long and goes cold while the soufflé is still ten
+      minutes out; the pasta water isn't boiling when the sauce is ready; you're plating dish two with dish
+      three's garlic still unpeeled. Nothing failed as a technique. The <em>system</em> failed.</p>
+    <p>This is the exact problem you already solved in espresso when you moved from pulling one shot to running
+      a bar during a rush: the individual extraction was never the constraint — the constraint was the queue,
+      the machine recovery time, the milk, and the fact that you have two hands. A restaurant kitchen is a
+      real-time scheduling problem with hard deadlines (food goes cold), shared resources (one oven, one
+      cook), and long-lead dependencies (a dough that needs 24 h, a stock that needs 6). What separates a
+      professional line from a panicking home cook is almost never knife skill. It is <em>mise en place at
+      scale</em> and a timeline drawn on paper before the first pan is lit.</p>
+    <div class="callout callout--why"><span class="lbl">The thesis of this whole manual, finally paid off</span>
+      <p>Cooking is a control system. Modules 1–7 gave you the actuators — heat, salt, acid, emulsion, dough,
+        fire. This module gives you the <em>scheduler</em>. Most restaurant "magic" is not a secret
+        technique; it is prep done hours or days in advance so that at service, the cook is executing a
+        pre-computed plan, not improvising under fire.</p></div>
+    <div class="levels">
+      <span class="level level--1"><b>L1 · Functional</b> — I can plate a two-component dish hot, all at once</span>
+      <span class="level level--2"><b>L2 · Consistent</b> — I run a written timeline for a 3-dish menu and hit serving time</span>
+      <span class="level level--3"><b>L3 · Optimisation</b> — I identify the critical path and parallelise around the single-cook bottleneck</span>
+      <span class="level level--4"><b>L4 · Mastery</b> — I design a themed menu for real guests, prep it ahead, and plate it calm</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">02</span><h2>Mental model — the meal is a project</h2></div>
+    <p>Stop thinking "recipes" and start thinking "project plan". A themed night is a set of tasks with
+      durations, dependencies, and one immovable deadline: <b>serving time, T₀</b>. Everything you do is
+      scheduling those tasks against T₀ with two constraints — a shared oven/stove and a single pair of
+      hands. Four ideas do all the work.</p>
+
+    <p><b>1 · Mise en place at scale.</b> Read the entire menu first. List <em>every</em> component of every
+      dish — not "tacos" but tortilla, filling, two salsas, pickled onion, crema, lime. For each component,
+      decide the single most important thing: <b>can it be made ahead, or must it be à la minute?</b> Sauces,
+      doughs, stocks, braises, pickles, mise (chopped, measured, portioned) are almost all make-ahead.
+      Anything that must be crisp, molten, or freshly seared is à la minute. Push everything you legally can
+      into "the day before" or "the morning of", and service collapses into assembly + heat.</p>
+
+    <p><b>2 · The critical path.</b> Work <em>backwards</em> from T₀. Find the item with the longest lead time
+      that cannot be shortened — a 24 h pizza dough, a 6 h stock, a 2–3 day laminated croissant. That item
+      dictates when the project must <em>start</em>; it is on the critical path. Separately, find the items
+      that must be <b>hot at the exact end</b> (the seared protein, the soufflé, the boiled pasta) — these
+      are your last, most fragile operations and everything else must be out of the way before they begin.
+      Drawing this timeline is not optional busywork. It <em>is</em> the skill this module teaches.</p>
+
+    <figure>
+      <svg viewBox="0 0 760 430" role="img" aria-label="A backwards-planned meal timeline for an Italian night, showing make-ahead lanes over two days and an a-la-minute lane in the final thirty minutes before serving time T-zero">
+        <g font-family="ui-monospace,Menlo,monospace" font-size="11">
+          <text x="20" y="24" fill="#c2481d" font-size="12" letter-spacing="1.5">MEAL TIMELINE — PLAN BACKWARDS FROM T₀ (ITALIAN NIGHT)</text>
+
+          <!-- lane labels -->
+          <text x="20" y="70" fill="currentColor" fill-opacity=".7">DAY −1</text>
+          <text x="20" y="150" fill="currentColor" fill-opacity=".7">MORNING</text>
+          <text x="20" y="230" fill="currentColor" fill-opacity=".7">T−60→T−30</text>
+          <text x="20" y="330" fill="#c2481d">À LA MINUTE</text>
+          <text x="20" y="346" fill="#c2481d" fill-opacity=".7">T−15 → T₀</text>
+
+          <!-- lane baselines -->
+          <line x1="110" y1="80" x2="720" y2="80" stroke="currentColor" stroke-opacity=".2"/>
+          <line x1="110" y1="160" x2="720" y2="160" stroke="currentColor" stroke-opacity=".2"/>
+          <line x1="110" y1="240" x2="720" y2="240" stroke="currentColor" stroke-opacity=".2"/>
+          <line x1="110" y1="340" x2="720" y2="340" stroke="#c2481d" stroke-opacity=".35"/>
+
+          <!-- DAY -1 blocks (make-ahead, green = safe/parked) -->
+          <rect x="120" y="60" width="180" height="24" rx="3" fill="#2f7d57" fill-opacity=".14" stroke="#2f7d57"/>
+          <text x="130" y="76" fill="#2f7d57">Pizza dough — mix + 24 h cold ferment</text>
+          <rect x="320" y="60" width="150" height="24" rx="3" fill="#2f7d57" fill-opacity=".14" stroke="#2f7d57"/>
+          <text x="330" y="76" fill="#2f7d57">Tomato sauce — cook + cool</text>
+          <rect x="490" y="60" width="180" height="24" rx="3" fill="#2f7d57" fill-opacity=".14" stroke="#2f7d57"/>
+          <text x="500" y="76" fill="#2f7d57">Tiramisu — assemble, set overnight</text>
+
+          <!-- MORNING blocks -->
+          <rect x="120" y="140" width="200" height="24" rx="3" fill="#1f7982" fill-opacity=".12" stroke="#1f7982"/>
+          <text x="130" y="156" fill="#1f7982">Fresh pasta — make dough, rest, roll, cut</text>
+          <rect x="340" y="140" width="150" height="24" rx="3" fill="#1f7982" fill-opacity=".12" stroke="#1f7982"/>
+          <text x="350" y="156" fill="#1f7982">Mise: cheese, herbs, oil</text>
+          <rect x="510" y="140" width="160" height="24" rx="3" fill="#1f7982" fill-opacity=".12" stroke="#1f7982"/>
+          <text x="520" y="156" fill="#1f7982">Pull dough from fridge → warm</text>
+
+          <!-- T-60 to T-30 -->
+          <rect x="120" y="220" width="230" height="24" rx="3" fill="#b6851f" fill-opacity=".14" stroke="#b6851f"/>
+          <text x="130" y="236" fill="#b6851f">Oven + stone to max (250–290 °C) — 45 min</text>
+          <rect x="370" y="220" width="180" height="24" rx="3" fill="#b6851f" fill-opacity=".14" stroke="#b6851f"/>
+          <text x="380" y="236" fill="#b6851f">Big pot of salted water on to boil</text>
+
+          <!-- critical path arrow from dough to oven -->
+          <path d="M210,84 L210,120 L210,138" fill="none" stroke="#bb3a2c" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#m8ar)"/>
+          <text x="216" y="112" fill="#bb3a2c" font-size="10">dough is the long-lead item → it sets the start</text>
+
+          <!-- A LA MINUTE lane (ember = hot, fragile, sequential) -->
+          <rect x="120" y="320" width="120" height="24" rx="3" fill="#c2481d" fill-opacity=".16" stroke="#c2481d"/>
+          <text x="130" y="336" fill="#c2481d">Stretch + top pizza</text>
+          <rect x="250" y="320" width="120" height="24" rx="3" fill="#c2481d" fill-opacity=".16" stroke="#c2481d"/>
+          <text x="260" y="336" fill="#c2481d">Bake 6–8 min</text>
+          <rect x="380" y="320" width="150" height="24" rx="3" fill="#c2481d" fill-opacity=".16" stroke="#c2481d"/>
+          <text x="390" y="336" fill="#c2481d">Pasta in — 2 min — sauce</text>
+          <rect x="540" y="320" width="130" height="24" rx="3" fill="#191c1d" fill-opacity=".9" stroke="#191c1d"/>
+          <text x="605" y="336" fill="#faf9f5" text-anchor="middle">SERVE · T₀</text>
+
+          <!-- T0 vertical line -->
+          <line x1="670" y1="50" x2="670" y2="352" stroke="#bb3a2c" stroke-width="1.6"/>
+          <text x="676" y="46" fill="#bb3a2c" font-size="10">T₀</text>
+        </g>
+        <defs>
+          <marker id="m8ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#bb3a2c"/></marker>
+        </defs>
+      </svg>
+      <figcaption>Fig. M8.1 — The same information a restaurant calls a <em>prep list</em> plus a <em>service
+        plan</em>. Green tasks are parked and safe (day −1). Ember tasks are hot, fragile, and strictly
+        sequential — they share the one cook and the one oven, so they cannot overlap. The dashed red line is
+        the critical path: the 24 h dough is what forces you to start yesterday.</figcaption>
+    </figure>
+
+    <p><b>3 · Parallelisation and the single-cook bottleneck.</b> On paper every task could run at once; in
+      reality you have one oven, often one large pan, and one pair of hands. Two things that both need the
+      oven at different temperatures <em>collide</em>. Two things that both need your full attention in the
+      final two minutes <em>collide</em>. The art is sequencing so nothing critical overlaps: bake the pizza
+      first while pasta water heats (oven busy, hands free-ish), then boil pasta after the pizza is out. Look
+      at your timeline and hunt for two ember blocks stacked in the same minute — that is a resource conflict,
+      and it is where dinner goes wrong.</p>
+
+    <p><b>4 · Consistency, tasting checkpoints, and plating.</b> A line cook tastes at fixed checkpoints —
+      season the sauce, taste; finish the pasta, taste; adjust before it leaves the pass. Plating is the last
+      controlled step, and it is mostly geometry and thermodynamics: <em>height</em> (build up, don't
+      spread flat), <em>contrast</em> (colour and texture — something crisp, something green), <em>sauce</em>
+      placed deliberately not drowned, <em>negative space</em> (don't fill the rim), and <b>plate
+      temperature</b> — a warm plate buys you two or three extra minutes of hot food, a cold plate steals
+      them. Warm your plates in the oven's residual heat; it is the cheapest quality upgrade on the pass.</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Restaurant term</th><th>What it really is</th><th>Engineering analog</th></tr></thead>
+      <tbody>
+        <tr><td>Mise en place</td><td>All components prepped, measured, staged in order</td><td>Precompute + cache before the hot loop</td></tr>
+        <tr><td>Prep list (day-of)</td><td>Everything make-ahead, done before service</td><td>Batch job run off the critical path</td></tr>
+        <tr><td>Critical path</td><td>Longest-lead item that sets the start time</td><td>The dependency that bounds total latency</td></tr>
+        <tr><td>À la minute</td><td>Cooked to order in the final minutes</td><td>Real-time task with a hard deadline</td></tr>
+        <tr><td>The pass</td><td>Where dishes are checked + plated to leave together</td><td>The join/barrier where parallel work synchronises</td></tr>
+        <tr><td>86 it</td><td>Cut a dish you can't execute cleanly tonight</td><td>Shed load to protect the deadline</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">03</span><h2>Key concepts</h2></div>
+    <div class="grid cols-2">
+      <div class="card"><h4>Make-ahead vs à la minute</h4><p><b>What:</b> the single classification you apply to every component. <b>Why it matters:</b> it is the lever that turns a frantic service into calm assembly — the more you legitimately push to "made yesterday", the less can go wrong tonight. <b>Common mistake:</b> treating everything as last-minute because "fresh is better", then having eight tasks land in the final ten minutes.</p></div>
+      <div class="card"><h4>Lead time &amp; the critical path</h4><p><b>What:</b> the longest unshortenable dependency chain (24 h dough, 6 h stock, 2–3 day lamination). <b>Why it matters:</b> it alone decides when you must <em>begin</em> — plan backwards from T₀ and it tells you the honest start date. <b>Common mistake:</b> deciding at 5 pm to make pizza for a 7 pm dinner; the dough needed yesterday.</p></div>
+      <div class="card"><h4>Resource contention</h4><p><b>What:</b> two tasks demanding the same oven, pan, or your hands in the same window. <b>Why it matters:</b> it is the real cause of "everything finished at different times" — not slowness, but collision. <b>Common mistake:</b> a menu that needs the oven at 290 °C for pizza and 180 °C for a soufflé at the same minute. One of them loses.</p></div>
+      <div class="card"><h4>Hot-at-serve set</h4><p><b>What:</b> the components that must arrive on the plate hot and fresh — seared protein, boiled pasta, the soufflé, fried potatoes. <b>Why it matters:</b> these are your last, least-forgiving operations; everything else must be finished and out of the way first. <b>Common mistake:</b> resting the steak so long it's cold because a slower component wasn't ready.</p></div>
+      <div class="card"><h4>Assembly convergence</h4><p><b>What:</b> independently made components timed to meet hot at one moment (ramen is the pure form — broth, tare, noodles, toppings). <b>Why it matters:</b> it is mise en place taken to its logical end; the dish is 90% built in advance and "cooked" in 90 seconds of assembly. <b>Common mistake:</b> starting the noodles before the broth and bowls are hot, so the whole thing lands lukewarm.</p></div>
+      <div class="card"><h4>Plating as thermodynamics</h4><p><b>What:</b> height, contrast, deliberate sauce, negative space, and a <em>warm plate</em>. <b>Why it matters:</b> a warm plate buys 2–3 minutes of serving temperature; height and contrast are how the eye reads "restaurant". <b>Common mistake:</b> a cold plate and food spread flat to the rim — it looks amateur and goes cold in a minute.</p></div>
+    </div>
+    <div class="callout callout--heat"><span class="lbl">The variable that matters most here</span>
+      <p>It is not a temperature or a ratio — it is <b>when each task starts relative to T₀</b>. Every other
+        skill in this manual is now a fixed cost; the only thing you're still tuning is the schedule. Get the
+        timeline right and mediocre execution still lands a good dinner; get it wrong and flawless technique
+        still serves cold food.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">04</span><h2>Tools &amp; equipment</h2></div>
+    <p>The tools for orchestration are mostly organisational, not gadgets. You already own the cookware from
+      earlier modules. What you're buying now is <em>containment and staging</em>: the ability to hold twenty
+      prepped components without losing track of them.</p>
+
+    <div class="spec">
+      <div class="spec-h">Necessary — for running a multi-dish service</div>
+      <div class="spec-row"><span class="spec-key">Prep containers ×8–12</span><span class="spec-val">Small deli/quart tubs or ramekins. This is real mise en place — every component in its own vessel, staged in cooking order. The single biggest calm-upgrade you can buy.</span></div>
+      <div class="spec-row"><span class="spec-key">Sheet trays ×2</span><span class="spec-val">Staging surfaces: everything for dish two lives on one tray, dish three on another. Also for warming plates and holding baked items.</span></div>
+      <div class="spec-row"><span class="spec-key">A written timeline</span><span class="spec-val">Paper + pen, or a whiteboard by the stove. Working backwards from T₀. Costs nothing and does more than any appliance here.</span></div>
+      <div class="spec-row"><span class="spec-key">Instant-read thermometer</span><span class="spec-val">Same probe from Phase 0. Under time pressure you cannot afford to guess doneness — a number ends the debate in 3 seconds.</span></div>
+      <div class="spec-row"><span class="spec-key">Timer with multiple channels</span><span class="spec-val">Phone or a 3-channel kitchen timer. Track pasta, oven, and rest simultaneously — you will not hold three counts in your head during service.</span></div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-h">Optional — genuinely helps specific nights</div>
+      <div class="spec-row"><span class="spec-key">Baking steel or stone</span><span class="spec-val">For pizza (Italian night): stores intense heat, gives a fast bottom-crust bake near 290 °C. Transformative for that one project; idle otherwise.</span></div>
+      <div class="spec-row"><span class="spec-key">Bench scraper + pasta cutter</span><span class="spec-val">Fresh pasta and dough handling. A knife works; these are quality-of-life.</span></div>
+      <div class="spec-row"><span class="spec-key">Deep heavy pot + thermometer</span><span class="spec-val">Double-frying fries (French night) needs a stable oil temperature and enough thermal mass not to crash when potatoes go in.</span></div>
+      <div class="spec-row"><span class="spec-key">Ramekins ×4</span><span class="spec-val">Soufflé (French) and portioned mise. Straight-sided so the soufflé climbs the wall.</span></div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-h">Waste of money — skip</div>
+      <div class="spec-row"><span class="spec-key">Single-purpose "chef" gadgets</span><span class="spec-val">Garlic presses, avocado slicers, herb strippers. You have the knife skills; every gadget is a thing to wash mid-service.</span></div>
+      <div class="spec-row"><span class="spec-key">Warming drawers / plate warmers</span><span class="spec-val">The oven's residual heat or a low 60–70 °C oven warms plates for free. Don't buy an appliance for this.</span></div>
+      <div class="spec-row"><span class="spec-key">Sous-vide for its own sake</span><span class="spec-val">Useful as a make-ahead hold for protein, but not required to run these menus. Add it if the hold genuinely de-risks a night, not for novelty.</span></div>
+    </div>
+    <div class="callout callout--mistake"><span class="lbl">What beginners get wrong buying for a themed night</span>
+      <p>Buying equipment instead of buying <em>time</em>. The prep containers and the written timeline —
+        together under the price of one gadget — de-risk a dinner more than any appliance. Contention and
+        scheduling are the constraints, and no purchase fixes a bad schedule.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">05</span><h2>Technique breakdown — running a themed night</h2></div>
+    <p>The "technique" here is a procedure for the <em>whole meal</em>, not a single dish. Work it the same way
+      every time and it becomes routine. Organised by level, from plating one dish hot to running a full menu
+      for guests.</p>
+
+    <div class="level-band"><span class="tag level--1"><b>L1</b> Functional — plate a two-component dish hot, all at once</span><span class="ln"></span></div>
+    <ol class="steps">
+      <li><b>Prep.</b> Pick a dish with exactly two hot components that must land together — e.g. seared protein + a quick pan sauce, or pasta + sauce. Write which one finishes last (the pasta) and which can hold hot for a minute (the sauce). That ordering <em>is</em> the plan.</li>
+      <li><b>Execute.</b> Get the slow-to-heat resource going first (water to a boil, pan preheating). Warm the plate. Start the component that can wait, hold it hot, then fire the component that cannot wait last.</li>
+      <li><b>Evaluate.</b> Did both hit the plate hot at the same moment, or did one sit and cool? Touch-test the plate — was it warm? If the food cooled on the plate, the plate was cold.</li>
+      <li><b>Correct.</b> Next run, reorder so the fragile component is dead last and the plate is genuinely warm. This is the whole module in miniature: sequence the fragile thing last, buy time with a warm plate.</li>
+    </ol>
+
+    <div class="level-band"><span class="tag level--2"><b>L2</b> Consistent — a written timeline for a 3-dish menu</span><span class="ln"></span></div>
+    <ol class="steps">
+      <li><b>Prep — decompose.</b> Write the full menu, then explode every dish into components. Beside each, tag <b>MA</b> (make-ahead) or <b>ALM</b> (à la minute), its lead time, and whether it must be <em>hot at serve</em>. This is the planning template in §07's spec panel — fill it in for real.</li>
+      <li><b>Prep — find the critical path.</b> Circle the longest lead-time item. That sets your start. Circle every hot-at-serve item; those are your final, fragile operations.</li>
+      <li><b>Prep — draw the timeline backwards.</b> Put T₀ (serving time) on the right. Place each hot-at-serve task in the final 15–30 min, sequenced so no two collide on the oven, the big pan, or your hands. Place make-ahead tasks in day −1 / morning lanes. You now have Fig. M8.1 for your own menu.</li>
+      <li><b>Execute — do all make-ahead first.</b> The day before and the morning of, clear the entire MA list. By T−60 the kitchen should hold nothing but staged components and hot equipment.</li>
+      <li><b>Execute — run the ALM lane.</b> From T−15, follow the timeline literally. Set timers per channel. Taste at each checkpoint. Plate onto warm plates.</li>
+      <li><b>Evaluate &amp; correct.</b> Note where you fell behind or two tasks collided. That collision is a scheduling bug — move one task earlier next time. The timeline is a living document you debug run over run.</li>
+    </ol>
+
+    <div class="level-band"><span class="tag level--3"><b>L3</b> Optimisation — parallelise around the bottleneck</span><span class="ln"></span></div>
+    <ol class="steps">
+      <li><b>Prep.</b> Map your shared resources explicitly: oven (and its temperature), largest pan/burner, and <em>you</em>. Draw a lane per resource, not per dish. Now conflicts are visible as overlaps in a single lane.</li>
+      <li><b>Execute.</b> Resolve oven-temperature conflicts by <em>batching by temperature</em> — do all the high-heat baking, then drop the oven, then the lower-heat items — or by moving one item off the oven entirely (stovetop, hold warm). Never plan two different oven temperatures for the same minute.</li>
+      <li><b>Evaluate.</b> Time your last 20 minutes. If your hands are the bottleneck (three tasks need attention at once), you have a parallelisation failure, not a speed problem.</li>
+      <li><b>Correct.</b> Push one of those three tasks earlier into a hold (sauce kept warm, protein rested a touch longer, component par-cooked and reheated). Protect the single most fragile task — usually the one that must be crisp or freshly risen — by giving it your undivided final minutes.</li>
+    </ol>
+
+    <div class="level-band"><span class="tag level--4"><b>L4</b> Mastery — a full themed night for real guests</span><span class="ln"></span></div>
+    <ol class="steps">
+      <li><b>Prep.</b> Design a coherent menu (see the four projects). Coherence beats ambition: three dishes you can stage well beat five that collide. Scope the menu to your oven, your pans, and your two hands — deliberately 86 anything that fights for the same final minute.</li>
+      <li><b>Execute.</b> Run the full backwards-planned timeline with guests present. The whole point: by the time people arrive, service is assembly and heat, so you can talk to them instead of panicking. That calm is the deliverable.</li>
+      <li><b>Evaluate.</b> Did every dish leave the pass hot, seasoned, and on a warm plate? Were you present, or head-down the whole night? A dinner where you never sat down is a scheduling failure, however good the food.</li>
+      <li><b>Correct.</b> Debrief like a shift review: what would you make further ahead, what would you 86, where did the timeline drift. Fold it back into the template. This is how a home cook becomes reliable — not faster hands, better plans.</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">06</span><h2>Execution mistakes — troubleshooting</h2></div>
+    <p>These are failures of the <em>system</em>, not the technique. Diagnose them at the level of the schedule
+      and the shared resources, because that is where they actually live.</p>
+
+    <details class="trouble"><summary>Everything finishes at a different time <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>No backwards plan — you started each dish when the last one felt "done" instead of scheduling every component against a single T₀.</dd>
+        <dt>Diagnose</dt><dd>Look at your (missing) timeline. Did you write serving time first and place tasks back from it, or did you cook forwards and hope?</dd>
+        <dt>Fix</dt><dd>Draw Fig. M8.1 for your menu <em>before</em> cooking. Fix T₀, place the hot-at-serve items in the final minutes, and work every other task backwards to a start time. Convergence is a planning outcome, not luck.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>Food goes cold before it reaches the table <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Cold plates, resting/holding too long while a slower component catches up, or plating all dishes then serving in sequence.</dd>
+        <dt>Diagnose</dt><dd>Touch the plate as food lands — cold? And check: was the protein resting for 12 minutes because the sides weren't ready?</dd>
+        <dt>Fix</dt><dd>Warm plates in a 60–70 °C oven. Re-sequence so the hot-at-serve items are truly last and nothing fragile waits on something slow. Plate at the pass and carry immediately.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>Kitchen chaos — I'm cutting and cooking at the same time <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Incomplete mise en place. Prep that should have been done and containered hours ago is happening during service.</dd>
+        <dt>Diagnose</dt><dd>At T−15, was every component already chopped, measured, and staged in its own vessel? If you're reaching for a knife after the first pan is hot, no.</dd>
+        <dt>Fix</dt><dd>Move all cutting/measuring/portioning into the make-ahead block. By T−60 the bench holds only staged components. Service is assembly, never prep — the whole point of the module.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>The oven is fought over — two dishes need different temperatures <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Resource contention you didn't map. Pizza wants 290 °C the same moment a soufflé wants 180 °C.</dd>
+        <dt>Diagnose</dt><dd>Draw the oven as its own lane. Two blocks at different temperatures overlapping = the bug.</dd>
+        <dt>Fix</dt><dd>Batch by temperature (all high-heat, then drop and do low-heat), move one item to the stovetop, or 86 one dish. Never schedule two oven temperatures in one minute — the oven is a single, slow-to-change resource.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>The menu was too ambitious — I ran out of hands <span class="sig">Design fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Too many à-la-minute, hot-at-serve components for one cook. Five dishes each needing final attention cannot be parallelised by two hands.</dd>
+        <dt>Diagnose</dt><dd>Count the ALM/hot-at-serve tasks in the final 15 minutes. More than about three demanding simultaneous attention is over-scope.</dd>
+        <dt>Fix</dt><dd>Shift components to make-ahead + reheat, or 86 a dish. Coherence beats ambition. A calm three-dish night reads as more "restaurant" than a chaotic five-dish one.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>The soufflé collapsed <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Under-whipped whites (too little trapped air), over-folded (you deflated the foam knocking air out), uneven greasing so it can't climb, or you opened the oven and dropped the temperature.</dd>
+        <dt>Diagnose</dt><dd>Whites should hold firm-but-not-dry peaks; folding should stay airy with visible streaks just disappearing; the rim should be evenly greased so the batter grips and rises. And be honest: did you open the door to peek?</dd>
+        <dt>Fix</dt><dd>Whip to firm peaks, fold in thirds gently (sacrifice the first third to loosen, fold the rest just until combined), grease ramekins evenly bottom-and-up-the-walls. Bake undisturbed — the rise is steam + expanding air, and a temperature drop stalls it. Serve immediately; every soufflé falls eventually, that's physics, not failure.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>The croissant leaked butter and has no honeycomb <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Butter got too warm and melted <em>into</em> the dough instead of staying as discrete plastic layers, so there was no water-in-butter to flash to steam and puff the laminations. Or the layers tore during rolling and merged.</dd>
+        <dt>Diagnose</dt><dd>Butter pooling in the oven and a dense, bready crumb both mean the layers merged. If the dough felt greasy and soft while rolling, the butter had already melted.</dd>
+        <dt>Fix</dt><dd>Temperature control is everything: keep dough and butter cool and at the <em>same</em> plasticity (~15–18 °C), rest in the fridge between folds, and work fast. The whole 2–3 day process exists to keep butter cold and layered. If your kitchen is warm, laminate in short sessions with long chilling in between.</dd>
+      </dl></div></details>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">07</span><h2>Controlled experiments</h2></div>
+    <p>Change exactly one variable — here the variable is usually a <em>process</em>, not an ingredient. This is
+      how you build trust in scheduling the same way you built trust in heat and salt.</p>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E1 — timeline vs no timeline</div>
+      <dl>
+        <dt>Goal</dt><dd>Prove that a written backwards plan, not skill, is what makes a multi-dish meal land.</dd>
+        <dt>Keep constant</dt><dd>Same 3-dish menu, same ingredients, same kitchen, same cook (you), cooked a week apart.</dd>
+        <dt>Change</dt><dd>Run one with a written backwards timeline (Fig. M8.1 style); run the other from memory, starting dishes when each "feels" due.</dd>
+        <dt>Expected</dt><dd>The planned run finishes with everything hot at T₀ and you calm; the unplanned run has one dish cold, one late, and you scrambling in the last ten minutes.</dd>
+        <dt>Observe</dt><dd>Spread between when dishes were ready (minutes), plate temperature, your stress level, how many times you stopped to prep after heat was on.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E2 — make-ahead vs à la minute</div>
+      <dl>
+        <dt>Goal</dt><dd>Quantify how much pushing a component to "made yesterday" de-risks service.</dd>
+        <dt>Keep constant</dt><dd>Same dish (e.g. tacos with salsa, or ramen), same recipe, same serving time.</dd>
+        <dt>Change</dt><dd>One run: make the sauce/broth fresh during service. Other run: make it the day before, reheat to serve.</dd>
+        <dt>Expected</dt><dd>The make-ahead run frees your final minutes entirely and often tastes <em>better</em> (a rested sauce, a broth that had time to meld); the à-la-minute run steals attention from the hot-at-serve items.</dd>
+        <dt>Observe</dt><dd>Number of active tasks in the final 15 min, final-plate timing, and flavour of the component made-ahead vs fresh (many improve overnight).</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E3 — plate the same dish two ways</div>
+      <dl>
+        <dt>Goal</dt><dd>See that plating is a controllable variable — same food, different read.</dd>
+        <dt>Keep constant</dt><dd>Identical portion of the same finished dish, split in two.</dd>
+        <dt>Change</dt><dd>Plate A: spread flat to the rim on a cold plate. Plate B: built with height, a deliberate sauce placement, a contrasting garnish, negative space, on a warm plate.</dd>
+        <dt>Expected</dt><dd>Plate B reads "restaurant" and stays hot 2–3 min longer; Plate A reads "canteen" and cools fast. Same ingredients, entirely different perceived quality.</dd>
+        <dt>Observe</dt><dd>Perceived quality (photograph both, compare), plate temperature over 5 min, and how long the food stays visibly hot/steaming.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E4 — single-fry vs double-fry (French night)</div>
+      <dl>
+        <dt>Goal</dt><dd>Prove the two-stage fry mechanism with your own eyes: interior cook then exterior crisp.</dd>
+        <dt>Keep constant</dt><dd>Same potato variety, same cut size, same oil, same total cook intent.</dd>
+        <dt>Change</dt><dd>Batch A: one fry at ~180 °C until gold. Batch B: first fry ~150 °C / 300 °F to cook through and gelatinise, cool, then second fry ~185 °C / 365 °F to crisp.</dd>
+        <dt>Expected</dt><dd>Single-fry: either raw-centred or over-browned outside. Double-fry: fluffy cooked interior with a hard, glassy, lasting crust — because the two jobs (cook vs crisp) were separated onto two temperatures.</dd>
+        <dt>Observe</dt><dd>Interior texture, crust durability (does it stay crisp after 5 min?), colour evenness. Note that this is the same "separate the jobs" logic as scheduling a meal.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">08</span><h2>Practice system</h2></div>
+    <p>Drill the <em>orchestration</em>, not the dishes — you already own the dishes. Each drill has a clear
+      success criterion measured in <em>timing and calm</em>, not just taste.</p>
+
+    <div class="spec">
+      <div class="spec-h">Themed-night planning template — reuse for any menu</div>
+      <div class="spec-row"><span class="spec-key">Component</span><span class="spec-val">Every sub-part of every dish, listed exhaustively (not "tacos" → tortilla, filling, salsa A, salsa B, pickle, crema, lime)</span></div>
+      <div class="spec-row"><span class="spec-key">Make-ahead?</span><span class="spec-val">MA (day −1 / morning) or ALM (à la minute). Push everything you legally can to MA.</span></div>
+      <div class="spec-row"><span class="spec-key">Lead time</span><span class="spec-val">How long it needs start-to-usable (e.g. dough 24 h, stock 6 h, lamination 2–3 days, mise 20 min)</span></div>
+      <div class="spec-row"><span class="spec-key">Hot at serve?</span><span class="spec-val">Yes = it must be in the final ALM lane, sequenced against oven/pan/hands. No = it can be made ahead and held.</span></div>
+      <div class="spec-row"><span class="spec-key">Shared resource</span><span class="spec-val">Oven (+temp) / big pan / your hands. Flag it so you can spot collisions in the final window.</span></div>
+      <div class="spec-row"><span class="spec-key">Start time (from T₀)</span><span class="spec-val">Computed backwards. The earliest circled item is your critical path and sets when the project begins.</span></div>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Practice drill · L1→L2</div>
+      <h4>Two-component hot plate</h4>
+      <dl>
+        <dt>Goal</dt><dd>Land two hot components (protein + sauce, or pasta + sauce) on a warm plate at the same minute.</dd>
+        <dt>Difficulty</dt><dd>Beginner</dd>
+        <dt>Materials</dt><dd>Any dish from Modules 1–5 with two hot parts, a warm plate.</dd>
+        <dt>Steps</dt><dd>Write which finishes last → warm the plate → start the holdable part → fire the fragile part last → plate and touch-test the plate.</dd>
+        <dt>Success</dt><dd>Both hot at once, plate warm, nothing sat cooling. No stopping to prep after heat was on.</dd>
+        <dt>Failure modes</dt><dd>One component cold (bad order) · cold plate (food cools on it) · prepping mid-cook (incomplete mise).</dd>
+        <dt>Improve</dt><dd>Reorder so the fragile thing is dead last; always warm the plate. This is the whole module compressed.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Practice drill · L2</div>
+      <h4>Decompose a menu on paper</h4>
+      <dl>
+        <dt>Goal</dt><dd>Take any three-dish menu and fill the planning template completely, then draw the backwards timeline.</dd>
+        <dt>Difficulty</dt><dd>Intermediate (no cooking — pure planning)</dd>
+        <dt>Materials</dt><dd>Paper, pen, the template above.</dd>
+        <dt>Steps</dt><dd>List every component → tag MA/ALM, lead time, hot-at-serve, shared resource → circle the critical path → draw lanes and place tasks backwards from T₀.</dd>
+        <dt>Success</dt><dd>A timeline with no two ember (hot, fragile) tasks colliding on the same resource, and an honest start time.</dd>
+        <dt>Failure modes</dt><dd>Missing components (under-decomposed) · everything tagged ALM (nothing pushed ahead) · unspotted oven/hand collisions.</dd>
+        <dt>Improve</dt><dd>Do this for menus you're <em>not</em> cooking, as a pure scheduling exercise. Cheap reps, no dishes to wash.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Practice drill · L2→L3</div>
+      <h4>Make-ahead a component the day before</h4>
+      <dl>
+        <dt>Goal</dt><dd>Feel how much calm a single day-before component buys, and taste that many improve overnight.</dd>
+        <dt>Difficulty</dt><dd>Intermediate</dd>
+        <dt>Materials</dt><dd>One make-ahead component (a salsa, a broth, a tomato sauce, a dough).</dd>
+        <dt>Steps</dt><dd>Make it the day before, cool and store properly → reheat/finish at service → compare your final-minute workload to a fresh-during-service baseline.</dd>
+        <dt>Success</dt><dd>Final 15 minutes noticeably freer; component tastes as good or better than fresh.</dd>
+        <dt>Failure modes</dt><dd>Stored badly (fridge-off flavours) · reheated too hard (broke an emulsion, reduced too far) · forgot to account for reheat time in the timeline.</dd>
+        <dt>Improve</dt><dd>Build a personal list of "improves overnight" components — these are your standing make-ahead wins.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Practice drill · L3→L4</div>
+      <h4>Mock service — timer discipline</h4>
+      <dl>
+        <dt>Goal</dt><dd>Run the ALM lane of a real menu to a fixed T₀, tracking three timers at once without holding counts in your head.</dd>
+        <dt>Difficulty</dt><dd>Advanced</dd>
+        <dt>Materials</dt><dd>A drawn timeline, multi-channel timer, one real menu.</dd>
+        <dt>Steps</dt><dd>Set T₀ → start timers per hot-at-serve task → follow the timeline literally → taste at each checkpoint → plate onto warm plates at T₀.</dd>
+        <dt>Success</dt><dd>All dishes hot at T₀ within a ±2 min window; you never guessed a doneness or a count.</dd>
+        <dt>Failure modes</dt><dd>Timer overload (didn't channel them) · timeline drift (fell behind and didn't recover) · collision you didn't foresee.</dd>
+        <dt>Improve</dt><dd>After each run, mark where the timeline drifted and move that task earlier. Debug the plan, not your hands.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">09</span><h2>Projects — the four themed nights</h2></div>
+    <p>Each night is a project that stresses a different set of earlier modules. Ordered by difficulty:
+      Mexican and Italian are the most approachable entry points; French — specifically the croissant — is
+      the hardest thing in this entire manual. Do them in order; each earns the next.</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Night</th><th>Modules stressed</th><th>Hardest component</th><th>Make-ahead opportunities</th></tr></thead>
+      <tbody>
+        <tr><td>Mexican</td><td>Masa/tortilla (dough), Salsas (M3 acid/emulsion), Protein (M1 &amp; M7)</td><td>Nixtamal/masa tortillas pressed thin and puffing</td><td>Salsas, pickled onion, braised/marinated protein, crema — nearly everything but the tortilla press</td></tr>
+        <tr><td>Italian</td><td>Dough (M5), Sauce/emulsion (M3 — cacio e pepe, tiramisu custard)</td><td>Pizza in a home oven; fresh pasta rolled evenly thin</td><td>24 h pizza dough, tomato sauce, tiramisu (set overnight), pasta dough (morning)</td></tr>
+        <tr><td>Japanese</td><td>Broth/protein/egg (M1), Rice (M2, omurice), assembly &amp; dumpling folding</td><td>Ramen as a multi-component convergence; the omurice omelette</td><td>Broth, tare, chashu, marinated eggs, folded gyoza (freeze raw) — ramen is 90% make-ahead</td></tr>
+        <tr><td>French</td><td>Steak (M7), fried-potato technique, egg-foam (soufflé), lamination (croissant)</td><td>Croissant lamination — temperature control over 2–3 days</td><td>Croissant dough laminated over days; potatoes first-fried ahead; steak tempered — soufflé is strictly à la minute</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Project · Approachable — start here</div>
+      <h4>Mexican night — tortillas, salsas, tacos</h4>
+      <dl>
+        <dt>Objective</dt><dd>A taco spread: fresh masa tortillas, two contrasting salsas (one raw/bright, one roasted/deep), a protein, and garnishes — assembled by guests. Nearly everything is make-ahead; only the tortillas are hot-at-serve.</dd>
+        <dt>Skills trained</dt><dd>Masa/dough handling (nixtamalised masa harina, pressing thin, the puff on the comal); salsa as controlled acid + heat balance (M3); protein from M1/M7 (a braise or a seared/grilled cut). Above all: mise en place — a taco bar is pure staged assembly.</dd>
+        <dt>Expected result</dt><dd>Tortillas that puff and stay pliable; two salsas that taste distinct (raw acidity vs roasted depth); a calm service where you press tortillas to order while everything else sits ready.</dd>
+        <dt>Evaluation</dt><dd>Did the tortillas puff (correct hydration + comal heat)? Do the salsas contrast? Was your final 15 minutes just pressing tortillas and warming protein — i.e. did make-ahead do its job?</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Project · Approachable</div>
+      <h4>Italian night — fresh pasta, pizza, tiramisu</h4>
+      <dl>
+        <dt>Objective</dt><dd>A three-course arc: pizza from a 24 h cold-fermented dough, a fresh egg-pasta dish, and tiramisu set overnight. This is the timeline in Fig. M8.1 — run it exactly.</dd>
+        <dt>Skills trained</dt><dd>Dough (M5): pizza fermentation and gluten, egg-pasta (flour + egg, gluten development, rest, rolling thin — cooks in ~2 min). Sauce/emulsion (M3): tomato sauce, and a cacio e pepe or the tiramisu custard. Critical-path scheduling: the 24 h dough sets your start.</dd>
+        <dt>Expected result</dt><dd>A pizza with real oven-spring and char from a maxed oven + steel; pasta cooked 2 minutes to a clean bite; tiramisu that's set but not stiff. Nothing cold, because the oven-then-pasta sequence avoids collision.</dd>
+        <dt>Evaluation</dt><dd>Did you start the dough a full day ahead (critical path)? Did you bake pizza first, then boil pasta (no oven/water collision)? Was the tiramisu made yesterday, off the critical path entirely?</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Project · Intermediate</div>
+      <h4>Japanese night — ramen, omurice, gyoza</h4>
+      <dl>
+        <dt>Objective</dt><dd>Ramen as the centrepiece: broth, tare, noodles, and toppings (chashu, egg, aromatics) made independently and converged hot in the bowl — the ultimate mise en place exercise. Gyoza folded ahead (freeze raw), and omurice as a demonstration of egg control (M1) over rice (M2).</dd>
+        <dt>Skills trained</dt><dd>Broth (long, make-ahead); protein and egg control (M1 — marinated soft egg, chashu); rice (M2) and the omurice omelette (a barely-set, rolled or draped egg); dumpling folding and the steam-fry. Assembly convergence: warm the bowls, have every component hot and ready, build in ~90 seconds.</dd>
+        <dt>Expected result</dt><dd>A bowl that lands genuinely hot because bowl, broth, and noodles all converged at temperature; gyoza with a crisp base and steamed top; a glossy, just-set omurice omelette.</dd>
+        <dt>Evaluation</dt><dd>Was the ramen assembled, not cooked, at service (broth/tare/toppings all pre-made)? Did the bowl stay hot (pre-warmed + boiling components)? Is the omelette just-set, not rubbery?</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Project · Advanced</div>
+      <h4>French night — steak frites &amp; soufflé</h4>
+      <dl>
+        <dt>Objective</dt><dd>Steak frites plus a soufflé: a seared steak (M7), double-fried fries, and a soufflé fired à la minute. The scheduling test — a steak that must rest, fries that must be crisp, and a soufflé that cannot wait — all converging.</dd>
+        <dt>Skills trained</dt><dd>Steak searing and resting (M7); double-fry technique (first fry ~150 °C / 300 °F to cook and gelatinise the interior, cool, second fry ~185 °C / 365 °F to crisp); the soufflé as a stabilised egg-white foam (whip to firm peaks, fold gently, even-greased ramekin, rise from steam + expanding air, do <em>not</em> open the oven). Managing a rest, a fry, and a bake against one T₀.</dd>
+        <dt>Expected result</dt><dd>Steak rested but still hot, fries with a lasting glassy crust, a soufflé that rises tall and is served the instant it leaves the oven. First-fry the potatoes ahead; the soufflé is the only strictly à-la-minute item.</dd>
+        <dt>Evaluation</dt><dd>Did the fries stay crisp (double-fry worked)? Did the steak stay hot despite resting (sequenced, warm plate)? Did the soufflé rise and reach the table before it fell?</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Project · Mastery — the hardest thing in the manual</div>
+      <h4>French night, final boss — croissants from scratch</h4>
+      <dl>
+        <dt>Objective</dt><dd>Laminated croissants over 2–3 days: a détrempe (dough) enclosing a beurrage (butter block), folded and rolled into alternating layers, proved, and baked to an open honeycomb. This is a lesson in temperature control as a process, spread across days.</dd>
+        <dt>Skills trained</dt><dd>Lamination: keeping dough and butter at the same cool plasticity (~15–18 °C) so butter stays as discrete layers rather than melting into the dough; the puff comes from water in the butter flashing to steam between layers. Patience and the critical path taken to its extreme — this project <em>is</em> its own timeline, measured in days, with fridge rests as the gating dependency.</dd>
+        <dt>Expected result</dt><dd>Croissants with a shattering, layered exterior and an open, honeycombed interior; no butter leaking into the pan (which would mean the layers merged).</dd>
+        <dt>Evaluation</dt><dd>Honeycomb crumb on the cross-section? No butter pooled in the tray (layers stayed distinct)? If it leaked butter or baked dense, diagnose it: the butter got too warm and melted into the dough — a temperature-control failure, not bad luck.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">10</span><h2>Visual learning</h2></div>
+    <p>Train your eye on what "restaurant" looks like — in plating and in the cross-sections that prove a
+      technique worked.</p>
+
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>restaurant plating negative space fine dining</code>
+      <p style="margin:.4em 0 0">Look for: height built up (not spread flat), deliberate sauce placement, one point of colour/crisp contrast, and empty rim. That empty space is a choice — it reads as intention.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>croissant lamination cross section honeycomb crumb</code>
+      <p style="margin:.4em 0 0">Look for: the open, irregular honeycomb and visible distinct layers. Dense or bready = butter melted into the dough. This is your pass/fail image for the croissant project.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>ramen bowl components chashu egg noodles assembly</code>
+      <p style="margin:.4em 0 0">Look for: how each component is made separately and placed — broth, tare, noodles, marinated egg, chashu, aromatics. The bowl is an assembly diagram; note how little happens à la minute.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>souffle risen tall ramekin above rim</code>
+      <p style="margin:.4em 0 0">Look for: an even climb well above the rim with a straight collar — that's an evenly greased ramekin and an undisturbed bake. A lopsided or sunken top means uneven grease, under-whip, or an opened oven.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>double fried french fries crust interior structure</code>
+      <p style="margin:.4em 0 0">Look for: a glassy, blistered exterior and a fluffy interior — the visible result of separating "cook the inside" (low fry) from "crisp the outside" (high fry).</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>professional kitchen mise en place station prep containers</code>
+      <p style="margin:.4em 0 0">Look for: every component in its own labelled vessel, arranged in reach order. This is what your bench should look like at T−60 — the physical form of a good plan.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">11</span><h2>External resources</h2></div>
+
+    <div class="resource"><span class="rm">Video · J. Kenji López-Alt</span>
+      <span class="rt">Search: "Kenji Lopez-Alt double fried french fries" and "Kenji ramen at home"</span>
+      <p>Why: mechanism-first, first-person cooking — the double-fry and the multi-component ramen assembly explained as systems, exactly your style.</p></div>
+
+    <div class="resource"><span class="rm">Video · Adam Ragusea</span>
+      <span class="rt">Search: "Adam Ragusea pizza steel" and "Adam Ragusea dinner party planning"</span>
+      <p>Why: pragmatic home-kitchen constraints — home-oven pizza and the realities of cooking multiple things for guests without a professional line.</p></div>
+
+    <div class="resource"><span class="rm">Video · Chef Jean-Pierre</span>
+      <span class="rt">Search: "Chef Jean-Pierre souffle" and "Chef Jean-Pierre steak frites"</span>
+      <p>Why: classic French technique demystified — the soufflé foam and the steak, with the why behind each step.</p></div>
+
+    <div class="resource"><span class="rm">Video · Way of Ramen</span>
+      <span class="rt">Search: "Way of Ramen broth tare noodles components"</span>
+      <p>Why: ramen decomposed into its independent make-ahead parts and their convergence — the clearest worked example of assembly scheduling in this module.</p></div>
+
+    <div class="resource"><span class="rm">Video · Claire Saffitz</span>
+      <span class="rt">Search: "Claire Saffitz croissants from scratch" and "Claire Saffitz lamination"</span>
+      <p>Why: patient, precise pastry over multiple days — the temperature-control discipline that makes or breaks lamination, shown at real timescale.</p></div>
+
+    <div class="resource"><span class="rm">Book · Principles</span>
+      <span class="rt">Ratio — Michael Ruhlman</span>
+      <p>Why: doughs, custards, and batters as ratios you can internalise and improvise from — pasta, tiramisu custard, soufflé base, and croissant dough all become variations on a theme rather than recipes to memorise.</p></div>
+
+    <div class="resource"><span class="rm">Book · Reference</span>
+      <span class="rt">Salt, Fat, Acid, Heat — Samin Nosrat</span>
+      <p>Why: the framework for balancing a whole menu — use it to make salsas contrast, sauces sing, and courses cohere rather than tuning dishes in isolation.</p></div>
+
+    <div class="resource"><span class="rm">Book · Aspiration</span>
+      <span class="rt">The French Laundry Cookbook — Thomas Keller</span>
+      <p>Why: not to cook from tonight, but to study how a restaurant decomposes a dish into make-ahead components and precise à-la-minute finishing. Read it as a systems document about mise en place and the pass.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">12</span><h2>Assessment</h2></div>
+
+    <div class="callout callout--why"><span class="lbl">Knowledge check — understanding, not recall</span>
+      <p>Answer in your own words. If you can, you own orchestration, not just the dishes:</p></div>
+    <ol class="steps">
+      <li><b>Q.</b> Given a 3-dish menu — a 24 h pizza dough, a salad, and a steak — which item dictates when you must <em>start</em>, and why? Which items are hot-at-serve, and how does that constrain the final 15 minutes?</li>
+      <li><b>Q.</b> Your steak, fries, and soufflé need to converge at T₀ on one oven and one pair of hands. Identify the resource conflicts and describe a sequence that resolves them. What would you make ahead?</li>
+      <li><b>Q.</b> Ramen is "assembled, not cooked" at service. Explain what that means and why it makes ramen — despite its reputation — one of the <em>calmer</em> nights to run for guests.</li>
+      <li><b>Q.</b> A soufflé collapsed and a croissant leaked butter on the same evening. Diagnose each at the mechanism level, and name the one variable most responsible in each case.</li>
+      <li><b>Q.</b> Your dinner "finished at different times". Reframe this as a scheduling bug rather than a cooking-skill problem: what artefact was missing, and how would it have prevented the failure?</li>
+    </ol>
+
+    <div class="callout callout--pro"><span class="lbl">Practical challenge — host a themed night for real people</span>
+      <p>Pick one of the four nights (start with Mexican or Italian). Design the menu, fill the planning
+        template, and draw the backwards timeline. Do <em>all</em> make-ahead the day before and the morning
+        of. Then host actual guests — and measure success not only by the food, but by whether you were
+        <em>present</em>: could you sit, pour a drink, and talk, because service was assembly and heat rather
+        than improvisation? A themed night where you never left the stove is a scheduling failure, however
+        good the plates.</p></div>
+
+    <div class="callout callout--heat"><span class="lbl">Reflection</span>
+      <p>Where did your timeline drift, and was it a technique failure or a <em>planning</em> failure? Almost
+        always it's the latter — something that should have been made ahead wasn't, or two hot tasks collided
+        on one resource. Which single scheduling change (one more component pushed to day −1, one dish 86'd,
+        the oven batched by temperature) removed the most chaos? That's the leverage point. Note it — it's how
+        the next night gets calmer without your hands getting any faster.</p></div>
+
+    <div class="callout callout--why"><span class="lbl">Closing — the whole manual, closed out</span>
+      <p>You started in Phase 0 treating a dull knife as noise in a control system. You end here treating a
+        four-course dinner the same way: a system with inputs, constraints, deadlines, and a scheduler you
+        design on paper before the first pan is lit. Nothing in this module was a new technique — every
+        actuator was already in your hands. What changed is that you now cook the way you always understood
+        good espresso: read the whole system, precompute what you can, control the variables that matter, and
+        treat every failure as data. Engineer first, craftsman second. The food was never the hard part; the
+        plan was — and now you build the plan. So cook because you <em>want</em> to, not because you need to
+        eat. That was the point all along.</p></div>
+  </section>
+
+  <nav class="pager">
+    <a class="prev" href="#m7"><span class="d">Previous</span>Meat &amp; Fire</a>
+    <a class="next" href="#home"><span class="d">Next</span>Back to Syllabus</a>
+  </nav>
+</section>
