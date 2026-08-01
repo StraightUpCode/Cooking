@@ -1,0 +1,404 @@
+<section class="lesson" id="m5">
+  <header class="lesson-head">
+    <p class="eyebrow">MODULE 05 · BREAD &amp; DOUGH</p>
+    <h1>Understand Dough Instead of Following Recipes</h1>
+    <p class="lede">Dough is the most rewarding system in the kitchen for a precision-minded cook: four ingredients — flour, water, salt, leavening — plus one hidden variable, time, expressed in baker's percentages, produce everything from Neapolitan pizza to a 30-hour sourdough.</p>
+    <div class="kicker-row">
+      <span class="tag ember">Month 5–6</span>
+      <span class="tag">Baker's %</span>
+      <span class="tag probe">Pizza + sourdough</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">01</span><h2>Why this matters</h2></div>
+    <p>A recipe is a single sampled point on a continuous surface. It tells you "500 g flour, 325 g water, bake at 220 °C" but never tells you what happens if your kitchen is 10 °C colder, if your flour is stronger, or if you want twelve pizzas instead of four. You end up cargo-culting numbers you don't understand, and when the dough misbehaves you have no model to debug it with.</p>
+    <p>The dial-in you already know from espresso maps directly onto dough. In coffee you have dose, yield, grind, temperature and time, and you learn that ratios travel between machines while absolute grams do not. Dough is the same: <b>baker's percentages are the ratio recipe</b>, hydration is your extraction lever, fermentation time-and-temperature is your roast development, and salt is the fixed constant you never skip. Learn the four variables and their trade-offs and you stop reading recipes as commandments and start reading them as data points you can interpolate between.</p>
+    <p>The payoff is concrete and fast. The single change that turns "fine home pizza" into "why does this taste like the good pizzeria" is not a secret ingredient — it is a 48-hour cold ferment, a free lever most recipes bury. By the end of this module you should be able to write your own dough spec for any target crumb, scale it to any batch size, and diagnose a failure from the dough's behaviour rather than guessing.</p>
+
+    <div class="levels">
+      <span class="level level--1"><b>L1</b> — I can make edible bread and pizza that rises</span>
+      <span class="level level--2"><b>L2</b> — I reproduce the same crumb on demand, batch to batch</span>
+      <span class="level level--3"><b>L3</b> — I tune hydration, ferment and shape for a target result</span>
+      <span class="level level--4"><b>L4</b> — I write specs from scratch and run a sourdough culture</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">02</span><h2>Mental model — dough as a gas-retention system</h2></div>
+    <p>Strip dough to its function and it is a machine for <b>generating gas and trapping it</b>. Yeast (or the wild culture in a starter) ferments sugars into CO<sub>2</sub>; a protein network built from wheat's gluten catches that gas in thousands of separate cells; the oven then flash-expands the gas and locks the walls in place. Every technique you will ever learn is serving one of two jobs: <b>build the net</b> (gluten development) or <b>fill it with gas at the right rate</b> (fermentation). Salt, hydration, shaping and the bake are the tuning knobs on those two jobs.</p>
+
+    <p>Gluten itself is two proteins that behave like opposite springs. <b>Glutenin</b> gives elasticity and strength — it wants to snap back. <b>Gliadin</b> gives extensibility and flow — it wants to stretch and stay. Dry, they do nothing. Add water and agitation and they cross-link into a continuous, elastic-yet-stretchy film. Too much glutenin behaviour and the dough is tight and tears; too much gliadin and it is a slack puddle. Good dough balances the two, and time plus water can do much of that linking for you without kneading at all.</p>
+
+    <figure>
+      <svg viewBox="0 0 640 260" role="img" aria-label="Gluten network trapping a CO2 bubble, formed from glutenin and gliadin proteins">
+        <text x="20" y="24" font-family="var(--f-mono),monospace" font-size="13" fill="currentColor">GLUTEN NET · gas trapped in protein film</text>
+        <!-- network mesh -->
+        <g stroke="currentColor" stroke-width="1.4" fill="none" opacity="0.55">
+          <path d="M40 70 C120 40, 200 100, 280 70 S440 40, 520 80 600 60"/>
+          <path d="M40 120 C130 150, 210 90, 300 130 S460 160, 600 120"/>
+          <path d="M40 180 C120 150, 210 210, 300 175 S470 140, 600 185"/>
+          <path d="M40 230 C140 200, 220 250, 320 215 S470 250, 600 220"/>
+          <path d="M90 60 C70 130, 110 180, 80 235" opacity="0.7"/>
+          <path d="M230 60 C255 130, 205 180, 235 235" opacity="0.7"/>
+          <path d="M400 55 C380 130, 420 180, 395 235" opacity="0.7"/>
+          <path d="M540 65 C560 130, 515 185, 545 230" opacity="0.7"/>
+        </g>
+        <!-- trapped gas bubble -->
+        <circle cx="315" cy="140" r="52" fill="none" stroke="var(--probe)" stroke-width="2.2"/>
+        <text x="315" y="138" text-anchor="middle" font-family="var(--f-mono),monospace" font-size="12" fill="var(--probe)">CO2</text>
+        <text x="315" y="156" text-anchor="middle" font-family="var(--f-mono),monospace" font-size="10" fill="var(--probe)">gas cell</text>
+        <!-- protein legend -->
+        <line x1="440" y1="228" x2="480" y2="228" stroke="var(--ember)" stroke-width="3"/>
+        <text x="486" y="232" font-family="var(--f-mono),monospace" font-size="11" fill="currentColor">glutenin = strength / snap-back</text>
+        <line x1="440" y1="246" x2="480" y2="246" stroke="var(--good)" stroke-width="3" stroke-dasharray="2 3"/>
+        <text x="486" y="250" font-family="var(--f-mono),monospace" font-size="11" fill="currentColor">gliadin = stretch / flow</text>
+      </svg>
+      <figcaption>Build the net, then fill it with gas. Everything else is tuning.</figcaption>
+    </figure>
+
+    <div class="callout callout--why"><span class="lbl">Why it works</span><p>The reason a cold 48-hour ferment beats a warm 2-hour rise at the <em>same</em> final volume: rise measures only CO<sub>2</sub> produced, but flavour comes from the <em>other</em> outputs of fermentation — organic acids, esters and alcohols — plus enzymatic breakdown of starch and protein into sugars and amino acids. Those accumulate on a slow clock that is largely independent of gas production. Long and cool means lots of flavour chemistry and modest gas; short and warm means the opposite. Same size, completely different dough.</p></div>
+
+    <p><b>Baker's percentage is the notation the whole field uses, and it is just ratios pinned to flour.</b> Flour is always 100%. Every other ingredient is expressed as a percentage of flour weight — so 65% hydration means 65 g water per 100 g flour, whatever the batch. This is exactly your brew ratio: it travels between batch sizes and lets you compare two recipes at a glance. Two doughs at "1:0.65:0.02" are the same dough whether you mix 300 g or 3 kg of flour.</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Ingredient</th><th class="num">Baker's %</th><th>Role in the system</th></tr></thead>
+      <tbody>
+        <tr><td>Flour</td><td class="num">100%</td><td>The reference. Protein content sets gluten potential (bread flour ~12–14%, "00"/AP ~9–11%).</td></tr>
+        <tr><td>Water</td><td class="num">55–85%</td><td>Hydration. Higher = more extensible, more open crumb, harder to handle.</td></tr>
+        <tr><td>Salt</td><td class="num">1.8–2.2%</td><td>Slows yeast, tightens gluten, seasons. Never zero.</td></tr>
+        <tr><td>Yeast (instant)</td><td class="num">0.2–1%</td><td>Gas engine. Tiny numbers; more speeds the rise, not the flavour.</td></tr>
+        <tr><td>Sourdough starter</td><td class="num">10–25%</td><td>Wild yeast + lactobacilli. Replaces commercial yeast; adds acid and slows things down.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="side-note"><b>Total dough weight</b> = sum of all the percentages. A 100/65/2/0.5 dough totals 167.5% of flour weight, so to hit ~800 g of dough (four ~200 g pizzas) you need 800 / 1.675 ≈ 478 g flour, and everything else falls out of that. This is the one arithmetic you will do forever.</p>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">03</span><h2>Key concepts</h2></div>
+    <div class="grid cols-2">
+      <div class="card"><h4>Hydration</h4><p><b>What:</b> water as a % of flour. <b>Why it matters:</b> it is the single biggest lever on crumb — low (55–60%) gives a tight, easy-to-shape dough (bagels, sandwich, buns); high (70–85%) gives an open, airy, holey crumb (ciabatta, sourdough) but sticky, technique-hungry dough. <b>Common mistake:</b> jumping to 80% before you can handle 65% and concluding you "can't bake".</p></div>
+      <div class="card"><h4>Gluten development</h4><p><b>What:</b> organising glutenin + gliadin into a strong, extensible film. <b>Why it matters:</b> no net, no gas retention, dense brick. <b>Example:</b> the windowpane test — stretch a walnut of dough thin enough to see light through without tearing. <b>Common mistake:</b> thinking only kneading builds gluten; time and hydration build it for free.</p></div>
+      <div class="card"><h4>Fermentation (time × temp)</h4><p><b>What:</b> microbes eating sugars, producing gas + acids + alcohols. <b>Why it matters:</b> controls both rise and flavour, and the two are separable. <b>Example:</b> a cold retard at 4 °C / 39 °F for 24–72 h. <b>Common mistake:</b> chasing rise with more yeast and wondering why it tastes flat and yeasty.</p></div>
+      <div class="card"><h4>Salt</h4><p><b>What:</b> ~2% of flour weight. <b>Why it matters:</b> it throttles yeast to a manageable rate, tightens the gluten so the dough holds shape, and is most of the seasoning. <b>Common mistake:</b> forgetting it — an unsalted dough over-ferments fast, spreads slack, and tastes of nothing. Also: dumping salt directly onto yeast in a concentrated slurry.</p></div>
+      <div class="card"><h4>Bulk vs proof</h4><p><b>What:</b> bulk = the first rise of the whole mass; proof = the final rise after shaping. <b>Why it matters:</b> flavour and strength are built in bulk; oven-spring readiness is set in proof. <b>Common mistake:</b> conflating them, or degassing all the structure out between the two.</p></div>
+      <div class="card"><h4>Surface tension &amp; shaping</h4><p><b>What:</b> tightening the outer skin of the dough into a taut envelope. <b>Why it matters:</b> tension resists spread and forces the dough <em>up</em> in the oven (oven spring). <b>Common mistake:</b> punching high-hydration dough flat and destroying the gas cells you spent 24 h building.</p></div>
+    </div>
+    <div class="callout callout--heat"><span class="lbl">Variable that matters</span><p>If you change only one thing this month, make it <b>fermentation temperature and time</b>, not the flour or the yeast brand. It is the highest-leverage, lowest-cost knob in the entire system and the one home bakers most consistently leave untouched.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">04</span><h2>Tools &amp; equipment</h2></div>
+    <div class="spec">
+      <div class="spec-h">Buy · Skip · Waste</div>
+      <div class="spec-row"><span class="spec-key">Necessary</span><span class="spec-val">Digital scale to 1 g (ideally 0.1 g for salt/yeast) · large tub or bowl with lid · bench scraper · your oven's hottest setting</span></div>
+      <div class="spec-row"><span class="spec-key">Necessary — pizza</span><span class="spec-val">Baking steel (preferred) or stone · a way to launch (a peel, or an inverted tray)</span></div>
+      <div class="spec-row"><span class="spec-key">Genuinely useful</span><span class="spec-val">Instant-read thermometer (dough + water temp) · Dutch oven (traps steam for hearth loaves) · proofing container with straight sides to read % rise</span></div>
+      <div class="spec-row"><span class="spec-key">Optional</span><span class="spec-val">Stand mixer (convenient, not required — folds do the same job) · banneton (a bowl + tea towel + flour works) · lame (a razor on a stick; a sharp knife scores fine)</span></div>
+      <div class="spec-row"><span class="spec-key">Waste of money</span><span class="spec-val">Bread machine · "pizza oven" gadgets that top out at 230 °C · dough conditioners and "improvers" · special bottled yeast nutrients</span></div>
+    </div>
+    <p>The scale is non-negotiable — baker's percentages are meaningless with volume measures, and a cup of flour varies ±20% by how you scoop it. Everything downstream (reproducibility, scaling, debugging) depends on weighing to the gram. Buy the steel over the stone: it has far higher thermal conductivity, so it dumps heat into the base of a pizza fast enough to crisp it before the top overcooks.</p>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">05</span><h2>Technique breakdown</h2></div>
+
+    <div class="level-band"><span class="tag level--1"><b>L1</b> Functional</span><span class="ln"></span></div>
+    <p>Three methods build the same net by trading labour for time. Pick one; they are interchangeable end-states.</p>
+    <ol class="steps">
+      <li><b>Prep — weigh, don't measure.</b> Set flour to 100% on the scale and derive water, salt, yeast from the percentages. Use warm-ish water (~26–28 °C / 79–82 °F) for room rises, cool for slow ones. <em>Reasoning: temperature of the water is your fastest handle on fermentation speed.</em></li>
+      <li><b>Execute — hydrate first (autolyse).</b> Mix only flour + water, then rest 20–60 min before adding salt and yeast. The flour fully wets and enzymes begin linking gluten passively. <em>Reasoning: much of the "kneading" happens for free during this rest; the dough after autolyse is already smoother.</em></li>
+      <li><b>Execute — develop.</b> Then either knead 8–10 min (mechanical), or do 3–4 sets of stretch-and-folds spaced 30 min apart during bulk (gentle, builds strength without a mixer), or simply wait 12–18 h (no-knead — time alone links the gluten). <em>Reasoning: agitation and time are substitutes for the same cross-linking.</em></li>
+      <li><b>Evaluate — windowpane + poke.</b> Gluten: stretch a piece thin; translucent without tearing = developed. Ferment: dough has grown ~50–100% and a floured poke springs back slowly, leaving a slight dent. <em>Reasoning: you are reading the dough's state, not the clock — the clock is only a prediction.</em></li>
+      <li><b>Correction.</b> Tears when stretched → under-developed, give it more folds or time. Springs back instantly and fights you → over-tight or under-rested, cover and wait 15–20 min for the gluten to relax before shaping.</li>
+    </ol>
+
+    <div class="level-band"><span class="tag level--3"><b>L3</b> Optimization — shaping &amp; the bake</span><span class="ln"></span></div>
+    <ol class="steps">
+      <li><b>Pre-shape &amp; rest.</b> Gently round each piece into a loose ball, rest 15–30 min covered. This relaxes gluten so the final shape doesn't fight back.</li>
+      <li><b>Shape for tension.</b> Fold the dough onto itself and drag it across an unfloured bench so the surface skin tightens into a taut dome. For pizza, keep the gas: press from the centre out and leave a puffy rim, never a rolling pin. <em>Reasoning: surface tension is what converts fermentation gas into upward oven spring instead of sideways spread.</em></li>
+      <li><b>Proof to just-under.</b> Final rise until a poke springs back <em>slowly but not fully</em>. Slightly under-proofed is safer than over — under-proofed still springs in the oven; over-proofed collapses.</li>
+      <li><b>Score, then bake hot with the right heat mode.</b> Score hearth loaves to control where they burst. Bake bread with steam (Dutch oven lid, or a tray of water) for the first 15–20 min so the crust stays soft long enough to spring, then dry heat to set the crust. Pizza wants maximum heat — steel on the top rack under a blistering grill/broiler, 260 °C+ / 500 °F+. <em>Reasoning: oven spring is a brief window; steam keeps the surface elastic while gas expands, then Maillard + caramelisation build crust colour and flavour.</em></li>
+    </ol>
+    <div class="callout callout--pro"><span class="lbl">Mediocre → Excellent</span><p>Mediocre pizza bakes at 220 °C on a cold tray: the base is pale and dries into a cracker before it can char. Excellent pizza launches onto a steel preheated 45–60 min at full heat with the grill on: the base sets and leoparding appears in 4–6 minutes, so the crust is crisp <em>and</em> the crumb stays open and moist. Same dough — the delta is entirely thermal mass and heat.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">06</span><h2>Beginner mistakes &amp; troubleshooting</h2></div>
+
+    <details class="trouble"><summary>Dense, tight loaf that barely rose <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Under-developed gluten (no net), under-fermentation (not enough gas), dead/old yeast, or too much salt in contact with yeast early.</dd>
+        <dt>Diagnose</dt><dd>Did it pass the windowpane before shaping? Did bulk actually grow ~50%+? Proof yeast in warm sugared water — no foam in 10 min = dead.</dd>
+        <dt>Fix</dt><dd>Longer/warmer bulk, more folds, fresh yeast. Reserve full development before shaping; don't rush bulk to hit a clock time.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>Gummy, dense band near the base <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Under-baked (starch not fully gelatinised/set), sliced while hot, or bottom heat too weak.</dd>
+        <dt>Diagnose</dt><dd>Internal temp of a lean loaf should hit 96–99 °C / 205–210 °F. If you cut it warm, the crumb "sets" as it cools — slicing early makes it gummy.</dd>
+        <dt>Fix</dt><dd>Bake longer / to temperature, bake lower in the oven or on a preheated steel, and cool fully (1 h+) before cutting.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>Dough won't stretch — it tears or snaps back <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Snaps back = over-tight/under-rested gluten (too much glutenin behaviour, not relaxed). Tears = under-developed or too dry.</dd>
+        <dt>Diagnose</dt><dd>Snap-back that relaxes after 15 min = tension, not damage. Tears with a ragged edge = the net was never built, or hydration too low.</dd>
+        <dt>Fix</dt><dd>Snap-back: cover and rest 15–30 min, then shape. Tearing: more folds/time, or nudge hydration up 3–5% next batch.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>Over-proofed — dough collapsed, flat, sour, bursts randomly <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Fermented too far: gluten exhausted, gas cells merged and popped, structure can no longer hold. Common with too much yeast + a warm kitchen + an unwatched clock.</dd>
+        <dt>Diagnose</dt><dd>Poke test: dent stays put and doesn't spring back at all; dough smells strongly boozy/sour and looks slack and bubbly-flat.</dd>
+        <dt>Fix</dt><dd>Can't reverse it — but you can rescue mildly over-proofed dough by gently re-shaping for fresh tension and baking immediately. Next time: less yeast, cooler ferment, or catch it earlier.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>Pale, soft crust with no colour <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Oven not hot enough, too much steam left in for the whole bake, or fermentation ate all the residual sugars so there's nothing left to brown.</dd>
+        <dt>Diagnose</dt><dd>Crust colour is Maillard + caramelisation; both need heat and available sugar. Over-fermented dough browns poorly ("degassed of colour" too).</dd>
+        <dt>Fix</dt><dd>Hotter oven, remove steam/lid for the final third of the bake, and don't over-ferment. A touch of sugar or milk in enriched doughs helps browning.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>Pizza with a soggy, raw centre <span class="sig">Fault</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causes</dt><dd>Too many/too wet toppings, base not hot enough (no steel/stone, or under-preheated), or dough rolled too thin in the middle so sauce soaks through.</dd>
+        <dt>Diagnose</dt><dd>Lift the pizza — a pale, floppy underside means the base never got direct high heat before the top cooked.</dd>
+        <dt>Fix</dt><dd>Preheat steel 45–60 min at max, use less/drier sauce and pre-cook watery toppings (mushrooms, fresh mozzarella patted dry), and keep a slightly thicker centre.</dd>
+      </dl></div>
+    </details>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">07</span><h2>Controlled experiments</h2></div>
+    <p>One variable at a time, everything else fixed. Taste and photograph the crumb side by side — the differences are large and unmistakable.</p>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E1 — the flavour lever</div>
+      <dl>
+        <dt>Goal</dt><dd>Prove that ferment time drives flavour independently of rise.</dd>
+        <dt>Keep constant</dt><dd>Same dough spec, same flour, same final dough ball size, same oven, same toppings.</dd>
+        <dt>Change</dt><dd>Ferment schedule only: one batch same-day (2–3 h warm rise), one batch 48 h in the fridge at 4 °C / 39 °F. Pull the cold batch out 1–2 h before baking.</dd>
+        <dt>Expected</dt><dd>Similar final size and puff; the 48 h dough is markedly more complex, faintly tangy, browns better and blisters more.</dd>
+        <dt>Observe</dt><dd>Aroma of the raw dough (boozy/lactic in the cold batch), leoparding on the crust, and depth of flavour. This is the "restaurant pizza" reveal.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E2 — hydration &amp; crumb</div>
+      <dl>
+        <dt>Goal</dt><dd>See how water alone reshapes crumb and handling.</dd>
+        <dt>Keep constant</dt><dd>Same flour, salt %, yeast %, ferment time and temp, same bake.</dd>
+        <dt>Change</dt><dd>Hydration: one dough at 60%, one at 75%.</dd>
+        <dt>Expected</dt><dd>60% = firm, easy to shape, tighter even crumb. 75% = slack, sticky, needs wet hands and folds, but a far more open, glossy, irregular crumb.</dd>
+        <dt>Observe</dt><dd>How different they feel to handle, and the hole structure in cross-section. Learn which crumb you actually want before chasing extreme hydration.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E3 — salt as a throttle</div>
+      <dl>
+        <dt>Goal</dt><dd>Show salt is a fermentation brake and a structure agent, not just seasoning.</dd>
+        <dt>Keep constant</dt><dd>Same flour, hydration, yeast %, temperature, timing.</dd>
+        <dt>Change</dt><dd>Salt: one dough at 2%, one at 0%. Watch both rise in identical containers.</dd>
+        <dt>Expected</dt><dd>Unsalted rises noticeably faster and further, then goes slack and sticky; salted rises slower, holds shape, tastes seasoned. Baked unsalted bread tastes flat and stales fast.</dd>
+        <dt>Observe</dt><dd>Rise rate over 90 min, slackness of the dough, and — crucially — the flavour gap in the finished loaf.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Controlled experiment · E4 — knead vs no-knead</div>
+      <dl>
+        <dt>Goal</dt><dd>Prove that time substitutes for kneading in building gluten.</dd>
+        <dt>Keep constant</dt><dd>Same 70% dough spec, same flour, same salt, same total dough weight and bake.</dd>
+        <dt>Change</dt><dd>Development method: one kneaded 10 min then risen ~3 h; one mixed for 30 s then left 14–18 h (no-knead, less yeast).</dd>
+        <dt>Expected</dt><dd>Both windowpane and rise well; the no-knead often has a more open, irregular crumb and deeper flavour from the longer ferment.</dd>
+        <dt>Observe</dt><dd>Gluten strength before shaping and final crumb — you did zero kneading and still built a net.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">08</span><h2>Practice system — the pizza dough spec</h2></div>
+    <p>Master one dough by repetition before you sprawl. This is a genuinely usable Neapolitan-style home pizza dough, written as an engineer's spec. Learn to hit it every time, then perturb it.</p>
+
+    <div class="spec">
+      <div class="spec-h">SPEC · Cold-ferment pizza dough (4 × ~250 g balls)</div>
+      <div class="spec-row"><span class="spec-key">Flour (100%)</span><span class="spec-val">600 g · bread flour or "00", ~12–13% protein</span></div>
+      <div class="spec-row"><span class="spec-key">Water (63%)</span><span class="spec-val">378 g · cool, ~18 °C / 64 °F for a slow ferment</span></div>
+      <div class="spec-row"><span class="spec-key">Salt (2%)</span><span class="spec-val">12 g · fine sea salt</span></div>
+      <div class="spec-row"><span class="spec-key">Instant yeast (0.5%)</span><span class="spec-val">3 g · (use ~0.3% / 1.8 g if fermenting the full 72 h)</span></div>
+      <div class="spec-row"><span class="spec-key">Total</span><span class="spec-val">≈ 993 g dough · total flour ratio 165.5%</span></div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-h">SCHEDULE · cold retard</div>
+      <div class="spec-row"><span class="spec-key">Mix</span><span class="spec-val">Autolyse flour + water 30 min, add salt + yeast, mix/fold to a rough smooth mass</span></div>
+      <div class="spec-row"><span class="spec-key">Bulk (room)</span><span class="spec-val">1–2 h at ~21 °C / 70 °F with 2 sets of folds, until ~30% risen</span></div>
+      <div class="spec-row"><span class="spec-key">Ball &amp; retard</span><span class="spec-val">Divide into 250 g balls, tuck tight, then 24–72 h at 4 °C / 39 °F</span></div>
+      <div class="spec-row"><span class="spec-key">Warm-up</span><span class="spec-val">Out of fridge 1–2 h before baking; balls should be relaxed and puffy</span></div>
+      <div class="spec-row"><span class="spec-key">Bake</span><span class="spec-val">Steel preheated 45–60 min at max + grill/broiler · 260 °C+ / 500 °F+ · 4–7 min</span></div>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Practice drill · L1–L2</div>
+      <h4>The reproducibility loop</h4>
+      <dl>
+        <dt>Goal</dt><dd>Hit the same crumb and handling from the spec above three batches in a row.</dd>
+        <dt>Difficulty</dt><dd>Beginner → Consistent</dd>
+        <dt>Materials</dt><dd>Scale, the spec, a notebook.</dd>
+        <dt>Steps</dt><dd>Weigh precisely, log water temp + kitchen temp + total ferment time + final rise %, bake, photograph the crumb. Repeat, changing nothing.</dd>
+        <dt>Success</dt><dd>Three near-identical results; you can predict the rise time from the temperature.</dd>
+        <dt>Failure modes</dt><dd>Wildly different rises = you're not controlling temperature/time. Log it and standardise.</dd>
+        <dt>Improve</dt><dd>Once boringly reproducible, change exactly one variable (E1–E4).</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Practice drill · L2–L3</div>
+      <h4>Shaping for tension</h4>
+      <dl>
+        <dt>Goal</dt><dd>Build a taut, gas-retaining skin without degassing the dough.</dd>
+        <dt>Difficulty</dt><dd>Consistent → Optimization</dd>
+        <dt>Materials</dt><dd>An unfloured patch of bench, a bench scraper.</dd>
+        <dt>Steps</dt><dd>Pre-shape, rest 20 min, then drag-round each ball to a tight dome. Rest seam-down. For pizza, open by pressing centre-out, never rolling the rim flat.</dd>
+        <dt>Success</dt><dd>A smooth taut surface that holds a dome and gives strong oven spring; a puffy leoparded pizza rim.</dd>
+        <dt>Failure modes</dt><dd>Ball slumps flat (no tension) or tears (over-tightened/dry). Adjust bench friction and rest time.</dd>
+        <dt>Improve</dt><dd>Move to higher hydration and keep the same tension — that is the real skill test.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Practice drill · L4</div>
+      <h4>Start and hold a sourdough culture</h4>
+      <dl>
+        <dt>Goal</dt><dd>Raise a stable wild culture and learn to read its readiness.</dd>
+        <dt>Difficulty</dt><dd>Mastery</dd>
+        <dt>Materials</dt><dd>Wholemeal + white flour, water, a jar, scale.</dd>
+        <dt>Steps</dt><dd>Days 1–7: mix equal flour + water, discard and feed daily (e.g. 1:1:1 by weight) until it reliably doubles in ~4–8 h. Ready signs: predictable doubling, domed then peaked, passes the float test (a spoonful floats in water).</dd>
+        <dt>Success</dt><dd>A starter that doubles on schedule and leavens a loaf without commercial yeast.</dd>
+        <dt>Failure modes</dt><dd>Sluggish = too cold or under-fed; hooch/liquid on top = hungry, feed more often; no rise after 2 weeks = start over warmer.</dd>
+        <dt>Improve</dt><dd>Tune feeding ratio (1:5:5 for a milder, slower starter) and temperature to steer sour intensity.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">09</span><h2>Projects</h2></div>
+    <div class="drill drill--project">
+      <div class="drill-h">Project · Beginner</div>
+      <h4>Homemade pizza night</h4>
+      <dl>
+        <dt>Objective</dt><dd>Run the cold-ferment spec end to end and serve four pizzas that rival a good pizzeria.</dd>
+        <dt>Skills trained</dt><dd>Baker's %, cold fermentation, tension shaping, hot-steel bake, topping restraint.</dd>
+        <dt>Expected result</dt><dd>A puffy, leoparded, blistered rim; a crisp base that stays open and moist; complex flavour from the 48 h ferment.</dd>
+        <dt>Evaluation</dt><dd>Lift a slice — the tip holds, the underside is charred not pale, the rim is airy not bready.</dd>
+      </dl>
+    </div>
+    <div class="drill drill--project">
+      <div class="drill-h">Project · Intermediate</div>
+      <h4>Burger buns (enriched dough)</h4>
+      <dl>
+        <dt>Objective</dt><dd>Make a soft, tender enriched dough — lower hydration, with milk, butter, egg and a little sugar.</dd>
+        <dt>Skills trained</dt><dd>Enriched-dough handling (fat coats gluten, so develop before adding butter), dividing to uniform weights, egg-wash for shine.</dd>
+        <dt>Expected result</dt><dd>Eight even, domed, glossy buns with a fine soft crumb that don't fall apart under a burger.</dd>
+        <dt>Evaluation</dt><dd>Uniform size (±5 g), even browning, tender not tough, tight enough crumb to hold juices.</dd>
+      </dl>
+    </div>
+    <div class="drill drill--project">
+      <div class="drill-h">Project · Advanced</div>
+      <h4>Cinnamon rolls</h4>
+      <dl>
+        <dt>Objective</dt><dd>Laminate a soft enriched dough with a butter-sugar-cinnamon filling, roll, cut and proof.</dd>
+        <dt>Skills trained</dt><dd>Rolling to even thickness, spiral shaping and tension, controlled proof, judging bake without a raw centre.</dd>
+        <dt>Expected result</dt><dd>Soft, well-defined spirals, fully cooked to the middle, gooey filling, tender crumb.</dd>
+        <dt>Evaluation</dt><dd>Even spirals, no raw doughy core (probe ~90 °C / 194 °F centre), filling that stays put rather than leaking out entirely.</dd>
+      </dl>
+    </div>
+    <p class="side-note"><b>Sourdough capstone (L4):</b> once the starter reliably doubles, bake a 75% hydration country loaf — autolyse, folds during bulk, cold retard overnight, bake in a preheated Dutch oven (lid on 20 min for steam, off 20–25 min to colour). This is where every concept in the module lands at once.</p>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">10</span><h2>Visual learning</h2></div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>well developed gluten windowpane test</code>
+      <p style="margin:.4em 0 0">Look for: a thin translucent membrane you can see light through, stretched without tearing — that's a built net. Compare to a ragged tearing sheet (under-developed).</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>open crumb sourdough crumb shot high hydration</code>
+      <p style="margin:.4em 0 0">Look for: irregular, glossy, thin-walled holes of varying size — the signature of high hydration + good gas retention. Contrast with a tight even sandwich crumb.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>neapolitan pizza cornicione leoparding</code>
+      <p style="margin:.4em 0 0">Look for: a puffy blistered rim with dark leopard-spots — evidence of a well-fermented dough hit with very high heat. Pale flat rims mean cold oven or under-ferment.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>bread oven spring scoring ear grigne</code>
+      <p style="margin:.4em 0 0">Look for: the raised "ear" where the score opened during oven spring — proof the dough had tension and wasn't over-proofed.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Search image</span>
+      <div><code>poke test proofing dough underproofed overproofed</code>
+      <p style="margin:.4em 0 0">Look for: the dent behaviour — springs back fast = under-proofed; springs back slowly leaving a slight dent = ready; stays fully dented = over-proofed.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">11</span><h2>External resources</h2></div>
+    <div class="resource"><span class="rm">Video · Adam Ragusea</span>
+      <span class="rt">Search: "Adam Ragusea pizza dough" and "why I cold ferment"</span>
+      <p>Why: accessible walkthrough of home pizza and the case for the cold ferment.</p></div>
+    <div class="resource"><span class="rm">Video · Brian Lagerstrom</span>
+      <span class="rt">Search: "Brian Lagerstrom pizza dough" and "Brian Lagerstrom no knead bread"</span>
+      <p>Why: precise, gram-weighted, engineer-friendly method videos with clear timings.</p></div>
+    <div class="resource"><span class="rm">Video / Site · King Arthur Baking</span>
+      <span class="rt">Search: "King Arthur Baking hydration" and "King Arthur baker's percentage"</span>
+      <p>Why: reliable reference-grade explanations of the fundamentals and troubleshooting.</p></div>
+    <div class="resource"><span class="rm">Video · Sourdough</span>
+      <span class="rt">Search: "Full Proof Baking open crumb" and "The Perfect Loaf sourdough starter"</span>
+      <p>Why: the two best deep-dives on starter maintenance, high-hydration handling and open crumb.</p></div>
+    <div class="resource"><span class="rm">Book · Foundational</span>
+      <span class="rt">Flour Water Salt Yeast — Ken Forkish</span>
+      <p>Use it for the whole time-and-temperature framework and clean baker's-percentage formulas.</p></div>
+    <div class="resource"><span class="rm">Book · Technique</span>
+      <span class="rt">The Bread Baker's Apprentice — Peter Reinhart</span>
+      <p>Use the "12 stages" and pre-ferment chapters for how flavour is built before the bake.</p></div>
+    <div class="resource"><span class="rm">Book · Mechanism</span>
+      <span class="rt">The Food Lab — J. Kenji López-Alt (bread &amp; pizza sections)</span>
+      <p>Use it for the why-it-works chemistry of gluten, gelatinisation and crust browning.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">12</span><h2>Assessment</h2></div>
+    <p><b>Knowledge check</b> — understanding, not recall. Answer in your own words; if you can explain the mechanism you own the concept.</p>
+    <div class="check">
+      <div class="q"><p>Two pizza doughs finish the same size, one after a 2 h warm rise and one after a 48 h cold ferment. Why does the cold one taste dramatically better if rise (gas) is equal?</p></div>
+      <div class="q"><p>You want a more open, holey crumb. Name the variable you'd change first and the handling cost that comes with it.</p></div>
+      <div class="q"><p>Your dough springs back and won't stretch. How do you tell "needs to rest" apart from "over-developed/torn", and what's the fix for each?</p></div>
+      <div class="q"><p>Why can a no-knead dough develop just as much gluten as a kneaded one? What is doing the work?</p></div>
+      <div class="q"><p>Convert this to gram weights for ~1000 g of dough: flour 100 / water 65 / salt 2 / yeast 0.5. Show the flour figure first.</p></div>
+      <div class="q"><p>Why is salt not optional, and what specifically goes wrong at 0%?</p></div>
+    </div>
+
+    <div class="drill drill--project" style="margin-top:18px">
+      <div class="drill-h">Practical challenge</div>
+      <h4>Same dough, two fates</h4>
+      <dl>
+        <dt>Objective</dt><dd>Mix one batch of the pizza spec, split it, and ferment half same-day and half for 48 h cold. Bake both under identical conditions and taste side by side.</dd>
+        <dt>Evaluation</dt><dd>You can articulate the flavour and crust difference and tie each to a mechanism (acids/enzymes vs gas), and you nailed reproducibility on everything you held constant.</dd>
+      </dl>
+    </div>
+
+    <div class="callout callout--why" style="margin-top:18px"><span class="lbl">Reflection</span><p>Which of the four variables — hydration, development, fermentation, salt — did you find hardest to control this month, and what did the dough's <em>behaviour</em> (not the recipe) tell you when it went wrong? Write down the one measurement you'll start logging so that next month's failures become data instead of mysteries.</p></div>
+  </section>
+
+  <nav class="pager">
+    <a class="prev" href="#m4"><span class="d">Previous</span>Vegetables</a>
+    <a class="next" href="#m6"><span class="d">Next</span>Fermentation</a>
+  </nav>
+</section>
