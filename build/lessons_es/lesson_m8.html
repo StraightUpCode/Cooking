@@ -1,0 +1,623 @@
+<section class="lesson" id="m8">
+  <header class="lesson-head">
+    <p class="eyebrow">MÓDULO 08 · PROYECTOS DE RESTAURANTE</p>
+    <h1>Cocina Porque Quieres</h1>
+    <p class="lede">Cada técnica de los Módulos 1–7 fue un componente. Este capstone enseña la única habilidad que
+      falta: <em>orquestación</em> — leer un menú completo como un proyecto, trabajar hacia atrás desde la hora
+      de servir, y escalonar la preparación para que el servicio sea sobre todo ensamblaje y calor. El plato
+      nunca fue lo difícil. El horario sí lo es.</p>
+    <div class="kicker-row">
+      <span class="tag ember">Mes 9–12</span>
+      <span class="tag">Integración</span>
+      <span class="tag probe">Noches temáticas</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">01</span><h2>Por qué importa</h2></div>
+    <p>Ya sabes sellar un bistec, armar una salsa, fermentar una masa y cocinar un arroz del que estarías
+      orgulloso. Y aun así, la primera vez que intentas poner tres de esas cosas en un mismo plato <em>a la
+      misma temperatura, en el mismo minuto</em>, todo se desmorona. El bistec reposa demasiado y se enfría
+      mientras al soufflé todavía le faltan diez minutos; el agua de la pasta no hierve cuando la salsa ya está
+      lista; estás emplatando el plato dos con el ajo del plato tres todavía sin pelar. Ninguna técnica falló.
+      El <em>sistema</em> falló.</p>
+    <p>Este es exactamente el problema que ya resolviste en espresso cuando pasaste de tirar un solo shot a
+      correr una barra en plena hora pico: la extracción individual nunca fue la restricción — la restricción
+      era la cola, el tiempo de recuperación de la máquina, la leche, y el hecho de que tienes dos manos. Una
+      cocina de restaurante es un problema de programación en tiempo real con plazos duros (la comida se
+      enfría), recursos compartidos (un horno, un cocinero) y dependencias de largo plazo (una masa que
+      necesita 24 h, un fondo que necesita 6). Lo que separa una línea profesional de un cocinero casero en
+      pánico casi nunca es la habilidad con el cuchillo. Es el <em>mise en place a escala</em> y un cronograma
+      trazado en papel antes de encender la primera sartén.</p>
+    <div class="callout callout--why"><span class="lbl">La tesis de todo este manual, por fin cobrada</span>
+      <p>Cocinar es un sistema de control. Los Módulos 1–7 te dieron los actuadores — calor, sal, ácido,
+        emulsión, masa, fuego. Este módulo te da el <em>programador</em>. La mayoría de la "magia" de
+        restaurante no es una técnica secreta; es preparación hecha horas o días antes para que, al momento
+        del servicio, el cocinero esté ejecutando un plan precalculado, no improvisando bajo fuego.</p></div>
+    <div class="levels">
+      <span class="level level--1"><b>N1 · Funcional</b> — puedo emplatar un plato de dos componentes caliente, todo a la vez</span>
+      <span class="level level--2"><b>N2 · Consistente</b> — corro un cronograma escrito para un menú de 3 platos y llego a la hora de servir</span>
+      <span class="level level--3"><b>N3 · Optimización</b> — identifico la ruta crítica y paralelizo alrededor del cuello de botella de un solo cocinero</span>
+      <span class="level level--4"><b>N4 · Maestría</b> — diseño un menú temático para invitados de verdad, lo preparo con antelación y lo emplato en calma</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">02</span><h2>Modelo mental — la comida es un proyecto</h2></div>
+    <p>Deja de pensar en "recetas" y empieza a pensar en "plan de proyecto". Una noche temática es un conjunto
+      de tareas con duraciones, dependencias, y un plazo inamovible: <b>la hora de servir, T₀</b>. Todo lo que
+      haces es programar esas tareas contra T₀ con dos restricciones — un horno/estufa compartido y un solo
+      par de manos. Cuatro ideas hacen todo el trabajo.</p>
+
+    <p><b>1 · Mise en place a escala.</b> Lee el menú entero primero. Enumera <em>cada</em> componente de cada
+      plato — no "tacos" sino tortilla, relleno, dos salsas, cebolla encurtida, crema, limón. Para cada
+      componente, decide lo único que importa: <b>¿se puede preparar con antelación, o debe ser à la
+      minute?</b> Salsas, masas, fondos, guisos, encurtidos, mise (picado, medido, porcionado) son casi todos
+      preparables con antelación. Cualquier cosa que deba estar crujiente, fundida o recién sellada es à la
+      minute. Empuja todo lo que legítimamente puedas hacia "el día anterior" o "la mañana de", y el servicio
+      colapsa en ensamblaje + calor.</p>
+
+    <p><b>2 · La ruta crítica.</b> Trabaja <em>hacia atrás</em> desde T₀. Encuentra el ítem con el tiempo de
+      espera más largo que no se puede acortar — una masa de pizza de 24 h, un fondo de 6 h, un croissant
+      laminado de 2–3 días. Ese ítem dicta cuándo debe <em>empezar</em> el proyecto; está en la ruta crítica.
+      Aparte, encuentra los ítems que deben estar <b>calientes en el instante final</b> (la proteína sellada,
+      el soufflé, la pasta hervida) — estas son tus operaciones últimas y más frágiles, y todo lo demás debe
+      estar fuera del camino antes de que empiecen. Trazar este cronograma no es tarea opcional de relleno. <em>Es</em>
+      la habilidad que enseña este módulo.</p>
+
+    <figure>
+      <svg viewBox="0 0 760 430" role="img" aria-label="Un cronograma de comida planeado hacia atrás para una noche italiana, mostrando carriles de preparación anticipada durante dos días y un carril à la minute en los treinta minutos finales antes de la hora de servir T-cero">
+        <g font-family="ui-monospace,Menlo,monospace" font-size="11">
+          <text x="20" y="24" fill="#c2481d" font-size="12" letter-spacing="1.5">CRONOGRAMA DE COMIDA — PLANEAR HACIA ATRÁS DESDE T₀ (NOCHE ITALIANA)</text>
+
+          <!-- lane labels -->
+          <text x="20" y="70" fill="currentColor" fill-opacity=".7">DÍA −1</text>
+          <text x="20" y="150" fill="currentColor" fill-opacity=".7">MAÑANA</text>
+          <text x="20" y="230" fill="currentColor" fill-opacity=".7">T−60→T−30</text>
+          <text x="20" y="330" fill="#c2481d">À LA MINUTE</text>
+          <text x="20" y="346" fill="#c2481d" fill-opacity=".7">T−15 → T₀</text>
+
+          <!-- lane baselines -->
+          <line x1="110" y1="80" x2="720" y2="80" stroke="currentColor" stroke-opacity=".2"/>
+          <line x1="110" y1="160" x2="720" y2="160" stroke="currentColor" stroke-opacity=".2"/>
+          <line x1="110" y1="240" x2="720" y2="240" stroke="currentColor" stroke-opacity=".2"/>
+          <line x1="110" y1="340" x2="720" y2="340" stroke="#c2481d" stroke-opacity=".35"/>
+
+          <!-- DAY -1 blocks (make-ahead, green = safe/parked) -->
+          <rect x="120" y="60" width="180" height="24" rx="3" fill="#2f7d57" fill-opacity=".14" stroke="#2f7d57"/>
+          <text x="130" y="76" fill="#2f7d57">Masa de pizza — mezclar + fermentar en frío 24 h</text>
+          <rect x="320" y="60" width="150" height="24" rx="3" fill="#2f7d57" fill-opacity=".14" stroke="#2f7d57"/>
+          <text x="330" y="76" fill="#2f7d57">Salsa de tomate — cocinar y enfriar</text>
+          <rect x="490" y="60" width="180" height="24" rx="3" fill="#2f7d57" fill-opacity=".14" stroke="#2f7d57"/>
+          <text x="500" y="76" fill="#2f7d57">Tiramisu — armar, cuajar durante la noche</text>
+
+          <!-- MORNING blocks -->
+          <rect x="120" y="140" width="200" height="24" rx="3" fill="#1f7982" fill-opacity=".12" stroke="#1f7982"/>
+          <text x="130" y="156" fill="#1f7982">Pasta fresca — hacer masa, reposar, estirar, cortar</text>
+          <rect x="340" y="140" width="150" height="24" rx="3" fill="#1f7982" fill-opacity=".12" stroke="#1f7982"/>
+          <text x="350" y="156" fill="#1f7982">Mise: queso, hierbas, aceite</text>
+          <rect x="510" y="140" width="160" height="24" rx="3" fill="#1f7982" fill-opacity=".12" stroke="#1f7982"/>
+          <text x="520" y="156" fill="#1f7982">Sacar masa del refrigerador → atemperar</text>
+
+          <!-- T-60 to T-30 -->
+          <rect x="120" y="220" width="230" height="24" rx="3" fill="#b6851f" fill-opacity=".14" stroke="#b6851f"/>
+          <text x="130" y="236" fill="#b6851f">Horno + piedra al máximo (250–290 °C) — 45 min</text>
+          <rect x="370" y="220" width="180" height="24" rx="3" fill="#b6851f" fill-opacity=".14" stroke="#b6851f"/>
+          <text x="380" y="236" fill="#b6851f">Olla grande de agua con sal a hervir</text>
+
+          <!-- critical path arrow from dough to oven -->
+          <path d="M210,84 L210,120 L210,138" fill="none" stroke="#bb3a2c" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#m8ar)"/>
+          <text x="216" y="112" fill="#bb3a2c" font-size="10">la masa es el ítem de mayor plazo → fija el inicio</text>
+
+          <!-- A LA MINUTE lane (ember = hot, fragile, sequential) -->
+          <rect x="120" y="320" width="120" height="24" rx="3" fill="#c2481d" fill-opacity=".16" stroke="#c2481d"/>
+          <text x="130" y="336" fill="#c2481d">Estirar + cubrir la pizza</text>
+          <rect x="250" y="320" width="120" height="24" rx="3" fill="#c2481d" fill-opacity=".16" stroke="#c2481d"/>
+          <text x="260" y="336" fill="#c2481d">Hornear 6–8 min</text>
+          <rect x="380" y="320" width="150" height="24" rx="3" fill="#c2481d" fill-opacity=".16" stroke="#c2481d"/>
+          <text x="390" y="336" fill="#c2481d">Pasta al agua — 2 min — salsa</text>
+          <rect x="540" y="320" width="130" height="24" rx="3" fill="#191c1d" fill-opacity=".9" stroke="#191c1d"/>
+          <text x="605" y="336" fill="#faf9f5" text-anchor="middle">SERVIR · T₀</text>
+
+          <!-- T0 vertical line -->
+          <line x1="670" y1="50" x2="670" y2="352" stroke="#bb3a2c" stroke-width="1.6"/>
+          <text x="676" y="46" fill="#bb3a2c" font-size="10">T₀</text>
+        </g>
+        <defs>
+          <marker id="m8ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#bb3a2c"/></marker>
+        </defs>
+      </svg>
+      <figcaption>Fig. M8.1 — La misma información que un restaurante llama <em>lista de preparación</em> más un
+        <em>plan de servicio</em>. Las tareas verdes están aparcadas y a salvo (día −1). Las tareas color
+        brasa están calientes, frágiles y estrictamente secuenciales — comparten el único cocinero y el único
+        horno, así que no pueden superponerse. La línea roja punteada es la ruta crítica: la masa de 24 h es
+        lo que te obliga a empezar ayer.</figcaption>
+    </figure>
+
+    <p><b>3 · Paralelización y el cuello de botella de un solo cocinero.</b> En el papel, cada tarea podría
+      correr a la vez; en la realidad tienes un horno, a menudo una sartén grande, y un par de manos. Dos
+      cosas que necesitan el horno a temperaturas distintas <em>chocan</em>. Dos cosas que necesitan toda tu
+      atención en los últimos dos minutos <em>chocan</em>. El arte está en secuenciar de modo que nada crítico
+      se superponga: hornear la pizza primero mientras el agua de la pasta se calienta (horno ocupado, manos
+      medio libres), luego hervir la pasta después de sacar la pizza. Mira tu cronograma y busca dos bloques
+      color brasa apilados en el mismo minuto — eso es un conflicto de recursos, y ahí es donde la cena se
+      arruina.</p>
+
+    <p><b>4 · Consistencia, puntos de control de sabor, y emplatado.</b> Un cocinero de línea prueba en
+      puntos de control fijos — sazonar la salsa, probar; terminar la pasta, probar; ajustar antes de que
+      salga del pase. El emplatado es el último paso controlado, y es sobre todo geometría y termodinámica:
+      <em>altura</em> (construir hacia arriba, no esparcir plano), <em>contraste</em> (color y textura — algo
+      crujiente, algo verde), <em>salsa</em> colocada deliberadamente, no ahogando el plato, <em>espacio
+      negativo</em> (no llenar el borde), y <b>temperatura del plato</b> — un plato tibio te compra dos o tres
+      minutos extra de comida caliente, un plato frío te los roba. Calienta tus platos con el calor residual
+      del horno; es la mejora de calidad más barata en el pase.</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Término de restaurante</th><th>Qué es realmente</th><th>Análogo de ingeniería</th></tr></thead>
+      <tbody>
+        <tr><td>Mise en place</td><td>Todos los componentes preparados, medidos, escalonados en orden</td><td>Precalcular + cachear antes del bucle caliente</td></tr>
+        <tr><td>Lista de preparación (del día)</td><td>Todo lo preparable con antelación, hecho antes del servicio</td><td>Trabajo por lotes ejecutado fuera de la ruta crítica</td></tr>
+        <tr><td>Ruta crítica</td><td>Ítem de mayor plazo que fija la hora de inicio</td><td>La dependencia que acota la latencia total</td></tr>
+        <tr><td>À la minute</td><td>Cocinado bajo pedido en los últimos minutos</td><td>Tarea en tiempo real con un plazo duro</td></tr>
+        <tr><td>El pase</td><td>Donde los platos se revisan y emplatan para salir juntos</td><td>El punto de unión/barrera donde el trabajo paralelo se sincroniza</td></tr>
+        <tr><td>Sacarlo del menú (86)</td><td>Cortar un plato que no puedes ejecutar limpio esta noche</td><td>Descargar carga para proteger el plazo</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">03</span><h2>Conceptos clave</h2></div>
+    <div class="grid cols-2">
+      <div class="card"><h4>Preparar con antelación vs à la minute</h4><p><b>Qué es:</b> la única clasificación que aplicas a cada componente. <b>Por qué importa:</b> es la palanca que convierte un servicio frenético en un ensamblaje tranquilo — mientras más legítimamente empujes a "hecho ayer", menos puede salir mal esta noche. <b>Error común:</b> tratar todo como de último minuto porque "lo fresco es mejor", y terminar con ocho tareas cayendo en los últimos diez minutos.</p></div>
+      <div class="card"><h4>Tiempo de espera y la ruta crítica</h4><p><b>Qué es:</b> la cadena de dependencia más larga que no se puede acortar (masa de 24 h, fondo de 6 h, laminado de 2–3 días). <b>Por qué importa:</b> ella sola decide cuándo debes <em>empezar</em> — planea hacia atrás desde T₀ y te da la fecha de inicio honesta. <b>Error común:</b> decidir a las 5 pm hacer pizza para una cena a las 7 pm; la masa se necesitaba ayer.</p></div>
+      <div class="card"><h4>Contención de recursos</h4><p><b>Qué es:</b> dos tareas que exigen el mismo horno, sartén, o tus manos en la misma ventana de tiempo. <b>Por qué importa:</b> es la causa real de que "todo terminó en momentos distintos" — no lentitud, sino colisión. <b>Error común:</b> un menú que necesita el horno a 290 °C para pizza y a 180 °C para un soufflé en el mismo minuto. Uno de los dos pierde.</p></div>
+      <div class="card"><h4>Conjunto caliente-al-servir</h4><p><b>Qué es:</b> los componentes que deben llegar al plato calientes y frescos — proteína sellada, pasta hervida, el soufflé, papas fritas. <b>Por qué importa:</b> son tus operaciones últimas y menos indulgentes; todo lo demás debe estar terminado y fuera del camino primero. <b>Error común:</b> reposar el bistec tanto tiempo que se enfría porque un componente más lento no estaba listo.</p></div>
+      <div class="card"><h4>Convergencia de ensamblaje</h4><p><b>Qué es:</b> componentes hechos independientemente y sincronizados para encontrarse calientes en un solo momento (el ramen es la forma pura — caldo, tare, fideos, aderezos). <b>Por qué importa:</b> es el mise en place llevado a su fin lógico; el plato está 90% armado con antelación y se "cocina" en 90 segundos de ensamblaje. <b>Error común:</b> empezar los fideos antes de que el caldo y los tazones estén calientes, así que todo llega tibio.</p></div>
+      <div class="card"><h4>Emplatado como termodinámica</h4><p><b>Qué es:</b> altura, contraste, salsa deliberada, espacio negativo, y un <em>plato tibio</em>. <b>Por qué importa:</b> un plato tibio compra 2–3 minutos de temperatura de servicio; la altura y el contraste son cómo el ojo lee "restaurante". <b>Error común:</b> un plato frío y comida esparcida plana hasta el borde — se ve amateur y se enfría en un minuto.</p></div>
+    </div>
+    <div class="callout callout--heat"><span class="lbl">La variable que más importa aquí</span>
+      <p>No es una temperatura ni una proporción — es <b>cuándo empieza cada tarea en relación con T₀</b>. Toda
+        otra habilidad de este manual es ahora un costo fijo; lo único que sigues ajustando es el horario.
+        Acierta el cronograma y una ejecución mediocre igual entrega una buena cena; falla el cronograma y una
+        técnica impecable sigue sirviendo comida fría.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">04</span><h2>Herramientas y equipo</h2></div>
+    <p>Las herramientas para la orquestación son sobre todo organizacionales, no gadgets. Ya tienes el
+      menaje de módulos anteriores. Lo que estás comprando ahora es <em>contención y escalonamiento</em>: la
+      capacidad de sostener veinte componentes preparados sin perderles la pista.</p>
+
+    <div class="spec">
+      <div class="spec-h">Necesario — para correr un servicio de varios platos</div>
+      <div class="spec-row"><span class="spec-key">Recipientes de preparación ×8–12</span><span class="spec-val">Tarrinas pequeñas de deli/cuarto de galón o ramequines. Esto es mise en place de verdad — cada componente en su propio recipiente, escalonado en orden de cocción. La mejora de calma más grande que puedes comprar.</span></div>
+      <div class="spec-row"><span class="spec-key">Bandejas para horno ×2</span><span class="spec-val">Superficies de escalonamiento: todo para el plato dos vive en una bandeja, el plato tres en otra. También para calentar platos y sostener piezas horneadas.</span></div>
+      <div class="spec-row"><span class="spec-key">Un cronograma escrito</span><span class="spec-val">Papel y lapicero, o un pizarrón junto a la estufa. Trabajando hacia atrás desde T₀. No cuesta nada y hace más que cualquier aparato de esta lista.</span></div>
+      <div class="spec-row"><span class="spec-key">Termómetro de lectura instantánea</span><span class="spec-val">La misma sonda de la Fase 0. Bajo presión de tiempo no puedes darte el lujo de adivinar el punto de cocción — un número acaba el debate en 3 segundos.</span></div>
+      <div class="spec-row"><span class="spec-key">Temporizador con varios canales</span><span class="spec-val">Un teléfono o un temporizador de cocina de 3 canales. Sigue la pasta, el horno y el reposo simultáneamente — no vas a poder llevar tres cuentas en la cabeza durante el servicio.</span></div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-h">Opcional — realmente ayuda en noches específicas</div>
+      <div class="spec-row"><span class="spec-key">Acero o piedra para hornear</span><span class="spec-val">Para pizza (noche italiana): almacena calor intenso, da un horneado rápido de la base cerca de 290 °C. Transformador para ese proyecto puntual; ocioso el resto del tiempo.</span></div>
+      <div class="spec-row"><span class="spec-key">Rasqueta de banco + cortador de pasta</span><span class="spec-val">Manejo de pasta fresca y masa. Un cuchillo funciona; estos son de comodidad.</span></div>
+      <div class="spec-row"><span class="spec-key">Olla honda y pesada + termómetro</span><span class="spec-val">La papas fritas en doble fritura (noche francesa) necesita una temperatura de aceite estable y suficiente masa térmica para no desplomarse cuando entran las papas.</span></div>
+      <div class="spec-row"><span class="spec-key">Ramequines ×4</span><span class="spec-val">Soufflé (francés) y mise porcionada. De paredes rectas para que el soufflé trepe por la pared.</span></div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-h">Desperdicio de dinero — omitir</div>
+      <div class="spec-row"><span class="spec-key">Gadgets de "chef" de un solo propósito</span><span class="spec-val">Prensa ajos, rebanador de aguacate, deshojador de hierbas. Tienes las habilidades con el cuchillo; cada gadget es algo más que lavar en medio del servicio.</span></div>
+      <div class="spec-row"><span class="spec-key">Gavetas / calentadores de platos</span><span class="spec-val">El calor residual del horno o un horno bajo de 60–70 °C calienta platos gratis. No compres un aparato para esto.</span></div>
+      <div class="spec-row"><span class="spec-key">Sous-vide por sí mismo</span><span class="spec-val">Útil como espera preparada con antelación para proteína, pero no necesario para correr estos menús. Agrégalo si la espera de verdad reduce el riesgo de una noche, no por novedad.</span></div>
+    </div>
+    <div class="callout callout--mistake"><span class="lbl">Lo que los principiantes hacen mal al comprar para una noche temática</span>
+      <p>Comprar equipo en vez de comprar <em>tiempo</em>. Los recipientes de preparación y el cronograma
+        escrito — juntos, por debajo del precio de un solo gadget — reducen el riesgo de una cena más que
+        cualquier aparato. La contención y la programación son las restricciones, y ninguna compra arregla un
+        mal horario.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">05</span><h2>Desglose de técnica — correr una noche temática</h2></div>
+    <p>La "técnica" aquí es un procedimiento para <em>toda la comida</em>, no para un solo plato. Trabájala de
+      la misma manera cada vez y se vuelve rutina. Organizada por nivel, desde emplatar un plato caliente hasta
+      correr un menú completo para invitados.</p>
+
+    <div class="level-band"><span class="tag level--1"><b>N1</b> Funcional — emplatar un plato de dos componentes caliente, todo a la vez</span><span class="ln"></span></div>
+    <ol class="steps">
+      <li><b>Preparación.</b> Elige un plato con exactamente dos componentes calientes que deben llegar juntos — p. ej. proteína sellada + una salsa rápida de sartén, o pasta + salsa. Escribe cuál termina último (la pasta) y cuál puede aguantar caliente un minuto (la salsa). Ese ordenamiento <em>es</em> el plan.</li>
+      <li><b>Ejecución.</b> Pon a andar primero el recurso lento en calentarse (agua a hervir, sartén precalentándose). Calienta el plato. Empieza el componente que puede esperar, mantenlo caliente, luego dispara el componente que no puede esperar al final.</li>
+      <li><b>Evaluación.</b> ¿Llegaron ambos al plato calientes en el mismo momento, o uno se quedó enfriándose? Toca el plato de prueba — ¿estaba tibio? Si la comida se enfrió sobre el plato, el plato estaba frío.</li>
+      <li><b>Corrección.</b> En la próxima corrida, reordena para que el componente frágil sea absolutamente el último y el plato esté genuinamente tibio. Este es todo el módulo en miniatura: secuencia lo frágil al final, compra tiempo con un plato tibio.</li>
+    </ol>
+
+    <div class="level-band"><span class="tag level--2"><b>N2</b> Consistente — un cronograma escrito para un menú de 3 platos</span><span class="ln"></span></div>
+    <ol class="steps">
+      <li><b>Preparación — descomponer.</b> Escribe el menú completo, luego explota cada plato en componentes. Junto a cada uno, marca <b>MA</b> (preparable con antelación) o <b>ALM</b> (à la minute), su tiempo de espera, y si debe estar <em>caliente al servir</em>. Esta es la plantilla de planeación del panel de especificaciones del §07 — llénala de verdad.</li>
+      <li><b>Preparación — encontrar la ruta crítica.</b> Marca con un círculo el ítem de mayor tiempo de espera. Ese fija tu inicio. Marca con un círculo cada ítem caliente al servir; esas son tus operaciones finales y frágiles.</li>
+      <li><b>Preparación — trazar el cronograma hacia atrás.</b> Pon T₀ (hora de servir) a la derecha. Coloca cada tarea caliente al servir en los últimos 15–30 min, secuenciada para que no choquen dos en el horno, la sartén grande, o tus manos. Coloca las tareas preparables con antelación en los carriles de día −1 / mañana. Ahora tienes la Fig. M8.1 para tu propio menú.</li>
+      <li><b>Ejecución — haz primero todo lo de antelación.</b> El día anterior y la mañana de, despeja toda la lista MA. Para T−60 la cocina no debería tener más que componentes escalonados y equipo caliente.</li>
+      <li><b>Ejecución — corre el carril ALM.</b> Desde T−15, sigue el cronograma al pie de la letra. Pon temporizadores por canal. Prueba en cada punto de control. Emplata en platos tibios.</li>
+      <li><b>Evaluación y corrección.</b> Anota dónde te atrasaste o dos tareas chocaron. Ese choque es un error de programación — mueve una tarea más temprano la próxima vez. El cronograma es un documento vivo que depuras corrida tras corrida.</li>
+    </ol>
+
+    <div class="level-band"><span class="tag level--3"><b>N3</b> Optimización — paralelizar alrededor del cuello de botella</span><span class="ln"></span></div>
+    <ol class="steps">
+      <li><b>Preparación.</b> Mapea tus recursos compartidos explícitamente: horno (y su temperatura), sartén/hornilla más grande, y <em>tú</em>. Dibuja un carril por recurso, no por plato. Ahora los conflictos son visibles como superposiciones en un mismo carril.</li>
+      <li><b>Ejecución.</b> Resuelve los conflictos de temperatura del horno <em>agrupando por temperatura</em> — haz primero todo el horneado de alta temperatura, luego baja el horno, luego los ítems de menor temperatura — o sacando un ítem del horno por completo (estufa, mantener tibio). Nunca planees dos temperaturas de horno distintas para el mismo minuto.</li>
+      <li><b>Evaluación.</b> Cronometra tus últimos 20 minutos. Si tus manos son el cuello de botella (tres tareas necesitan atención a la vez), tienes un fallo de paralelización, no un problema de velocidad.</li>
+      <li><b>Corrección.</b> Empuja una de esas tres tareas antes hacia una espera (salsa mantenida tibia, proteína reposada un poco más, componente pre-cocido y recalentado). Protege la única tarea más frágil — usualmente la que debe estar crujiente o recién levantada — dándole tus últimos minutos sin dividir la atención.</li>
+    </ol>
+
+    <div class="level-band"><span class="tag level--4"><b>N4</b> Maestría — una noche temática completa para invitados de verdad</span><span class="ln"></span></div>
+    <ol class="steps">
+      <li><b>Preparación.</b> Diseña un menú coherente (ver los cuatro proyectos). La coherencia gana a la ambición: tres platos que puedas escalonar bien vencen a cinco que chocan. Ajusta el menú a tu horno, tus sartenes y tus dos manos — sácale del menú deliberadamente a cualquier cosa que compita por el mismo minuto final.</li>
+      <li><b>Ejecución.</b> Corre el cronograma completo planeado hacia atrás con los invitados presentes. Todo el punto: para cuando la gente llega, el servicio es ensamblaje y calor, así que puedes hablar con ellos en vez de entrar en pánico. Esa calma es el entregable.</li>
+      <li><b>Evaluación.</b> ¿Salió cada plato del pase caliente, sazonado, y en un plato tibio? ¿Estuviste presente, o con la cabeza agachada toda la noche? Una cena en la que nunca te sentaste es un fallo de programación, sin importar qué tan buena esté la comida.</li>
+      <li><b>Corrección.</b> Haz un debrief como una revisión de turno: qué harías con más antelación, qué sacarías del menú, dónde se desvió el cronograma. Incorpóralo de vuelta a la plantilla. Así es como un cocinero casero se vuelve confiable — no manos más rápidas, mejores planes.</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">06</span><h2>Errores de ejecución — resolución de problemas</h2></div>
+    <p>Estos son fallos del <em>sistema</em>, no de la técnica. Diagnostícalos a nivel del horario y los
+      recursos compartidos, porque ahí es donde realmente viven.</p>
+
+    <details class="trouble"><summary>Todo termina en un momento distinto <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Ningún plan hacia atrás — empezaste cada plato cuando el anterior se sentía "listo" en vez de programar cada componente contra un solo T₀.</dd>
+        <dt>Diagnosticar</dt><dd>Mira tu cronograma (inexistente). ¿Escribiste primero la hora de servir y colocaste las tareas hacia atrás desde ahí, o cocinaste hacia adelante y esperaste lo mejor?</dd>
+        <dt>Arreglo</dt><dd>Traza la Fig. M8.1 para tu menú <em>antes</em> de cocinar. Fija T₀, coloca los ítems calientes al servir en los últimos minutos, y trabaja hacia atrás cada otra tarea hasta una hora de inicio. La convergencia es un resultado de planeación, no suerte.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>La comida se enfría antes de llegar a la mesa <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Platos fríos, reposo/espera demasiado larga mientras un componente más lento se pone al día, o emplatar todos los platos y luego servir en secuencia.</dd>
+        <dt>Diagnosticar</dt><dd>Toca el plato cuando la comida llega — ¿frío? Y revisa: ¿la proteína reposó 12 minutos porque las guarniciones no estaban listas?</dd>
+        <dt>Arreglo</dt><dd>Calienta los platos en un horno de 60–70 °C. Reordena para que los ítems calientes al servir sean de verdad los últimos y nada frágil espere a algo lento. Emplata en el pase y lleva de inmediato.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>Caos en la cocina — estoy cortando y cocinando al mismo tiempo <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Mise en place incompleto. Una preparación que debió haberse hecho y guardado en recipiente horas antes está ocurriendo durante el servicio.</dd>
+        <dt>Diagnosticar</dt><dd>En T−15, ¿estaba ya cada componente picado, medido, y escalonado en su propio recipiente? Si estás buscando un cuchillo después de que la primera sartén ya está caliente, no.</dd>
+        <dt>Arreglo</dt><dd>Mueve todo el corte/medida/porcionado al bloque de antelación. Para T−60 la mesa de trabajo solo debe tener componentes escalonados. El servicio es ensamblaje, nunca preparación — todo el punto del módulo.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>Se pelean por el horno — dos platos necesitan temperaturas distintas <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Contención de recursos que no mapeaste. La pizza quiere 290 °C en el mismo momento que un soufflé quiere 180 °C.</dd>
+        <dt>Diagnosticar</dt><dd>Dibuja el horno como su propio carril. Dos bloques a temperaturas distintas superpuestos = el error.</dd>
+        <dt>Arreglo</dt><dd>Agrupa por temperatura (todo lo de alta temperatura, luego baja y haz lo de baja temperatura), mueve un ítem a la estufa, o sácalo del menú. Nunca programes dos temperaturas de horno en un mismo minuto — el horno es un solo recurso, lento para cambiar.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>El menú fue demasiado ambicioso — me quedé sin manos <span class="sig">Falla de diseño</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Demasiados componentes à la minute, calientes al servir, para un solo cocinero. Cinco platos que cada uno necesita atención final no se pueden paralelizar con dos manos.</dd>
+        <dt>Diagnosticar</dt><dd>Cuenta las tareas ALM/calientes al servir en los últimos 15 minutos. Más de unas tres que exigen atención simultánea es sobre-alcance.</dd>
+        <dt>Arreglo</dt><dd>Cambia componentes a antelación + recalentar, o saca un plato del menú. La coherencia gana a la ambición. Una noche tranquila de tres platos se lee como más "restaurante" que una caótica de cinco.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>El soufflé se colapsó <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Claras poco batidas (muy poco aire atrapado), sobre-mezcladas (desinflaste la espuma sacando el aire), engrasado desparejo así que no puede trepar, o abriste el horno y bajaste la temperatura.</dd>
+        <dt>Diagnosticar</dt><dd>Las claras deben sostener picos firmes pero no secos; al mezclar debe quedar aireado con vetas visibles justo desapareciendo; el borde debe estar engrasado parejo para que la mezcla se agarre y suba. Y sé honesto: ¿abriste la puerta a espiar?</dd>
+        <dt>Arreglo</dt><dd>Bate a picos firmes, mezcla en tercios con suavidad (sacrifica el primer tercio para aflojar, mezcla el resto solo hasta combinar), engrasa los ramequines parejo, abajo y hacia arriba por las paredes. Hornea sin interrupciones — la subida es vapor + aire en expansión, y una caída de temperatura la detiene. Sirve de inmediato; todo soufflé cae eventualmente, eso es física, no fracaso.</dd>
+      </dl></div></details>
+
+    <details class="trouble"><summary>El croissant filtró mantequilla y no tiene panal de abeja <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>La mantequilla se calentó demasiado y se derritió <em>dentro</em> de la masa en vez de quedarse como capas plásticas discretas, así que no hubo agua-en-mantequilla que evaporarse de golpe y esponjar las láminas. O las capas se rasgaron al estirar y se fusionaron.</dd>
+        <dt>Diagnosticar</dt><dd>Mantequilla acumulándose en el horno y una miga densa y como pan significan ambas que las capas se fusionaron. Si la masa se sentía grasosa y blanda al estirar, la mantequilla ya se había derretido.</dd>
+        <dt>Arreglo</dt><dd>El control de temperatura lo es todo: mantén la masa y la mantequilla frías y a la <em>misma</em> plasticidad (~15–18 °C), reposa en el refrigerador entre dobleces, y trabaja rápido. Todo el proceso de 2–3 días existe para mantener la mantequilla fría y en capas. Si tu cocina está caliente, lamina en sesiones cortas con enfriamientos largos entre medio.</dd>
+      </dl></div></details>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">07</span><h2>Experimentos controlados</h2></div>
+    <p>Cambia exactamente una variable — aquí la variable suele ser un <em>proceso</em>, no un ingrediente.
+      Así construyes confianza en la programación de la misma manera que construiste confianza en el calor y
+      la sal.</p>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E1 — cronograma vs sin cronograma</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Probar que un plan escrito hacia atrás, no la habilidad, es lo que logra que una comida de varios platos salga bien.</dd>
+        <dt>Mantener constante</dt><dd>Mismo menú de 3 platos, mismos ingredientes, misma cocina, mismo cocinero (tú), cocinado con una semana de diferencia.</dd>
+        <dt>Cambiar</dt><dd>Corre uno con un cronograma escrito hacia atrás (estilo Fig. M8.1); corre el otro de memoria, empezando los platos cuando cada uno "se siente" a punto.</dd>
+        <dt>Esperado</dt><dd>La corrida planeada termina con todo caliente en T₀ y tú en calma; la corrida sin plan tiene un plato frío, uno tarde, y tú corriendo en los últimos diez minutos.</dd>
+        <dt>Observar</dt><dd>Diferencia entre cuándo los platos estuvieron listos (minutos), temperatura del plato, tu nivel de estrés, cuántas veces te detuviste a preparar después de que el calor ya estaba encendido.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E2 — antelación vs à la minute</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Cuantificar cuánto reduce el riesgo del servicio empujar un componente a "hecho ayer".</dd>
+        <dt>Mantener constante</dt><dd>Mismo plato (p. ej. tacos con salsa, o ramen), misma receta, misma hora de servir.</dd>
+        <dt>Cambiar</dt><dd>Una corrida: haz la salsa/caldo fresco durante el servicio. Otra corrida: hazlo el día anterior, recalienta para servir.</dd>
+        <dt>Esperado</dt><dd>La corrida con antelación libera tus últimos minutos por completo y a menudo sabe <em>mejor</em> (una salsa reposada, un caldo que tuvo tiempo de fundirse); la corrida à la minute roba atención a los ítems calientes al servir.</dd>
+        <dt>Observar</dt><dd>Número de tareas activas en los últimos 15 min, momento del emplatado final, y sabor del componente hecho con antelación vs fresco (muchos mejoran de un día para otro).</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E3 — emplatar el mismo plato de dos formas</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Ver que el emplatado es una variable controlable — misma comida, lectura distinta.</dd>
+        <dt>Mantener constante</dt><dd>Porción idéntica del mismo plato terminado, dividida en dos.</dd>
+        <dt>Cambiar</dt><dd>Plato A: esparcido plano hasta el borde en un plato frío. Plato B: construido con altura, colocación deliberada de la salsa, una guarnición de contraste, espacio negativo, en un plato tibio.</dd>
+        <dt>Esperado</dt><dd>El Plato B se lee "restaurante" y se mantiene caliente 2–3 min más; el Plato A se lee "cafetería" y se enfría rápido. Mismos ingredientes, calidad percibida completamente distinta.</dd>
+        <dt>Observar</dt><dd>Calidad percibida (fotografía ambos, compara), temperatura del plato durante 5 min, y cuánto tiempo la comida se mantiene visiblemente caliente/humeante.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E4 — fritura única vs doble fritura (noche francesa)</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Probar el mecanismo de la fritura en dos etapas con tus propios ojos: cocción interior, luego crujiente exterior.</dd>
+        <dt>Mantener constante</dt><dd>Misma variedad de papa, mismo tamaño de corte, mismo aceite, misma intención de cocción total.</dd>
+        <dt>Cambiar</dt><dd>Lote A: una sola fritura a ~180 °C hasta dorar. Lote B: primera fritura a ~150 °C / 300 °F para cocinar por dentro y gelatinizar, enfriar, luego segunda fritura a ~185 °C / 365 °F para dar crujiente.</dd>
+        <dt>Esperado</dt><dd>Fritura única: o cruda por dentro o sobre-dorada por fuera. Doble fritura: interior esponjoso y cocido con una costra dura, vidriosa y duradera — porque los dos trabajos (cocinar vs dar crujiente) se separaron en dos temperaturas.</dd>
+        <dt>Observar</dt><dd>Textura interior, durabilidad de la costra (¿sigue crujiente después de 5 min?), uniformidad del color. Nota que esta es la misma lógica de "separar los trabajos" que programar una comida.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">08</span><h2>Sistema de práctica</h2></div>
+    <p>Ejercita la <em>orquestación</em>, no los platos — los platos ya los tienes dominados. Cada ejercicio
+      tiene un criterio de éxito claro medido en <em>tiempo y calma</em>, no solo sabor.</p>
+
+    <div class="spec">
+      <div class="spec-h">Plantilla de planeación de noche temática — reutilizar para cualquier menú</div>
+      <div class="spec-row"><span class="spec-key">Componente</span><span class="spec-val">Cada sub-parte de cada plato, listada exhaustivamente (no "tacos" → tortilla, relleno, salsa A, salsa B, encurtido, crema, limón)</span></div>
+      <div class="spec-row"><span class="spec-key">¿Con antelación?</span><span class="spec-val">MA (día −1 / mañana) o ALM (à la minute). Empuja todo lo que legítimamente puedas a MA.</span></div>
+      <div class="spec-row"><span class="spec-key">Tiempo de espera</span><span class="spec-val">Cuánto necesita de inicio a estar utilizable (p. ej. masa 24 h, fondo 6 h, laminado 2–3 días, mise 20 min)</span></div>
+      <div class="spec-row"><span class="spec-key">¿Caliente al servir?</span><span class="spec-val">Sí = debe estar en el carril ALM final, secuenciado contra horno/sartén/manos. No = se puede hacer con antelación y mantener.</span></div>
+      <div class="spec-row"><span class="spec-key">Recurso compartido</span><span class="spec-val">Horno (+ temperatura) / sartén grande / tus manos. Márcalo para poder detectar colisiones en la ventana final.</span></div>
+      <div class="spec-row"><span class="spec-key">Hora de inicio (desde T₀)</span><span class="spec-val">Calculada hacia atrás. El ítem marcado más temprano es tu ruta crítica y fija cuándo empieza el proyecto.</span></div>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Ejercicio de práctica · N1→N2</div>
+      <h4>Plato caliente de dos componentes</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Llevar dos componentes calientes (proteína + salsa, o pasta + salsa) a un plato tibio en el mismo minuto.</dd>
+        <dt>Dificultad</dt><dd>Principiante</dd>
+        <dt>Materiales</dt><dd>Cualquier plato de los Módulos 1–5 con dos partes calientes, un plato tibio.</dd>
+        <dt>Pasos</dt><dd>Escribe cuál termina último → calienta el plato → empieza la parte que puede esperar, mantenla caliente → dispara la parte frágil al final → emplata y toca el plato de prueba.</dd>
+        <dt>Éxito</dt><dd>Ambos calientes a la vez, plato tibio, nada se quedó enfriándose. No detenerse a preparar después de que el calor ya estaba encendido.</dd>
+        <dt>Modos de falla</dt><dd>Un componente frío (mal orden) · plato frío (la comida se enfría sobre él) · preparar a mitad de cocción (mise incompleto).</dd>
+        <dt>Mejorar</dt><dd>Reordena para que lo frágil sea absolutamente lo último; siempre calienta el plato. Este es todo el módulo comprimido.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Ejercicio de práctica · N2</div>
+      <h4>Descomponer un menú en papel</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Tomar cualquier menú de tres platos y llenar la plantilla de planeación por completo, luego trazar el cronograma hacia atrás.</dd>
+        <dt>Dificultad</dt><dd>Intermedio (sin cocinar — planeación pura)</dd>
+        <dt>Materiales</dt><dd>Papel, lapicero, la plantilla de arriba.</dd>
+        <dt>Pasos</dt><dd>Enumera cada componente → marca MA/ALM, tiempo de espera, caliente-al-servir, recurso compartido → marca con un círculo la ruta crítica → dibuja carriles y coloca las tareas hacia atrás desde T₀.</dd>
+        <dt>Éxito</dt><dd>Un cronograma sin dos tareas color brasa (calientes, frágiles) chocando en el mismo recurso, y una hora de inicio honesta.</dd>
+        <dt>Modos de falla</dt><dd>Componentes faltantes (sub-descompuesto) · todo marcado ALM (nada empujado hacia adelante) · colisiones de horno/manos no detectadas.</dd>
+        <dt>Mejorar</dt><dd>Haz esto para menús que <em>no</em> vas a cocinar, como ejercicio de programación puro. Repeticiones baratas, sin platos que lavar.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Ejercicio de práctica · N2→N3</div>
+      <h4>Preparar un componente con antelación el día anterior</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Sentir cuánta calma compra un solo componente hecho el día anterior, y probar que muchos mejoran de un día para otro.</dd>
+        <dt>Dificultad</dt><dd>Intermedio</dd>
+        <dt>Materiales</dt><dd>Un componente preparable con antelación (una salsa, un caldo, una salsa de tomate, una masa).</dd>
+        <dt>Pasos</dt><dd>Hazlo el día anterior, enfría y guarda correctamente → recalienta/termina en el servicio → compara tu carga de trabajo del último minuto con una línea base hecha fresca durante el servicio.</dd>
+        <dt>Éxito</dt><dd>Últimos 15 minutos notablemente más libres; el componente sabe igual o mejor que fresco.</dd>
+        <dt>Modos de falla</dt><dd>Guardado mal (sabores a refrigerador) · recalentado con demasiada fuerza (rompió una emulsión, redujo demasiado) · olvidaste contabilizar el tiempo de recalentado en el cronograma.</dd>
+        <dt>Mejorar</dt><dd>Construye una lista personal de componentes que "mejoran de un día para otro" — estos son tus ganadores permanentes de antelación.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Ejercicio de práctica · N3→N4</div>
+      <h4>Simulacro de servicio — disciplina de temporizadores</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Correr el carril ALM de un menú real hasta un T₀ fijo, siguiendo tres temporizadores a la vez sin llevar cuentas en la cabeza.</dd>
+        <dt>Dificultad</dt><dd>Avanzado</dd>
+        <dt>Materiales</dt><dd>Un cronograma trazado, temporizador multicanal, un menú real.</dd>
+        <dt>Pasos</dt><dd>Fija T₀ → arranca temporizadores por tarea caliente-al-servir → sigue el cronograma al pie de la letra → prueba en cada punto de control → emplata en platos tibios en T₀.</dd>
+        <dt>Éxito</dt><dd>Todos los platos calientes en T₀ dentro de una ventana de ±2 min; nunca adivinaste un punto de cocción ni una cuenta.</dd>
+        <dt>Modos de falla</dt><dd>Sobrecarga de temporizadores (no los canalizaste) · desvío del cronograma (te atrasaste y no te recuperaste) · una colisión que no previste.</dd>
+        <dt>Mejorar</dt><dd>Después de cada corrida, marca dónde se desvió el cronograma y mueve esa tarea más temprano. Depura el plan, no tus manos.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">09</span><h2>Proyectos — las cuatro noches temáticas</h2></div>
+    <p>Cada noche es un proyecto que somete a estrés a un conjunto distinto de módulos anteriores. Ordenados
+      por dificultad: mexicana e italiana son los puntos de entrada más accesibles; francesa — específicamente
+      el croissant — es lo más difícil de todo este manual. Hazlas en orden; cada una gana la siguiente.</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Noche</th><th>Módulos sometidos a estrés</th><th>Componente más difícil</th><th>Oportunidades de antelación</th></tr></thead>
+      <tbody>
+        <tr><td>Mexicana</td><td>Masa/tortilla (masa), Salsas (M3 ácido/emulsión), Proteína (M1 y M7)</td><td>Tortillas de nixtamal/masa prensadas delgadas e infladas</td><td>Salsas, cebolla encurtida, proteína guisada/marinada, crema — casi todo menos la prensa de tortillas</td></tr>
+        <tr><td>Italiana</td><td>Masa (M5), Salsa/emulsión (M3 — cacio e pepe, natilla de tiramisu)</td><td>Pizza en horno casero; pasta fresca estirada pareja y delgada</td><td>Masa de pizza de 24 h, salsa de tomate, tiramisu (cuajado durante la noche), masa de pasta (mañana)</td></tr>
+        <tr><td>Japonesa</td><td>Caldo/proteína/huevo (M1), Arroz (M2, omurice), ensamblaje y doblado de empanadillas</td><td>Ramen como convergencia de varios componentes; el omelette del omurice</td><td>Caldo, tare, chashu, huevos marinados, gyoza doblados (congelar crudos) — el ramen es 90% con antelación</td></tr>
+        <tr><td>Francesa</td><td>Bistec (M7), técnica de papa frita, espuma de huevo (soufflé), laminado (croissant)</td><td>Laminado del croissant — control de temperatura durante 2–3 días</td><td>Masa de croissant laminada durante días; papas primera-fritura con antelación; bistec atemperado — el soufflé es estrictamente à la minute</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Accesible — empieza aquí</div>
+      <h4>Noche mexicana — tortillas, salsas, tacos</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Un tendido de tacos: tortillas de masa fresca, dos salsas contrastantes (una cruda/brillante, una asada/profunda), una proteína, y guarniciones — ensambladas por los invitados. Casi todo se hace con antelación; solo las tortillas son calientes al servir.</dd>
+        <dt>Habilidades entrenadas</dt><dd>Manejo de masa/masa harina (masa harina nixtamalizada, prensado delgado, el inflado en el comal); salsa como equilibrio controlado de ácido + picante (M3); proteína de M1/M7 (un guiso o un corte sellado/a la parrilla). Sobre todo: mise en place — una barra de tacos es puro ensamblaje escalonado.</dd>
+        <dt>Resultado esperado</dt><dd>Tortillas que se inflan y se mantienen flexibles; dos salsas que saben distinto (acidez cruda vs profundidad asada); un servicio tranquilo donde prensas tortillas al pedido mientras todo lo demás está listo y esperando.</dd>
+        <dt>Evaluación</dt><dd>¿Se inflaron las tortillas (hidratación correcta + calor del comal)? ¿Contrastan las salsas? ¿Fueron tus últimos 15 minutos solo prensar tortillas y calentar proteína — es decir, hizo su trabajo la antelación?</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Accesible</div>
+      <h4>Noche italiana — pasta fresca, pizza, tiramisu</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Un arco de tres tiempos: pizza de una masa fermentada en frío por 24 h, un plato de pasta fresca con huevo, y tiramisu cuajado durante la noche. Este es el cronograma de la Fig. M8.1 — córrelo exactamente.</dd>
+        <dt>Habilidades entrenadas</dt><dd>Masa (M5): fermentación y gluten de la pizza, pasta fresca con huevo (harina + huevo, desarrollo del gluten, reposo, estirado delgado — se cocina en ~2 min). Salsa/emulsión (M3): salsa de tomate, y un cacio e pepe o la natilla del tiramisu. Programación de ruta crítica: la masa de 24 h fija tu inicio.</dd>
+        <dt>Resultado esperado</dt><dd>Una pizza con verdadero crecimiento de horno y tostado de un horno + acero al máximo; pasta cocida 2 minutos a un bocado limpio; tiramisu que ha cuajado pero no está tieso. Nada frío, porque la secuencia horno-luego-pasta evita la colisión.</dd>
+        <dt>Evaluación</dt><dd>¿Empezaste la masa un día completo antes (ruta crítica)? ¿Horneaste la pizza primero, luego herviste la pasta (sin colisión horno/agua)? ¿Se hizo el tiramisu ayer, fuera de la ruta crítica por completo?</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Intermedio</div>
+      <h4>Noche japonesa — ramen, omurice, gyoza</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Ramen como plato central: caldo, tare, fideos, y aderezos (chashu, huevo, aromáticos) hechos independientemente y convergiendo calientes en el tazón — el ejercicio de mise en place definitivo. Gyoza doblados con antelación (congelar crudos), y omurice como demostración del control del huevo (M1) sobre el arroz (M2).</dd>
+        <dt>Habilidades entrenadas</dt><dd>Caldo (largo, con antelación); control de proteína y huevo (M1 — huevo blando marinado, chashu); arroz (M2) y el omelette del omurice (un huevo apenas cuajado, enrollado o drapeado); doblado de empanadillas y la técnica de vapor-fritura. Convergencia de ensamblaje: calienta los tazones, ten cada componente caliente y listo, arma en ~90 segundos.</dd>
+        <dt>Resultado esperado</dt><dd>Un tazón que llega genuinamente caliente porque tazón, caldo y fideos convergieron en temperatura; gyoza con base crujiente y superficie al vapor; un omelette de omurice brillante, apenas cuajado.</dd>
+        <dt>Evaluación</dt><dd>¿Se ensambló el ramen, sin cocinarse, en el servicio (caldo/tare/aderezos todos pre-hechos)? ¿Se mantuvo caliente el tazón (precalentado + componentes hirviendo)? ¿Está el omelette apenas cuajado, no gomoso?</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Avanzado</div>
+      <h4>Noche francesa — steak frites y soufflé</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Steak frites más un soufflé: un bistec sellado (M7), papas en doble fritura, y un soufflé disparado à la minute. La prueba de programación — un bistec que debe reposar, papas que deben estar crujientes, y un soufflé que no puede esperar — todo convergiendo.</dd>
+        <dt>Habilidades entrenadas</dt><dd>Sellado y reposo del bistec (M7); técnica de doble fritura (primera fritura ~150 °C / 300 °F para cocinar y gelatinizar el interior, enfriar, segunda fritura ~185 °C / 365 °F para dar crujiente); el soufflé como espuma estabilizada de clara de huevo (batir a picos firmes, mezclar con suavidad, ramequín engrasado parejo, subida por vapor + aire en expansión, <em>no</em> abrir el horno). Manejar un reposo, una fritura, y un horneado contra un solo T₀.</dd>
+        <dt>Resultado esperado</dt><dd>Bistec reposado pero todavía caliente, papas con una costra vidriosa duradera, un soufflé que sube alto y se sirve al instante de salir del horno. Primera fritura de las papas con antelación; el soufflé es el único ítem estrictamente à la minute.</dd>
+        <dt>Evaluación</dt><dd>¿Se mantuvieron crujientes las papas (funcionó la doble fritura)? ¿Se mantuvo caliente el bistec a pesar del reposo (secuenciado, plato tibio)? ¿Subió el soufflé y llegó a la mesa antes de caer?</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Maestría — lo más difícil del manual</div>
+      <h4>Noche francesa, jefe final — croissants desde cero</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Croissants laminados durante 2–3 días: una détrempe (masa) que envuelve un beurrage (bloque de mantequilla), doblado y estirado en capas alternadas, fermentado, y horneado hasta un panal de abeja abierto. Esta es una lección de control de temperatura como proceso, repartida en días.</dd>
+        <dt>Habilidades entrenadas</dt><dd>Laminado: mantener la masa y la mantequilla a la misma plasticidad fría (~15–18 °C) para que la mantequilla se mantenga como capas discretas en vez de derretirse en la masa; el inflado viene del agua en la mantequilla evaporándose de golpe entre capas. Paciencia y la ruta crítica llevada a su extremo — este proyecto <em>es</em> su propio cronograma, medido en días, con los reposos en el refrigerador como la dependencia limitante.</dd>
+        <dt>Resultado esperado</dt><dd>Croissants con un exterior quebradizo y en capas, y un interior abierto con panal de abeja; sin mantequilla filtrándose en la bandeja (lo cual significaría que las capas se fusionaron).</dd>
+        <dt>Evaluación</dt><dd>¿Panal de abeja en la miga en el corte transversal? ¿Sin mantequilla acumulada en la bandeja (las capas se mantuvieron distintas)? Si filtró mantequilla o se horneó denso, diagnostícalo: la mantequilla se calentó demasiado y se derritió en la masa — un fallo de control de temperatura, no mala suerte.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">10</span><h2>Aprendizaje visual</h2></div>
+    <p>Entrena tu ojo en cómo se ve "restaurante" — en el emplatado y en los cortes transversales que
+      demuestran que una técnica funcionó.</p>
+
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>restaurant plating negative space fine dining</code>
+      <p style="margin:.4em 0 0">Busca: altura construida hacia arriba (no esparcida plana), colocación deliberada de la salsa, un punto de contraste de color/crujiente, y borde vacío. Ese espacio vacío es una decisión — se lee como intención.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>croissant lamination cross section honeycomb crumb</code>
+      <p style="margin:.4em 0 0">Busca: el panal de abeja abierto e irregular y capas distintas visibles. Denso o como pan = mantequilla derretida en la masa. Esta es tu imagen de pasa/no-pasa para el proyecto del croissant.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>ramen bowl components chashu egg noodles assembly</code>
+      <p style="margin:.4em 0 0">Busca: cómo cada componente se hace por separado y se coloca — caldo, tare, fideos, huevo marinado, chashu, aromáticos. El tazón es un diagrama de ensamblaje; nota qué poco pasa à la minute.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>souffle risen tall ramekin above rim</code>
+      <p style="margin:.4em 0 0">Busca: una subida pareja bien por encima del borde con un collar recto — eso es un ramequín engrasado parejo y un horneado sin interrupciones. Una parte superior torcida o hundida significa engrasado desparejo, poco batido, o un horno abierto.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>double fried french fries crust interior structure</code>
+      <p style="margin:.4em 0 0">Busca: un exterior vidrioso y ampollado y un interior esponjoso — el resultado visible de separar "cocinar el interior" (fritura baja) de "dar crujiente al exterior" (fritura alta).</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>professional kitchen mise en place station prep containers</code>
+      <p style="margin:.4em 0 0">Busca: cada componente en su propio recipiente etiquetado, dispuesto en orden de alcance. Así debería verse tu mesa de trabajo en T−60 — la forma física de un buen plan.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">11</span><h2>Recursos externos</h2></div>
+
+    <div class="resource"><span class="rm">Video · J. Kenji López-Alt</span>
+      <span class="rt">Buscar: "Kenji Lopez-Alt double fried french fries" y "Kenji ramen at home"</span>
+      <p>Por qué: cocina en primera persona centrada en el mecanismo — la doble fritura y el ensamblaje de ramen de varios componentes explicados como sistemas, exactamente tu estilo.</p></div>
+
+    <div class="resource"><span class="rm">Video · Adam Ragusea</span>
+      <span class="rt">Buscar: "Adam Ragusea pizza steel" y "Adam Ragusea dinner party planning"</span>
+      <p>Por qué: restricciones pragmáticas de cocina casera — pizza de horno casero y las realidades de cocinar varias cosas para invitados sin una línea profesional.</p></div>
+
+    <div class="resource"><span class="rm">Video · Chef Jean-Pierre</span>
+      <span class="rt">Buscar: "Chef Jean-Pierre souffle" y "Chef Jean-Pierre steak frites"</span>
+      <p>Por qué: técnica francesa clásica desmitificada — la espuma del soufflé y el bistec, con el porqué detrás de cada paso.</p></div>
+
+    <div class="resource"><span class="rm">Video · Way of Ramen</span>
+      <span class="rt">Buscar: "Way of Ramen broth tare noodles components"</span>
+      <p>Por qué: el ramen descompuesto en sus partes independientes hechas con antelación y su convergencia — el ejemplo trabajado más claro de programación de ensamblaje en este módulo.</p></div>
+
+    <div class="resource"><span class="rm">Video · Claire Saffitz</span>
+      <span class="rt">Buscar: "Claire Saffitz croissants from scratch" y "Claire Saffitz lamination"</span>
+      <p>Por qué: repostería paciente y precisa a lo largo de varios días — la disciplina de control de temperatura que hace o deshace el laminado, mostrada en su escala real de tiempo.</p></div>
+
+    <div class="resource"><span class="rm">Libro · Principios</span>
+      <span class="rt">Ratio — Michael Ruhlman</span>
+      <p>Por qué: masas, natillas y batidos como proporciones que puedes interiorizar e improvisar — la pasta, la natilla del tiramisu, la base del soufflé, y la masa del croissant se vuelven variaciones de un tema en vez de recetas para memorizar.</p></div>
+
+    <div class="resource"><span class="rm">Libro · Referencia</span>
+      <span class="rt">Salt, Fat, Acid, Heat — Samin Nosrat</span>
+      <p>Por qué: el marco para equilibrar un menú entero — úsalo para hacer que las salsas contrasten, las salsas canten, y los tiempos cohesionen en vez de ajustar los platos aisladamente.</p></div>
+
+    <div class="resource"><span class="rm">Libro · Aspiración</span>
+      <span class="rt">The French Laundry Cookbook — Thomas Keller</span>
+      <p>Por qué: no para cocinar de él esta noche, sino para estudiar cómo un restaurante descompone un plato en componentes de antelación y un acabado à la minute preciso. Léelo como un documento de sistemas sobre el mise en place y el pase.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">12</span><h2>Evaluación</h2></div>
+
+    <div class="callout callout--why"><span class="lbl">Verificación de conocimiento — comprensión, no memoria</span>
+      <p>Responde con tus propias palabras. Si puedes, dominas la orquestación, no solo los platos:</p></div>
+    <ol class="steps">
+      <li><b>P.</b> Dado un menú de 3 platos — una masa de pizza de 24 h, una ensalada, y un bistec — ¿qué ítem dicta cuándo debes <em>empezar</em>, y por qué? ¿Cuáles ítems son calientes al servir, y cómo eso restringe los últimos 15 minutos?</li>
+      <li><b>P.</b> Tu bistec, papas fritas, y soufflé necesitan converger en T₀ en un horno y un par de manos. Identifica los conflictos de recursos y describe una secuencia que los resuelva. ¿Qué harías con antelación?</li>
+      <li><b>P.</b> El ramen se "ensambla, no se cocina" en el servicio. Explica qué significa eso y por qué hace que el ramen — a pesar de su reputación — sea una de las noches <em>más tranquilas</em> para correr con invitados.</li>
+      <li><b>P.</b> Un soufflé se colapsó y un croissant filtró mantequilla la misma noche. Diagnostica cada uno a nivel de mecanismo, y nombra la única variable más responsable en cada caso.</li>
+      <li><b>P.</b> Tu cena "terminó en momentos distintos". Replantea esto como un error de programación en vez de un problema de habilidad culinaria: ¿qué artefacto faltaba, y cómo habría prevenido el fallo?</li>
+    </ol>
+
+    <div class="callout callout--pro"><span class="lbl">Reto práctico — organiza una noche temática para gente de verdad</span>
+      <p>Elige una de las cuatro noches (empieza con mexicana o italiana). Diseña el menú, llena la plantilla
+        de planeación, y traza el cronograma hacia atrás. Haz <em>todo</em> lo de antelación el día anterior y
+        la mañana de. Luego recibe invitados de verdad — y mide el éxito no solo por la comida, sino por si
+        estuviste <em>presente</em>: ¿pudiste sentarte, servirte una bebida, y conversar, porque el servicio
+        fue ensamblaje y calor en vez de improvisación? Una noche temática en la que nunca te alejaste de la
+        estufa es un fallo de programación, sin importar qué tan buenos estén los platos.</p></div>
+
+    <div class="callout callout--heat"><span class="lbl">Reflexión</span>
+      <p>¿Dónde se desvió tu cronograma, y fue un fallo de técnica o un fallo de <em>planeación</em>? Casi
+        siempre es lo segundo — algo que debió haberse hecho con antelación no se hizo, o dos tareas calientes
+        chocaron en un recurso. ¿Qué único cambio de programación (un componente más empujado al día −1, un
+        plato sacado del menú, el horno agrupado por temperatura) eliminó más caos? Ese es el punto de
+        palanca. Anótalo — así es como la próxima noche se vuelve más tranquila sin que tus manos se vuelvan
+        más rápidas.</p></div>
+
+    <div class="callout callout--why"><span class="lbl">Cierre — todo el manual, terminado</span>
+      <p>Empezaste en la Fase 0 tratando un cuchillo desafilado como ruido en un sistema de control. Terminas
+        aquí tratando una cena de cuatro tiempos de la misma manera: un sistema con entradas, restricciones,
+        plazos, y un programador que diseñas en papel antes de encender la primera sartén. Nada en este
+        módulo fue una técnica nueva — cada actuador ya estaba en tus manos. Lo que cambió es que ahora
+        cocinas de la manera en que siempre entendiste el buen espresso: lee el sistema completo, precalcula
+        lo que puedas, controla las variables que importan, y trata cada fallo como datos. Ingeniero primero,
+        artesano segundo. La comida nunca fue lo difícil; el plan lo era — y ahora tú construyes el plan. Así
+        que cocina porque <em>quieres</em>, no porque necesitas comer. Ese fue el punto desde el principio.</p></div>
+  </section>
+
+  <nav class="pager">
+    <a class="prev" href="#m7"><span class="d">Anterior</span>Carne y Fuego</a>
+    <a class="next" href="#home"><span class="d">Siguiente</span>Volver al temario</a>
+  </nav>
+</section>
