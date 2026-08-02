@@ -1,23 +1,23 @@
 <div class="tool" id="bp-tool-es">
   <div class="card" style="max-width:720px">
-    <div class="spec-h" style="margin:-18px -20px 18px;border-radius:3px 3px 0 0">Baker's percentage · dough calculator</div>
+    <div class="spec-h" style="margin:-18px -20px 18px;border-radius:3px 3px 0 0">Porcentaje del panadero · calculadora de masa</div>
 
-    <div role="group" aria-label="Calculation mode" style="display:flex;gap:8px;margin-bottom:20px">
-      <button type="button" id="bp-mode-flour-es" class="tag" aria-pressed="false" style="cursor:pointer;padding:8px 14px;font-size:12px">By flour weight</button>
-      <button type="button" id="bp-mode-balls-es" class="tag ember" aria-pressed="true" style="cursor:pointer;padding:8px 14px;font-size:12px">By dough balls</button>
+    <div role="group" aria-label="Modo de cálculo" style="display:flex;gap:8px;margin-bottom:20px">
+      <button type="button" id="bp-mode-flour-es" class="tag" aria-pressed="false" style="cursor:pointer;padding:8px 14px;font-size:12px">Por peso de harina</button>
+      <button type="button" id="bp-mode-balls-es" class="tag ember" aria-pressed="true" style="cursor:pointer;padding:8px 14px;font-size:12px">Por bolas de masa</button>
     </div>
 
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
       <button type="button" id="bp-preset-pizza-es" class="tag" style="cursor:pointer">Pizza 63%</button>
       <button type="button" id="bp-preset-ciabatta-es" class="tag" style="cursor:pointer">Ciabatta 80%</button>
-      <button type="button" id="bp-preset-sandwich-es" class="tag" style="cursor:pointer">Sandwich 60%</button>
+      <button type="button" id="bp-preset-sandwich-es" class="tag" style="cursor:pointer">Sándwich 60%</button>
       <button type="button" id="bp-preset-focaccia-es" class="tag" style="cursor:pointer">Focaccia 78%</button>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:6px">
       <div id="bp-group-flour-es" style="display:none">
         <label for="bp-flour-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
-          Flour (g)
+          Harina (g)
           <input type="number" id="bp-flour-es" value="500" min="0" step="1" inputmode="decimal"
             style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
         </label>
@@ -25,29 +25,29 @@
 
       <div id="bp-group-balls-es" style="display:contents">
         <label for="bp-balls-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
-          Balls
+          Bolas
           <input type="number" id="bp-balls-es" value="4" min="0" step="1" inputmode="decimal"
             style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
         </label>
         <label for="bp-grams-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
-          Grams / ball
+          Gramos / bola
           <input type="number" id="bp-grams-es" value="250" min="0" step="1" inputmode="decimal"
             style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
         </label>
       </div>
 
       <label for="bp-hydration-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
-        Hydration %
+        Hidratación %
         <input type="number" id="bp-hydration-es" value="63" min="0" step="0.1" inputmode="decimal"
           style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
       </label>
       <label for="bp-salt-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
-        Salt %
+        Sal %
         <input type="number" id="bp-salt-es" value="2.8" min="0" step="0.1" inputmode="decimal"
           style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
       </label>
       <label for="bp-yeast-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
-        Yeast % <span style="text-transform:none;opacity:.7">(instant dry)</span>
+        Levadura % <span style="text-transform:none;opacity:.7">(seca instantánea)</span>
         <input type="number" id="bp-yeast-es" value="0.4" min="0" step="0.05" inputmode="decimal"
           style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
       </label>
@@ -58,13 +58,13 @@
     <div class="table-wrap" style="margin:22px 0 14px">
       <table>
         <thead>
-          <tr><th>Ingredient</th><th class="num">Baker's %</th><th class="num">Grams</th></tr>
+          <tr><th>Ingrediente</th><th class="num">% del panadero</th><th class="num">Gramos</th></tr>
         </thead>
         <tbody>
-          <tr><td>Flour</td><td class="num" id="bp-out-flour-pct-es">—</td><td class="num" id="bp-out-flour-g-es">—</td></tr>
-          <tr><td>Water</td><td class="num" id="bp-out-water-pct-es">—</td><td class="num" id="bp-out-water-g-es">—</td></tr>
-          <tr><td>Salt</td><td class="num" id="bp-out-salt-pct-es">—</td><td class="num" id="bp-out-salt-g-es">—</td></tr>
-          <tr><td>Yeast</td><td class="num" id="bp-out-yeast-pct-es">—</td><td class="num" id="bp-out-yeast-g-es">—</td></tr>
+          <tr><td>Harina</td><td class="num" id="bp-out-flour-pct-es">—</td><td class="num" id="bp-out-flour-g-es">—</td></tr>
+          <tr><td>Agua</td><td class="num" id="bp-out-water-pct-es">—</td><td class="num" id="bp-out-water-g-es">—</td></tr>
+          <tr><td>Sal</td><td class="num" id="bp-out-salt-pct-es">—</td><td class="num" id="bp-out-salt-g-es">—</td></tr>
+          <tr><td>Levadura</td><td class="num" id="bp-out-yeast-pct-es">—</td><td class="num" id="bp-out-yeast-g-es">—</td></tr>
           <tr><td><b>Total</b></td><td class="num" id="bp-out-total-pct-es">—</td><td class="num" id="bp-out-total-g-es">—</td></tr>
         </tbody>
       </table>
@@ -73,8 +73,8 @@
     <span class="tag ember" id="bp-summary-es">—</span>
 
     <div class="callout callout--why" style="margin-top:20px">
-      <span class="lbl">Why it works</span>
-      <p>Retard this dough 24–72 h in the fridge (2–4 °C / 36–39 °F) and slow yeast + bacterial activity has time to break starches into more sugar and produce more organic acids and aromatic byproducts, deepening flavour and improving browning versus a same-day rise. Keep salt at roughly 2% of flour weight and never omit it — it throttles yeast to a controllable pace and tightens gluten strands, so the dough ferments evenly and holds structure instead of slackening.</p>
+      <span class="lbl">Por qué funciona</span>
+      <p>Fermentá esta masa en frío 24–72 h en la heladera (2–4 °C / 36–39 °F) y la actividad lenta de levaduras y bacterias tiene tiempo de descomponer los almidones en más azúcar y producir más ácidos orgánicos y compuestos aromáticos, profundizando el sabor y mejorando el dorado frente a un leudado del mismo día. Mantené la sal en aproximadamente 2% del peso de la harina y nunca la omitas — regula la levadura a un ritmo controlable y tensa las hebras de gluten, así la masa fermenta pareja y mantiene la estructura en vez de aflojarse.</p>
     </div>
   </div>
 </div>
@@ -173,11 +173,11 @@
     outTotalG.textContent = fmtG(total);
 
     summary.textContent = valid
-      ? ('Total dough ' + fmtG(total) + ' · Hydration ' + fmtPct(hyd))
-      : 'Enter valid numbers to calculate';
+      ? ('Masa total ' + fmtG(total) + ' · Hidratación ' + fmtPct(hyd))
+      : 'Ingresá números válidos para calcular';
 
     if(mode === 'balls'){
-      perBallNote.textContent = isFinite(perBall) ? ('≈ ' + fmtG(perBall) + ' flour per ball') : '';
+      perBallNote.textContent = isFinite(perBall) ? ('≈ ' + fmtG(perBall) + ' de harina por bola') : '';
     } else {
       perBallNote.textContent = '';
     }

@@ -1,49 +1,50 @@
 <div class="tool" id="td-tool-es">
   <div class="card" style="max-width:760px;margin:0 auto">
-    <h3 style="margin-bottom:10px">Doneness &amp; carryover</h3>
+    <h3 style="margin-bottom:10px">Punto de cocción y cocción residual</h3>
     <p style="font-family:var(--f-body);color:var(--ink-soft);font-size:15.5px;margin-bottom:20px">
-      Meat responds to <em>internal</em> temperature, not the number on the dial — and it keeps cooking for
-      several minutes after you pull it off heat as residual heat migrates inward from the hotter outer layers.
-      That rise is <b>carryover</b>: pull below your target by the carryover offset, and the center drifts up
-      to meet it while it rests.
+      La carne responde a la temperatura <em>interna</em>, no al número de la perilla — y sigue cocinándose
+      varios minutos después de sacarla del fuego, mientras el calor residual migra hacia adentro desde las
+      capas exteriores más calientes. Ese aumento es la <b>cocción residual</b>: retirá por debajo de tu objetivo
+      según el ajuste, y el centro sube para alcanzarlo mientras reposa.
     </p>
 
     <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;margin-bottom:6px">
       <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);flex:1;min-width:190px">
-        Cut
+        Corte
         <select id="td-cut-es" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13px"></select>
       </label>
       <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);flex:1;min-width:190px">
-        Doneness
+        Punto de cocción
         <select id="td-level-es" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13px"></select>
       </label>
       <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);flex:1;min-width:190px">
-        Thickness
+        Grosor
         <select id="td-thickness-es" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13px">
-          <option value="thin">Thin (&lt;2cm)</option>
-          <option value="medium" selected>Medium (2–4cm)</option>
-          <option value="thick">Thick (&gt;4cm)</option>
+          <option value="thin">Delgado (&lt;2cm)</option>
+          <option value="medium" selected>Medio (2–4cm)</option>
+          <option value="thick">Grueso (&gt;4cm)</option>
         </select>
       </label>
     </div>
 
     <div id="td-crit-note-es" style="display:none;border-left:3px solid var(--crit);background:color-mix(in srgb,var(--crit) 8%,var(--panel));border-radius:0 3px 3px 0;padding:12px 16px;margin:18px 0;font-size:14.5px;color:var(--ink)">
-      <span style="font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--crit);display:block;margin-bottom:4px">Safety — not negotiable</span>
-      Ground meat is contaminated throughout its mass by grinding, not just on the surface — searing the outside
-      does not make the center safe. 71°C/160°F is a required minimum, not a target to hover near. Rare burgers
-      are only safe if you grind whole-muscle meat fresh yourself and control the process.
+      <span style="font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--crit);display:block;margin-bottom:4px">Seguridad — no negociable</span>
+      La carne molida está contaminada en toda su masa por el molido, no solo en la superficie — sellar el
+      exterior no vuelve seguro el centro. 71°C/160°F es un mínimo obligatorio, no un objetivo al que rondar.
+      Las hamburguesas poco cocidas solo son seguras si molés carne de músculo entero fresca vos mismo y
+      controlás el proceso.
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:22px 0 8px">
       <div class="spec" style="margin:0">
-        <div class="spec-h">Pull at</div>
+        <div class="spec-h">Retira a</div>
         <div style="padding:16px 18px">
           <div id="td-pull-c-es" class="mono num" style="font-size:36px;font-weight:700;color:var(--probe);line-height:1.1">--°C</div>
           <div id="td-pull-f-es" class="mono num" style="font-size:18px;color:var(--ink-soft);margin-top:2px">--°F</div>
         </div>
       </div>
       <div class="spec" style="margin:0">
-        <div class="spec-h">Target / rest to</div>
+        <div class="spec-h">Objetivo / reposar a</div>
         <div style="padding:16px 18px">
           <div id="td-target-c-es" class="mono num" style="font-size:36px;font-weight:700;color:var(--ember);line-height:1.1">--°C</div>
           <div id="td-target-f-es" class="mono num" style="font-size:18px;color:var(--ink-soft);margin-top:2px">--°F</div>
@@ -54,24 +55,25 @@
     <p id="td-note-es" style="font-size:14.5px;color:var(--ink-soft);margin-bottom:22px"></p>
 
     <div class="callout callout--heat">
-      <span class="lbl">Why carryover happens</span>
-      <p>The center of a piece of meat is always cooler than its surface while it's on heat; once removed, heat
-      keeps conducting inward from the hot exterior toward the cooler core until they equalize. Bigger, thicker,
-      denser cuts store more residual heat and have farther to conduct it, so they carry over more and for longer
-      — a thick roast can climb 5°C/9°F or more, a thin cutlet barely 1–2°C/2–4°F.</p>
+      <span class="lbl">Por qué ocurre la cocción residual</span>
+      <p>El centro de un trozo de carne siempre está más frío que su superficie mientras está en el fuego;
+      una vez retirado, el calor sigue conduciéndose hacia adentro desde el exterior caliente hacia el núcleo
+      más frío hasta igualarse. Los cortes más grandes, gruesos y densos almacenan más calor residual y tienen
+      que conducirlo más lejos, así que la cocción residual es mayor y más larga — un asado grueso puede subir
+      5°C/9°F o más, una chuleta fina apenas 1–2°C/2–4°F.</p>
     </div>
 
     <div class="spec" id="td-ref-es">
-      <div class="spec-h">Reference — target (rest-to) internal temperatures</div>
-      <div class="spec-row"><span class="spec-key">Beef / lamb steak</span><span class="spec-val">Rare 52°C/125°F · Medium-rare 54°C/130°F · Medium 60°C/140°F · Medium-well 65°C/150°F · Well 71°C/160°F</span></div>
-      <div class="spec-row"><span class="spec-key">Chicken breast</span><span class="spec-val">74°C/165°F instant-safe <span class="tag probe" style="margin-left:4px">advanced</span> 65°C/150°F held ≥3 min</span></div>
-      <div class="spec-row"><span class="spec-key">Chicken thigh</span><span class="spec-val">82°C/180°F (range 74–88°C / 165–190°F) — forgiving, collagen must render</span></div>
-      <div class="spec-row"><span class="spec-key">Pork chop / loin</span><span class="spec-val">63°C/145°F, then rest — medium, slightly pink</span></div>
-      <div class="spec-row"><span class="spec-key">Burger / ground beef</span><span class="spec-val"><span class="tag ember">required</span> 71°C/160°F — not negotiable, ground meat is contaminated throughout</span></div>
-      <div class="spec-row"><span class="spec-key">Ground poultry</span><span class="spec-val">74°C/165°F</span></div>
-      <div class="spec-row"><span class="spec-key">Salmon</span><span class="spec-val">52°C/125°F medium/buttery — 60°C/140°F firm</span></div>
-      <div class="spec-row"><span class="spec-key">White flaky fish</span><span class="spec-val">60–63°C/140–145°F</span></div>
-      <div class="spec-row"><span class="spec-key">Carryover offset</span><span class="spec-val">Thin +2°C/4°F · Medium +3°C/5°F (default) · Thick +5°C/9°F</span></div>
+      <div class="spec-h">Referencia — temperaturas internas objetivo (a las que reposar)</div>
+      <div class="spec-row"><span class="spec-key">Bife de res / cordero</span><span class="spec-val">Rojo 52°C/125°F · Medio-rojo 54°C/130°F · Término medio 60°C/140°F · Tres cuartos 65°C/150°F · Bien cocido 71°C/160°F</span></div>
+      <div class="spec-row"><span class="spec-key">Pechuga de pollo</span><span class="spec-val">74°C/165°F seguro al instante <span class="tag probe" style="margin-left:4px">avanzado</span> 65°C/150°F mantenido ≥3 min</span></div>
+      <div class="spec-row"><span class="spec-key">Muslo de pollo</span><span class="spec-val">82°C/180°F (rango 74–88°C / 165–190°F) — tolerante, el colágeno debe fundirse</span></div>
+      <div class="spec-row"><span class="spec-key">Chuleta / lomo de cerdo</span><span class="spec-val">63°C/145°F, luego reposar — término medio, algo rosado</span></div>
+      <div class="spec-row"><span class="spec-key">Hamburguesa / carne molida</span><span class="spec-val"><span class="tag ember">obligatorio</span> 71°C/160°F — no negociable, la carne molida está contaminada en toda su masa</span></div>
+      <div class="spec-row"><span class="spec-key">Ave molida</span><span class="spec-val">74°C/165°F</span></div>
+      <div class="spec-row"><span class="spec-key">Salmón</span><span class="spec-val">52°C/125°F término medio/mantecoso — 60°C/140°F firme</span></div>
+      <div class="spec-row"><span class="spec-key">Pescado blanco en hojuelas</span><span class="spec-val">60–63°C/140–145°F</span></div>
+      <div class="spec-row"><span class="spec-key">Ajuste de cocción residual</span><span class="spec-val">Delgado +2°C/4°F · Medio +3°C/5°F (predeterminado) · Grueso +5°C/9°F</span></div>
     </div>
   </div>
 </div>
@@ -80,60 +82,60 @@
   "use strict";
 
   var CUTS = [
-    { id:"steak", label:"Beef / lamb steak (whole muscle)",
-      note:"Whole-muscle beef and lamb are sterile inside — doneness here is purely a texture choice, not a safety threshold.",
+    { id:"steak", label:"Bife de res / cordero (músculo entero)",
+      note:"La res y el cordero de músculo entero son estériles por dentro — el punto de cocción acá es puramente una elección de textura, no un umbral de seguridad.",
       levels:[
-        { id:"rare",   label:"Rare",         c:52, f:125 },
-        { id:"mrare",  label:"Medium-rare",  c:54, f:130 },
-        { id:"medium", label:"Medium",       c:60, f:140 },
-        { id:"mwell",  label:"Medium-well",  c:65, f:150 },
-        { id:"well",   label:"Well",         c:71, f:160 }
+        { id:"rare",   label:"Rojo",          c:52, f:125 },
+        { id:"mrare",  label:"Medio-rojo",    c:54, f:130 },
+        { id:"medium", label:"Término medio", c:60, f:140 },
+        { id:"mwell",  label:"Tres cuartos",  c:65, f:150 },
+        { id:"well",   label:"Bien cocido",   c:71, f:160 }
       ]
     },
-    { id:"chicken_breast", label:"Chicken breast",
-      note:"74°C/165°F is instant-safe. Pulling to 65°C/150°F and holding at or above that temperature for at least 3 minutes is equally safe via time-at-temperature pasteurization, and noticeably juicier — an advanced technique that requires a reliable probe.",
+    { id:"chicken_breast", label:"Pechuga de pollo",
+      note:"74°C/165°F es seguro al instante. Retirar a 65°C/150°F y mantener a esa temperatura o más por al menos 3 minutos es igual de seguro por pasteurización tiempo-temperatura, y notablemente más jugoso — una técnica avanzada que requiere un termómetro confiable.",
       levels:[
-        { id:"safe",  label:"Standard (instant-safe)", c:74, f:165 },
-        { id:"juicy", label:"Juicier — advanced, hold ≥3 min", c:65, f:150, advanced:true }
+        { id:"safe",  label:"Estándar (seguro al instante)", c:74, f:165 },
+        { id:"juicy", label:"Más jugoso — avanzado, mantené ≥3 min", c:65, f:150, advanced:true }
       ]
     },
-    { id:"chicken_thigh", label:"Chicken thigh",
-      note:"Range 74–88°C/165–190°F is acceptable — thigh is forgiving because its connective tissue needs to render, and its higher fat content resists drying out even well past the minimum.",
-      levels:[ { id:"thigh", label:"Rendered (collagen melted)", c:82, f:180 } ]
+    { id:"chicken_thigh", label:"Muslo de pollo",
+      note:"El rango 74–88°C/165–190°F es aceptable — el muslo es tolerante porque su tejido conectivo necesita fundirse, y su mayor contenido de grasa resiste secarse incluso bastante más allá del mínimo.",
+      levels:[ { id:"thigh", label:"Fundido (colágeno derretido)", c:82, f:180 } ]
     },
-    { id:"pork", label:"Pork chop / loin",
-      note:"63°C/145°F then rest is the modern safe target — medium, still slightly pink at the center.",
-      levels:[ { id:"pork", label:"Medium, slightly pink", c:63, f:145 } ]
+    { id:"pork", label:"Chuleta / lomo de cerdo",
+      note:"63°C/145°F y luego reposar es el objetivo seguro moderno — término medio, aún algo rosado en el centro.",
+      levels:[ { id:"pork", label:"Término medio, algo rosado", c:63, f:145 } ]
     },
-    { id:"burger", label:"Burger / ground beef",
-      note:"71°C/160°F is a required minimum, not a target to approach — see the note above.",
+    { id:"burger", label:"Hamburguesa / carne molida",
+      note:"71°C/160°F es un mínimo obligatorio, no un objetivo al que acercarse — mirá la nota de arriba.",
       crit:true,
-      levels:[ { id:"burger", label:"Required minimum", c:71, f:160 } ]
+      levels:[ { id:"burger", label:"Mínimo obligatorio", c:71, f:160 } ]
     },
-    { id:"ground_poultry", label:"Ground poultry",
-      note:"74°C/165°F — grinding distributes surface bacteria through the whole mass, same logic as ground beef.",
-      levels:[ { id:"gp", label:"Required minimum", c:74, f:165 } ]
+    { id:"ground_poultry", label:"Ave molida",
+      note:"74°C/165°F — moler distribuye las bacterias de la superficie por toda la masa, la misma lógica que la carne molida de res.",
+      levels:[ { id:"gp", label:"Mínimo obligatorio", c:74, f:165 } ]
     },
-    { id:"salmon", label:"Salmon",
-      note:"Below 52°C/125°F the texture is essentially raw/sushi-grade; above 60°C/140°F it turns chalky and starts weeping albumin.",
+    { id:"salmon", label:"Salmón",
+      note:"Por debajo de 52°C/125°F la textura es esencialmente cruda/nivel sushi; por encima de 60°C/140°F se vuelve calcárea y empieza a soltar albúmina.",
       levels:[
-        { id:"med",  label:"Medium, buttery", c:52, f:125 },
-        { id:"firm", label:"Firm",            c:60, f:140 }
+        { id:"med",  label:"Término medio, mantecoso", c:52, f:125 },
+        { id:"firm", label:"Firme",                    c:60, f:140 }
       ]
     },
-    { id:"white_fish", label:"White flaky fish (cod, etc.)",
-      note:"Lean white fish has a narrow window — it goes from underdone to dry/flaky-mush within a few degrees.",
+    { id:"white_fish", label:"Pescado blanco en hojuelas (bacalao, etc.)",
+      note:"El pescado blanco magro tiene una ventana estrecha — pasa de crudo a seco/deshecho en pocos grados.",
       levels:[
-        { id:"lo", label:"Lower end", c:60, f:140 },
-        { id:"hi", label:"Upper end", c:63, f:145 }
+        { id:"lo", label:"Extremo bajo", c:60, f:140 },
+        { id:"hi", label:"Extremo alto", c:63, f:145 }
       ]
     }
   ];
 
   var THICKNESS = {
-    thin:   { label:"thin",   c:2, f:4 },
-    medium: { label:"medium", c:3, f:5 },
-    thick:  { label:"thick",  c:5, f:9 }
+    thin:   { label:"delgado", c:2, f:4 },
+    medium: { label:"medio",   c:3, f:5 },
+    thick:  { label:"grueso",  c:5, f:9 }
   };
 
   var root = document.getElementById("td-tool-es");
@@ -175,7 +177,7 @@
     var levels = (cut && cut.levels) ? cut.levels : [];
     if (!levels.length){
       var opt = document.createElement("option");
-      opt.textContent = "(no doneness options)";
+      opt.textContent = "(sin opciones de cocción)";
       levelSel.appendChild(opt);
       levelSel.disabled = true;
       return;
@@ -219,8 +221,8 @@
     targetF.textContent = fmt(level.f) + "°F";
 
     var parts = [];
-    parts.push("Pull " + off.label + "-cut carryover: " + off.c + "°C / " + off.f + "°F below target.");
-    if (level.advanced) parts.push("Advanced hold-time technique — verify with a reliable probe.");
+    parts.push("Cocción residual (corte " + off.label + "): retirá " + off.c + "°C / " + off.f + "°F por debajo del objetivo.");
+    if (level.advanced) parts.push("Técnica avanzada de mantener temperatura — verificá con un termómetro confiable.");
     if (level.note) parts.push(level.note);
     else if (cut.note) parts.push(cut.note);
     noteEl.textContent = parts.join(" ");

@@ -80,11 +80,19 @@ hub_es = os.path.join(parts, "hub_es.html")
 if os.path.exists(hub_es):
     sections.append(normalize(read(hub_es), "home", "es").rstrip())
 
-# tools (single bilingual section; EN calculators shared for now)
+# tools (single bilingual section; EN + ES calculator twins toggled by .only-en/.only-es)
+tools_es = os.path.join(BUILD, "tools_es")
 tools_head = normalize(read(os.path.join(parts,"tools_head.html")), "tools", None).rstrip()
 tools_tail = read(os.path.join(parts,"tools_tail.html")).rstrip()
-widgets = "\n".join(read(os.path.join(tools, t + ".html")).rstrip() for t in TOOLS)
-sections.append(tools_head + "\n" + widgets + "\n" + tools_tail)
+wparts = []
+for t in TOOLS:
+    en = read(os.path.join(tools, t + ".html")).rstrip()
+    wparts.append('<div class="only-en">\n' + en + '\n</div>')
+    esp = os.path.join(tools_es, t + ".html")
+    if os.path.exists(esp):
+        scan(esp, t+"[es]")
+        wparts.append('<div class="only-es">\n' + read(esp).rstrip() + '\n</div>')
+sections.append(tools_head + "\n" + "\n".join(wparts) + "\n" + tools_tail)
 
 # lessons (EN + ES twins)
 for name, page in LESSONS:

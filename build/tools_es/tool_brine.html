@@ -1,27 +1,27 @@
 <div class="tool" id="br-tool-es">
   <div class="card" style="max-width:640px">
-    <div class="spec-h" style="margin:-18px -20px 18px;">Brine &amp; Ferment Salt Calculator</div>
+    <div class="spec-h" style="margin:-18px -20px 18px;">Calculadora de sal · salmuera y fermentos</div>
 
     <p style="margin:0 0 16px;color:var(--ink-soft);font-size:15px;">
-      Salt selects for good lactic bacteria and against spoilage; the microbes then drop
-      the pH below 4.6, which is what makes the ferment safe. Salt is measured as a
-      percentage by weight — pick a mode below.
+      La sal selecciona a las bacterias lácticas buenas y frena la descomposición; luego los
+      microbios bajan el pH por debajo de 4.6, que es lo que vuelve seguro el fermento. La sal
+      se mide como un porcentaje del peso — elegí un modo abajo.
     </p>
 
     <div style="display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;">
-      <button type="button" id="br-mode-a-es" class="tag ember" style="cursor:pointer;font-size:12px;padding:8px 14px;" aria-pressed="true">Submerged brine</button>
-      <button type="button" id="br-mode-b-es" class="tag" style="cursor:pointer;font-size:12px;padding:8px 14px;" aria-pressed="false">Dry-salted</button>
+      <button type="button" id="br-mode-a-es" class="tag ember" style="cursor:pointer;font-size:12px;padding:8px 14px;" aria-pressed="true">Salmuera sumergida</button>
+      <button type="button" id="br-mode-b-es" class="tag" style="cursor:pointer;font-size:12px;padding:8px 14px;" aria-pressed="false">Salado en seco</button>
     </div>
 
     <div id="br-panel-a-es">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:6px;">
         <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:12px;color:var(--ink-soft);">
-          Water weight (g)
+          Peso del agua (g)
           <input type="number" id="br-water-g-es" value="1000" min="0" step="1"
             style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);">
         </label>
         <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:12px;color:var(--ink-soft);">
-          Target brine %
+          % de salmuera objetivo
           <select id="br-pct-a-es"
             style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);">
             <option value="2">2%</option>
@@ -32,20 +32,20 @@
         </label>
       </div>
       <p style="margin:6px 0 0;font-size:13px;color:var(--ink-faint);">
-        This is % of the water weight — the classic simple method. Keep the vegetable
-        fully submerged under the brine.
+        Es el % del peso del agua — el método simple clásico. Mantené la verdura
+        completamente sumergida bajo la salmuera.
       </p>
     </div>
 
     <div id="br-panel-b-es" style="display:none;">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:6px;">
         <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:12px;color:var(--ink-soft);">
-          Vegetable weight (g)
+          Peso de la verdura (g)
           <input type="number" id="br-veg-g-es" value="1000" min="0" step="1"
             style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);">
         </label>
         <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:12px;color:var(--ink-soft);">
-          Salt % of veg weight
+          Sal % del peso de la verdura
           <select id="br-pct-b-es"
             style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);">
             <option value="1.5">1.5%</option>
@@ -57,41 +57,42 @@
         </label>
       </div>
       <p style="margin:6px 0 0;font-size:13px;color:var(--ink-faint);">
-        Salt the shredded vegetable directly and massage it; it draws out its own brine
-        as it sits.
+        Salá la verdura rallada directamente y masajeala; suelta su propia salmuera
+        a medida que reposa.
       </p>
     </div>
 
     <div style="margin:22px 0 4px;padding:18px 20px;border:1px solid var(--line);border-radius:3px;background:var(--panel-2);text-align:center;">
-      <div style="font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;">Salt required</div>
+      <div style="font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;">Sal necesaria</div>
       <div id="br-out-grams-es" class="num" style="font-size:40px;font-weight:600;color:var(--ember);line-height:1.1;">&mdash;</div>
       <div id="br-out-tsp-es" style="margin-top:10px;font-size:13px;color:var(--ink-soft);">&mdash;</div>
     </div>
 
     <div class="spec" style="margin-top:20px;">
-      <div class="spec-h">Reading</div>
-      <div class="spec-row"><span class="spec-key">Mode</span><span class="spec-val" id="br-spec-mode-es">&mdash;</span></div>
-      <div class="spec-row"><span class="spec-key">Base weight</span><span class="spec-val" id="br-spec-base-es">&mdash;</span></div>
-      <div class="spec-row"><span class="spec-key">Salt %</span><span class="spec-val" id="br-spec-pct-es">&mdash;</span></div>
-      <div class="spec-row"><span class="spec-key">Salt mass</span><span class="spec-val" id="br-spec-mass-es">&mdash;</span></div>
+      <div class="spec-h">Lectura</div>
+      <div class="spec-row"><span class="spec-key">Modo</span><span class="spec-val" id="br-spec-mode-es">&mdash;</span></div>
+      <div class="spec-row"><span class="spec-key">Peso base</span><span class="spec-val" id="br-spec-base-es">&mdash;</span></div>
+      <div class="spec-row"><span class="spec-key">Sal %</span><span class="spec-val" id="br-spec-pct-es">&mdash;</span></div>
+      <div class="spec-row"><span class="spec-key">Masa de sal</span><span class="spec-val" id="br-spec-mass-es">&mdash;</span></div>
     </div>
 
     <div class="callout callout--heat">
-      <span class="lbl">Ferment target</span>
-      <p>Aim for a final pH below 4.6 — that is what makes the ferment shelf-stable and
-      safe. Keep everything submerged under the brine so the environment stays
-      anaerobic. Cooler room temperature ferments slower but cleaner; warmer ferments
-      faster but is riskier for off-flavours and unwanted microbes.</p>
+      <span class="lbl">Objetivo del fermento</span>
+      <p>Apuntá a un pH final por debajo de 4.6 — eso es lo que hace que el fermento sea
+      estable y seguro. Mantené todo sumergido bajo la salmuera para que el ambiente siga
+      siendo anaeróbico. Una temperatura ambiente más fresca fermenta más lento pero más
+      limpio; más caliente fermenta más rápido pero con más riesgo de sabores raros y
+      microbios no deseados.</p>
     </div>
 
     <div class="callout callout--mistake">
-      <span class="lbl">Safety notes</span>
-      <p>Fuzzy or coloured mould (green, black, pink, orange) means discard the batch.
-      A thin, flat white film (kahm yeast) is usually harmless and can be skimmed off —
-      but when in doubt, throw it out. For any canning or shelf-stable preserving beyond
-      a simple refrigerator ferment, follow tested NCHFP guidance rather than
-      improvising. Note also that garlic held in oil at room temperature is a distinct
-      botulism risk — that is not the same situation as a salted, acidified ferment.</p>
+      <span class="lbl">Notas de seguridad</span>
+      <p>Moho velloso o de color (verde, negro, rosado, naranja) significa descartar el lote.
+      Una película blanca fina y plana (levadura kahm) suele ser inofensiva y se puede retirar —
+      pero ante la duda, botalo. Para cualquier enlatado o conservación estable fuera de un
+      fermento simple de refrigerador, seguí las guías probadas del NCHFP en lugar de
+      improvisar. Ojo también: el ajo guardado en aceite a temperatura ambiente es un riesgo
+      claro de botulismo — no es lo mismo que un fermento salado y acidificado.</p>
     </div>
   </div>
 </div>
@@ -143,13 +144,13 @@
     if (mode === 'a'){
       baseG = parseFloat(waterG.value);
       pct = parseFloat(pctA.value);
-      baseLabel = 'Water weight';
-      modeLabel = 'Submerged brine';
+      baseLabel = 'Peso del agua';
+      modeLabel = 'Salmuera sumergida';
     } else {
       baseG = parseFloat(vegG.value);
       pct = parseFloat(pctB.value);
-      baseLabel = 'Vegetable weight';
-      modeLabel = 'Dry-salted';
+      baseLabel = 'Peso de la verdura';
+      modeLabel = 'Salado en seco';
     }
 
     var saltG = (baseG >= 0 && !isNaN(baseG) && !isNaN(pct)) ? (baseG * pct / 100) : NaN;
@@ -158,13 +159,13 @@
 
     outGrams.textContent = saltGStr !== null ? (saltGStr + ' g') : '—';
     outTsp.textContent = tspStr !== null
-      ? ('≈ ' + tspStr + ' tsp fine sea salt (1 tsp ≈ 6 g; weigh for accuracy — flake/coarse salt differs a lot)')
+      ? ('≈ ' + tspStr + ' cdta de sal fina (1 cdta ≈ 6 g; pesá para mayor exactitud — la sal en hojuelas/gruesa varía bastante)')
       : '—';
 
     specMode.textContent = modeLabel;
     specBase.textContent = (isFinite(baseG) && !isNaN(baseG)) ? (baseLabel + ': ' + fmt(baseG, 0) + ' g') : '—';
     specPct.textContent = (!isNaN(pct)) ? (fmt(pct, 2).replace(/\.?0+$/, '') + '%') : '—';
-    specMass.textContent = saltGStr !== null ? (saltGStr + ' g salt') : '—';
+    specMass.textContent = saltGStr !== null ? (saltGStr + ' g de sal') : '—';
   }
 
   modeA.addEventListener('click', function(){ setMode('a'); });

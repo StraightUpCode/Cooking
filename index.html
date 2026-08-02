@@ -606,6 +606,7 @@ hr.soft{border:0;height:1px;background:var(--line);margin:36px 0}
           <a href="#m2">Arroz, Frijoles y Granos</a>. Úsalas y luego leé <em>por qué</em> los
           números son los que son.</p>
         <div class="grid" style="gap:22px;margin-top:26px">
+<div class="only-en">
 <div class="tool" id="td-tool">
   <div class="card" style="max-width:760px;margin:0 auto">
     <h3 style="margin-bottom:10px">Doneness &amp; carryover</h3>
@@ -850,6 +851,256 @@ hr.soft{border:0;height:1px;background:var(--line);margin:36px 0}
   render();
 })();
 </script>
+</div>
+<div class="only-es">
+<div class="tool" id="td-tool-es">
+  <div class="card" style="max-width:760px;margin:0 auto">
+    <h3 style="margin-bottom:10px">Punto de cocción y cocción residual</h3>
+    <p style="font-family:var(--f-body);color:var(--ink-soft);font-size:15.5px;margin-bottom:20px">
+      La carne responde a la temperatura <em>interna</em>, no al número de la perilla — y sigue cocinándose
+      varios minutos después de sacarla del fuego, mientras el calor residual migra hacia adentro desde las
+      capas exteriores más calientes. Ese aumento es la <b>cocción residual</b>: retirá por debajo de tu objetivo
+      según el ajuste, y el centro sube para alcanzarlo mientras reposa.
+    </p>
+
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;margin-bottom:6px">
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);flex:1;min-width:190px">
+        Corte
+        <select id="td-cut-es" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13px"></select>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);flex:1;min-width:190px">
+        Punto de cocción
+        <select id="td-level-es" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13px"></select>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);flex:1;min-width:190px">
+        Grosor
+        <select id="td-thickness-es" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13px">
+          <option value="thin">Delgado (&lt;2cm)</option>
+          <option value="medium" selected>Medio (2–4cm)</option>
+          <option value="thick">Grueso (&gt;4cm)</option>
+        </select>
+      </label>
+    </div>
+
+    <div id="td-crit-note-es" style="display:none;border-left:3px solid var(--crit);background:color-mix(in srgb,var(--crit) 8%,var(--panel));border-radius:0 3px 3px 0;padding:12px 16px;margin:18px 0;font-size:14.5px;color:var(--ink)">
+      <span style="font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--crit);display:block;margin-bottom:4px">Seguridad — no negociable</span>
+      La carne molida está contaminada en toda su masa por el molido, no solo en la superficie — sellar el
+      exterior no vuelve seguro el centro. 71°C/160°F es un mínimo obligatorio, no un objetivo al que rondar.
+      Las hamburguesas poco cocidas solo son seguras si molés carne de músculo entero fresca vos mismo y
+      controlás el proceso.
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:22px 0 8px">
+      <div class="spec" style="margin:0">
+        <div class="spec-h">Retira a</div>
+        <div style="padding:16px 18px">
+          <div id="td-pull-c-es" class="mono num" style="font-size:36px;font-weight:700;color:var(--probe);line-height:1.1">--°C</div>
+          <div id="td-pull-f-es" class="mono num" style="font-size:18px;color:var(--ink-soft);margin-top:2px">--°F</div>
+        </div>
+      </div>
+      <div class="spec" style="margin:0">
+        <div class="spec-h">Objetivo / reposar a</div>
+        <div style="padding:16px 18px">
+          <div id="td-target-c-es" class="mono num" style="font-size:36px;font-weight:700;color:var(--ember);line-height:1.1">--°C</div>
+          <div id="td-target-f-es" class="mono num" style="font-size:18px;color:var(--ink-soft);margin-top:2px">--°F</div>
+        </div>
+      </div>
+    </div>
+
+    <p id="td-note-es" style="font-size:14.5px;color:var(--ink-soft);margin-bottom:22px"></p>
+
+    <div class="callout callout--heat">
+      <span class="lbl">Por qué ocurre la cocción residual</span>
+      <p>El centro de un trozo de carne siempre está más frío que su superficie mientras está en el fuego;
+      una vez retirado, el calor sigue conduciéndose hacia adentro desde el exterior caliente hacia el núcleo
+      más frío hasta igualarse. Los cortes más grandes, gruesos y densos almacenan más calor residual y tienen
+      que conducirlo más lejos, así que la cocción residual es mayor y más larga — un asado grueso puede subir
+      5°C/9°F o más, una chuleta fina apenas 1–2°C/2–4°F.</p>
+    </div>
+
+    <div class="spec" id="td-ref-es">
+      <div class="spec-h">Referencia — temperaturas internas objetivo (a las que reposar)</div>
+      <div class="spec-row"><span class="spec-key">Bife de res / cordero</span><span class="spec-val">Rojo 52°C/125°F · Medio-rojo 54°C/130°F · Término medio 60°C/140°F · Tres cuartos 65°C/150°F · Bien cocido 71°C/160°F</span></div>
+      <div class="spec-row"><span class="spec-key">Pechuga de pollo</span><span class="spec-val">74°C/165°F seguro al instante <span class="tag probe" style="margin-left:4px">avanzado</span> 65°C/150°F mantenido ≥3 min</span></div>
+      <div class="spec-row"><span class="spec-key">Muslo de pollo</span><span class="spec-val">82°C/180°F (rango 74–88°C / 165–190°F) — tolerante, el colágeno debe fundirse</span></div>
+      <div class="spec-row"><span class="spec-key">Chuleta / lomo de cerdo</span><span class="spec-val">63°C/145°F, luego reposar — término medio, algo rosado</span></div>
+      <div class="spec-row"><span class="spec-key">Hamburguesa / carne molida</span><span class="spec-val"><span class="tag ember">obligatorio</span> 71°C/160°F — no negociable, la carne molida está contaminada en toda su masa</span></div>
+      <div class="spec-row"><span class="spec-key">Ave molida</span><span class="spec-val">74°C/165°F</span></div>
+      <div class="spec-row"><span class="spec-key">Salmón</span><span class="spec-val">52°C/125°F término medio/mantecoso — 60°C/140°F firme</span></div>
+      <div class="spec-row"><span class="spec-key">Pescado blanco en hojuelas</span><span class="spec-val">60–63°C/140–145°F</span></div>
+      <div class="spec-row"><span class="spec-key">Ajuste de cocción residual</span><span class="spec-val">Delgado +2°C/4°F · Medio +3°C/5°F (predeterminado) · Grueso +5°C/9°F</span></div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  "use strict";
+
+  var CUTS = [
+    { id:"steak", label:"Bife de res / cordero (músculo entero)",
+      note:"La res y el cordero de músculo entero son estériles por dentro — el punto de cocción acá es puramente una elección de textura, no un umbral de seguridad.",
+      levels:[
+        { id:"rare",   label:"Rojo",          c:52, f:125 },
+        { id:"mrare",  label:"Medio-rojo",    c:54, f:130 },
+        { id:"medium", label:"Término medio", c:60, f:140 },
+        { id:"mwell",  label:"Tres cuartos",  c:65, f:150 },
+        { id:"well",   label:"Bien cocido",   c:71, f:160 }
+      ]
+    },
+    { id:"chicken_breast", label:"Pechuga de pollo",
+      note:"74°C/165°F es seguro al instante. Retirar a 65°C/150°F y mantener a esa temperatura o más por al menos 3 minutos es igual de seguro por pasteurización tiempo-temperatura, y notablemente más jugoso — una técnica avanzada que requiere un termómetro confiable.",
+      levels:[
+        { id:"safe",  label:"Estándar (seguro al instante)", c:74, f:165 },
+        { id:"juicy", label:"Más jugoso — avanzado, mantené ≥3 min", c:65, f:150, advanced:true }
+      ]
+    },
+    { id:"chicken_thigh", label:"Muslo de pollo",
+      note:"El rango 74–88°C/165–190°F es aceptable — el muslo es tolerante porque su tejido conectivo necesita fundirse, y su mayor contenido de grasa resiste secarse incluso bastante más allá del mínimo.",
+      levels:[ { id:"thigh", label:"Fundido (colágeno derretido)", c:82, f:180 } ]
+    },
+    { id:"pork", label:"Chuleta / lomo de cerdo",
+      note:"63°C/145°F y luego reposar es el objetivo seguro moderno — término medio, aún algo rosado en el centro.",
+      levels:[ { id:"pork", label:"Término medio, algo rosado", c:63, f:145 } ]
+    },
+    { id:"burger", label:"Hamburguesa / carne molida",
+      note:"71°C/160°F es un mínimo obligatorio, no un objetivo al que acercarse — mirá la nota de arriba.",
+      crit:true,
+      levels:[ { id:"burger", label:"Mínimo obligatorio", c:71, f:160 } ]
+    },
+    { id:"ground_poultry", label:"Ave molida",
+      note:"74°C/165°F — moler distribuye las bacterias de la superficie por toda la masa, la misma lógica que la carne molida de res.",
+      levels:[ { id:"gp", label:"Mínimo obligatorio", c:74, f:165 } ]
+    },
+    { id:"salmon", label:"Salmón",
+      note:"Por debajo de 52°C/125°F la textura es esencialmente cruda/nivel sushi; por encima de 60°C/140°F se vuelve calcárea y empieza a soltar albúmina.",
+      levels:[
+        { id:"med",  label:"Término medio, mantecoso", c:52, f:125 },
+        { id:"firm", label:"Firme",                    c:60, f:140 }
+      ]
+    },
+    { id:"white_fish", label:"Pescado blanco en hojuelas (bacalao, etc.)",
+      note:"El pescado blanco magro tiene una ventana estrecha — pasa de crudo a seco/deshecho en pocos grados.",
+      levels:[
+        { id:"lo", label:"Extremo bajo", c:60, f:140 },
+        { id:"hi", label:"Extremo alto", c:63, f:145 }
+      ]
+    }
+  ];
+
+  var THICKNESS = {
+    thin:   { label:"delgado", c:2, f:4 },
+    medium: { label:"medio",   c:3, f:5 },
+    thick:  { label:"grueso",  c:5, f:9 }
+  };
+
+  var root = document.getElementById("td-tool-es");
+  if (!root) return;
+
+  var cutSel   = root.querySelector("#td-cut-es");
+  var levelSel = root.querySelector("#td-level-es");
+  var thickSel = root.querySelector("#td-thickness-es");
+  var pullC    = root.querySelector("#td-pull-c-es");
+  var pullF    = root.querySelector("#td-pull-f-es");
+  var targetC  = root.querySelector("#td-target-c-es");
+  var targetF  = root.querySelector("#td-target-f-es");
+  var noteEl   = root.querySelector("#td-note-es");
+  var critEl   = root.querySelector("#td-crit-note-es");
+
+  function findCut(id){
+    for (var i = 0; i < CUTS.length; i++) if (CUTS[i].id === id) return CUTS[i];
+    return CUTS[0];
+  }
+
+  function findLevel(cut, id){
+    if (!cut || !cut.levels || !cut.levels.length) return null;
+    for (var i = 0; i < cut.levels.length; i++) if (cut.levels[i].id === id) return cut.levels[i];
+    return cut.levels[0];
+  }
+
+  function populateCuts(){
+    cutSel.innerHTML = "";
+    for (var i = 0; i < CUTS.length; i++){
+      var opt = document.createElement("option");
+      opt.value = CUTS[i].id;
+      opt.textContent = CUTS[i].label;
+      cutSel.appendChild(opt);
+    }
+  }
+
+  function populateLevels(cut){
+    levelSel.innerHTML = "";
+    var levels = (cut && cut.levels) ? cut.levels : [];
+    if (!levels.length){
+      var opt = document.createElement("option");
+      opt.textContent = "(sin opciones de cocción)";
+      levelSel.appendChild(opt);
+      levelSel.disabled = true;
+      return;
+    }
+    for (var i = 0; i < levels.length; i++){
+      var o = document.createElement("option");
+      o.value = levels[i].id;
+      o.textContent = levels[i].label;
+      levelSel.appendChild(o);
+    }
+    levelSel.disabled = levels.length === 1;
+  }
+
+  function fmt(n){
+    return (Math.round(n * 10) / 10).toString();
+  }
+
+  function render(){
+    var cut = findCut(cutSel.value);
+    var level = findLevel(cut, levelSel.value);
+    var thickKey = thickSel.value;
+    var off = THICKNESS[thickKey] || THICKNESS.medium;
+
+    critEl.style.display = cut.crit ? "block" : "none";
+
+    if (!level){
+      pullC.textContent = "--°C";
+      pullF.textContent = "--°F";
+      targetC.textContent = "--°C";
+      targetF.textContent = "--°F";
+      noteEl.textContent = "";
+      return;
+    }
+
+    var pc = level.c - off.c;
+    var pf = level.f - off.f;
+
+    pullC.textContent = fmt(pc) + "°C";
+    pullF.textContent = fmt(pf) + "°F";
+    targetC.textContent = fmt(level.c) + "°C";
+    targetF.textContent = fmt(level.f) + "°F";
+
+    var parts = [];
+    parts.push("Cocción residual (corte " + off.label + "): retirá " + off.c + "°C / " + off.f + "°F por debajo del objetivo.");
+    if (level.advanced) parts.push("Técnica avanzada de mantener temperatura — verificá con un termómetro confiable.");
+    if (level.note) parts.push(level.note);
+    else if (cut.note) parts.push(cut.note);
+    noteEl.textContent = parts.join(" ");
+  }
+
+  function onCutChange(){
+    var cut = findCut(cutSel.value);
+    populateLevels(cut);
+    render();
+  }
+
+  populateCuts();
+  populateLevels(findCut(cutSel.value));
+
+  cutSel.addEventListener("change", onCutChange);
+  levelSel.addEventListener("change", render);
+  thickSel.addEventListener("change", render);
+
+  render();
+})();
+</script>
+</div>
+<div class="only-en">
 <div class="tool" id="bp-tool">
   <div class="card" style="max-width:720px">
     <div class="spec-h" style="margin:-18px -20px 18px;border-radius:3px 3px 0 0">Baker's percentage · dough calculator</div>
@@ -1075,6 +1326,235 @@ hr.soft{border:0;height:1px;background:var(--line);margin:36px 0}
   setMode('balls');
 })();
 </script>
+</div>
+<div class="only-es">
+<div class="tool" id="bp-tool-es">
+  <div class="card" style="max-width:720px">
+    <div class="spec-h" style="margin:-18px -20px 18px;border-radius:3px 3px 0 0">Porcentaje del panadero · calculadora de masa</div>
+
+    <div role="group" aria-label="Modo de cálculo" style="display:flex;gap:8px;margin-bottom:20px">
+      <button type="button" id="bp-mode-flour-es" class="tag" aria-pressed="false" style="cursor:pointer;padding:8px 14px;font-size:12px">Por peso de harina</button>
+      <button type="button" id="bp-mode-balls-es" class="tag ember" aria-pressed="true" style="cursor:pointer;padding:8px 14px;font-size:12px">Por bolas de masa</button>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+      <button type="button" id="bp-preset-pizza-es" class="tag" style="cursor:pointer">Pizza 63%</button>
+      <button type="button" id="bp-preset-ciabatta-es" class="tag" style="cursor:pointer">Ciabatta 80%</button>
+      <button type="button" id="bp-preset-sandwich-es" class="tag" style="cursor:pointer">Sándwich 60%</button>
+      <button type="button" id="bp-preset-focaccia-es" class="tag" style="cursor:pointer">Focaccia 78%</button>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:6px">
+      <div id="bp-group-flour-es" style="display:none">
+        <label for="bp-flour-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
+          Harina (g)
+          <input type="number" id="bp-flour-es" value="500" min="0" step="1" inputmode="decimal"
+            style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
+        </label>
+      </div>
+
+      <div id="bp-group-balls-es" style="display:contents">
+        <label for="bp-balls-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
+          Bolas
+          <input type="number" id="bp-balls-es" value="4" min="0" step="1" inputmode="decimal"
+            style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
+        </label>
+        <label for="bp-grams-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
+          Gramos / bola
+          <input type="number" id="bp-grams-es" value="250" min="0" step="1" inputmode="decimal"
+            style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
+        </label>
+      </div>
+
+      <label for="bp-hydration-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
+        Hidratación %
+        <input type="number" id="bp-hydration-es" value="63" min="0" step="0.1" inputmode="decimal"
+          style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
+      </label>
+      <label for="bp-salt-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
+        Sal %
+        <input type="number" id="bp-salt-es" value="2.8" min="0" step="0.1" inputmode="decimal"
+          style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
+      </label>
+      <label for="bp-yeast-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
+        Levadura % <span style="text-transform:none;opacity:.7">(seca instantánea)</span>
+        <input type="number" id="bp-yeast-es" value="0.4" min="0" step="0.05" inputmode="decimal"
+          style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
+      </label>
+    </div>
+
+    <p id="bp-perball-note-es" class="mono" style="font-size:13px;color:var(--ink-soft);margin:4px 0 0"></p>
+
+    <div class="table-wrap" style="margin:22px 0 14px">
+      <table>
+        <thead>
+          <tr><th>Ingrediente</th><th class="num">% del panadero</th><th class="num">Gramos</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Harina</td><td class="num" id="bp-out-flour-pct-es">—</td><td class="num" id="bp-out-flour-g-es">—</td></tr>
+          <tr><td>Agua</td><td class="num" id="bp-out-water-pct-es">—</td><td class="num" id="bp-out-water-g-es">—</td></tr>
+          <tr><td>Sal</td><td class="num" id="bp-out-salt-pct-es">—</td><td class="num" id="bp-out-salt-g-es">—</td></tr>
+          <tr><td>Levadura</td><td class="num" id="bp-out-yeast-pct-es">—</td><td class="num" id="bp-out-yeast-g-es">—</td></tr>
+          <tr><td><b>Total</b></td><td class="num" id="bp-out-total-pct-es">—</td><td class="num" id="bp-out-total-g-es">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <span class="tag ember" id="bp-summary-es">—</span>
+
+    <div class="callout callout--why" style="margin-top:20px">
+      <span class="lbl">Por qué funciona</span>
+      <p>Fermentá esta masa en frío 24–72 h en la heladera (2–4 °C / 36–39 °F) y la actividad lenta de levaduras y bacterias tiene tiempo de descomponer los almidones en más azúcar y producir más ácidos orgánicos y compuestos aromáticos, profundizando el sabor y mejorando el dorado frente a un leudado del mismo día. Mantené la sal en aproximadamente 2% del peso de la harina y nunca la omitas — regula la levadura a un ritmo controlable y tensa las hebras de gluten, así la masa fermenta pareja y mantiene la estructura en vez de aflojarse.</p>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var root = document.getElementById('bp-tool-es');
+  if(!root) return;
+  function $(id){ return root.querySelector('#' + id); }
+
+  var modeFlourBtn = $('bp-mode-flour-es');
+  var modeBallsBtn = $('bp-mode-balls-es');
+  var groupFlour = $('bp-group-flour-es');
+  var groupBalls = $('bp-group-balls-es');
+  var perBallNote = $('bp-perball-note-es');
+
+  var flourInput = $('bp-flour-es');
+  var ballsInput = $('bp-balls-es');
+  var gramsInput = $('bp-grams-es');
+  var hydInput = $('bp-hydration-es');
+  var saltInput = $('bp-salt-es');
+  var yeastInput = $('bp-yeast-es');
+
+  var outFlourPct = $('bp-out-flour-pct-es');
+  var outFlourG = $('bp-out-flour-g-es');
+  var outWaterPct = $('bp-out-water-pct-es');
+  var outWaterG = $('bp-out-water-g-es');
+  var outSaltPct = $('bp-out-salt-pct-es');
+  var outSaltG = $('bp-out-salt-g-es');
+  var outYeastPct = $('bp-out-yeast-pct-es');
+  var outYeastG = $('bp-out-yeast-g-es');
+  var outTotalPct = $('bp-out-total-pct-es');
+  var outTotalG = $('bp-out-total-g-es');
+  var summary = $('bp-summary-es');
+
+  var presets = {
+    'bp-preset-pizza-es':     { hyd: 63, salt: 2 },
+    'bp-preset-ciabatta-es':  { hyd: 80, salt: 2 },
+    'bp-preset-sandwich-es':  { hyd: 60, salt: 2 },
+    'bp-preset-focaccia-es':  { hyd: 78, salt: 2 }
+  };
+
+  var mode = 'balls';
+
+  function num(el){
+    var v = parseFloat(el.value);
+    return isFinite(v) ? v : NaN;
+  }
+  function fmtG(n){
+    return isFinite(n) ? Math.round(n).toLocaleString() + ' g' : '—';
+  }
+  function fmtG1(n){
+    return isFinite(n) ? n.toFixed(1) + ' g' : '—';
+  }
+  function fmtPct(n){
+    return isFinite(n) ? n.toFixed(1) + '%' : '—';
+  }
+
+  function recalc(){
+    var hyd = num(hydInput), salt = num(saltInput), yeast = num(yeastInput);
+    var flour, perBall = NaN;
+
+    if(mode === 'flour'){
+      flour = num(flourInput);
+    } else {
+      var balls = num(ballsInput), grams = num(gramsInput);
+      var totalDough = (isFinite(balls) && isFinite(grams)) ? balls * grams : NaN;
+      var denom = (isFinite(hyd) && isFinite(salt) && isFinite(yeast))
+        ? (1 + hyd / 100 + salt / 100 + yeast / 100) : NaN;
+      flour = (isFinite(totalDough) && isFinite(denom) && denom > 0) ? totalDough / denom : NaN;
+    }
+
+    var valid = isFinite(flour) && flour > 0 && isFinite(hyd) && isFinite(salt) && isFinite(yeast);
+
+    var water = NaN, saltG = NaN, yeastG = NaN, total = NaN;
+    if(valid){
+      water = flour * hyd / 100;
+      saltG = flour * salt / 100;
+      yeastG = flour * yeast / 100;
+      total = flour + water + saltG + yeastG;
+      if(mode === 'balls'){
+        var b = num(ballsInput);
+        perBall = (isFinite(b) && b > 0) ? flour / b : NaN;
+      }
+    }
+
+    outFlourPct.textContent = valid ? '100.0%' : '—';
+    outFlourG.textContent = fmtG(flour);
+    outWaterPct.textContent = fmtPct(hyd);
+    outWaterG.textContent = fmtG(water);
+    outSaltPct.textContent = fmtPct(salt);
+    outSaltG.textContent = fmtG1(saltG);
+    outYeastPct.textContent = fmtPct(yeast);
+    outYeastG.textContent = fmtG1(yeastG);
+    var totalPct = (isFinite(hyd) && isFinite(salt) && isFinite(yeast)) ? (100 + hyd + salt + yeast) : NaN;
+    outTotalPct.textContent = fmtPct(totalPct);
+    outTotalG.textContent = fmtG(total);
+
+    summary.textContent = valid
+      ? ('Masa total ' + fmtG(total) + ' · Hidratación ' + fmtPct(hyd))
+      : 'Ingresá números válidos para calcular';
+
+    if(mode === 'balls'){
+      perBallNote.textContent = isFinite(perBall) ? ('≈ ' + fmtG(perBall) + ' de harina por bola') : '';
+    } else {
+      perBallNote.textContent = '';
+    }
+  }
+
+  function setMode(m){
+    mode = m;
+    var isFlour = (m === 'flour');
+    modeFlourBtn.classList.toggle('ember', isFlour);
+    modeBallsBtn.classList.toggle('ember', !isFlour);
+    modeFlourBtn.setAttribute('aria-pressed', String(isFlour));
+    modeBallsBtn.setAttribute('aria-pressed', String(!isFlour));
+    groupFlour.style.display = isFlour ? '' : 'none';
+    groupBalls.style.display = isFlour ? 'none' : 'contents';
+    recalc();
+  }
+
+  [flourInput, ballsInput, gramsInput, hydInput, saltInput, yeastInput].forEach(function(el){
+    el.addEventListener('input', recalc);
+    el.addEventListener('focus', function(){
+      el.style.outline = '2px solid var(--ember)';
+      el.style.outlineOffset = '1px';
+    });
+    el.addEventListener('blur', function(){
+      el.style.outline = 'none';
+      el.style.outlineOffset = '';
+    });
+  });
+
+  modeFlourBtn.addEventListener('click', function(){ setMode('flour'); });
+  modeBallsBtn.addEventListener('click', function(){ setMode('balls'); });
+
+  Object.keys(presets).forEach(function(id){
+    var btn = $(id);
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      hydInput.value = presets[id].hyd;
+      saltInput.value = presets[id].salt;
+      recalc();
+    });
+  });
+
+  setMode('balls');
+})();
+</script>
+</div>
+<div class="only-en">
 <div class="tool" id="br-tool">
   <div class="card" style="max-width:640px">
     <div class="spec-h" style="margin:-18px -20px 18px;">Brine &amp; Ferment Salt Calculator</div>
@@ -1255,6 +1735,191 @@ hr.soft{border:0;height:1px;background:var(--line);margin:36px 0}
   setMode('a');
 })();
 </script>
+</div>
+<div class="only-es">
+<div class="tool" id="br-tool-es">
+  <div class="card" style="max-width:640px">
+    <div class="spec-h" style="margin:-18px -20px 18px;">Calculadora de sal · salmuera y fermentos</div>
+
+    <p style="margin:0 0 16px;color:var(--ink-soft);font-size:15px;">
+      La sal selecciona a las bacterias lácticas buenas y frena la descomposición; luego los
+      microbios bajan el pH por debajo de 4.6, que es lo que vuelve seguro el fermento. La sal
+      se mide como un porcentaje del peso — elegí un modo abajo.
+    </p>
+
+    <div style="display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;">
+      <button type="button" id="br-mode-a-es" class="tag ember" style="cursor:pointer;font-size:12px;padding:8px 14px;" aria-pressed="true">Salmuera sumergida</button>
+      <button type="button" id="br-mode-b-es" class="tag" style="cursor:pointer;font-size:12px;padding:8px 14px;" aria-pressed="false">Salado en seco</button>
+    </div>
+
+    <div id="br-panel-a-es">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:6px;">
+        <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:12px;color:var(--ink-soft);">
+          Peso del agua (g)
+          <input type="number" id="br-water-g-es" value="1000" min="0" step="1"
+            style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:12px;color:var(--ink-soft);">
+          % de salmuera objetivo
+          <select id="br-pct-a-es"
+            style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);">
+            <option value="2">2%</option>
+            <option value="2.5" selected>2.5%</option>
+            <option value="3">3%</option>
+            <option value="3.5">3.5%</option>
+          </select>
+        </label>
+      </div>
+      <p style="margin:6px 0 0;font-size:13px;color:var(--ink-faint);">
+        Es el % del peso del agua — el método simple clásico. Mantené la verdura
+        completamente sumergida bajo la salmuera.
+      </p>
+    </div>
+
+    <div id="br-panel-b-es" style="display:none;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:6px;">
+        <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:12px;color:var(--ink-soft);">
+          Peso de la verdura (g)
+          <input type="number" id="br-veg-g-es" value="1000" min="0" step="1"
+            style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:12px;color:var(--ink-soft);">
+          Sal % del peso de la verdura
+          <select id="br-pct-b-es"
+            style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);">
+            <option value="1.5">1.5%</option>
+            <option value="1.75">1.75%</option>
+            <option value="2" selected>2%</option>
+            <option value="2.25">2.25%</option>
+            <option value="2.5">2.5%</option>
+          </select>
+        </label>
+      </div>
+      <p style="margin:6px 0 0;font-size:13px;color:var(--ink-faint);">
+        Salá la verdura rallada directamente y masajeala; suelta su propia salmuera
+        a medida que reposa.
+      </p>
+    </div>
+
+    <div style="margin:22px 0 4px;padding:18px 20px;border:1px solid var(--line);border-radius:3px;background:var(--panel-2);text-align:center;">
+      <div style="font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;">Sal necesaria</div>
+      <div id="br-out-grams-es" class="num" style="font-size:40px;font-weight:600;color:var(--ember);line-height:1.1;">&mdash;</div>
+      <div id="br-out-tsp-es" style="margin-top:10px;font-size:13px;color:var(--ink-soft);">&mdash;</div>
+    </div>
+
+    <div class="spec" style="margin-top:20px;">
+      <div class="spec-h">Lectura</div>
+      <div class="spec-row"><span class="spec-key">Modo</span><span class="spec-val" id="br-spec-mode-es">&mdash;</span></div>
+      <div class="spec-row"><span class="spec-key">Peso base</span><span class="spec-val" id="br-spec-base-es">&mdash;</span></div>
+      <div class="spec-row"><span class="spec-key">Sal %</span><span class="spec-val" id="br-spec-pct-es">&mdash;</span></div>
+      <div class="spec-row"><span class="spec-key">Masa de sal</span><span class="spec-val" id="br-spec-mass-es">&mdash;</span></div>
+    </div>
+
+    <div class="callout callout--heat">
+      <span class="lbl">Objetivo del fermento</span>
+      <p>Apuntá a un pH final por debajo de 4.6 — eso es lo que hace que el fermento sea
+      estable y seguro. Mantené todo sumergido bajo la salmuera para que el ambiente siga
+      siendo anaeróbico. Una temperatura ambiente más fresca fermenta más lento pero más
+      limpio; más caliente fermenta más rápido pero con más riesgo de sabores raros y
+      microbios no deseados.</p>
+    </div>
+
+    <div class="callout callout--mistake">
+      <span class="lbl">Notas de seguridad</span>
+      <p>Moho velloso o de color (verde, negro, rosado, naranja) significa descartar el lote.
+      Una película blanca fina y plana (levadura kahm) suele ser inofensiva y se puede retirar —
+      pero ante la duda, botalo. Para cualquier enlatado o conservación estable fuera de un
+      fermento simple de refrigerador, seguí las guías probadas del NCHFP en lugar de
+      improvisar. Ojo también: el ajo guardado en aceite a temperatura ambiente es un riesgo
+      claro de botulismo — no es lo mismo que un fermento salado y acidificado.</p>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var mode = 'a';
+
+  var modeA = document.getElementById('br-mode-a-es');
+  var modeB = document.getElementById('br-mode-b-es');
+  var panelA = document.getElementById('br-panel-a-es');
+  var panelB = document.getElementById('br-panel-b-es');
+
+  var waterG = document.getElementById('br-water-g-es');
+  var pctA = document.getElementById('br-pct-a-es');
+  var vegG = document.getElementById('br-veg-g-es');
+  var pctB = document.getElementById('br-pct-b-es');
+
+  var outGrams = document.getElementById('br-out-grams-es');
+  var outTsp = document.getElementById('br-out-tsp-es');
+  var specMode = document.getElementById('br-spec-mode-es');
+  var specBase = document.getElementById('br-spec-base-es');
+  var specPct = document.getElementById('br-spec-pct-es');
+  var specMass = document.getElementById('br-spec-mass-es');
+
+  function fmt(n, d){
+    if (typeof d === 'undefined') d = 1;
+    if (!isFinite(n) || isNaN(n)) return null;
+    return n.toFixed(d);
+  }
+
+  function setModeStyle(btn, active){
+    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    btn.classList.toggle('ember', active);
+  }
+
+  function setMode(next){
+    mode = next;
+    var isA = mode === 'a';
+    panelA.style.display = isA ? '' : 'none';
+    panelB.style.display = isA ? 'none' : '';
+    setModeStyle(modeA, isA);
+    setModeStyle(modeB, !isA);
+    compute();
+  }
+
+  function compute(){
+    var baseG, pct, baseLabel, modeLabel;
+
+    if (mode === 'a'){
+      baseG = parseFloat(waterG.value);
+      pct = parseFloat(pctA.value);
+      baseLabel = 'Peso del agua';
+      modeLabel = 'Salmuera sumergida';
+    } else {
+      baseG = parseFloat(vegG.value);
+      pct = parseFloat(pctB.value);
+      baseLabel = 'Peso de la verdura';
+      modeLabel = 'Salado en seco';
+    }
+
+    var saltG = (baseG >= 0 && !isNaN(baseG) && !isNaN(pct)) ? (baseG * pct / 100) : NaN;
+    var saltGStr = fmt(saltG, 1);
+    var tspStr = fmt(saltG / 6, 1);
+
+    outGrams.textContent = saltGStr !== null ? (saltGStr + ' g') : '—';
+    outTsp.textContent = tspStr !== null
+      ? ('≈ ' + tspStr + ' cdta de sal fina (1 cdta ≈ 6 g; pesá para mayor exactitud — la sal en hojuelas/gruesa varía bastante)')
+      : '—';
+
+    specMode.textContent = modeLabel;
+    specBase.textContent = (isFinite(baseG) && !isNaN(baseG)) ? (baseLabel + ': ' + fmt(baseG, 0) + ' g') : '—';
+    specPct.textContent = (!isNaN(pct)) ? (fmt(pct, 2).replace(/\.?0+$/, '') + '%') : '—';
+    specMass.textContent = saltGStr !== null ? (saltGStr + ' g de sal') : '—';
+  }
+
+  modeA.addEventListener('click', function(){ setMode('a'); });
+  modeB.addEventListener('click', function(){ setMode('b'); });
+
+  waterG.addEventListener('input', compute);
+  pctA.addEventListener('change', compute);
+  vegG.addEventListener('input', compute);
+  pctB.addEventListener('change', compute);
+
+  setMode('a');
+})();
+</script>
+</div>
+<div class="only-en">
 <div class="tool" id="rg-tool">
   <div class="card">
     <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
@@ -1458,6 +2123,213 @@ hr.soft{border:0;height:1px;background:var(--line);margin:36px 0}
   render();
 })();
 </script>
+</div>
+<div class="only-es">
+<div class="tool" id="rg-tool-es">
+  <div class="card">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+      <h4 style="margin:0;font-size:18px;">Proporción de granos y arroz</h4>
+      <span class="tag probe">grano : agua</span>
+    </div>
+    <p style="font-size:14.5px;color:var(--ink-soft);margin:0 0 18px;max-width:60ch;">
+      El contenido de amilosa y amilopectina define con cuánta agua gelatiniza cada grano. Medí el
+      grano seco, elegí la unidad, y la calculadora te devuelve el agua — en la misma unidad.
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+      <label style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);grid-column:1/-1;">
+        Grano
+        <select id="rg-grain-es" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13.5px;"></select>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);">
+        Unidad
+        <select id="rg-unit-es" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13.5px;">
+          <option value="cups">Tazas</option>
+          <option value="grams">Gramos</option>
+        </select>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);">
+        Cantidad (grano seco)
+        <input id="rg-amount-es" type="number" inputmode="decimal" min="0" step="0.25" value="1" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13.5px;" />
+      </label>
+    </div>
+
+    <div class="spec" style="margin:0 0 16px;">
+      <div class="spec-h">Resultado</div>
+      <div class="spec-row">
+        <span class="spec-key">Agua necesaria</span>
+        <span class="spec-val">
+          <span id="rg-water-big-es" class="mono num" style="font-size:30px;font-weight:800;color:var(--ember);line-height:1;">—</span>
+          <span id="rg-water-unit-es" class="mono" style="color:var(--ink-faint);font-size:12.5px;margin-left:4px;"></span>
+        </span>
+      </div>
+      <div class="spec-row"><span class="spec-key">Proporción</span><span class="spec-val mono" id="rg-ratio-txt-es">—</span></div>
+      <div class="spec-row"><span class="spec-key">Enjuagar</span><span class="spec-val" id="rg-rinse-txt-es">—</span></div>
+      <div class="spec-row"><span class="spec-key">Reposo / método</span><span class="spec-val" id="rg-rest-txt-es">—</span></div>
+    </div>
+
+    <div id="rg-special-note-es" class="callout callout--heat" style="display:none;">
+      <span class="lbl">Sin proporción fija de olla — método risotto</span>
+      <p id="rg-special-text-es"></p>
+    </div>
+
+    <div class="callout callout--why" style="margin:0 0 16px;">
+      <span class="lbl">Por qué no es un número fijo (quizás aprendiste 1:2)</span>
+      <p style="margin:0;font-size:14.5px;">El grano solo absorbe una cantidad de agua más o menos <b>fija</b> —
+      cerca de su propio peso. Todo lo que pase de ahí simplemente se <b>evapora</b>, así que la proporción
+      "correcta" depende de tu tapa, olla, fuego y tamaño del lote, no solo del grano. Una olla pesada con
+      tapa hermética pierde poco → tirá al extremo bajo; una tapa floja o sartén ancha → agregá más. Y como
+      la evaporación depende de la superficie, no del volumen, <b>los lotes grandes necesitan proporcionalmente
+      menos agua que los chicos</b> (eso es lo que mide el truco del nudillo). Estas cifras asumen grano
+      <b>enjuagado</b> en una olla <b>tapada</b>. El común <b>1:2</b> es un valor por defecto tolerante — y es
+      genuinamente correcto para el <b>arroz integral</b>.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Grano</th><th>Proporción (grano:agua)</th><th>¿Enjuagar?</th><th>Reposo</th><th>Nota</th></tr>
+        </thead>
+        <tbody id="rg-table-body-es"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var root = document.getElementById('rg-tool-es');
+  if(!root) return;
+
+  var DATA = [
+    { id:'basmati',  name:'Arroz largo blanco (basmati / jazmín)', ratio:1.5,  ratioText:'1 : 1.5',              rinse:'Sí',                              rest:'10 min, tapado, fuera del fuego',        note:'Suelto, alta amilosa.' },
+    { id:'medium',   name:'Blanco medio/corto',                    ratio:1.25, ratioText:'1 : 1.25',             rinse:'Sí',                              rest:'10 min',                            note:'Más suave, más pegajoso.' },
+    { id:'sushi',    name:'Sushi / grano corto',                   ratio:1.2,  ratioText:'1 : 1.2',              rinse:'Bien',                            rest:'10 min',                            note:'Pegajoso.' },
+    { id:'brown',    name:'Arroz integral',                        ratio:2.25, ratioText:'1 : 2.25',             rinse:'Opcional',                        rest:'Hervir a fuego lento ~40–45 min, reposar 10 min', note:'El salvado ralentiza la absorción.' },
+    { id:'quinoa',   name:'Quinoa',                                 ratio:2,    ratioText:'1 : 2',                rinse:'Sí (quita saponinas amargas)',    rest:'Hervir ~15 min, reposar 10 min',        note:'Tostá primero para más sabor a nuez.' },
+    { id:'couscous', name:'Cuscús',                                 ratio:1,    ratioText:'1 : 1',                rinse:'No',                              rest:'Tapar 5 min fuera del fuego, esponjar',        note:'No es un grano real — sémola al vapor; usá líquido hirviendo + grasa.' },
+    { id:'barley',   name:'Cebada perlada',                         ratio:3,    ratioText:'1 : 3',                rinse:'Opcional',                        rest:'Hervir ~30–40 min',              note:'Beta-glucano cremoso; escurrí el exceso como pasta si hace falta.' },
+    { id:'farro',    name:'Farro',                                  ratio:3,    ratioText:'1 : 3',                rinse:'Opcional',                        rest:'Hervir 25–30 min, escurrir exceso', note:'Masticable.' },
+    { id:'arborio',  name:'Arborio (risotto)',                      ratio:null, ratioText:'≈1 : 3–4 (gradual)', rinse:'No',                rest:'~18–20 min, revolviendo',           note:'Agregá caldo caliente de a un cucharón — sin proporción fija de olla.',
+      special:true, specialText:'Agregá caldo caliente de a un cucharón, revolviendo sin parar, durante unos 18–20 minutos — cerca de 3–4× el volumen del arroz en caldo total, no todo de una vez.' }
+  ];
+
+  var DEFAULTS = { cups: 1, grams: 200 };
+  var STEP = { cups: '0.25', grams: '5' };
+  var prevUnit = 'cups';
+
+  var grainSel   = root.querySelector('#rg-grain-es');
+  var unitSel    = root.querySelector('#rg-unit-es');
+  var amountIn   = root.querySelector('#rg-amount-es');
+  var waterBig   = root.querySelector('#rg-water-big-es');
+  var waterUnit  = root.querySelector('#rg-water-unit-es');
+  var ratioTxt   = root.querySelector('#rg-ratio-txt-es');
+  var rinseTxt   = root.querySelector('#rg-rinse-txt-es');
+  var restTxt    = root.querySelector('#rg-rest-txt-es');
+  var specialBox = root.querySelector('#rg-special-note-es');
+  var specialTxt = root.querySelector('#rg-special-text-es');
+  var tbody      = root.querySelector('#rg-table-body-es');
+
+  function td(text, cls){
+    var el = document.createElement('td');
+    if(cls) el.className = cls;
+    el.textContent = text;
+    return el;
+  }
+
+  // Populate grain select + reference table from the single DATA source.
+  DATA.forEach(function(d){
+    var opt = document.createElement('option');
+    opt.value = d.id;
+    opt.textContent = d.name;
+    grainSel.appendChild(opt);
+
+    var tr = document.createElement('tr');
+    tr.appendChild(td(d.name));
+    tr.appendChild(td(d.ratioText, 'mono'));
+    tr.appendChild(td(d.rinse));
+    tr.appendChild(td(d.rest));
+    tr.appendChild(td(d.note));
+    tbody.appendChild(tr);
+  });
+
+  function findGrain(id){
+    for(var i=0;i<DATA.length;i++){ if(DATA[i].id === id) return DATA[i]; }
+    return DATA[0];
+  }
+
+  function formatAmount(v, unit){
+    if(!isFinite(v)) return '—';
+    if(unit === 'grams') return String(Math.round(v));
+    var r = Math.round(v * 100) / 100;
+    return r.toFixed(2).replace(/\.?0+$/,'');
+  }
+
+  function styleFocus(el){
+    el.addEventListener('focus', function(){
+      el.style.borderColor = 'var(--probe)';
+      el.style.boxShadow = '0 0 0 3px color-mix(in srgb, var(--probe) 25%, transparent)';
+    });
+    el.addEventListener('blur', function(){
+      el.style.borderColor = 'var(--line)';
+      el.style.boxShadow = 'none';
+    });
+  }
+  [grainSel, unitSel, amountIn].forEach(styleFocus);
+
+  function render(){
+    var grain = findGrain(grainSel.value);
+    var unit = unitSel.value;
+    var raw = amountIn.value;
+    var amt = parseFloat(raw);
+    var valid = raw !== '' && isFinite(amt) && amt > 0;
+
+    ratioTxt.textContent = grain.ratioText;
+    rinseTxt.textContent = grain.rinse;
+    restTxt.textContent = grain.rest;
+
+    if(grain.special){
+      waterBig.textContent = '—';
+      waterUnit.textContent = '';
+      specialBox.style.display = '';
+      specialTxt.textContent = grain.specialText;
+      return;
+    }
+
+    specialBox.style.display = 'none';
+
+    if(!valid){
+      waterBig.textContent = '—';
+      waterUnit.textContent = '';
+      return;
+    }
+
+    var water = amt * grain.ratio;
+    waterBig.textContent = formatAmount(water, unit);
+    waterUnit.textContent = unit === 'grams' ? 'g de agua' : 'tazas de agua';
+  }
+
+  grainSel.addEventListener('change', render);
+  amountIn.addEventListener('input', render);
+  unitSel.addEventListener('change', function(){
+    var newUnit = unitSel.value;
+    var cur = parseFloat(amountIn.value);
+    if(amountIn.value === '' || !isFinite(cur) || cur === DEFAULTS[prevUnit]){
+      amountIn.value = DEFAULTS[newUnit];
+    }
+    amountIn.step = STEP[newUnit];
+    prevUnit = newUnit;
+    render();
+  });
+
+  // Defaults on load: basmati, 1 cup.
+  grainSel.value = 'basmati';
+  unitSel.value = 'cups';
+  amountIn.value = DEFAULTS.cups;
+  amountIn.step = STEP.cups;
+  render();
+})();
+</script>
+</div>
         </div>
       </section>
 
