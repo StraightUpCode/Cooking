@@ -1,0 +1,661 @@
+<section class="lesson" id="m1">
+  <header class="lesson-head">
+    <p class="eyebrow">MÓDULO 01 · PROTEÍNAS</p>
+    <h1>Cocina proteína sin arruinarla</h1>
+    <p class="lede">El pollo seco no es un fallo de cocción — es un fallo de control de temperatura. Aprende a leer la proteína como un termómetro lee una curva: controla el objetivo, respeta la cocción residual, maneja la humedad, y el mismo modelo que salva tu pechuga te va a regalar una omelette francesa y una holandesa.</p>
+    <div class="kicker-row">
+      <span class="tag ember">Mes 1</span>
+      <span class="tag">pollo + huevos</span>
+      <span class="tag probe">La solución al pollo seco</span>
+    </div>
+  </header>
+
+  <!-- ============ 01 WHY THIS MATTERS ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">01</span><h2>Por qué importa</h2></div>
+    <p>Se te sigue secando la pechuga de pollo. Le pasa a casi todo el mundo, y casi todo el mundo culpa a la variable equivocada — la receta, el sartén, el aceite, "la carne estaba mala." Ninguna de esas es la causa. La causa es que estás cocinando por <em>tiempo</em> ("20 minutos por lado") cuando la carne solo responde a <em>temperatura</em>. Una pechuga no sabe cuánto tiempo lleva en el sartén. Sabe qué tan caliente está su centro, y pasado un umbral estrecho, expulsa violentamente su propia agua.</p>
+    <p>Piénsalo exactamente como la extracción de café. No aprendiste espresso cronometrando el shot a ciegas; lo aprendiste controlando las variables que <em>determinan</em> el resultado — dosis, temperatura, presión, molienda — y leyendo el resultado. La proteína es el mismo instrumento. Hay cuatro variables de control: <strong>temperatura interna</strong>, <strong>humedad</strong> (sal y agua superficial), <strong>cocción residual</strong> (el calor que sigue avanzando después de que dejas de cocinar), y <strong>la química propia del corte</strong> (cuánta grasa y colágeno tiene). Domina esas cuatro y "cocinar pollo" deja de ser una apuesta.</p>
+    <p>El beneficio se multiplica. Los huevos son el mismo problema a una escala de temperatura más baja, más rápida y más castigadora — el termómetro de proteína más sensible que tienes en la cocina. Así que el modelo que construyes este mes sobre una pechuga de pollo es el mismo modelo que después te da una omelette cremosa, una holandesa sin cortarse, y huevos que cuajan suavemente en un shakshuka en vez de convertirse en goma. Un solo modelo mental, un módulo entero de platillos.</p>
+    <div class="callout callout--why">
+      <span class="lbl">Por qué funciona</span>
+      <p>El músculo es un manojo de fibras proteicas que retienen agua como una esponja exprimida que se mantiene abierta a la fuerza. El calor hace que esas proteínas se <em>desnaturalicen</em> — se desenrollan — y luego se contraen. A medida que las fibras se tensan y el colágeno que las rodea se encoge, exprimen el agua hacia afuera. Por debajo de un umbral, esto es suave. Por encima, es una estampida. Tu único trabajo es detenerte antes de la estampida, o (en el caso de los muslos) empujar más allá de ella hacia un mecanismo completamente distinto.</p>
+    </div>
+  </section>
+
+  <!-- ============ 02 MENTAL MODEL ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">02</span><h2>El modelo mental: una proteína es una curva de temperatura</h2></div>
+    <p>Aquí está la imagen más importante de todo este módulo. Grafica la humedad retenida en la <em>pechuga</em> de pollo contra la temperatura interna. No es una pendiente suave — es un precipicio. La carne se mantiene jugosa en un rango amplio y tolerante y luego, en solo unos pocos grados alrededor de los <strong>65&nbsp;°C / 149&nbsp;°F</strong>, se cae por el borde.</p>
+
+    <figure>
+      <svg viewBox="0 0 640 330" role="img" aria-label="Humedad retenida en la pechuga de pollo versus temperatura interna, mostrando una meseta jugosa que colapsa bruscamente pasados los 65 grados Celsius" style="color:var(--ink-soft)">
+        <!-- axes -->
+        <line x1="70" y1="40" x2="70" y2="250" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="70" y1="250" x2="610" y2="250" stroke="currentColor" stroke-width="1.2"/>
+        <!-- axis labels -->
+        <text x="70" y="24" font-family="var(--f-mono),monospace" font-size="11" fill="currentColor">HUMEDAD RETENIDA →</text>
+        <text x="612" y="268" font-family="var(--f-mono),monospace" font-size="11" fill="currentColor" text-anchor="end">TEMP. INTERNA →</text>
+
+        <!-- pull window band 63-66C : x(63)=242 x(66)=282 -->
+        <rect x="242" y="40" width="40" height="210" fill="#2f7d57" opacity="0.14"/>
+        <text x="262" y="54" font-family="var(--f-mono),monospace" font-size="10" fill="#2f7d57" text-anchor="middle">RETIRAR</text>
+
+        <!-- dry zone band from 72C(295) to right -->
+        <rect x="322" y="40" width="288" height="210" fill="#bb3a2c" opacity="0.09"/>
+        <text x="466" y="150" font-family="var(--f-mono),monospace" font-size="12" fill="#bb3a2c" text-anchor="middle" opacity="0.85">ZONA SECA</text>
+        <text x="466" y="166" font-family="var(--f-mono),monospace" font-size="9" fill="#bb3a2c" text-anchor="middle" opacity="0.7">fibras exprimidas</text>
+
+        <!-- the cliff : vertical dashed at 65C x=269 -->
+        <line x1="269" y1="40" x2="269" y2="250" stroke="#c2481d" stroke-width="1.3" stroke-dasharray="4 4"/>
+        <text x="269" y="300" font-family="var(--f-mono),monospace" font-size="10.5" fill="#c2481d" text-anchor="middle">65 °C — el precipicio</text>
+
+        <!-- juicy plateau label -->
+        <text x="150" y="150" font-family="var(--f-mono),monospace" font-size="12" fill="#2f7d57" text-anchor="middle">JUGOSO</text>
+
+        <!-- the curve -->
+        <path d="M 70,74 L 176,78 C 216,82 236,86 269,100 C 292,112 308,168 322,196 L 362,214 L 468,228 L 574,234"
+              fill="none" stroke="#1f7982" stroke-width="2.6" stroke-linecap="round"/>
+
+        <!-- markers -->
+        <circle cx="242" cy="86" r="4" fill="#2f7d57"/>
+        <circle cx="322" cy="196" r="4" fill="#b6851f"/>
+        <circle cx="388" cy="218" r="4" fill="#bb3a2c"/>
+
+        <!-- x ticks -->
+        <g font-family="var(--f-mono),monospace" font-size="10" fill="currentColor" text-anchor="middle">
+          <line x1="136" y1="250" x2="136" y2="255" stroke="currentColor"/><text x="136" y="268">55°</text>
+          <line x1="202" y1="250" x2="202" y2="255" stroke="currentColor"/><text x="202" y="268">60°</text>
+          <line x1="269" y1="250" x2="269" y2="255" stroke="currentColor"/><text x="269" y="268">65°</text>
+          <line x1="335" y1="250" x2="335" y2="255" stroke="currentColor"/><text x="335" y="268">70°</text>
+          <line x1="388" y1="250" x2="388" y2="255" stroke="currentColor"/><text x="388" y="268">74°</text>
+          <line x1="468" y1="250" x2="468" y2="255" stroke="currentColor"/><text x="468" y="268">80°</text>
+        </g>
+        <!-- callout arrows -->
+        <text x="388" y="210" font-family="var(--f-mono),monospace" font-size="9" fill="#bb3a2c" text-anchor="middle">74°/165°F — seguro pero más seco</text>
+      </svg>
+      <figcaption>Humedad de la pechuga vs. temperatura interna. La banda verde (63–66&nbsp;°C) es donde la retiras; la cocción residual la lleva a la zona segura. Pasados ~70&nbsp;°C, cada grado extra cuesta jugo que no recuperas.</figcaption>
+    </figure>
+
+    <p>Ahora el giro que desbloquea todo el módulo: <strong>el muslo tiene una curva completamente distinta.</strong> La pechuga es músculo magro — su curva es un precipicio. El muslo es músculo trabajado, cargado de grasa y <em>colágeno</em>. El colágeno es tejido conectivo duro que solo empieza a derretirse en <em>gelatina</em> suave y jugosa por encima de ~<strong>70&nbsp;°C / 158&nbsp;°F</strong> y rinde mejor entre <strong>74–88&nbsp;°C / 165–190&nbsp;°F</strong>. Así que la misma temperatura que destruye una pechuga es la que <em>redime</em> un muslo. Por eso los muslos son tolerantes y las pechugas no — no es suerte, es química.</p>
+
+    <figure>
+      <svg viewBox="0 0 640 210" role="img" aria-label="Mapa de punto de cocción comparando la ventana ideal estrecha de la pechuga de pollo contra la ventana amplia del muslo" style="color:var(--ink-soft)">
+        <!-- scale -->
+        <line x1="60" y1="170" x2="600" y2="170" stroke="currentColor" stroke-width="1"/>
+        <g font-family="var(--f-mono),monospace" font-size="10" fill="currentColor" text-anchor="middle">
+          <text x="60" y="190">55°</text><text x="150" y="190">62°</text><text x="240" y="190">69°</text>
+          <text x="330" y="190">76°</text><text x="420" y="190">83°</text><text x="510" y="190">90°</text><text x="600" y="190">97°</text>
+        </g>
+        <!-- breast track -->
+        <text x="60" y="52" font-family="var(--f-mono),monospace" font-size="11" fill="#c2481d">PECHUGA — estrecha, poco tolerante</text>
+        <rect x="60" y="60" width="540" height="20" fill="none" stroke="var(--line)" stroke-width="1"/>
+        <rect x="150" y="60" width="52" height="20" fill="#2f7d57" opacity="0.55"/>
+        <rect x="202" y="60" width="398" height="20" fill="#bb3a2c" opacity="0.3"/>
+        <text x="176" y="74" font-family="var(--f-mono),monospace" font-size="9" fill="#173" text-anchor="middle">63–66</text>
+        <!-- thigh track -->
+        <text x="60" y="112" font-family="var(--f-mono),monospace" font-size="11" fill="#1f7982">MUSLO — amplia, tolerante</text>
+        <rect x="60" y="120" width="540" height="20" fill="none" stroke="var(--line)" stroke-width="1"/>
+        <rect x="330" y="120" width="205" height="20" fill="#2f7d57" opacity="0.55"/>
+        <rect x="240" y="120" width="90" height="20" fill="#b6851f" opacity="0.35"/>
+        <text x="432" y="134" font-family="var(--f-mono),monospace" font-size="9" fill="#173" text-anchor="middle">74–90 (colágeno → gelatina)</text>
+      </svg>
+      <figcaption>Mismo eje, dos proteínas. La ventana útil de la pechuga es una rendija; la del muslo es una autopista. Cocínalos al mismo número y una de las dos sale mal.</figcaption>
+    </figure>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Propiedad</th><th>Pechuga</th><th>Muslo</th></tr></thead>
+      <tbody>
+        <tr><td>Tipo de músculo</td><td>Contracción rápida, apenas trabajado</td><td>Contracción lenta, trabajado constantemente</td></tr>
+        <tr><td>Grasa</td><td>Muy magra</td><td>Vetada + capa de grasa</td></tr>
+        <tr><td>Colágeno</td><td>Bajo — nada que derretir</td><td>Alto — necesita derretirse a gelatina</td></tr>
+        <tr><td class="num">Temp. objetivo</td><td class="num">63–65 °C · 145–149 °F</td><td class="num">74–88 °C · 165–190 °F</td></tr>
+        <tr><td>Ventana útil</td><td>~4 °C (un precipicio)</td><td>~15 °C (una meseta)</td></tr>
+        <tr><td>Tolerancia</td><td>Baja — castiga el exceso</td><td>Alta — el exceso lo mejora</td></tr>
+        <tr><td>Mejor método</td><td>Suave + retirar temprano + reposar; salmuera primero</td><td>Sellar fuerte, derretir grasa, cocinar por completo</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout callout--heat">
+      <span class="lbl">La variable que más importa</span>
+      <p><strong>Cocción residual.</strong> Cuando retiras la carne del fuego, las capas exteriores calientes siguen liberando energía hacia adentro — el centro sigue <em>subiendo</em> durante varios minutos. Una pechuga gruesa puede subir <strong>3–6&nbsp;°C / 5–11&nbsp;°F</strong> después de salir del sartén. Por eso la retiras a 60–62&nbsp;°C y dejas que llegue a 63–65&nbsp;°C por inercia. Si esperas a que el termómetro marque tu objetivo, ya te pasaste. Retira temprano. Siempre.</p>
+    </div>
+  </section>
+
+  <!-- ============ 03 KEY CONCEPTS ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">03</span><h2>Conceptos clave</h2></div>
+    <div class="grid cols-2">
+      <div class="card"><h4>Desnaturalización y contracción</h4><p><b>Qué es:</b> el calor desenrolla las proteínas musculares y luego encoge las fibras y sus vainas de colágeno. <b>Por qué importa:</b> el encogimiento exprime el agua hacia afuera — eso <em>es</em> la "sequedad." <b>Ejemplo:</b> una pechuga mantenida a 74&nbsp;°C pierde mucho más jugo que una retirada a 64&nbsp;°C. <b>Error común:</b> tratar la sequedad como "falta de salsa" en vez de "exceso de calor."</p></div>
+      <div class="card"><h4>La pasteurización es tiempo × temperatura</h4><p><b>Qué es:</b> "seguro" no es un solo número — es una dosis. Pollo mantenido a <b>60&nbsp;°C / 140&nbsp;°F durante ~35 min</b>, o <b>63&nbsp;°C / 145&nbsp;°F durante ~9 min</b>, es tan seguro como un golpe instantáneo de 74&nbsp;°C / 165&nbsp;°F. <b>Por qué importa:</b> te permite cocinar más frío <em>y</em> seguro. <b>Error común:</b> creer que 74&nbsp;°C es el único objetivo seguro — es solo el más rápido y el más seco.</p></div>
+      <div class="card"><h4>Colágeno → gelatina</h4><p><b>Qué es:</b> el tejido conectivo duro se convierte en gelatina sedosa por encima de ~70&nbsp;°C, más rápido cuanto más caliente. <b>Por qué importa:</b> por eso los muslos, los muslitos y el caldo <em>mejoran</em> con más calor y tiempo. <b>Ejemplo:</b> un caldo hervido a fuego lento 4 h cuaja en gelatina al enfriarse. <b>Error común:</b> retirar un muslo a 65&nbsp;°C "para que quede jugoso" — lo que consigues es que quede gomoso.</p></div>
+      <div class="card"><h4>Cocción residual</h4><p><b>Qué es:</b> el calor residual sigue subiendo la temperatura del centro después de que dejas de cocinar. <b>Por qué importa:</b> es la diferencia entre 64&nbsp;°C y 70&nbsp;°C en la misma pechuga. <b>Ejemplo:</b> retira a 60&nbsp;°C, cubre, observa cómo sube a 64&nbsp;°C. <b>Error común:</b> ignorarla y cocinar "hasta el objetivo" dentro del sartén.</p></div>
+      <div class="card"><h4>La salmuera retiene agua</h4><p><b>Qué es:</b> la sal disuelve/desnaturaliza parcialmente las proteínas musculares para que retengan más agua y se sazonen por dentro. <b>Por qué importa:</b> una pechuga en salmuera retiene ~10% más humedad y perdona el exceso de cocción. <b>Ejemplo:</b> salmuera líquida al ~5–6% de sal, o ~1% del peso de la carne como salmuera seca. <b>Error común:</b> salar solo la superficie 2 minutos antes de cocinar — no da tiempo a que actúe.</p></div>
+      <div class="card"><h4>El reposo redistribuye</h4><p><b>Qué es:</b> a medida que las fibras se enfrían y se relajan un poco, el jugo expulsado se reabsorbe y deja de escurrirse al cortar. <b>Por qué importa:</b> una pechuga reposada sangra mucho menos en la tabla. <b>Ejemplo:</b> reposa 5–10 min cubierta. <b>Error común:</b> cortar directo del fuego y ver el jugo formar un charco en el plato en vez de quedarse en la carne.</p></div>
+    </div>
+    <div class="callout callout--pro">
+      <span class="lbl">Mediocre → Excelente</span>
+      <p>Un cocinero mediocre tiene termómetro y aun así sobrecocina, porque lo usa <em>una sola vez, al final</em>. Un cocinero excelente lo usa para aprender la cocción residual de <em>su</em> sartén y <em>su</em> grosor de corte, y luego retira por predicción — "esta pechuga de 3&nbsp;cm en este sartén sube 5&nbsp;°C, así que la retiro a 59&nbsp;°C." Mismo instrumento, resultado opuesto. El instrumento vale lo que valga el modelo detrás de la mano que lo sostiene.</p>
+    </div>
+  </section>
+
+  <!-- ============ 04 TOOLS ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">04</span><h2>Herramientas y equipo</h2></div>
+    <p>Este módulo tiene exactamente una herramienta innegociable, y es barata. Todo lo demás es conveniencia.</p>
+    <div class="spec">
+      <div class="spec-h">Equipo — necesario / opcional / evitar</div>
+      <div class="spec-row"><span class="spec-key">Termómetro de lectura instantánea</span><span class="spec-val"><b>Necesario.</b> Todo el módulo gira en torno a él. Un termopar rápido (&lt;3&nbsp;s) es ideal; hasta uno barato de 12 libras esterlinas le gana a adivinar. Este es tu refractómetro.</span></div>
+      <div class="spec-row"><span class="spec-key">Sartén pesado</span><span class="spec-val"><b>Necesario.</b> El hierro fundido o el acero inoxidable grueso retiene calor a pesar del choque frío de la carne cruda y forma fondo. Un antiadherente delgado no dora y no deja fondo para una salsa de sartén.</span></div>
+      <div class="spec-row"><span class="spec-key">Báscula de cocina</span><span class="spec-val"><b>Necesaria.</b> La salmuera es un porcentaje del peso. "Un puñado de sal" no es una especificación. Resolución de 1&nbsp;g.</span></div>
+      <div class="spec-row"><span class="spec-key">Antiadherente / acero al carbono</span><span class="spec-val"><b>Necesario para huevos.</b> Un sartén antiadherente dedicado y bien cuidado, o uno de acero al carbono curado, es la diferencia entre una omelette francesa y un revoltillo soldado al metal.</span></div>
+      <div class="spec-row"><span class="spec-key">Rejilla + bandeja</span><span class="spec-val"><b>Opcional, alto valor.</b> Para salmuera seca destapada en el refrigerador (piel crujiente) y para reposar sin que se humedezca la parte de abajo con vapor.</span></div>
+      <div class="spec-row"><span class="spec-key">Colador fino / chino</span><span class="spec-val"><b>Opcional.</b> Caldo transparente. Un colador forrado con manta de cielo hace el mismo trabajo.</span></div>
+      <div class="spec-row"><span class="spec-key">Circulador de cocción sous-vide</span><span class="spec-val"><b>Opcional / para después.</b> Vuelve trivial la curva de temperatura — literalmente fijas el objetivo. Excelente maestro, no es necesario para aprender el principio en la estufa.</span></div>
+      <div class="spec-row"><span class="spec-key">"Ablandadores" de carne, inyectores, aceites en spray</span><span class="spec-val"><b>Evitar.</b> Soluciones a problemas que el control de temperatura ya resuelve.</span></div>
+    </div>
+    <div class="callout callout--mistake">
+      <span class="lbl">Lo que los principiantes hacen mal</span>
+      <p>Comprar un termómetro de dial que se demora 20&nbsp;segundos y marca ±3&nbsp;°C. En una proteína con una ventana de 4&nbsp;°C, un termómetro lento e impreciso es peor que inútil — te da una falsa confianza mientras el centro se dispara pasando el precipicio. Rápido y preciso le gana a caro y elegante siempre.</p>
+    </div>
+  </section>
+
+  <!-- ============ 05 TECHNIQUE BREAKDOWN ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">05</span><h2>Desglose de la técnica</h2></div>
+
+    <div class="levels">
+      <span class="level level--1"><b>L1</b> — Puedo cocinarlo por completo sin secarlo</span>
+      <span class="level level--2"><b>L2</b> — Reproduzco resultados jugosos, sazonados y crujientes</span>
+      <span class="level level--3"><b>L3</b> — Ajusto salmuera, calor y cocción residual según el corte</span>
+      <span class="level level--4"><b>L4</b> — Improviso entre proteínas y enseño el modelo</span>
+    </div>
+
+    <div class="level-band"><span class="tag level--1"><b>L1</b> Funcional</span><span class="ln"></span></div>
+    <h3>Muslo de pollo sellado en sartén (el tolerante — empieza aquí)</h3>
+    <p>Muslos primero, a propósito. Perdonan los errores de temperatura que todavía estás cometiendo, así que puedes practicar el calor y el dorado sin que el precipicio te castigue.</p>
+    <ol class="steps">
+      <li><b>Prepara.</b> Seca el muslo <em>completamente</em> con papel toalla y salaelo (idealmente en salmuera seca horas antes — ver L2). <em>Por qué:</em> el agua superficial debe evaporarse antes de que empiece el dorado; cada gota retrasa el Maillard y le da al pollo un vapor que lo pone gris.</li>
+      <li><b>Ejecuta.</b> Con el lado de la piel (o el lado de presentación) hacia abajo en un sartén moderadamente caliente con un poco de aceite. <em>Déjalo quieto.</em> No lo pinches, no lo muevas durante 6–8 min. <em>Por qué:</em> la costra se despega sola cuando está dorada; moverla temprano rompe la costra que se está formando e interrumpe el contacto.</li>
+      <li><b>Ejecuta.</b> Voltea una sola vez. Cocina hasta <strong>74–80&nbsp;°C / 165–176&nbsp;°F</strong> en el punto más grueso, cerca pero sin tocar el hueso. <em>Por qué:</em> el muslo <em>quiere</em> ese calor — el colágeno se derrite en gelatina y queda sedoso, no seco.</li>
+      <li><b>Evalúa.</b> Usa el termómetro, no adivines. Los jugos cerca del hueso deben salir claros; la carne se desprende fácil. La piel debe estar crujiente y quebrarse un poco.</li>
+      <li><b>Corrige.</b> Piel pálida → sartén muy frío o carne muy húmeda: seca mejor, empieza más caliente, y no llenes el sartén (llenarlo baja la temperatura y genera vapor). Mordida gomosa → <em>por debajo</em> de 70&nbsp;°C: cocínalo más, no menos.</li>
+    </ol>
+
+    <div class="level-band"><span class="tag level--2"><b>L2</b> Consistente</span><span class="ln"></span></div>
+    <h3>Pechuga de pollo en salmuera (la solución al pollo seco, en práctica)</h3>
+    <ol class="steps">
+      <li><b>Prepara — salmuera.</b> Salmuera seca: sal al <strong>~1% del peso de la pechuga</strong> (p. ej. 2&nbsp;g en una pechuga de 200&nbsp;g), reposa destapada sobre una rejilla en el refrigerador 1–24&nbsp;h. O salmuera líquida al <strong>~5–6% de sal</strong> durante 30–60&nbsp;min. <em>Por qué:</em> la sal disuelve las proteínas musculares para que retengan agua y se sazonen en todo el grosor, no solo en la costra.</li>
+      <li><b>Prepara — grosor parejo.</b> Aplana o abre en mariposa suavemente el extremo grueso para que la pechuga quede uniforme. <em>Por qué:</em> una pechuga cónica significa que el extremo delgado llega al precipicio mientras el grueso todavía está crudo. Geometría pareja = cocción pareja.</li>
+      <li><b>Ejecuta — calor moderado.</b> Sella un lado para dorar, voltea, y luego baja a fuego medio-bajo. El calor suave amplía tu margen porque el gradiente de temperatura de la superficie al centro es menos pronunciado. <em>Por qué:</em> un sartén al máximo se pasa del centro antes de que el exterior esté listo; un sartén moderado deja que el centro se ponga al día bajo control.</li>
+      <li><b>Ejecuta — retira temprano.</b> Mide con el termómetro en el punto más grueso. Retira a <strong>60–62&nbsp;°C / 140–144&nbsp;°F</strong>. <em>Por qué:</em> la cocción residual la llevará a 63–65&nbsp;°C, y una temperatura de 60&nbsp;°C+ ya está pasteurizando mientras reposa.</li>
+      <li><b>Evalúa y corrige.</b> Reposa 5&nbsp;min, corta contra la fibra. Jugosa y opaca = éxito. Sobrecocinada y fibrosa = retira 3&nbsp;°C antes la próxima vez y confirma tu cocción residual. Rosada y translúcida en el centro = cruda; regrésala brevemente y vuelve a medir.</li>
+    </ol>
+
+    <div class="level-band"><span class="tag level--3"><b>L3</b> Optimización</span><span class="ln"></span></div>
+    <h3>Pollo con piel crujiente + salsa de sartén con el fondo</h3>
+    <ol class="steps">
+      <li><b>Prepara — seca la piel.</b> Salmuera seca destapada en el refrigerador toda la noche. <em>Por qué:</em> la piel crujiente es un problema de deshidratación. El agua en la piel cuesta energía para evaporarse antes de cualquier dorado — y mientras se evapora, la piel no puede superar los 100&nbsp;°C ni dorarse. La piel seca se dora de inmediato.</li>
+      <li><b>Ejecuta — renderiza empezando en frío.</b> Con la piel hacia abajo en un sartén <em>frío o apenas tibio</em>, y luego sube el calor. Presiona plano con una espátula el primer minuto para lograr contacto total. <em>Por qué:</em> una rampa lenta derrite la capa de grasa gradualmente en vez de encoger la piel de golpe; la grasa derretida es lo que la fríe hasta dejarla crujiente.</li>
+      <li><b>Ejecuta — no lo muevas.</b> 8–12 min con la piel hacia abajo hasta que esté dorado profundo y rígido. Voltea solo para terminar la carne. <em>Por qué:</em> contacto + paciencia = costra pareja.</li>
+      <li><b>Ejecuta — construye la salsa.</b> Retira el pollo para que repose. Vierte el exceso de grasa, dejando el <em>fondo</em> dorado. Desglasa con vino/caldo, raspa cada mancha dorada suelta, reduce, y luego <em>monta</em> fuera del fuego con mantequilla fría (o añade un chorrito de crema) para dar brillo y espesar. <em>Por qué:</em> el fondo es sabor Maillard concentrado — soluble en líquido, que es justo lo que captura el desglasado.</li>
+      <li><b>Evalúa.</b> La piel se quiebra; la salsa cubre el dorso de una cuchara y sabe a pollo, no solo a vino.</li>
+      <li><b>Corrige.</b> Salsa cortada/grasosa → demasiado caliente al montar la mantequilla: retira del fuego, bate una cucharada de caldo frío para volver a emulsionar. Salsa amarga → fondo quemado: la próxima vez desglasa antes.</li>
+    </ol>
+
+    <div class="level-band"><span class="tag level--4"><b>L4</b> Maestría</span><span class="ln"></span></div>
+    <h3>Pollo entero rostizado + caldo de la carcasa</h3>
+    <ol class="steps">
+      <li><b>Prepara.</b> Salmuera seca el pollo entero 1–2 días, destapado en el refrigerador. Considera deshuesar la espalda (quitar el espinazo y aplanar) para que la pechuga y el muslo terminen más parejos. <em>Por qué:</em> el problema del pollo entero es que la pechuga (63&nbsp;°C) y el muslo (74&nbsp;°C+) quieren objetivos distintos en el mismo animal. Aplanar + colocar la pechuga en una zona más fresca reduce la brecha.</li>
+      <li><b>Ejecuta.</b> Rostiza lo suficientemente caliente para dorar la piel; retira cuando la <strong>pechuga marque 62&nbsp;°C / 144&nbsp;°F</strong> y el <strong>muslo marque 74&nbsp;°C+ / 165&nbsp;°F+</strong>. Reposa 15–20 min. <em>Por qué:</em> la cocción residual termina la pechuga durante un reposo largo sin cocinarla de más.</li>
+      <li><b>Ejecuta — caldo.</b> Carcasa + aromáticos (cebolla, zanahoria, apio, laurel) cubiertos con agua fría. Lleva a un temblor apenas perceptible — <strong>nunca a hervor fuerte</strong> — y mantén 3–6&nbsp;h, espumando. <em>Por qué:</em> un hervor suave extrae el colágeno en gelatina para dar cuerpo; un hervor fuerte emulsiona la grasa en el agua y agita partículas hasta enturbiarla. Caldo transparente = caldo suave.</li>
+      <li><b>Evalúa.</b> Pollo: pechuga jugosa, muslo gelatinoso, piel crujiente. Caldo: transparente, sabroso, cuaja en gelatina suave al enfriarse (prueba de gelatina extraída).</li>
+      <li><b>Corrige.</b> Caldo grasoso/turbio → hirvió fuerte: cuela, enfría, levanta la capa de grasa, y la próxima vez mantenlo por debajo del hervor suave. Caldo débil y aguado → poco colágeno o poco tiempo: usa más coyunturas/alas y cocina más tiempo.</li>
+    </ol>
+  </section>
+
+  <!-- ============ 06 EGGS ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">06</span><h2>Huevos: la misma curva, más rápida y menos tolerante</h2></div>
+
+    <p>Todo lo anterior fue pollo. Ahora aplica el modelo a los huevos — porque un huevo es el
+      mismo problema de proteína-en-curva-de-temperatura comprimido en una ventana más
+      pequeña, más rápida y más castigadora. Una pechuga de pollo te da unos grados de
+      margen y un minuto para reaccionar. Un huevo te da segundos. Por eso es exactamente
+      la mejor práctica diaria que puedes tener: expone un error de control de calor de
+      inmediato, barato, y en una forma que puedes comer mientras aprendes. Domina el
+      huevo y la pechuga se sentirá tolerante.</p>
+
+    <div class="callout callout--heat"><span class="lbl">La variable sigue siendo la temperatura interna</span>
+      <p>La clara y la yema son dos proteínas distintas que cuajan a temperaturas
+      <em>diferentes</em> — que es la razón por la que un huevo con yema líquida y clara
+      cuajada es siquiera posible. Cocina hasta la ventana entre las dos y mantente ahí.
+      Pásate y la yema se vuelve harinosa y la clara se vuelve goma. No existe un número de
+      "el huevo está listo"; existe un rango donde te estacionas.</p></div>
+
+    <div class="spec">
+      <div class="spec-h">Puntos de cuajado del huevo (por qué funciona la yema líquida / clara cuajada)</div>
+      <div class="spec-row"><span class="spec-key">Clara · empieza</span><span class="spec-val">~63&nbsp;°C / 145&nbsp;°F — pasa de transparente a lechosa, todavía suelta</span></div>
+      <div class="spec-row"><span class="spec-key">Clara · cuajada</span><span class="spec-val">~65&nbsp;°C / 149&nbsp;°F — tierna y apenas firme (algunas proteínas aguantan hasta 80&nbsp;°C)</span></div>
+      <div class="spec-row"><span class="spec-key">Yema · espesa</span><span class="spec-val">~65&nbsp;°C / 149&nbsp;°F — empieza a gelificarse</span></div>
+      <div class="spec-row"><span class="spec-key">Yema · tipo mermelada</span><span class="spec-val">~68&nbsp;°C / 154&nbsp;°F — untuosa, se sirve con cuchara — el punto ideal</span></div>
+      <div class="spec-row"><span class="spec-key">Yema · firme</span><span class="spec-val">~70&nbsp;°C / 158&nbsp;°F — desmenuzable, ya no líquida</span></div>
+      <div class="spec-row"><span class="spec-key">Huevo entero batido / natilla</span><span class="spec-val">cuaja a ~73–80&nbsp;°C / 163–176&nbsp;°F — los revueltos y la holandesa se retiran bien por debajo de esto</span></div>
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 660 176" role="img" aria-label="Escalera de temperatura del punto de cuajado del huevo de 60 a 85 grados Celsius mostrando zonas cremosa, cuajada y gomosa">
+        <g font-family="var(--f-mono),monospace">
+          <!-- zone bar -->
+          <rect x="40" y="70" width="178" height="26" fill="#1f7982" opacity="0.28"/>
+          <rect x="218" y="70" width="112" height="26" fill="#2f7d57" opacity="0.30"/>
+          <rect x="330" y="70" width="290" height="26" fill="#c2481d" opacity="0.26"/>
+          <rect x="40" y="70" width="580" height="26" fill="none" stroke="currentColor" stroke-opacity="0.4"/>
+          <!-- zone labels -->
+          <text x="129" y="60" text-anchor="middle" font-size="11" fill="#1f7982">CREMOSO / LÍQUIDO</text>
+          <text x="274" y="60" text-anchor="middle" font-size="11" fill="#2f7d57">MERMELADA · CUAJADO</text>
+          <text x="475" y="60" text-anchor="middle" font-size="11" fill="#c2481d">FIRME → GOMOSO</text>
+          <!-- ticks -->
+          <g stroke="currentColor" stroke-opacity="0.55" stroke-width="1">
+            <line x1="107" y1="96" x2="107" y2="110"/>
+            <line x1="151" y1="96" x2="151" y2="118"/>
+            <line x1="218" y1="96" x2="218" y2="110"/>
+            <line x1="263" y1="96" x2="263" y2="118"/>
+            <line x1="330" y1="96" x2="330" y2="110"/>
+          </g>
+          <g font-size="10.5" fill="currentColor" text-anchor="middle">
+            <text x="107" y="124">63° clara</text>
+            <text x="151" y="132">65° yema gelifica</text>
+            <text x="218" y="124">68° mermelada</text>
+            <text x="263" y="132">70° firme</text>
+            <text x="330" y="124">73°+ natilla</text>
+          </g>
+          <text x="40" y="164" font-size="10" fill="currentColor" fill-opacity="0.7">60&nbsp;°C / 140&nbsp;°F</text>
+          <text x="620" y="164" font-size="10" fill="currentColor" fill-opacity="0.7" text-anchor="end">85&nbsp;°C / 185&nbsp;°F</text>
+        </g>
+      </svg>
+      <figcaption>Fig. 1.3 — La ventana entre la clara cuajada (~65&nbsp;°C) y la yema firme (~70&nbsp;°C) es donde vive todo huevo "perfecto." Los revueltos y la holandesa se retiran del fuego incluso antes y terminan por cocción residual.</figcaption>
+    </figure>
+
+    <p>Los cuatro platillos de abajo no son cuatro recetas — son cuatro ajustes en el mismo
+      dial, ordenados de "calor suave, muévelo sin parar" a "calor suave, apenas lo toques."
+      Cómo se ve el resultado bueno, cómo llegar ahí, y el único error que arruina cada uno:</p>
+
+    <div class="grid cols-2">
+      <div class="card">
+        <h4>Omelette francesa</h4>
+        <p><b>Cómo se ve el resultado bueno:</b> amarillo pálido, sin dorado, enrollada en un
+        cigarro suave, todavía cremosa (<em>baveuse</em>) por dentro. <b>Técnica:</b> fuego
+        bajo, huevo batido y salado en mantequilla espumosa, luego revolver/agitar
+        <em>constantemente</em> para formar grumos pequeños; detente mientras la superficie
+        todavía está húmeda, inclina, y enrolla — termina por cocción residual fuera del
+        fuego. <b>Error común:</b> sartén demasiado caliente. Color y goma son el mismo error
+        que te enseñó la pechuga — exceso de cocción.</p>
+      </div>
+      <div class="card">
+        <h4>Omurice</h4>
+        <p><b>Cómo se ve el resultado bueno:</b> una manta de huevo sedosa y sin dorar sobre
+        arroz frito con ketchup, cuajada pero brillante. <b>Técnica:</b> es la habilidad de
+        la omelette francesa en un lienzo más grande — cuaja suavemente una capa delgada de
+        huevo, y luego enróllala o extiéndela sobre el arroz mientras la superficie todavía
+        está apenas cuajada. <b>Error común:</b> cocinar el huevo hasta que quede seco,
+        opaco y chirriante — el mismo exceso, con más superficie para equivocarse.</p>
+      </div>
+      <div class="card">
+        <h4>Huevos Benedictinos</h4>
+        <p><b>Cómo se ve el resultado bueno:</b> huevos pochados con claras cuajadas y yemas
+        líquidas, bajo una <em>holandesa</em> tibia, suave y sin cortarse. <b>Técnica:</b>
+        pocha huevos frescos en agua apenas temblando (un chorrito de vinagre ayuda a que
+        la clara se junte); la holandesa es una emulsión tibia de yema y mantequilla —
+        bate a fuego suave y mantenla <strong>por debajo de ~73&nbsp;°C / 163&nbsp;°F</strong>.
+        <b>Error común:</b> holandesa demasiado caliente → la yema se revuelve y la salsa
+        se corta. Es el exceso de cocción de la pechuga, a escala de emulsión.</p>
+      </div>
+      <div class="card">
+        <h4>Shakshuka</h4>
+        <p><b>Cómo se ve el resultado bueno:</b> huevos anidados en salsa de tomate a fuego
+        lento con claras apenas cuajadas y yemas todavía líquidas. <b>Técnica:</b> rompe
+        los huevos en huecos dentro de una salsa burbujeando suavemente, tapa para atrapar
+        el calor, y cocina a fuego <em>bajo</em> — la salsa, no un sartén al máximo, es tu
+        fuente de calor; retira mientras las yemas todavía se mueven al agitar el sartén.
+        <b>Error común:</b> salsa demasiado caliente o dejarla demasiado tiempo → yemas
+        gomosas. El calor residual sigue cocinando después de quitar la tapa, así que
+        retira temprano.</p>
+      </div>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E-huevo</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Sentir la curva en la proteína más sensible que tienes.</dd>
+        <dt>Mantén constante</dt><dd>Dos huevos del mismo cartón, mismo sartén, misma mantequilla, misma sal.</dd>
+        <dt>Cambia</dt><dd>Solo el calor. Revuelve uno a fuego mínimo con movimiento constante; revuelve el otro a fuego medio-alto.</dd>
+        <dt>Esperado</dt><dd>Fuego bajo → grumos pequeños, brillantes, cremosos. Fuego alto → grumos grandes, secos, que sueltan líquido en la mitad del tiempo.</dd>
+        <dt>Observa</dt><dd>Cuán poco calor se necesita, y cómo el momento de "recién cuajado → sobrecocinado" llega en segundos, no minutos. Ese intervalo <em>es</em> toda la habilidad.</dd>
+      </dl>
+    </div>
+
+    <div class="callout callout--pro"><span class="lbl">Mediocre → Excelente</span>
+      <p>Cocina huevos a diario. Son el ciclo de retroalimentación más barato y más rápido de
+      la cocina — un huevo, una variable, treinta segundos para un veredicto. El cocinero
+      que hace una omelette francesa impecable no tiene un don; simplemente ha repetido
+      este ejercicio unos cientos de veces y ahora sabe leer el sartén como tú lees un shot
+      que se está pasando de largo.</p></div>
+  </section>
+
+  <!-- ============ 07 BEGINNER MISTAKES ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">07</span><h2>Errores de principiante y solución de problemas</h2></div>
+
+    <details class="trouble"><summary>La pechuga de pollo está seca <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Cocinada más allá de ~68&nbsp;°C; cocinada por tiempo y no por temperatura; se ignoró la cocción residual; carne magra sin salmuera; grosor desigual sobrecocinando el extremo delgado.</dd>
+        <dt>Diagnostica</dt><dd>Mide el centro ya cocinado. Una lectura de 70&nbsp;°C+ confirma el exceso. Jugo formando charco en la tabla = fibras exprimidas y sin reposo.</dd>
+        <dt>Corrige</dt><dd>Salmuera seca al 1% del peso; empareja el grosor; cocina a fuego moderado; retira a 60–62&nbsp;°C; reposa 5&nbsp;min. En el próximo intento, retira 3&nbsp;°C antes de lo que se sintió "seguro" y deja que la cocción residual la termine.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>El muslo está gomoso / correoso <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd><em>Falta</em> de cocción — retirado alrededor de 63–68&nbsp;°C como si fuera una pechuga. El colágeno nunca se derritió.</dd>
+        <dt>Diagnostica</dt><dd>Textura elástica y tensa; el tejido conectivo sigue duro. Probablemente marca menos de 72&nbsp;°C.</dd>
+        <dt>Corrige</dt><dd>Cocínalo <em>más</em>, hasta 74–88&nbsp;°C. Los muslos mejoran con calor, no empeoran. Es el único corte donde "cocínalo más tiempo" es el instinto correcto.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>La piel está blanda / húmeda, no crujiente <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Piel húmeda; sartén sobrecargado (vapor); sartén demasiado frío para renderizar la grasa; voltear demasiado temprano; reposar la piel hacia abajo en un plato que atrapa el vapor.</dd>
+        <dt>Diagnostica</dt><dd>Piel pálida, flácida, grasosa. Grasa todavía visible debajo = poco renderizada.</dd>
+        <dt>Corrige</dt><dd>Salmuera seca destapada toda la noche; empieza en frío y renderiza despacio, presionando plano; da espacio a cada pieza; reposa con la piel hacia arriba sobre una rejilla.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>El caldo está turbio, grasoso o débil <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>El hervor fuerte emulsionó la grasa y agitó partículas; poco tejido conectivo; hervido a fuego lento por muy poco tiempo; nunca se espumó.</dd>
+        <dt>Diagnostica</dt><dd>Líquido lechoso, capa de grasa, sabor delgado, no cuaja al enfriarse.</dd>
+        <dt>Corrige</dt><dd>Mantenlo en un temblor apenas perceptible, espuma la impureza, usa coyunturas/alas/patas para la gelatina, cocina 3–6&nbsp;h, cuela con manta de cielo, enfría y levanta la grasa.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>La holandesa se cortó / se volvió huevo revuelto <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Demasiado caliente — las proteínas de la yema pasaron ~70&nbsp;°C y cuajaron en vez de emulsionarse; o la mantequilla se añadió muy rápido para que la lecitina la sostuviera.</dd>
+        <dt>Diagnostica</dt><dd>Textura granulosa, separada, o una capa de aceite sudando. Tibio ≠ caliente: el tazón nunca debería estar tan caliente que no puedas sostenerlo.</dd>
+        <dt>Corrige</dt><dd>Trabaja a fuego suave/fuera del fuego en ráfagas; bate la mantequilla poco a poco. Para rescatar una salsa cortada, bate una yema fresca (o una cucharada de agua tibia) en un tazón limpio y ve añadiendo la salsa cortada en hilo.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>La omelette francesa quedó dorada / gomosa <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Calor demasiado alto; falta de movimiento; cocinada demasiado tiempo. El dorado significa que la superficie pasó el punto de cuajado suave.</dd>
+        <dt>Diagnostica</dt><dd>Exterior dorado/tostado, firme por completo. Una omelette francesa debe quedar amarillo pálido y cremosa (<em>baveuse</em>) por dentro.</dd>
+        <dt>Corrige</dt><dd>Fuego bajo, movimiento constante para grumos pequeños, y detente mientras la superficie todavía brilla y está apenas húmeda. El calor residual la termina mientras la enrollas.</dd>
+      </dl></div>
+    </details>
+  </section>
+
+  <!-- ============ 07 EXPERIMENTS ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">08</span><h2>Experimentos controlados</h2></div>
+    <p>Cambia una variable, mantén el resto constante, prueba lado a lado. Así es como el modelo deja de ser algo que lees y se convierte en algo que <em>sabes</em>.</p>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E1 — el precipicio, probado</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Sentir la diferencia entre 63&nbsp;°C y 74&nbsp;°C en tu propia boca.</dd>
+        <dt>Mantén constante</dt><dd>Dos pechugas, mismo pollo, mismo grosor (aplana para igualar), mismo sazón, mismo sartén, cocinadas juntas.</dd>
+        <dt>Cambia</dt><dd>Retira una a <b>63&nbsp;°C / 145&nbsp;°F</b>, la otra a <b>74&nbsp;°C / 165&nbsp;°F</b>. Reposa ambas por igual.</dd>
+        <dt>Esperado</dt><dd>La pieza de 63&nbsp;°C es notablemente más jugosa y tierna; la de 74&nbsp;°C es más firme, con jugo más pálido, más harinosa.</dd>
+        <dt>Observa</dt><dd>Ambas son seguras. La diferencia es pura humedad. Esta sola prueba mata para siempre el mito de "165 o nada."</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E2 — con salmuera vs sin salmuera</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Cuantificar qué hace realmente la sal.</dd>
+        <dt>Mantén constante</dt><dd>Dos pechugas iguales, misma temperatura final (retira ambas a 62&nbsp;°C), mismo reposo.</dd>
+        <dt>Cambia</dt><dd>Una en salmuera seca al 1% del peso durante 12&nbsp;h; la otra salada solo en el sartén.</dd>
+        <dt>Esperado</dt><dd>La pieza en salmuera es más jugosa, sazonada hasta el centro, y más tolerante si te pasas un poco de cocción.</dd>
+        <dt>Observa</dt><dd>Pesa ambas antes y después de cocinar — la de salmuera pierde un porcentaje menor de su peso. Ese peso perdido es el agua que percibes como sequedad.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E3 — piel secada toda la noche vs secada con toalla</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Probar que la piel crujiente es un problema de humedad.</dd>
+        <dt>Mantén constante</dt><dd>Dos muslos, mismo sartén, mismo calor, mismo tiempo y técnica de renderizado.</dd>
+        <dt>Cambia</dt><dd>Uno en salmuera seca destapado en el refrigerador toda la noche; el otro solo secado con toalla justo antes del sartén.</dd>
+        <dt>Esperado</dt><dd>La piel secada toda la noche dora más rápido y se quiebra; la secada con toalla queda un tono más pálida y más correosa.</dd>
+        <dt>Observa</dt><dd>Mismo calor, mismo tiempo — solo cambió el agua superficial. Esa es toda la lección del dorado en un solo bocado.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E4 — mide tu cocción residual</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Aprender la cocción residual de <em>tu</em> sartén y corte para poder retirar por predicción.</dd>
+        <dt>Mantén constante</dt><dd>Una pechuga, un termómetro dejado dentro.</dd>
+        <dt>Cambia</dt><dd>Nada — solo retira a 60&nbsp;°C y registra la temperatura cada 30&nbsp;s mientras reposa.</dd>
+        <dt>Esperado</dt><dd>El centro sigue subiendo, llega a un pico 3–6&nbsp;°C más alto, y luego baja.</dd>
+        <dt>Observa</dt><dd>Ese número pico <em>es</em> tu cocción residual. De ahora en adelante, retira a (objetivo − cocción residual). Esta única medición mejora cada cocción después de ella.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ 08 PRACTICE SYSTEM ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">09</span><h2>Sistema de práctica</h2></div>
+    <p>Repetición con retroalimentación, no repetición sola. Cada ejercicio tiene un aprobado/reprobado que puedes medir, así que estás entrenando el modelo, no solo haciendo la cena.</p>
+
+    <div class="drill">
+      <div class="drill-h">Ejercicio de práctica · L1</div>
+      <h4>Medir y retirar la pechuga</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Lograr una pechuga jugosa tres veces seguidas.</dd>
+        <dt>Dificultad</dt><dd>Principiante</dd>
+        <dt>Materiales</dt><dd>Pechuga, sal, termómetro, sartén moderado.</dd>
+        <dt>Pasos</dt><dd>Empareja el grosor, calor moderado, mide seguido, retira a 60–62&nbsp;°C, reposa, corta, prueba.</dd>
+        <dt>Éxito</dt><dd>Opaca, jugosa, sin centro translúcido; el jugo se queda en la carne.</dd>
+        <dt>Modos de falla</dt><dd>Seca (exceso de cocción / sin reposo); centro rosado (cruda); exterior gris (sartén muy caliente / carne húmeda).</dd>
+        <dt>Mejora</dt><dd>Registra la temperatura de retiro y el resultado cada vez; converge en tu cocción residual.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Ejercicio de práctica · L2</div>
+      <h4>Muslo con piel crujiente, diez veces seguidas</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Piel crujiente y consistente cada vez.</dd>
+        <dt>Dificultad</dt><dd>Principiante-Intermedio</dd>
+        <dt>Materiales</dt><dd>Muslos con piel, rejilla, sartén de hierro fundido/inoxidable.</dd>
+        <dt>Pasos</dt><dd>Salmuera seca destapada toda la noche, empieza en frío con la piel hacia abajo, presiona, no muevas 8–12 min, termina la carne hasta 74&nbsp;°C+.</dd>
+        <dt>Éxito</dt><dd>Piel dorada, rígida y que se quiebra; sin zonas flácidas; carne sedosa.</dd>
+        <dt>Modos de falla</dt><dd>Zonas húmedas (sartén sobrecargado / piel húmeda); quemada (calor muy alto, se movió demasiado pronto).</dd>
+        <dt>Mejora</dt><dd>Renderiza más lento y a menor temperatura hasta que lo crujiente sea aburridamente repetible.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Ejercicio de práctica · L3</div>
+      <h4>Repeticiones de desglasado a salsa</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Convertir el fondo en una salsa de sartén brillante y balanceada en menos de 5 minutos.</dd>
+        <dt>Dificultad</dt><dd>Intermedio</dd>
+        <dt>Materiales</dt><dd>Fondo en el sartén, caldo/vino, mantequilla fría, ácido (limón/vinagre).</dd>
+        <dt>Pasos</dt><dd>Vierte la grasa, desglasa, raspa, reduce a la mitad, monta la mantequilla fuera del fuego, ajusta sal + ácido.</dd>
+        <dt>Éxito</dt><dd>Cubre una cuchara, brillante, sabe a pollo, balanceada.</dd>
+        <dt>Modos de falla</dt><dd>Cortada (demasiado caliente al montar); amarga (fondo quemado); rala (poco reducida).</dd>
+        <dt>Mejora</dt><dd>Repite con líquidos distintos (vino, caldo, sidra) para sentir la reducción y el balance de acidez.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Ejercicio de práctica · L4 — el huevo como termómetro</div>
+      <h4>Omelette francesa diaria</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Una omelette enrollada, pálida y cremosa, sin dorar — la mejor prueba de control de calor bajo que existe.</dd>
+        <dt>Dificultad</dt><dd>Avanzado (engañosamente)</dd>
+        <dt>Materiales</dt><dd>2–3 huevos, mantequilla, sartén antiadherente/carbono, tenedor/espátula.</dd>
+        <dt>Pasos</dt><dd>Fuego bajo, agitación constante para grumos pequeños, detente mientras la superficie brilla y está húmeda, enrolla, termina con el calor residual.</dd>
+        <dt>Éxito</dt><dd>Sin color en ninguna parte; interior suave y cremoso (<em>baveuse</em>); superficie lisa.</dd>
+        <dt>Modos de falla</dt><dd>Dorada (muy caliente); gomosa (sobrecocinada); rota (se movió muy rápido / mal sartén).</dd>
+        <dt>Mejora</dt><dd>Baja el calor hasta que estés casi impaciente. Ese es el ajuste correcto. Una al día durante dos semanas.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ 09 PROJECTS ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">10</span><h2>Proyectos</h2></div>
+    <p>Platillos que te obligan a encadenar las habilidades bajo presión de tiempo. Los tres proyectos de pollo son tus metas del Mes 1; los proyectos de huevo son la aplicación avanzada del mismo modelo.</p>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Principiante</div>
+      <h4>Sándwich de pollo crujiente</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Un muslo jugoso y sazonado, o una pechuga en salmuera, con exterior crujiente, armado caliente.</dd>
+        <dt>Habilidades entrenadas</dt><dd>Salmuera, control de grosor, retiro por temperatura, exterior crujiente, sincronizar componentes.</dd>
+        <dt>Resultado esperado</dt><dd>Interior jugoso, exterior crujiente, sazonado hasta el centro; pan que no se humedece.</dd>
+        <dt>Evaluación</dt><dd>Córtalo — sección transversal húmeda, sin sequedad harinosa, sin centro translúcido.</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Principiante-Intermedio</div>
+      <h4>Tacos de pollo</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Pollo bien sazonado y tierno (el muslo brilla aquí) en tortillas calientes con acidez y picante.</dd>
+        <dt>Habilidades entrenadas</dt><dd>Aprovechar la tolerancia del muslo, dorado a fuego alto para sabor, balance de sazón, mantenerlo jugoso al picarlo.</dd>
+        <dt>Resultado esperado</dt><dd>Bordes achicharrados, interior húmedo, brillante con limón y sal.</dd>
+        <dt>Evaluación</dt><dd>Los pedazos picados se mantienen jugosos, no cubos secos; el sabor se nota sin ahogarse en salsa.</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Intermedio</div>
+      <h4>Pollo con salsa de sartén</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>El ciclo completo: pollo sellado y retirado a temperatura + una salsa construida a partir de su propio fondo.</dd>
+        <dt>Habilidades entrenadas</dt><dd>Maillard, fondo, desglasado, reducción, emulsión (montar mantequilla), reposo, emplatado caliente.</dd>
+        <dt>Resultado esperado</dt><dd>Pollo jugoso, salsa brillante que sabe al sartén, todo caliente al mismo tiempo.</dd>
+        <dt>Evaluación</dt><dd>La salsa cubre una cuchara y no está cortada; el pollo está jugoso; manejaste ambos tiempos.</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Intermedio — huevos</div>
+      <h4>Omurice y shakshuka</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Aplicar el control de calor de la omelette sobre arroz (omurice); cuajar huevos suavemente en tomate (shakshuka).</dd>
+        <dt>Habilidades entrenadas</dt><dd>Cuajado de huevo a fuego bajo, cocción por calor residual, sincronizar el huevo a un punto suave dentro de un medio caliente.</dd>
+        <dt>Resultado esperado</dt><dd>Omurice: manta de huevo sedosa y sin dorar. Shakshuka: claras apenas cuajadas, yemas todavía líquidas.</dd>
+        <dt>Evaluación</dt><dd>Sin huevo gomoso ni gris; el huevo se detuvo en el punto de cuajado suave, prueba de que controlaste el calor residual.</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Avanzado — huevos</div>
+      <h4>Huevos Benedictinos</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Huevos pochados + holandesa: la prueba de graduación del control suave de la proteína del huevo.</dd>
+        <dt>Habilidades entrenadas</dt><dd>Pochado (huevos frescos, vinagre, vórtice), emulsión tibia de yema (lecitina), mantener una salsa caliente sin que se corte, emplatado caliente.</dd>
+        <dt>Resultado esperado</dt><dd>Huevos pochados con yema líquida; holandesa suave, tibia, sin cortarse; armado caliente.</dd>
+        <dt>Evaluación</dt><dd>La holandesa nunca cuajó ni se cortó; las claras pochadas cuajaron, las yemas quedaron líquidas. Si se cortó, cocinaste demasiado caliente — la misma lección de la pechuga, a escala de huevo.</dd>
+      </dl>
+    </div>
+
+    <div class="callout callout--why">
+      <span class="lbl">Por qué funciona — todo el módulo en una línea</span>
+      <p>Pechuga de pollo, muslo, caldo, omelette, holandesa, huevo pochado — cada uno es el mismo problema: <em>una proteína desnaturalizándose en una curva de temperatura, y tu trabajo es detenerla en el punto correcto.</em> Los huevos son solo la versión más rápida y más sensible. Si puedes controlar un huevo, puedes controlar cualquier cosa que tenga pulso.</p>
+    </div>
+  </section>
+
+  <!-- ============ 10 VISUAL LEARNING ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">11</span><h2>Aprendizaje visual</h2></div>
+    <p>Entrena tu ojo en cómo se ve "correcto" antes de cocinar. Busca estos términos y estudia qué observar.</p>
+
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>chicken breast cross section juicy vs overcooked</code>
+      <p style="margin:.4em 0 0">Busca: la jugosa es brillante y blanco-opaca con humedad visible; la sobrecocinada es mate, harinosa y fibrosa con espacios entre las fibras.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>rendered crispy chicken skin close up</code>
+      <p style="margin:.4em 0 0">Busca: dorado profundo y parejo; una superficie tensa, ampollada y rígida sin zonas flácidas y sin grasa sin renderizar visible debajo.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>chicken stock clear vs cloudy gelatin</code>
+      <p style="margin:.4em 0 0">Busca: ámbar transparente (hervor suave) vs nube lechosa (hervor fuerte); y caldo frío que tiembla como gelatina — prueba de gelatina extraída.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>French omelette baveuse rolled Jacques Pepin</code>
+      <p style="margin:.4em 0 0">Busca: nada de dorado, un exterior liso amarillo pálido, y un interior suave, apenas cuajado y cremoso al cortarla.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>hollandaise ribbon consistency vs broken split</code>
+      <p style="margin:.4em 0 0">Busca: una emulsión suave, dorado pálido, que cubre la cuchara vs un desastre granuloso, aceitoso y separado — la firma visual de "demasiado caliente."</p></div>
+    </div>
+  </section>
+
+  <!-- ============ 11 EXTERNAL RESOURCES ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">12</span><h2>Recursos externos</h2></div>
+    <p>Creadores y libros reales. Sin enlaces — busca los términos y ve a la fuente.</p>
+
+    <div class="resource"><span class="rm">Video · J. Kenji López-Alt</span>
+      <span class="rt">Buscar: "Kenji chicken breast temperature juicy"</span>
+      <p>Por qué: desglose riguroso y basado en datos de la relación temperatura-humedad y de por qué los objetivos más bajos siguen siendo seguros.</p></div>
+
+    <div class="resource"><span class="rm">Video · Ethan Chlebowski</span>
+      <span class="rt">Buscar: "Ethan Chlebowski how to cook chicken" y "brining"</span>
+      <p>Por qué: un enfoque de sistemas y variables que coincide con este manual — muestra la salmuera, la temperatura y la técnica probadas lado a lado.</p></div>
+
+    <div class="resource"><span class="rm">Video · Jacques Pépin</span>
+      <span class="rt">Buscar: "Jacques Pépin French omelette technique"</span>
+      <p>Por qué: la omelette canónica de fuego bajo y agitación constante — observa cómo el sartén nunca se dora y el enrollado termina por calor residual.</p></div>
+
+    <div class="resource"><span class="rm">Video · Chef Jean-Pierre</span>
+      <span class="rt">Buscar: "Chef Jean-Pierre hollandaise" y "pan sauce"</span>
+      <p>Por qué: demostraciones claras y tolerantes de emulsiones tibias y de cómo desglasar el fondo en una salsa montada con mantequilla.</p></div>
+
+    <div class="resource"><span class="rm">Libro · Intermedio</span>
+      <span class="rt">The Food Lab — J. Kenji López-Alt (capítulo de aves)</span>
+      <p>Por qué: el mecanismo detrás de la salmuera, la cocción residual y los puntos de cocción, con los experimentos que lo respaldan.</p></div>
+
+    <div class="resource"><span class="rm">Libro · Fundamental</span>
+      <span class="rt">Salt Fat Acid Heat — Samin Nosrat</span>
+      <p>Por qué: construye la intuición de cómo la sal (salmuera/sazón) y el calor gobiernan todo — el "por qué" detrás de los números.</p></div>
+  </section>
+
+  <!-- ============ 12 ASSESSMENT ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">13</span><h2>Evaluación</h2></div>
+
+    <h3>Prueba de conocimiento — comprensión, no memorización</h3>
+    <div class="check">
+      <div class="q"><p>Dos pechugas de pollo se cocinan exactamente a la misma temperatura interna final pero terminan con texturas notablemente distintas. Da dos variables que podrían causar eso. <em>(Considera: ¿una estaba en salmuera? ¿la rampa de calor fue distinta, cambiando el gradiente de superficie a centro? ¿una reposó y la otra se cortó de inmediato?)</em></p></div>
+      <div class="q"><p>Un muslo retirado a 65&nbsp;°C queda gomoso, pero una pechuga retirada a 65&nbsp;°C queda perfecta. Explica por qué el mismo número es correcto para un corte e incorrecto para el otro, usando las palabras <em>colágeno</em> y <em>gelatina</em>.</p></div>
+      <div class="q"><p>¿Por qué el pollo puede ser perfectamente seguro a 60&nbsp;°C / 140&nbsp;°F aunque el número "oficial" sea 74&nbsp;°C / 165&nbsp;°F? ¿Cuál es la variable faltante que hace que ambos sean ciertos?</p></div>
+      <div class="q"><p>Tu holandesa se cortó y tu omelette francesa se doró. Nombra el error subyacente único que ambas comparten, y explica por qué un huevo lo expone más rápido que una pechuga de pollo.</p></div>
+      <div class="q"><p>Retiras una pechuga a 64&nbsp;°C y sale sobrecocinada. No había nada malo con tu objetivo. ¿Qué dejaste de tomar en cuenta, y cómo lo medirías una vez para que nunca vuelva a pasar?</p></div>
+    </div>
+
+    <div class="callout callout--pro">
+      <span class="lbl">Desafío práctico</span>
+      <p><strong>La cocción a ciegas por cocción residual.</strong> Toma una pechuga. Predice, <em>antes</em> de cocinar, la temperatura exacta a la que la vas a retirar para caer en la ventana de 63–65&nbsp;°C después de reposar — basándote en tu cocción residual medida en E4. Cocínala, retírala en tu número predicho, y mide el pico durante el reposo. Apruebas si el centro reposado cae entre 63 y 65&nbsp;°C <em>y</em> la carne está visiblemente jugosa. Esto prueba que estás cocinando con modelo, no con suerte.</p>
+    </div>
+
+    <div class="callout callout--heat">
+      <span class="lbl">Reflexión</span>
+      <p>Después de una semana de práctica, escribe tres cosas: (1) la cocción residual medida de tu sartén con el grosor de pechuga que usas normalmente; (2) la variable única que más cambió tus resultados (¿salmuera? ¿nivel de calor? ¿temperatura de retiro? ¿reposo?); y (3) qué platillo de huevo expuso que tu control de calor todavía era demasiado agresivo. Si puedes responder las tres con números, pasaste de seguir recetas a operar el sistema — que era todo el punto.</p>
+    </div>
+  </section>
+
+  <nav class="pager">
+    <a class="prev" href="#p0"><span class="d">Anterior</span>Fundamentos de cocina</a>
+    <a class="next" href="#m2"><span class="d">Siguiente</span>Arroz, frijoles y granos</a>
+  </nav>
+</section>

@@ -1,0 +1,225 @@
+<div class="tool" id="bp-tool-es">
+  <div class="card" style="max-width:720px">
+    <div class="spec-h" style="margin:-18px -20px 18px;border-radius:3px 3px 0 0">Baker's percentage · dough calculator</div>
+
+    <div role="group" aria-label="Calculation mode" style="display:flex;gap:8px;margin-bottom:20px">
+      <button type="button" id="bp-mode-flour-es" class="tag" aria-pressed="false" style="cursor:pointer;padding:8px 14px;font-size:12px">By flour weight</button>
+      <button type="button" id="bp-mode-balls-es" class="tag ember" aria-pressed="true" style="cursor:pointer;padding:8px 14px;font-size:12px">By dough balls</button>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+      <button type="button" id="bp-preset-pizza-es" class="tag" style="cursor:pointer">Pizza 63%</button>
+      <button type="button" id="bp-preset-ciabatta-es" class="tag" style="cursor:pointer">Ciabatta 80%</button>
+      <button type="button" id="bp-preset-sandwich-es" class="tag" style="cursor:pointer">Sandwich 60%</button>
+      <button type="button" id="bp-preset-focaccia-es" class="tag" style="cursor:pointer">Focaccia 78%</button>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:6px">
+      <div id="bp-group-flour-es" style="display:none">
+        <label for="bp-flour-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
+          Flour (g)
+          <input type="number" id="bp-flour-es" value="500" min="0" step="1" inputmode="decimal"
+            style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
+        </label>
+      </div>
+
+      <div id="bp-group-balls-es" style="display:contents">
+        <label for="bp-balls-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
+          Balls
+          <input type="number" id="bp-balls-es" value="4" min="0" step="1" inputmode="decimal"
+            style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
+        </label>
+        <label for="bp-grams-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
+          Grams / ball
+          <input type="number" id="bp-grams-es" value="250" min="0" step="1" inputmode="decimal"
+            style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
+        </label>
+      </div>
+
+      <label for="bp-hydration-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
+        Hydration %
+        <input type="number" id="bp-hydration-es" value="63" min="0" step="0.1" inputmode="decimal"
+          style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
+      </label>
+      <label for="bp-salt-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
+        Salt %
+        <input type="number" id="bp-salt-es" value="2.8" min="0" step="0.1" inputmode="decimal"
+          style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
+      </label>
+      <label for="bp-yeast-es" style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)">
+        Yeast % <span style="text-transform:none;opacity:.7">(instant dry)</span>
+        <input type="number" id="bp-yeast-es" value="0.4" min="0" step="0.05" inputmode="decimal"
+          style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:15px;width:100%">
+      </label>
+    </div>
+
+    <p id="bp-perball-note-es" class="mono" style="font-size:13px;color:var(--ink-soft);margin:4px 0 0"></p>
+
+    <div class="table-wrap" style="margin:22px 0 14px">
+      <table>
+        <thead>
+          <tr><th>Ingredient</th><th class="num">Baker's %</th><th class="num">Grams</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Flour</td><td class="num" id="bp-out-flour-pct-es">—</td><td class="num" id="bp-out-flour-g-es">—</td></tr>
+          <tr><td>Water</td><td class="num" id="bp-out-water-pct-es">—</td><td class="num" id="bp-out-water-g-es">—</td></tr>
+          <tr><td>Salt</td><td class="num" id="bp-out-salt-pct-es">—</td><td class="num" id="bp-out-salt-g-es">—</td></tr>
+          <tr><td>Yeast</td><td class="num" id="bp-out-yeast-pct-es">—</td><td class="num" id="bp-out-yeast-g-es">—</td></tr>
+          <tr><td><b>Total</b></td><td class="num" id="bp-out-total-pct-es">—</td><td class="num" id="bp-out-total-g-es">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <span class="tag ember" id="bp-summary-es">—</span>
+
+    <div class="callout callout--why" style="margin-top:20px">
+      <span class="lbl">Why it works</span>
+      <p>Retard this dough 24–72 h in the fridge (2–4 °C / 36–39 °F) and slow yeast + bacterial activity has time to break starches into more sugar and produce more organic acids and aromatic byproducts, deepening flavour and improving browning versus a same-day rise. Keep salt at roughly 2% of flour weight and never omit it — it throttles yeast to a controllable pace and tightens gluten strands, so the dough ferments evenly and holds structure instead of slackening.</p>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var root = document.getElementById('bp-tool-es');
+  if(!root) return;
+  function $(id){ return root.querySelector('#' + id); }
+
+  var modeFlourBtn = $('bp-mode-flour-es');
+  var modeBallsBtn = $('bp-mode-balls-es');
+  var groupFlour = $('bp-group-flour-es');
+  var groupBalls = $('bp-group-balls-es');
+  var perBallNote = $('bp-perball-note-es');
+
+  var flourInput = $('bp-flour-es');
+  var ballsInput = $('bp-balls-es');
+  var gramsInput = $('bp-grams-es');
+  var hydInput = $('bp-hydration-es');
+  var saltInput = $('bp-salt-es');
+  var yeastInput = $('bp-yeast-es');
+
+  var outFlourPct = $('bp-out-flour-pct-es');
+  var outFlourG = $('bp-out-flour-g-es');
+  var outWaterPct = $('bp-out-water-pct-es');
+  var outWaterG = $('bp-out-water-g-es');
+  var outSaltPct = $('bp-out-salt-pct-es');
+  var outSaltG = $('bp-out-salt-g-es');
+  var outYeastPct = $('bp-out-yeast-pct-es');
+  var outYeastG = $('bp-out-yeast-g-es');
+  var outTotalPct = $('bp-out-total-pct-es');
+  var outTotalG = $('bp-out-total-g-es');
+  var summary = $('bp-summary-es');
+
+  var presets = {
+    'bp-preset-pizza-es':     { hyd: 63, salt: 2 },
+    'bp-preset-ciabatta-es':  { hyd: 80, salt: 2 },
+    'bp-preset-sandwich-es':  { hyd: 60, salt: 2 },
+    'bp-preset-focaccia-es':  { hyd: 78, salt: 2 }
+  };
+
+  var mode = 'balls';
+
+  function num(el){
+    var v = parseFloat(el.value);
+    return isFinite(v) ? v : NaN;
+  }
+  function fmtG(n){
+    return isFinite(n) ? Math.round(n).toLocaleString() + ' g' : '—';
+  }
+  function fmtG1(n){
+    return isFinite(n) ? n.toFixed(1) + ' g' : '—';
+  }
+  function fmtPct(n){
+    return isFinite(n) ? n.toFixed(1) + '%' : '—';
+  }
+
+  function recalc(){
+    var hyd = num(hydInput), salt = num(saltInput), yeast = num(yeastInput);
+    var flour, perBall = NaN;
+
+    if(mode === 'flour'){
+      flour = num(flourInput);
+    } else {
+      var balls = num(ballsInput), grams = num(gramsInput);
+      var totalDough = (isFinite(balls) && isFinite(grams)) ? balls * grams : NaN;
+      var denom = (isFinite(hyd) && isFinite(salt) && isFinite(yeast))
+        ? (1 + hyd / 100 + salt / 100 + yeast / 100) : NaN;
+      flour = (isFinite(totalDough) && isFinite(denom) && denom > 0) ? totalDough / denom : NaN;
+    }
+
+    var valid = isFinite(flour) && flour > 0 && isFinite(hyd) && isFinite(salt) && isFinite(yeast);
+
+    var water = NaN, saltG = NaN, yeastG = NaN, total = NaN;
+    if(valid){
+      water = flour * hyd / 100;
+      saltG = flour * salt / 100;
+      yeastG = flour * yeast / 100;
+      total = flour + water + saltG + yeastG;
+      if(mode === 'balls'){
+        var b = num(ballsInput);
+        perBall = (isFinite(b) && b > 0) ? flour / b : NaN;
+      }
+    }
+
+    outFlourPct.textContent = valid ? '100.0%' : '—';
+    outFlourG.textContent = fmtG(flour);
+    outWaterPct.textContent = fmtPct(hyd);
+    outWaterG.textContent = fmtG(water);
+    outSaltPct.textContent = fmtPct(salt);
+    outSaltG.textContent = fmtG1(saltG);
+    outYeastPct.textContent = fmtPct(yeast);
+    outYeastG.textContent = fmtG1(yeastG);
+    var totalPct = (isFinite(hyd) && isFinite(salt) && isFinite(yeast)) ? (100 + hyd + salt + yeast) : NaN;
+    outTotalPct.textContent = fmtPct(totalPct);
+    outTotalG.textContent = fmtG(total);
+
+    summary.textContent = valid
+      ? ('Total dough ' + fmtG(total) + ' · Hydration ' + fmtPct(hyd))
+      : 'Enter valid numbers to calculate';
+
+    if(mode === 'balls'){
+      perBallNote.textContent = isFinite(perBall) ? ('≈ ' + fmtG(perBall) + ' flour per ball') : '';
+    } else {
+      perBallNote.textContent = '';
+    }
+  }
+
+  function setMode(m){
+    mode = m;
+    var isFlour = (m === 'flour');
+    modeFlourBtn.classList.toggle('ember', isFlour);
+    modeBallsBtn.classList.toggle('ember', !isFlour);
+    modeFlourBtn.setAttribute('aria-pressed', String(isFlour));
+    modeBallsBtn.setAttribute('aria-pressed', String(!isFlour));
+    groupFlour.style.display = isFlour ? '' : 'none';
+    groupBalls.style.display = isFlour ? 'none' : 'contents';
+    recalc();
+  }
+
+  [flourInput, ballsInput, gramsInput, hydInput, saltInput, yeastInput].forEach(function(el){
+    el.addEventListener('input', recalc);
+    el.addEventListener('focus', function(){
+      el.style.outline = '2px solid var(--ember)';
+      el.style.outlineOffset = '1px';
+    });
+    el.addEventListener('blur', function(){
+      el.style.outline = 'none';
+      el.style.outlineOffset = '';
+    });
+  });
+
+  modeFlourBtn.addEventListener('click', function(){ setMode('flour'); });
+  modeBallsBtn.addEventListener('click', function(){ setMode('balls'); });
+
+  Object.keys(presets).forEach(function(id){
+    var btn = $(id);
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      hydInput.value = presets[id].hyd;
+      saltInput.value = presets[id].salt;
+      recalc();
+    });
+  });
+
+  setMode('balls');
+})();
+</script>

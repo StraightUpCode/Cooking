@@ -1,0 +1,203 @@
+<div class="tool" id="rg-tool-es">
+  <div class="card">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+      <h4 style="margin:0;font-size:18px;">Grain &amp; Rice Ratio</h4>
+      <span class="tag probe">grain : water</span>
+    </div>
+    <p style="font-size:14.5px;color:var(--ink-soft);margin:0 0 18px;max-width:60ch;">
+      Amylose and amylopectin content set how much water each grain gelatinises with. Measure the
+      dry grain, pick the unit, and the calculator returns the water — in the same unit.
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+      <label style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);grid-column:1/-1;">
+        Grain
+        <select id="rg-grain-es" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13.5px;"></select>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);">
+        Unit
+        <select id="rg-unit-es" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13.5px;">
+          <option value="cups">Cups</option>
+          <option value="grams">Grams</option>
+        </select>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);">
+        Amount (dry grain)
+        <input id="rg-amount-es" type="number" inputmode="decimal" min="0" step="0.25" value="1" style="border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:3px;font-family:var(--f-mono);font-size:13.5px;" />
+      </label>
+    </div>
+
+    <div class="spec" style="margin:0 0 16px;">
+      <div class="spec-h">Result</div>
+      <div class="spec-row">
+        <span class="spec-key">Water needed</span>
+        <span class="spec-val">
+          <span id="rg-water-big-es" class="mono num" style="font-size:30px;font-weight:800;color:var(--ember);line-height:1;">—</span>
+          <span id="rg-water-unit-es" class="mono" style="color:var(--ink-faint);font-size:12.5px;margin-left:4px;"></span>
+        </span>
+      </div>
+      <div class="spec-row"><span class="spec-key">Ratio</span><span class="spec-val mono" id="rg-ratio-txt-es">—</span></div>
+      <div class="spec-row"><span class="spec-key">Rinse</span><span class="spec-val" id="rg-rinse-txt-es">—</span></div>
+      <div class="spec-row"><span class="spec-key">Rest / method</span><span class="spec-val" id="rg-rest-txt-es">—</span></div>
+    </div>
+
+    <div id="rg-special-note-es" class="callout callout--heat" style="display:none;">
+      <span class="lbl">No fixed pot ratio — risotto method</span>
+      <p id="rg-special-text-es"></p>
+    </div>
+
+    <div class="callout callout--why" style="margin:0 0 16px;">
+      <span class="lbl">Why this isn't a fixed number (you may have learned 1:2)</span>
+      <p style="margin:0;font-size:14.5px;">The grain only ever absorbs a roughly <b>fixed</b> amount of
+      water — about its own weight. Everything above that just <b>evaporates</b>, so the "right" ratio
+      depends on your lid, pot, heat, and batch size, not only the grain. A tight-lidded heavy pot loses
+      little → lean to the low end; a loose lid or wide pan → add more. And because evaporation scales with
+      surface area, not volume, <b>big batches need proportionally less water than small ones</b> (that's what
+      the knuckle trick really measures). These figures assume <b>rinsed</b> grain in a <b>covered</b> pot.
+      The common <b>1:2</b> is a fine forgiving default — and is genuinely correct for <b>brown rice</b>.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Grain</th><th>Ratio (grain:water)</th><th>Rinse?</th><th>Rest</th><th>Note</th></tr>
+        </thead>
+        <tbody id="rg-table-body-es"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var root = document.getElementById('rg-tool-es');
+  if(!root) return;
+
+  var DATA = [
+    { id:'basmati',  name:'Long-grain white (basmati / jasmine)', ratio:1.5,  ratioText:'1 : 1.5',              rinse:'Yes',                              rest:'10 min, covered, off heat',        note:'Fluffy, high amylose.' },
+    { id:'medium',   name:'Medium/short white',                   ratio:1.25, ratioText:'1 : 1.25',             rinse:'Yes',                              rest:'10 min',                            note:'Softer, stickier.' },
+    { id:'sushi',    name:'Sushi / short-grain',                  ratio:1.2,  ratioText:'1 : 1.2',              rinse:'Well',                             rest:'10 min',                            note:'Sticky.' },
+    { id:'brown',    name:'Brown rice',                           ratio:2.25, ratioText:'1 : 2.25',             rinse:'Optional',                         rest:'Simmer ~40–45 min, rest 10 min', note:'Bran slows absorption.' },
+    { id:'quinoa',   name:'Quinoa',                                ratio:2,    ratioText:'1 : 2',                rinse:'Yes (removes bitter saponins)',    rest:'Simmer ~15 min, rest 10 min',        note:'Toast first for nuttiness.' },
+    { id:'couscous', name:'Couscous',                              ratio:1,    ratioText:'1 : 1',                rinse:'No',                               rest:'Cover 5 min off heat, fluff',        note:'Not a true grain — steamed semolina; use boiling liquid + fat.' },
+    { id:'barley',   name:'Pearl barley',                          ratio:3,    ratioText:'1 : 3',                rinse:'Optional',                         rest:'Simmer ~30–40 min',              note:'Creamy beta-glucan; drain excess like pasta if needed.' },
+    { id:'farro',    name:'Farro',                                 ratio:3,    ratioText:'1 : 3',                rinse:'Optional',                         rest:'Simmer 25–30 min, drain excess', note:'Chewy.' },
+    { id:'arborio',  name:'Arborio (risotto)',                     ratio:null, ratioText:'≈1 : 3–4 (added gradually)', rinse:'No',                rest:'~18–20 min, stirring',           note:'Add hot stock a ladle at a time — no fixed pot ratio.',
+      special:true, specialText:'Add hot stock a ladle at a time, stirring continuously, over roughly 18–20 minutes — about 3–4× the rice volume in total stock, not poured in all at once.' }
+  ];
+
+  var DEFAULTS = { cups: 1, grams: 200 };
+  var STEP = { cups: '0.25', grams: '5' };
+  var prevUnit = 'cups';
+
+  var grainSel   = root.querySelector('#rg-grain-es');
+  var unitSel    = root.querySelector('#rg-unit-es');
+  var amountIn   = root.querySelector('#rg-amount-es');
+  var waterBig   = root.querySelector('#rg-water-big-es');
+  var waterUnit  = root.querySelector('#rg-water-unit-es');
+  var ratioTxt   = root.querySelector('#rg-ratio-txt-es');
+  var rinseTxt   = root.querySelector('#rg-rinse-txt-es');
+  var restTxt    = root.querySelector('#rg-rest-txt-es');
+  var specialBox = root.querySelector('#rg-special-note-es');
+  var specialTxt = root.querySelector('#rg-special-text-es');
+  var tbody      = root.querySelector('#rg-table-body-es');
+
+  function td(text, cls){
+    var el = document.createElement('td');
+    if(cls) el.className = cls;
+    el.textContent = text;
+    return el;
+  }
+
+  // Populate grain select + reference table from the single DATA source.
+  DATA.forEach(function(d){
+    var opt = document.createElement('option');
+    opt.value = d.id;
+    opt.textContent = d.name;
+    grainSel.appendChild(opt);
+
+    var tr = document.createElement('tr');
+    tr.appendChild(td(d.name));
+    tr.appendChild(td(d.ratioText, 'mono'));
+    tr.appendChild(td(d.rinse));
+    tr.appendChild(td(d.rest));
+    tr.appendChild(td(d.note));
+    tbody.appendChild(tr);
+  });
+
+  function findGrain(id){
+    for(var i=0;i<DATA.length;i++){ if(DATA[i].id === id) return DATA[i]; }
+    return DATA[0];
+  }
+
+  function formatAmount(v, unit){
+    if(!isFinite(v)) return '—';
+    if(unit === 'grams') return String(Math.round(v));
+    var r = Math.round(v * 100) / 100;
+    return r.toFixed(2).replace(/\.?0+$/,'');
+  }
+
+  function styleFocus(el){
+    el.addEventListener('focus', function(){
+      el.style.borderColor = 'var(--probe)';
+      el.style.boxShadow = '0 0 0 3px color-mix(in srgb, var(--probe) 25%, transparent)';
+    });
+    el.addEventListener('blur', function(){
+      el.style.borderColor = 'var(--line)';
+      el.style.boxShadow = 'none';
+    });
+  }
+  [grainSel, unitSel, amountIn].forEach(styleFocus);
+
+  function render(){
+    var grain = findGrain(grainSel.value);
+    var unit = unitSel.value;
+    var raw = amountIn.value;
+    var amt = parseFloat(raw);
+    var valid = raw !== '' && isFinite(amt) && amt > 0;
+
+    ratioTxt.textContent = grain.ratioText;
+    rinseTxt.textContent = grain.rinse;
+    restTxt.textContent = grain.rest;
+
+    if(grain.special){
+      waterBig.textContent = '—';
+      waterUnit.textContent = '';
+      specialBox.style.display = '';
+      specialTxt.textContent = grain.specialText;
+      return;
+    }
+
+    specialBox.style.display = 'none';
+
+    if(!valid){
+      waterBig.textContent = '—';
+      waterUnit.textContent = '';
+      return;
+    }
+
+    var water = amt * grain.ratio;
+    waterBig.textContent = formatAmount(water, unit);
+    waterUnit.textContent = unit === 'grams' ? 'g water' : 'cups water';
+  }
+
+  grainSel.addEventListener('change', render);
+  amountIn.addEventListener('input', render);
+  unitSel.addEventListener('change', function(){
+    var newUnit = unitSel.value;
+    var cur = parseFloat(amountIn.value);
+    if(amountIn.value === '' || !isFinite(cur) || cur === DEFAULTS[prevUnit]){
+      amountIn.value = DEFAULTS[newUnit];
+    }
+    amountIn.step = STEP[newUnit];
+    prevUnit = newUnit;
+    render();
+  });
+
+  // Defaults on load: basmati, 1 cup.
+  grainSel.value = 'basmati';
+  unitSel.value = 'cups';
+  amountIn.value = DEFAULTS.cups;
+  amountIn.step = STEP.cups;
+  render();
+})();
+</script>

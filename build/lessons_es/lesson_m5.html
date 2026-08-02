@@ -1,0 +1,404 @@
+<section class="lesson" id="m5">
+  <header class="lesson-head">
+    <p class="eyebrow">MÓDULO 05 · PAN Y MASA</p>
+    <h1>Entender la masa en lugar de seguir recetas</h1>
+    <p class="lede">La masa es el sistema más gratificante de la cocina para un cocinero orientado a la precisión: cuatro ingredientes —harina, agua, sal, leudante— más una variable oculta, el tiempo, expresados en porcentajes del panadero, producen desde una pizza napolitana hasta una masa madre de 30 horas.</p>
+    <div class="kicker-row">
+      <span class="tag ember">Mes 5–6</span>
+      <span class="tag">% del panadero</span>
+      <span class="tag probe">Pizza + masa madre</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">01</span><h2>Por qué esto importa</h2></div>
+    <p>Una receta es un solo punto muestreado sobre una superficie continua. Te dice «500 g de harina, 325 g de agua, hornear a 220 °C», pero nunca te dice qué pasa si tu cocina está 10 °C más fría, si tu harina es más fuerte, o si quieres doce pizzas en vez de cuatro. Terminas copiando números que no entiendes sin cuestionarlos, y cuando la masa se porta mal no tienes ningún modelo con el cual diagnosticarla.</p>
+    <p>El ajuste fino que ya conoces del espresso se traslada directo a la masa. En café tienes dosis, rendimiento, molienda, temperatura y tiempo, y aprendes que las proporciones viajan entre máquinas mientras los gramos absolutos no. La masa es igual: <b>los porcentajes del panadero son la receta en proporciones</b>, la hidratación es tu palanca de extracción, el tiempo y la temperatura de fermentación son tu desarrollo de tueste, y la sal es la constante fija que nunca te saltas. Aprende las cuatro variables y sus compensaciones y dejarás de leer las recetas como mandamientos para empezar a leerlas como puntos de datos entre los que puedes interpolar.</p>
+    <p>La recompensa es concreta y rápida. El cambio único que convierte una «pizza casera decente» en «por qué esto sabe como el de la buena pizzería» no es un ingrediente secreto: es una fermentación en frío de 48 horas, una palanca gratuita que la mayoría de las recetas entierra. Al final de este módulo deberías poder escribir tu propia especificación de masa para cualquier miga objetivo, escalarla a cualquier tamaño de lote y diagnosticar una falla a partir del comportamiento de la masa en vez de adivinar.</p>
+
+    <div class="levels">
+      <span class="level level--1"><b>N1</b> — Puedo hacer pan y pizza comestibles que suben</span>
+      <span class="level level--2"><b>N2</b> — Reproduzco la misma miga a demanda, lote tras lote</span>
+      <span class="level level--3"><b>N3</b> — Ajusto hidratación, fermentación y formado para un resultado objetivo</span>
+      <span class="level level--4"><b>N4</b> — Escribo especificaciones desde cero y mantengo un cultivo de masa madre</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">02</span><h2>Modelo mental — la masa como sistema de retención de gas</h2></div>
+    <p>Reduce la masa a su función y es una máquina para <b>generar gas y atraparlo</b>. La levadura (o el cultivo silvestre de una masa madre) fermenta azúcares en CO<sub>2</sub>; una red de proteínas construida a partir del gluten del trigo atrapa ese gas en miles de celdas separadas; el horno luego expande el gas de golpe y fija las paredes en su lugar. Cada técnica que vas a aprender está al servicio de uno de dos trabajos: <b>construir la red</b> (desarrollo del gluten) o <b>llenarla de gas al ritmo correcto</b> (fermentación). La sal, la hidratación, el formado y la cocción son las perillas de ajuste de esos dos trabajos.</p>
+
+    <p>El gluten mismo son dos proteínas que se comportan como resortes opuestos. La <b>glutenina</b> aporta elasticidad y fuerza: quiere volver a su forma. La <b>gliadina</b> aporta extensibilidad y flujo: quiere estirarse y quedarse así. Secas, no hacen nada. Agrega agua y agitación y se entrelazan en una película continua, elástica pero extensible. Demasiado comportamiento de glutenina y la masa queda tensa y se rasga; demasiada gliadina y es un charco flojo. Una buena masa equilibra ambas, y el tiempo más el agua pueden hacer gran parte de ese entrelazado por ti sin amasar en absoluto.</p>
+
+    <figure>
+      <svg viewBox="0 0 640 260" role="img" aria-label="Red de gluten atrapando una burbuja de CO2, formada por proteínas de glutenina y gliadina">
+        <text x="20" y="24" font-family="var(--f-mono),monospace" font-size="13" fill="currentColor">RED DE GLUTEN · gas atrapado en película proteica</text>
+        <!-- network mesh -->
+        <g stroke="currentColor" stroke-width="1.4" fill="none" opacity="0.55">
+          <path d="M40 70 C120 40, 200 100, 280 70 S460 40, 600 70"/>
+          <path d="M40 120 C130 150, 210 90, 300 130 S460 160, 600 120"/>
+          <path d="M40 180 C120 150, 210 210, 300 175 S470 140, 600 185"/>
+          <path d="M40 230 C140 200, 220 250, 320 215 S470 250, 600 220"/>
+          <path d="M90 60 C70 130, 110 180, 80 235" opacity="0.7"/>
+          <path d="M230 60 C255 130, 205 180, 235 235" opacity="0.7"/>
+          <path d="M400 55 C380 130, 420 180, 395 235" opacity="0.7"/>
+          <path d="M540 65 C560 130, 515 185, 545 230" opacity="0.7"/>
+        </g>
+        <!-- trapped gas bubble -->
+        <circle cx="315" cy="140" r="52" fill="none" stroke="var(--probe)" stroke-width="2.2"/>
+        <text x="315" y="138" text-anchor="middle" font-family="var(--f-mono),monospace" font-size="12" fill="var(--probe)">CO2</text>
+        <text x="315" y="156" text-anchor="middle" font-family="var(--f-mono),monospace" font-size="10" fill="var(--probe)">celda de gas</text>
+        <!-- protein legend -->
+        <line x1="440" y1="228" x2="480" y2="228" stroke="var(--ember)" stroke-width="3"/>
+        <text x="486" y="232" font-family="var(--f-mono),monospace" font-size="11" fill="currentColor">glutenina = fuerza / vuelta elástica</text>
+        <line x1="440" y1="246" x2="480" y2="246" stroke="var(--good)" stroke-width="3" stroke-dasharray="2 3"/>
+        <text x="486" y="250" font-family="var(--f-mono),monospace" font-size="11" fill="currentColor">gliadina = estiramiento / flujo</text>
+      </svg>
+      <figcaption>Primero construye la red, luego llénala de gas. Todo lo demás es ajuste fino.</figcaption>
+    </figure>
+
+    <div class="callout callout--why"><span class="lbl">Por qué funciona</span><p>La razón por la que una fermentación en frío de 48 horas le gana a una subida tibia de 2 horas con el <em>mismo</em> volumen final: el crecimiento solo mide el CO<sub>2</sub> producido, pero el sabor viene de los <em>otros</em> productos de la fermentación —ácidos orgánicos, ésteres y alcoholes— más la descomposición enzimática del almidón y la proteína en azúcares y aminoácidos. Eso se acumula en un reloj lento que es en gran medida independiente de la producción de gas. Largo y frío significa mucha química de sabor y gas moderado; corto y tibio significa lo contrario. Mismo tamaño, masa completamente distinta.</p></div>
+
+    <p><b>El porcentaje del panadero es la notación que usa todo el gremio, y son solo proporciones ancladas a la harina.</b> La harina siempre es 100%. Cada otro ingrediente se expresa como porcentaje del peso de la harina, así que 65% de hidratación significa 65 g de agua por cada 100 g de harina, sin importar el lote. Esto es exactamente tu proporción de extracción del café: viaja entre tamaños de lote y te permite comparar dos recetas de un vistazo. Dos masas en «1:0.65:0.02» son la misma masa ya sea que mezcles 300 g o 3 kg de harina.</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Ingrediente</th><th class="num">% del panadero</th><th>Rol en el sistema</th></tr></thead>
+      <tbody>
+        <tr><td>Harina</td><td class="num">100%</td><td>La referencia. El contenido de proteína define el potencial de gluten (harina de pan ~12–14%, «00»/todo uso ~9–11%).</td></tr>
+        <tr><td>Agua</td><td class="num">55–85%</td><td>Hidratación. Más alta = más extensible, miga más abierta, más difícil de manejar.</td></tr>
+        <tr><td>Sal</td><td class="num">1.8–2.2%</td><td>Frena la levadura, tensa el gluten, sazona. Nunca en cero.</td></tr>
+        <tr><td>Levadura (instantánea)</td><td class="num">0.2–1%</td><td>Motor de gas. Números diminutos; más cantidad acelera la subida, no el sabor.</td></tr>
+        <tr><td>Masa madre</td><td class="num">10–25%</td><td>Levaduras silvestres + lactobacilos. Reemplaza la levadura comercial; agrega acidez y ralentiza el proceso.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="side-note"><b>El peso total de la masa</b> = la suma de todos los porcentajes. Una masa 100/65/2/0.5 totaliza 167.5% del peso de la harina, así que para llegar a ~800 g de masa (cuatro pizzas de ~200 g) necesitas 800 / 1.675 ≈ 478 g de harina, y todo lo demás se deriva de ahí. Esta es la aritmética que harás para siempre.</p>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">03</span><h2>Conceptos clave</h2></div>
+    <div class="grid cols-2">
+      <div class="card"><h4>Hidratación</h4><p><b>Qué es:</b> el agua como % de la harina. <b>Por qué importa:</b> es la palanca individual más grande sobre la miga: baja (55–60%) da una masa tensa y fácil de formar (bagels, sándwich, pan de hamburguesa); alta (70–85%) da una miga abierta, aireada y llena de agujeros (chapata, masa madre) pero una masa pegajosa que exige técnica. <b>Error común:</b> saltar a 80% antes de dominar el 65% y concluir que «no sirves para hornear».</p></div>
+      <div class="card"><h4>Desarrollo del gluten</h4><p><b>Qué es:</b> organizar la glutenina y la gliadina en una película fuerte y extensible. <b>Por qué importa:</b> sin red, no hay retención de gas, resulta en un ladrillo denso. <b>Ejemplo:</b> la prueba de la ventana —estirar una nuez de masa lo suficientemente fina como para ver la luz a través sin que se rompa. <b>Error común:</b> pensar que solo amasar construye el gluten; el tiempo y la hidratación lo construyen gratis.</p></div>
+      <div class="card"><h4>Fermentación (tiempo × temperatura)</h4><p><b>Qué es:</b> microbios comiendo azúcares y produciendo gas + ácidos + alcoholes. <b>Por qué importa:</b> controla tanto la subida como el sabor, y ambos son separables. <b>Ejemplo:</b> una fermentación en frío a 4 °C / 39 °F durante 24–72 h. <b>Error común:</b> perseguir la subida con más levadura y preguntarte después por qué sabe plano y a levadura.</p></div>
+      <div class="card"><h4>Sal</h4><p><b>Qué es:</b> ~2% del peso de la harina. <b>Por qué importa:</b> regula la velocidad de la levadura a un ritmo manejable, tensa el gluten para que la masa sostenga su forma, y aporta la mayor parte del sazón. <b>Error común:</b> olvidarla —una masa sin sal fermenta demasiado rápido, se afloja y no sabe a nada. También: verter la sal directamente sobre la levadura en una mezcla concentrada.</p></div>
+      <div class="card"><h4>Fermentación en bloque vs. leudado final</h4><p><b>Qué es:</b> fermentación en bloque = la primera subida de toda la masa; leudado final = la subida final después de formar. <b>Por qué importa:</b> el sabor y la fuerza se construyen en el bloque; la preparación para el salto de horno se define en el leudado. <b>Error común:</b> confundirlos, o desgasificar toda la estructura entre uno y otro.</p></div>
+      <div class="card"><h4>Tensión superficial y formado</h4><p><b>Qué es:</b> tensar la piel exterior de la masa hasta formar un sobre firme. <b>Por qué importa:</b> la tensión resiste el aplanamiento y obliga a la masa a crecer <em>hacia arriba</em> en el horno (salto de horno / oven spring). <b>Error común:</b> aplastar una masa de alta hidratación y destruir las celdas de gas que te tomó 24 h construir.</p></div>
+    </div>
+    <div class="callout callout--heat"><span class="lbl">La variable que importa</span><p>Si cambias solo una cosa este mes, que sea la <b>temperatura y el tiempo de fermentación</b>, no la harina ni la marca de levadura. Es la perilla de mayor impacto y menor costo de todo el sistema, y la que más consistentemente dejan sin tocar los panaderos caseros.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">04</span><h2>Herramientas y equipo</h2></div>
+    <div class="spec">
+      <div class="spec-h">Comprar · Saltarse · Desperdicio</div>
+      <div class="spec-row"><span class="spec-key">Necesario</span><span class="spec-val">Báscula digital con precisión de 1 g (idealmente 0.1 g para sal/levadura) · tina o tazón grande con tapa · raspador de banco · el ajuste más caliente de tu horno</span></div>
+      <div class="spec-row"><span class="spec-key">Necesario — pizza</span><span class="spec-val">Acero para hornear (preferido) o piedra · una forma de trasladarla (una pala, o una bandeja invertida)</span></div>
+      <div class="spec-row"><span class="spec-key">Genuinamente útil</span><span class="spec-val">Termómetro de lectura instantánea (temperatura de masa y agua) · olla holandesa (atrapa el vapor para panes de hogar) · recipiente de leudado de lados rectos para leer el % de subida</span></div>
+      <div class="spec-row"><span class="spec-key">Opcional</span><span class="spec-val">Batidora de pie (conveniente, no obligatoria: los pliegues hacen el mismo trabajo) · banneton (un tazón + un paño + harina funciona igual) · lame (una cuchilla en un palito; un cuchillo afilado marca bien)</span></div>
+      <div class="spec-row"><span class="spec-key">Desperdicio de dinero</span><span class="spec-val">Máquina de pan · gadgets de «horno para pizza» que topan en 230 °C · acondicionadores y «mejoradores» de masa · nutrientes especiales embotellados para levadura</span></div>
+    </div>
+    <p>La báscula no es negociable: los porcentajes del panadero no tienen sentido con medidas de volumen, y una taza de harina varía ±20% según cómo la sirvas. Todo lo que viene después (reproducibilidad, escalado, diagnóstico) depende de pesar al gramo. Compra el acero antes que la piedra: tiene una conductividad térmica mucho más alta, así que descarga calor en la base de la pizza lo bastante rápido como para dorarla antes de que la parte de arriba se pase de cocción.</p>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">05</span><h2>Desglose de la técnica</h2></div>
+
+    <div class="level-band"><span class="tag level--1"><b>N1</b> Funcional</span><span class="ln"></span></div>
+    <p>Tres métodos construyen la misma red intercambiando trabajo por tiempo. Elige uno; son estados finales intercambiables.</p>
+    <ol class="steps">
+      <li><b>Preparación — pesa, no midas por volumen.</b> Fija la harina en 100% en la báscula y deriva el agua, la sal y la levadura a partir de los porcentajes. Usa agua tibia (~26–28 °C / 79–82 °F) para subidas a temperatura ambiente, fría para las lentas. <em>Razonamiento: la temperatura del agua es tu control más rápido sobre la velocidad de fermentación.</em></li>
+      <li><b>Ejecución — hidrata primero (autólisis).</b> Mezcla solo harina + agua, luego deja reposar 20–60 min antes de agregar sal y levadura. La harina se humedece por completo y las enzimas empiezan a entrelazar el gluten pasivamente. <em>Razonamiento: gran parte del «amasado» ocurre gratis durante este reposo; la masa después de la autólisis ya está más lisa.</em></li>
+      <li><b>Ejecución — desarrolla.</b> Luego, ya sea amasa 8–10 min (mecánico), o haz 3–4 series de estirado y plegado espaciadas cada 30 min durante el bloque (suave, construye fuerza sin batidora), o simplemente espera 12–18 h (sin amasar: el tiempo solo entrelaza el gluten). <em>Razonamiento: la agitación y el tiempo son sustitutos del mismo entrelazado.</em></li>
+      <li><b>Evaluación — ventana + toque.</b> Gluten: estira un pedazo hasta que quede fino; translúcido sin romperse = desarrollado. Fermentación: la masa creció ~50–100% y un toque enharinado vuelve lentamente, dejando una leve marca. <em>Razonamiento: estás leyendo el estado de la masa, no el reloj; el reloj es solo una predicción.</em></li>
+      <li><b>Corrección.</b> Se rasga al estirar → subdesarrollada, dale más pliegues o tiempo. Vuelve al instante y se resiste → demasiado tensa o poco reposada, cubre y espera 15–20 min a que el gluten se relaje antes de formar.</li>
+    </ol>
+
+    <div class="level-band"><span class="tag level--3"><b>N3</b> Optimización — formado y cocción</span><span class="ln"></span></div>
+    <ol class="steps">
+      <li><b>Preformado y reposo.</b> Redondea suavemente cada pieza en una bola floja, deja reposar 15–30 min cubierta. Esto relaja el gluten para que la forma final no se resista.</li>
+      <li><b>Formar para tensión.</b> Dobla la masa sobre sí misma y arrástrala sobre una mesa sin harina para que la piel de la superficie se tense en una cúpula firme. Para pizza, conserva el gas: presiona del centro hacia afuera y deja un borde inflado, nunca uses un rodillo. <em>Razonamiento: la tensión superficial es lo que convierte el gas de fermentación en salto de horno hacia arriba en vez de expansión hacia los lados.</em></li>
+      <li><b>Leudado justo por debajo del punto.</b> Subida final hasta que un toque vuelva <em>lento pero no completo</em>. Un poco subdesarrollado es más seguro que sobrefermentado: lo subdesarrollado igual salta en el horno; lo sobrefermentado colapsa.</li>
+      <li><b>Marca, luego hornea caliente con el modo de calor correcto.</b> Marca los panes de hogar para controlar dónde revientan. Hornea el pan con vapor (tapa de olla holandesa, o una bandeja de agua) durante los primeros 15–20 min para que la costra siga blanda el tiempo suficiente para saltar, luego calor seco para fijar la costra. La pizza quiere el máximo calor: acero en la rejilla superior bajo un grill/asador al rojo vivo, 260 °C+ / 500 °F+. <em>Razonamiento: el salto de horno es una ventana breve; el vapor mantiene la superficie elástica mientras el gas se expande, y luego la reacción de Maillard más la caramelización construyen el color y sabor de la costra.</em></li>
+    </ol>
+    <div class="callout callout--pro"><span class="lbl">Mediocre → Excelente</span><p>La pizza mediocre se hornea a 220 °C en una bandeja fría: la base queda pálida y se seca hasta volverse una galleta antes de poder tostarse. La pizza excelente se lanza sobre un acero precalentado 45–60 min a máximo calor con el grill encendido: la base fija y aparecen manchas de leopardo en 4–6 minutos, así la costra queda crujiente <em>y</em> la miga se mantiene abierta y húmeda. Misma masa: la diferencia es enteramente masa térmica y calor.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">06</span><h2>Errores de principiante y solución de problemas</h2></div>
+
+    <details class="trouble"><summary>Pan denso y apretado que apenas subió <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Gluten subdesarrollado (sin red), subfermentación (poco gas), levadura muerta o vieja, o demasiada sal en contacto temprano con la levadura.</dd>
+        <dt>Diagnóstico</dt><dd>¿Pasó la prueba de la ventana antes de formar? ¿La fermentación en bloque realmente creció ~50%+? Activa la levadura en agua tibia con azúcar: sin espuma en 10 min = muerta.</dd>
+        <dt>Solución</dt><dd>Bloque más largo/más tibio, más pliegues, levadura fresca. Reserva el desarrollo completo antes de formar; no apures el bloque para cumplir con un horario.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>Banda gomosa y densa cerca de la base <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Poco horneado (el almidón no gelatinizó/fijó del todo), cortado en caliente, o calor de la base demasiado débil.</dd>
+        <dt>Diagnóstico</dt><dd>La temperatura interna de un pan magro debe llegar a 96–99 °C / 205–210 °F. Si lo cortas caliente, la miga «fija» al enfriarse; cortar temprano lo vuelve gomoso.</dd>
+        <dt>Solución</dt><dd>Hornea más tiempo / hasta temperatura, hornea más abajo en el horno o sobre un acero precalentado, y deja enfriar por completo (1 h+) antes de cortar.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>La masa no se estira — se rasga o vuelve de golpe <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Vuelve de golpe = gluten demasiado tenso/poco reposado (exceso de comportamiento de glutenina, sin relajar). Se rasga = subdesarrollado o demasiado seco.</dd>
+        <dt>Diagnóstico</dt><dd>Vuelve de golpe pero se relaja después de 15 min = tensión, no daño. Se rasga con un borde irregular = la red nunca se construyó, o la hidratación es demasiado baja.</dd>
+        <dt>Solución</dt><dd>Vuelve de golpe: cubre y deja reposar 15–30 min, luego forma. Se rasga: más pliegues/tiempo, o sube la hidratación 3–5% en el próximo lote.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>Sobrefermentada — la masa colapsó, plana, agria, revienta al azar <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Fermentó demasiado: el gluten se agotó, las celdas de gas se fusionaron y explotaron, la estructura ya no aguanta. Común con exceso de levadura + cocina tibia + un reloj sin vigilar.</dd>
+        <dt>Diagnóstico</dt><dd>Prueba del toque: la marca se queda ahí y no vuelve en absoluto; la masa huele fuertemente a alcohol/agrio y se ve floja y burbujeante-plana.</dd>
+        <dt>Solución</dt><dd>No se puede revertir, pero puedes rescatar una masa levemente sobrefermentada reformándola con cuidado para darle tensión fresca y horneándola de inmediato. La próxima vez: menos levadura, fermentación más fría, o detecta el punto antes.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>Costra pálida y suave sin color <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Horno no lo suficientemente caliente, demasiado vapor dejado durante toda la cocción, o la fermentación se comió todos los azúcares residuales, así que no queda nada para dorar.</dd>
+        <dt>Diagnóstico</dt><dd>El color de la costra viene de Maillard más caramelización; ambos necesitan calor y azúcar disponible. Una masa sobrefermentada dora mal (también se «desgasifica de color»).</dd>
+        <dt>Solución</dt><dd>Horno más caliente, retira el vapor/la tapa durante el último tercio de la cocción, y no sobrefermentes. Un toque de azúcar o leche en masas enriquecidas ayuda al dorado.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>Pizza con centro empapado y crudo <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Demasiados ingredientes o muy húmedos, base no lo suficientemente caliente (sin acero/piedra, o precalentado insuficiente), o masa estirada demasiado fina en el centro para que la salsa la empape.</dd>
+        <dt>Diagnóstico</dt><dd>Levanta la pizza: una base pálida y flácida significa que nunca recibió calor directo alto antes de que la parte de arriba se cocinara.</dd>
+        <dt>Solución</dt><dd>Precalienta el acero 45–60 min al máximo, usa menos salsa o más seca y precocina los ingredientes acuosos (hongos, mozzarella fresca secada con papel toalla), y mantén el centro un poco más grueso.</dd>
+      </dl></div>
+    </details>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">07</span><h2>Experimentos controlados</h2></div>
+    <p>Una variable a la vez, todo lo demás fijo. Prueba y fotografía la miga lado a lado: las diferencias son grandes e inconfundibles.</p>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E1 — la palanca del sabor</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Demostrar que el tiempo de fermentación impulsa el sabor de forma independiente a la subida.</dd>
+        <dt>Mantener constante</dt><dd>La misma especificación de masa, la misma harina, el mismo tamaño final de bola de masa, el mismo horno, los mismos ingredientes.</dd>
+        <dt>Cambiar</dt><dd>Solo el horario de fermentación: un lote el mismo día (subida tibia de 2–3 h), un lote 48 h en el refrigerador a 4 °C / 39 °F. Saca el lote frío 1–2 h antes de hornear.</dd>
+        <dt>Esperado</dt><dd>Tamaño final e inflado similares; la masa de 48 h es notablemente más compleja, ligeramente ácida, dora mejor y forma más ampollas.</dd>
+        <dt>Observar</dt><dd>El aroma de la masa cruda (alcohólico/láctico en el lote frío), las manchas de leopardo en la costra, y la profundidad del sabor. Esta es la revelación de la «pizza de restaurante».</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E2 — hidratación y miga</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Ver cómo el agua sola remodela la miga y el manejo.</dd>
+        <dt>Mantener constante</dt><dd>Misma harina, % de sal, % de levadura, tiempo y temperatura de fermentación, misma cocción.</dd>
+        <dt>Cambiar</dt><dd>Hidratación: una masa al 60%, una al 75%.</dd>
+        <dt>Esperado</dt><dd>60% = firme, fácil de formar, miga pareja y apretada. 75% = floja, pegajosa, necesita manos húmedas y pliegues, pero una miga mucho más abierta, brillante e irregular.</dd>
+        <dt>Observar</dt><dd>Qué tan distinto se sienten al manejarlas, y la estructura de agujeros en el corte transversal. Aprende qué miga realmente quieres antes de perseguir hidrataciones extremas.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E3 — la sal como regulador</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Mostrar que la sal es un freno de fermentación y un agente de estructura, no solo sazón.</dd>
+        <dt>Mantener constante</dt><dd>Misma harina, hidratación, % de levadura, temperatura, tiempos.</dd>
+        <dt>Cambiar</dt><dd>Sal: una masa al 2%, una al 0%. Observa ambas subir en recipientes idénticos.</dd>
+        <dt>Esperado</dt><dd>La sin sal sube notablemente más rápido y más, luego se afloja y se vuelve pegajosa; la con sal sube más lento, sostiene su forma, sabe sazonada. El pan sin sal horneado sabe plano y se pone rancio rápido.</dd>
+        <dt>Observar</dt><dd>La velocidad de subida en 90 min, la flojedad de la masa y, crucialmente, la brecha de sabor en el pan terminado.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E4 — amasado vs. sin amasado</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Demostrar que el tiempo sustituye al amasado en la construcción del gluten.</dd>
+        <dt>Mantener constante</dt><dd>Misma especificación de masa al 70%, misma harina, misma sal, mismo peso total de masa y misma cocción.</dd>
+        <dt>Cambiar</dt><dd>Método de desarrollo: una amasada 10 min y luego reposada ~3 h; una mezclada 30 s y luego dejada 14–18 h (sin amasar, menos levadura).</dd>
+        <dt>Esperado</dt><dd>Ambas pasan la prueba de la ventana y suben bien; la sin amasar suele tener una miga más abierta e irregular y un sabor más profundo por la fermentación más larga.</dd>
+        <dt>Observar</dt><dd>La fuerza del gluten antes de formar y la miga final: no amasaste nada y aun así construiste una red.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">08</span><h2>Sistema de práctica — la especificación de masa para pizza</h2></div>
+    <p>Domina una masa por repetición antes de expandirte. Esta es una masa de pizza casera al estilo napolitano genuinamente usable, escrita como una especificación de ingeniero. Aprende a acertarla siempre, luego perturba.</p>
+
+    <div class="spec">
+      <div class="spec-h">ESPECIFICACIÓN · Masa de pizza con fermentación en frío (4 × ~250 g bolas)</div>
+      <div class="spec-row"><span class="spec-key">Harina (100%)</span><span class="spec-val">600 g · harina de pan o «00», ~12–13% de proteína</span></div>
+      <div class="spec-row"><span class="spec-key">Agua (63%)</span><span class="spec-val">378 g · fría, ~18 °C / 64 °F para una fermentación lenta</span></div>
+      <div class="spec-row"><span class="spec-key">Sal (2%)</span><span class="spec-val">12 g · sal fina de mar</span></div>
+      <div class="spec-row"><span class="spec-key">Levadura instantánea (0.5%)</span><span class="spec-val">3 g · (usa ~0.3% / 1.8 g si fermentas las 72 h completas)</span></div>
+      <div class="spec-row"><span class="spec-key">Total</span><span class="spec-val">≈ 993 g de masa · proporción total sobre harina 165.5%</span></div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-h">HORARIO · fermentación en frío</div>
+      <div class="spec-row"><span class="spec-key">Mezcla</span><span class="spec-val">Autólisis de harina + agua 30 min, agrega sal + levadura, mezcla/pliega hasta obtener una masa lisa y tosca</span></div>
+      <div class="spec-row"><span class="spec-key">Bloque (ambiente)</span><span class="spec-val">1–2 h a ~21 °C / 70 °F con 2 series de pliegues, hasta que suba ~30%</span></div>
+      <div class="spec-row"><span class="spec-key">Bolear y enfriar</span><span class="spec-val">Divide en bolas de 250 g, tensa bien, luego 24–72 h a 4 °C / 39 °F</span></div>
+      <div class="spec-row"><span class="spec-key">Atemperado</span><span class="spec-val">Fuera del refrigerador 1–2 h antes de hornear; las bolas deben estar relajadas e infladas</span></div>
+      <div class="spec-row"><span class="spec-key">Cocción</span><span class="spec-val">Acero precalentado 45–60 min al máximo + grill/asador · 260 °C+ / 500 °F+ · 4–7 min</span></div>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Ejercicio de práctica · N1–N2</div>
+      <h4>El ciclo de reproducibilidad</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Lograr la misma miga y el mismo manejo con la especificación de arriba en tres lotes seguidos.</dd>
+        <dt>Dificultad</dt><dd>Principiante → Consistente</dd>
+        <dt>Materiales</dt><dd>Báscula, la especificación, un cuaderno.</dd>
+        <dt>Pasos</dt><dd>Pesa con precisión, registra la temperatura del agua + temperatura de la cocina + tiempo total de fermentación + % de subida final, hornea, fotografía la miga. Repite sin cambiar nada.</dd>
+        <dt>Éxito</dt><dd>Tres resultados casi idénticos; puedes predecir el tiempo de subida a partir de la temperatura.</dd>
+        <dt>Modos de fallo</dt><dd>Subidas muy distintas = no estás controlando temperatura/tiempo. Regístralo y estandariza.</dd>
+        <dt>Mejorar</dt><dd>Una vez que sea aburridamente reproducible, cambia exactamente una variable (E1–E4).</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Ejercicio de práctica · N2–N3</div>
+      <h4>Formado para tensión</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Construir una piel firme y retenedora de gas sin desgasificar la masa.</dd>
+        <dt>Dificultad</dt><dd>Consistente → Optimización</dd>
+        <dt>Materiales</dt><dd>Un parche de mesa sin harina, un raspador de banco.</dd>
+        <dt>Pasos</dt><dd>Preforma, deja reposar 20 min, luego arrastra y redondea cada bola hasta una cúpula firme. Deja reposar con la costura hacia abajo. Para pizza, abre presionando del centro hacia afuera, nunca aplanando el borde con rodillo.</dd>
+        <dt>Éxito</dt><dd>Una superficie lisa y firme que sostiene una cúpula y da un salto de horno fuerte; un borde de pizza inflado y con manchas de leopardo.</dd>
+        <dt>Modos de fallo</dt><dd>La bola se desploma plana (sin tensión) o se rasga (demasiado tensa/seca). Ajusta la fricción de la mesa y el tiempo de reposo.</dd>
+        <dt>Mejorar</dt><dd>Pasa a mayor hidratación manteniendo la misma tensión: esa es la verdadera prueba de habilidad.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Ejercicio de práctica · N4</div>
+      <h4>Iniciar y mantener un cultivo de masa madre</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Criar un cultivo silvestre estable y aprender a leer su punto de listo.</dd>
+        <dt>Dificultad</dt><dd>Maestría</dd>
+        <dt>Materiales</dt><dd>Harina integral + harina blanca, agua, un frasco, báscula.</dd>
+        <dt>Pasos</dt><dd>Días 1–7: mezcla partes iguales de harina + agua, descarta y alimenta a diario (por ejemplo, 1:1:1 en peso) hasta que duplique su volumen de forma confiable en ~4–8 h. Señales de que está lista: duplicado predecible, forma cúpula y luego pico, pasa la prueba de flotación (una cucharada flota en agua).</dd>
+        <dt>Éxito</dt><dd>Un iniciador que duplica su volumen a horario y leuda un pan sin levadura comercial.</dd>
+        <dt>Modos de fallo</dt><dd>Lento = demasiado frío o poco alimentado; líquido («hooch») encima = con hambre, alimenta más seguido; sin subida después de 2 semanas = empieza de nuevo en un lugar más cálido.</dd>
+        <dt>Mejorar</dt><dd>Ajusta la proporción de alimentación (1:5:5 para un iniciador más suave y lento) y la temperatura para dirigir la intensidad ácida.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">09</span><h2>Proyectos</h2></div>
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Principiante</div>
+      <h4>Noche de pizza casera</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Ejecutar la especificación de fermentación en frío de principio a fin y servir cuatro pizzas que rivalicen con una buena pizzería.</dd>
+        <dt>Habilidades entrenadas</dt><dd>% del panadero, fermentación en frío, formado con tensión, cocción en acero caliente, moderación con los ingredientes.</dd>
+        <dt>Resultado esperado</dt><dd>Un borde inflado, con manchas de leopardo y ampollas; una base crujiente que se mantiene abierta y húmeda; sabor complejo por la fermentación de 48 h.</dd>
+        <dt>Evaluación</dt><dd>Levanta una rebanada: la punta se sostiene, la base está tostada no pálida, el borde es aireado no panoso.</dd>
+      </dl>
+    </div>
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Intermedio</div>
+      <h4>Pan de hamburguesa (masa enriquecida)</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Hacer una masa enriquecida suave y tierna: menor hidratación, con leche, mantequilla, huevo y un poco de azúcar.</dd>
+        <dt>Habilidades entrenadas</dt><dd>Manejo de masa enriquecida (la grasa recubre el gluten, así que desarróllalo antes de agregar la mantequilla), dividir en pesos uniformes, barniz de huevo para el brillo.</dd>
+        <dt>Resultado esperado</dt><dd>Ocho panes parejos, abombados y brillantes, con miga fina y suave que no se deshacen bajo una hamburguesa.</dd>
+        <dt>Evaluación</dt><dd>Tamaño uniforme (±5 g), dorado parejo, tierno no duro, miga lo bastante firme para retener los jugos.</dd>
+      </dl>
+    </div>
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Avanzado</div>
+      <h4>Rollos de canela</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Laminar una masa enriquecida suave con un relleno de mantequilla, azúcar y canela, enrollar, cortar y leudar.</dd>
+        <dt>Habilidades entrenadas</dt><dd>Estirar a grosor parejo, formado en espiral y tensión, leudado controlado, evaluar la cocción sin centro crudo.</dd>
+        <dt>Resultado esperado</dt><dd>Espirales suaves y bien definidas, cocidas por completo hasta el centro, relleno pegajoso, miga tierna.</dd>
+        <dt>Evaluación</dt><dd>Espirales parejas, sin núcleo crudo (sonda ~90 °C / 194 °F en el centro), relleno que se queda en su lugar en vez de escurrirse por completo.</dd>
+      </dl>
+    </div>
+    <p class="side-note"><b>Proyecto cumbre de masa madre (N4):</b> una vez que el iniciador duplique su volumen de forma confiable, hornea un pan de campo al 75% de hidratación: autólisis, pliegues durante el bloque, fermentación en frío durante la noche, cocción en una olla holandesa precalentada (tapa puesta 20 min para el vapor, retirada 20–25 min para el color). Aquí es donde todo concepto del módulo converge a la vez.</p>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">10</span><h2>Aprendizaje visual</h2></div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>well developed gluten windowpane test</code>
+      <p style="margin:.4em 0 0">Busca: una membrana delgada y translúcida a través de la cual se ve la luz, estirada sin romperse: eso es una red bien construida. Compáralo con una lámina que se rasga de forma irregular (subdesarrollada).</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>open crumb sourdough crumb shot high hydration</code>
+      <p style="margin:.4em 0 0">Busca: agujeros irregulares, brillantes y de pared delgada de tamaño variable: la firma de alta hidratación más buena retención de gas. Compara con una miga apretada y pareja de pan de sándwich.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>neapolitan pizza cornicione leoparding</code>
+      <p style="margin:.4em 0 0">Busca: un borde inflado y con ampollas con manchas oscuras tipo leopardo: evidencia de una masa bien fermentada golpeada con calor muy alto. Bordes pálidos y planos significan horno frío o poca fermentación.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>bread oven spring scoring ear grigne</code>
+      <p style="margin:.4em 0 0">Busca: la «oreja» levantada donde se abrió el marcado durante el salto de horno: prueba de que la masa tenía tensión y no estaba sobrefermentada.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>poke test proofing dough underproofed overproofed</code>
+      <p style="margin:.4em 0 0">Busca: el comportamiento de la marca: vuelve rápido = subfermentada; vuelve lento dejando una leve marca = lista; se queda completamente marcada = sobrefermentada.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">11</span><h2>Recursos externos</h2></div>
+    <div class="resource"><span class="rm">Video · Adam Ragusea</span>
+      <span class="rt">Buscar: «Adam Ragusea pizza dough» y «why I cold ferment»</span>
+      <p>Por qué: recorrido accesible sobre la pizza casera y el argumento a favor de la fermentación en frío.</p></div>
+    <div class="resource"><span class="rm">Video · Brian Lagerstrom</span>
+      <span class="rt">Buscar: «Brian Lagerstrom pizza dough» y «Brian Lagerstrom no knead bread»</span>
+      <p>Por qué: videos de método precisos, pesados en gramos, con tiempos claros pensados para mentes de ingeniero.</p></div>
+    <div class="resource"><span class="rm">Video / Sitio · King Arthur Baking</span>
+      <span class="rt">Buscar: «King Arthur Baking hydration» y «King Arthur baker's percentage»</span>
+      <p>Por qué: explicaciones confiables y de referencia sobre los fundamentos y la solución de problemas.</p></div>
+    <div class="resource"><span class="rm">Video · Masa madre</span>
+      <span class="rt">Buscar: «Full Proof Baking open crumb» y «The Perfect Loaf sourdough starter»</span>
+      <p>Por qué: los dos mejores análisis a fondo sobre mantenimiento del iniciador, manejo de alta hidratación y miga abierta.</p></div>
+    <div class="resource"><span class="rm">Libro · Fundamental</span>
+      <span class="rt">Flour Water Salt Yeast — Ken Forkish</span>
+      <p>Úsalo para todo el marco de tiempo y temperatura y para fórmulas limpias de porcentaje del panadero.</p></div>
+    <div class="resource"><span class="rm">Libro · Técnica</span>
+      <span class="rt">The Bread Baker's Apprentice — Peter Reinhart</span>
+      <p>Usa las «12 etapas» y los capítulos de prefermentos para entender cómo se construye el sabor antes de hornear.</p></div>
+    <div class="resource"><span class="rm">Libro · Mecanismo</span>
+      <span class="rt">The Food Lab — J. Kenji López-Alt (secciones de pan y pizza)</span>
+      <p>Úsalo para la química del por-qué-funciona del gluten, la gelatinización y el dorado de la costra.</p></div>
+  </section>
+
+  <section class="section">
+    <div class="h-sec"><span class="idx">12</span><h2>Evaluación</h2></div>
+    <p><b>Verificación de conocimiento</b> — comprensión, no memoria. Responde con tus propias palabras; si puedes explicar el mecanismo, dominas el concepto.</p>
+    <div class="check">
+      <div class="q"><p>Dos masas de pizza terminan del mismo tamaño, una después de una subida tibia de 2 h y otra después de una fermentación fría de 48 h. ¿Por qué la fría sabe dramáticamente mejor si la subida (el gas) es igual?</p></div>
+      <div class="q"><p>Quieres una miga más abierta y con agujeros. Nombra la variable que cambiarías primero y el costo de manejo que trae consigo.</p></div>
+      <div class="q"><p>Tu masa vuelve de golpe y no se estira. ¿Cómo distingues «necesita reposar» de «sobredesarrollada/rasgada», y cuál es la solución para cada una?</p></div>
+      <div class="q"><p>¿Por qué una masa sin amasar puede desarrollar tanto gluten como una amasada? ¿Qué está haciendo el trabajo?</p></div>
+      <div class="q"><p>Convierte esto a pesos en gramos para ~1000 g de masa: harina 100 / agua 65 / sal 2 / levadura 0.5. Muestra primero la cifra de la harina.</p></div>
+      <div class="q"><p>¿Por qué la sal no es opcional, y qué falla específicamente al 0%?</p></div>
+    </div>
+
+    <div class="drill drill--project" style="margin-top:18px">
+      <div class="drill-h">Reto práctico</div>
+      <h4>Misma masa, dos destinos</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Mezcla un lote de la especificación de pizza, divídelo, y fermenta la mitad el mismo día y la otra mitad 48 h en frío. Hornea ambas bajo condiciones idénticas y prueba lado a lado.</dd>
+        <dt>Evaluación</dt><dd>Puedes articular la diferencia de sabor y costra y vincular cada una a un mecanismo (ácidos/enzimas vs. gas), y lograste reproducibilidad en todo lo que mantuviste constante.</dd>
+      </dl>
+    </div>
+
+    <div class="callout callout--why" style="margin-top:18px"><span class="lbl">Reflexión</span><p>De las cuatro variables —hidratación, desarrollo, fermentación, sal— ¿cuál te costó más controlar este mes, y qué te dijo el <em>comportamiento</em> de la masa (no la receta) cuando algo salió mal? Anota la única medición que empezarás a registrar para que los fallos del próximo mes se conviertan en datos en lugar de misterios.</p></div>
+  </section>
+
+  <nav class="pager">
+    <a class="prev" href="#m4"><span class="d">Anterior</span>Vegetales</a>
+    <a class="next" href="#m6"><span class="d">Siguiente</span>Fermentación</a>
+  </nav>
+</section>

@@ -1,0 +1,480 @@
+<section class="lesson" id="m4">
+  <header class="lesson-head">
+    <p class="eyebrow">MÓDULO 04 · VERDURAS</p>
+    <h1>Las verduras como ingrediente, no como castigo</h1>
+    <p class="lede">La mayoría de la gente no odia las verduras: odia las verduras <em>hervidas</em>. El dorado, el fuego alto y un poco de acidez convierten esa misma zanahoria de una obligación aguada en algo que de verdad se te antoja.</p>
+    <div class="kicker-row">
+      <span class="tag ember">Mes 4</span>
+      <span class="tag probe">dorado + acidez</span>
+      <span class="tag">no empieces por la ensalada</span>
+    </div>
+  </header>
+
+  <!-- ============ 01 WHY ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">01</span><h2>Por qué importa esto</h2></div>
+    <p>Si crees que no te gustan las verduras, haz la auditoría: casi toda verdura que recuerdas haber odiado estaba <strong>hervida o al vapor</strong> — gris verdosa, aguada, con el sabor que se quedó en la olla. Eso no es culpa de la verdura. Es una falla de procesamiento, el equivalente culinario de juzgar el café por una jarra quemada de gasolinera.</p>
+    <p>Todo el módulo descansa en un mecanismo que ya respetas del tueste del café: el <strong>dorado</strong>. Por encima de unos 140&nbsp;°C, la superficie de un alimento deja de simplemente calentarse y empieza a <em>transformarse químicamente</em>: aparecen cientos de compuestos aromáticos nuevos que sencillamente no existen en el ingrediente crudo o hervido. Hervir topa en 100&nbsp;°C, así que por más que esperes, esa puerta nunca se abre. Peor aún, el agua saca activamente el sabor y el azúcar <em>de</em> la verdura hacia la olla que después tiras por el fregadero.</p>
+    <p>Por eso el plan es deliberado: <strong>no</strong> empezamos por la ensalada. La ensalada le pide a una verdura cruda que sea deliciosa sin ninguna ayuda — un modo difícil que te ganas después. Empezamos donde la transformación es mayor y la recompensa más obvia: asar al horno, sellar a fuego alto y saltear, y después un primer acercamiento ligero al encurtido y la fermentación. Al final, una verdura es un componente alrededor del cual construyes una comida, no un impuesto que pagas para sentirte virtuoso.</p>
+    <div class="callout callout--why"><span class="lbl">La tesis en una línea</span><p>Las verduras hervidas no saben a nada porque 100&nbsp;°C está por debajo de la temperatura a la que el sabor se <em>crea</em>, y porque el agua se lleva el sabor consigo. Cada técnica de este módulo es una manera de dejar la superficie seca de una verdura más caliente que 140&nbsp;°C.</p></div>
+  </section>
+
+  <!-- ============ 02 MENTAL MODEL ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">02</span><h2>Modelo mental — la escalera de temperatura</h2></div>
+    <p>Piensa en el calor como una escalera de reacciones que se desbloquean. Cada peldaño activa una química distinta. La razón por la que tu horno llega a 220&nbsp;°C y tu olla hirviendo no puede pasar de 100&nbsp;°C es toda la historia de este módulo en una sola imagen.</p>
+
+    <figure>
+      <svg viewBox="0 0 640 340" role="img" aria-labelledby="m4-ladder-t" style="font-family:var(--f-mono)">
+        <title id="m4-ladder-t">Una escalera vertical de temperatura que muestra qué reacciones de sabor se desbloquean a qué temperatura de superficie</title>
+        <!-- axis -->
+        <line x1="90" y1="20" x2="90" y2="310" stroke="currentColor" stroke-width="1.5"/>
+        <text x="90" y="330" text-anchor="middle" font-size="11" fill="currentColor" opacity=".7">TEMPERATURA DE SUPERFICIE →</text>
+
+        <!-- gridlines + labels -->
+        <!-- 250 -->
+        <g font-size="11" fill="currentColor">
+          <line x1="86" y1="40"  x2="620" y2="40"  stroke="#cdc9be" stroke-dasharray="2 4"/>
+          <text x="80" y="44"  text-anchor="end">250 °C</text>
+          <line x1="86" y1="95"  x2="620" y2="95"  stroke="#cdc9be" stroke-dasharray="2 4"/>
+          <text x="80" y="99"  text-anchor="end">180 °C</text>
+          <line x1="86" y1="150" x2="620" y2="150" stroke="#cdc9be" stroke-dasharray="2 4"/>
+          <text x="80" y="154" text-anchor="end">160 °C</text>
+          <line x1="86" y1="205" x2="620" y2="205" stroke="#cdc9be" stroke-dasharray="2 4"/>
+          <text x="80" y="209" text-anchor="end">140 °C</text>
+          <line x1="86" y1="285" x2="620" y2="285" stroke="#cdc9be" stroke-dasharray="2 4"/>
+          <text x="80" y="289" text-anchor="end">100 °C</text>
+        </g>
+
+        <!-- burnt zone -->
+        <rect x="110" y="26" width="490" height="18" fill="#bb3a2c" opacity=".78"/>
+        <text x="120" y="39" font-size="11" fill="#fff">200 °C+ · acre / carbón — te pasaste</text>
+
+        <!-- caramelisation band -->
+        <rect x="110" y="150" width="490" height="55" fill="#c2481d" opacity=".16" stroke="#c2481d" stroke-width="1"/>
+        <text x="120" y="169" font-size="11.5" fill="#c2481d">CARAMELIZACIÓN ~160 °C+</text>
+        <text x="120" y="185" font-size="10" fill="currentColor" opacity=".75">los azúcares se descomponen → dulce, tostado, a toffee (cebolla, zanahoria, chile)</text>
+
+        <!-- maillard band -->
+        <rect x="110" y="150" width="490" height="0"/>
+        <rect x="110" y="207" width="490" height="72" fill="#b6851f" opacity=".18" stroke="#b6851f" stroke-width="1"/>
+        <text x="120" y="228" font-size="11.5" fill="#b6851f">MAILLARD ~140–165 °C+</text>
+        <text x="120" y="244" font-size="10" fill="currentColor" opacity=".75">aminoácidos + azúcares → sabor a horneado/tostado, cientos de aromas nuevos</text>
+        <text x="120" y="264" font-size="10" fill="currentColor" opacity=".75">requiere una superficie SECA — el agua debe evaporarse primero</text>
+
+        <!-- boiling ceiling -->
+        <rect x="110" y="285" width="490" height="34" fill="#1f7982" opacity=".16" stroke="#1f7982" stroke-width="1"/>
+        <text x="120" y="303" font-size="11.5" fill="#1f7982">TECHO DE HERVIDO / VAPOR = 100 °C</text>
+        <text x="120" y="316" font-size="10" fill="currentColor" opacity=".75">nunca hay dorado posible · el sabor se filtra al agua</text>
+
+        <!-- the wall arrow -->
+        <line x1="600" y1="285" x2="600" y2="150" stroke="#c2481d" stroke-width="1.5" marker-end="url(#m4arr)"/>
+        <defs><marker id="m4arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#c2481d"/></marker></defs>
+        <text x="612" y="220" font-size="10" fill="#c2481d" transform="rotate(90 612 220)">la brecha que hervir nunca puede cruzar</text>
+      </svg>
+      <figcaption>Fig. 1 — Hervir vive permanentemente por debajo de la línea del dorado. Asar y sellar meten la superficie en las bandas de caramelización y Maillard, donde el sabor se fabrica.</figcaption>
+    </figure>
+
+    <p>Dos mecanismos hacen casi todo el trabajo, y se superponen:</p>
+    <ul>
+      <li><strong>Reacción de Maillard</strong> — los aminoácidos reaccionan con azúcares reductores sobre una superficie <em>seca</em> por encima de ~140&nbsp;°C. Esto es sabroso, tostado, complejo: la costra de la papa asada, el chamuscado del ejote salteado.</li>
+      <li><strong>Caramelización</strong> — los azúcares solos se descomponen por encima de ~160&nbsp;°C en compuestos dulces, tostados y con un toque amargo. Por eso las verduras azucaradas (cebolla, zanahoria, chile, ayote/calabaza) se vuelven dulces como caramelo al asarlas.</li>
+    </ul>
+    <p>El guardián de ambas es la <strong>humedad superficial</strong>. El agua en la superficie fija la temperatura en 100&nbsp;°C — todo el calor que llega se gasta en evaporar esa agua en vez de subir la temperatura. Hasta que la superficie no esté seca, nada se dora. Este único hecho explica cada regla de asado que sigue.</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Método</th><th class="num">°C máx. de superficie</th><th>¿Dora?</th><th>Resultado de sabor</th><th>Textura</th></tr></thead>
+      <tbody>
+        <tr><td>Hervir</td><td class="num">100</td><td>Ninguno</td><td>Apagado; el sabor se pierde en el agua</td><td>Suave → pastoso, aguado</td></tr>
+        <tr><td>Al vapor</td><td class="num">100</td><td>Ninguno</td><td>Limpio pero plano; conserva más nutrientes que hervir</td><td>Tierno, superficie húmeda</td></tr>
+        <tr><td>Asar al horno</td><td class="num">140–220+</td><td>Sí (bordes y base)</td><td>Dulce, a caramelo, tostado, profundo</td><td>Exterior crujiente, centro tierno</td></tr>
+        <tr><td>Sellar / asar en sartén</td><td class="num">160–230</td><td>Sí (cara de contacto)</td><td>Costra sabrosa, concentrada</td><td>Cara dorada, firme por dentro</td></tr>
+        <tr><td>Salteado</td><td class="num">180–240</td><td>Sí (destellos de chamuscado)</td><td>Ahumado, vivo, "aliento de wok"</td><td>Crujiente-tierno, todavía firme</td></tr>
+        <tr><td>Freír por inmersión</td><td class="num">160–190</td><td>Sí (por todos lados)</td><td>Costra dorada rica y uniforme</td><td>Cáscara crujiente, centro esponjoso</td></tr>
+      </tbody>
+    </table></div>
+    <p class="mono" style="font-size:13px;color:var(--ink-faint)">Nota: las primeras dos filas comparten un techo duro de 100&nbsp;°C. Todo lo que está debajo del divisor puede recorrer la escalera del sabor; todo lo que está en o por encima, no.</p>
+  </section>
+
+  <!-- ============ 03 KEY CONCEPTS ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">03</span><h2>Conceptos clave</h2></div>
+    <div class="grid cols-2">
+      <div class="card"><h4>Reacción de Maillard</h4><p><b>Qué es:</b> aminoácidos + azúcares reductores reaccionan sobre una superficie seca &gt;140&nbsp;°C. <b>Por qué importa:</b> inventa el aroma sabroso y tostado que las verduras crudas y hervidas no tienen para nada. <b>Error común:</b> una superficie húmeda — nunca pasa de 100&nbsp;°C, así que se cuece al vapor y queda gris en vez de dorarse.</p></div>
+      <div class="card"><h4>Caramelización</h4><p><b>Qué es:</b> los azúcares solos se descomponen &gt;160&nbsp;°C en compuestos dulces/tostados. <b>Por qué importa:</b> por eso la zanahoria y la cebolla asadas saben a dulce. <b>Error común:</b> esperar que sea rápido — la caramelización real de la cebolla toma 20–40 min, no los 5 min que dicen las recetas.</p></div>
+      <div class="card"><h4>La humedad superficial es el enemigo</h4><p><b>Qué es:</b> el agua fija la superficie en 100&nbsp;°C hasta que se evapora. <b>Por qué importa:</b> secar y dar espacio es el 80% de un buen asado de verduras. <b>Error común:</b> tirar verduras recién lavadas y mojadas directo a la bandeja.</p></div>
+      <div class="card"><h4>Amontonar = cocer al vapor</h4><p><b>Qué es:</b> las piezas apretadas atrapan el agua que sueltan como vapor. <b>Por qué importa:</b> una bandeja amontonada se hierve a sí misma en su propia humedad. <b>Error común:</b> el error #1 de principiante — una bandeja apilada en vez de dos con espacio.</p></div>
+      <div class="card"><h4>Paredes celulares y textura</h4><p><b>Qué es:</b> la pectina y la celulosa se ablandan con el calor; eso es lo que significa "tierno". <b>Por qué importa:</b> te detienes <em>a medio camino</em> para lograr crujiente-tierno, o vas hasta el final para lograr sedoso. <b>Error común:</b> cocinar siempre hasta el mismo punto por costumbre y llamarlo todo "listo".</p></div>
+      <div class="card"><h4>La sal y el ácido hacen que las verduras se antojen</h4><p><b>Qué es:</b> la sal saca agua (ósmosis) y sazona; el ácido aviva y conserva. <b>Por qué importa:</b> un chorrito de limón o una cebolla encurtida pueden salvar un plato aburrido. <b>Error común:</b> quedarse corto de sal y después culpar a la verdura.</p></div>
+    </div>
+    <div class="callout callout--heat"><span class="lbl">La variable que más importa</span><p>Si solo ajustas una cosa este mes, ajusta <strong>la sequedad de la superficie × el amontonamiento en la sartén/bandeja</strong>. Juntas deciden si tus verduras se doran o se estofan, y ninguna cantidad de sazón arregla después una verdura estofada.</p></div>
+  </section>
+
+  <!-- ============ 04 TOOLS ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">04</span><h2>Herramientas y equipo</h2></div>
+    <p>Cocinar verduras es indulgente con el equipo. La capacidad calorífica y el área de superficie importan mucho más que la marca.</p>
+    <div class="spec">
+      <div class="spec-h">Necesario</div>
+      <div class="spec-row"><span class="spec-key">Bandejas de horno</span><span class="spec-val">Dos bandejas medias con reborde, gruesas. Dos para que nunca amontones — la compra de más impacto en este módulo.</span></div>
+      <div class="spec-row"><span class="spec-key">Sartén ancha</span><span class="spec-val">De acero al carbón o inoxidable, 28–30&nbsp;cm. La alta capacidad calorífica mantiene la temperatura cuando caen verduras frías.</span></div>
+      <div class="spec-row"><span class="spec-key">Toallas de cocina</span><span class="spec-val">Para secar verduras lavadas. Superficie seca &gt; bandeja cara, siempre.</span></div>
+      <div class="spec-row"><span class="spec-key">Termómetro de horno</span><span class="spec-val">Los diales integrados mienten por 15–25&nbsp;°C. Unos pocos dólares te compran la verdad sobre tu temperatura real de asado.</span></div>
+    </div>
+    <div class="spec">
+      <div class="spec-h">Opcional — se gana su lugar</div>
+      <div class="spec-row"><span class="spec-key">Wok de acero al carbón</span><span class="spec-val">Solo si tu hornilla es potente; un wok sobre un quemador doméstico débil rinde peor que una sartén plana bien caliente.</span></div>
+      <div class="spec-row"><span class="spec-key">Rejilla de enfriamiento</span><span class="spec-val">Colocada sobre una bandeja, da flujo de aire por todos lados en cosas que no quieres con el fondo aguado.</span></div>
+      <div class="spec-row"><span class="spec-key">Báscula digital</span><span class="spec-val">Para salmueras de 2% de sal en encurtidos. Precisa, barata, amigable para la mente de ingeniero.</span></div>
+    </div>
+    <div class="spec">
+      <div class="spec-h">Bota el dinero</div>
+      <div class="spec-row"><span class="spec-key">La moda de la "freidora de aire"</span><span class="spec-val">Es un horno de convección pequeño. Útil, pero no magia — dora porque es una caja caliente y bien ventilada, la misma física que tu horno.</span></div>
+      <div class="spec-row"><span class="spec-key">Antiadherente para asar</span><span class="spec-val">Los recubrimientos se degradan a altas temperaturas de asado y agarran mal el fondo dorado. El metal sin recubrir dora mejor.</span></div>
+      <div class="spec-row"><span class="spec-key">Gadgets para una sola verdura</span><span class="spec-val">Sujetadores de cebolla, descorazonadores de chile. Un cuchillo y práctica los reemplazan a todos.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 05 TECHNIQUE ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">05</span><h2>Desglose de la técnica</h2></div>
+
+    <div class="levels">
+      <span class="level level--1"><b>N1</b> — Puedo asar sin estofar</span>
+      <span class="level level--2"><b>N2</b> — Reproduzco un resultado crujiente y dulce</span>
+      <span class="level level--3"><b>N3</b> — Ajusto corte, calor y tiempo según la verdura</span>
+      <span class="level level--4"><b>N4</b> — Improviso guarniciones que hacen que alguien que odia las verduras pida más</span>
+    </div>
+
+    <div class="level-band"><span class="tag level--1"><b>N1</b> Funcional</span><span class="ln"></span></div>
+    <h3>Asar — la transformación por defecto</h3>
+    <ol class="steps">
+      <li><b>Preparación — corta uniforme, corta generoso.</b> Los tamaños parejos cocinan parejo; los bordes se doran, así que más bordes = más sabor. Apunta a trozos de ~2–3&nbsp;cm. Piezas desiguales garantizan que unas se quemen y otras queden crudas.</li>
+      <li><b>Preparación — seca sin piedad.</b> Seca las verduras lavadas hasta dejarlas completamente secas con una toalla. Cada gota de agua en la superficie es tiempo y energía que le robas al dorado (ver Fig.&nbsp;1).</li>
+      <li><b>Preparación — aceite suficiente para contacto, no para nadar.</b> ~1&nbsp;cucharada de aceite por bandeja de verduras. El aceite es el puente térmico entre el metal/aire y la superficie; poco = manchas secas, demasiado = frito y grasoso.</li>
+      <li><b>Ejecución — horno caliente, una sola capa, espacio entre piezas.</b> 220&nbsp;°C / 425&nbsp;°F con ventilador o más caliente. Una sola capa, con huecos por donde se vea la bandeja. Dos bandejas le ganan a una amontonada siempre.</li>
+      <li><b>Ejecución — déjalas quietas, luego voltea una vez.</b> El tiempo de contacto construye la costra. Voltea una vez en los dos tercios; andar moviéndolas todo el tiempo reinicia el reloj del dorado.</li>
+      <li><b>Evaluación — lee el color y los bordes.</b> Bordes de un dorado profundo, base acaramelada, centro tierno al pincharlo. Pálido = no está listo sin importar el temporizador.</li>
+      <li><b>Corrección — ¿pálido después del tiempo completo?</b> El horno está muy frío (revisa el termómetro) o la bandeja estaba amontonada. Sube el calor los últimos 5–8 min o repártelas en dos bandejas y continúa.</li>
+    </ol>
+
+    <div class="spec">
+      <div class="spec-h">Referencia de asado — 220 °C / 425 °F con ventilador, una sola capa</div>
+      <div class="spec-row"><span class="spec-key">Papas</span><span class="spec-val">Trozos de 2–4&nbsp;cm · <b>precuece 8–10&nbsp;min en agua con sal, escurre, seca, raspa la superficie en la olla</b> · sobre una <b>bandeja precalentada y aceitada</b> · 45–55&nbsp;min. Una superficie rasposa y gelatinizada = máximo crujiente.</span></div>
+      <div class="spec-row"><span class="spec-key">Zanahorias</span><span class="spec-val">Cortadas a la mitad a lo largo o en trozos oblicuos de 3&nbsp;cm · alta en azúcar → caramelizan rápido · 25–35&nbsp;min · termina con ácido o miel.</span></div>
+      <div class="spec-row"><span class="spec-key">Chiles</span><span class="spec-val">Tiras de 2–3&nbsp;cm o mitades · alto en agua y azúcar · 25–35&nbsp;min · asa fuerte para ampollar la piel antes de que el agua los estofe.</span></div>
+      <div class="spec-row"><span class="spec-key">Cebollas</span><span class="spec-val">Gajos gruesos con la raíz pegada (así se mantienen unidos) · 30–40&nbsp;min para bordes dulces asados — un proceso distinto a caramelizar en la hornilla.</span></div>
+    </div>
+
+    <div class="level-band"><span class="tag level--3"><b>N3</b> Optimización</span><span class="ln"></span></div>
+    <h3>Dos maneras de dorar una cebolla — y por qué una receta miente</h3>
+    <p>"Caramelizar la cebolla (5 min)" es la mentira más común en la escritura de recetas. Hay dos procesos distintos y no son intercambiables:</p>
+    <div class="grid cols-2">
+      <div class="card"><h4>Chamuscado rápido a fuego alto (5–8 min)</h4><p>Sartén al rojo, rodajas finas, en movimiento constante. Obtienes <b>chamuscado tipo Maillard</b> en los bordes — sabroso, ahumado, todavía filoso y con carácter de cebolla por dentro. Excelente en un salteado. Esto <em>no</em> es cebolla caramelizada.</p></div>
+      <div class="card"><h4>Caramelización lenta y a fuego bajo (20–40+ min)</h4><p>Fuego medio-bajo, paciencia, revuelta ocasional, un chorrito de agua para desglasar. Los azúcares se descomponen poco a poco; la cebolla colapsa hasta quedar mermelada, dulce, de un dorado profundo. El tiempo es el ingrediente — no hay atajo de 5 minutos, porque la química del azúcar corre a la velocidad que corre.</p></div>
+    </div>
+
+    <h3>Salteado y sellado a fuego alto</h3>
+    <ol class="steps">
+      <li><b>Preparación — mise en place, todo seco y cortado.</b> El salteado es rápido; no hay tiempo de picar a mitad de cocción. Las verduras mojadas bajan la temperatura de la sartén y generan vapor.</li>
+      <li><b>Ejecución — pon la sartén al rojo primero.</b> Quieres que la superficie esté tan caliente que en cuanto caiga la comida se selle, no que sude. Una gota de agua debería patinar y evaporarse al instante.</li>
+      <li><b>Ejecución — cocina en tandas, mantenlo en movimiento.</b> Sobrecargar hunde la temperatura hasta territorio de estofado. Las tandas pequeñas mantienen el metal caliente; el movimiento le da a cada cara un destello de chamuscado sin que el interior se sobrecocine.</li>
+      <li><b>Evaluación — crujiente-tierno, con pecas de chamuscado.</b> Color vivo, firmeza que se conserva, manchas ampolladas. Las paredes celulares (pectina/celulosa) se ablandaron lo justo — detente antes de que el centro quede flácido.</li>
+      <li><b>Corrección — ¿gris y mojado, sin chamuscar?</b> La sartén estaba muy fría o la tanda era muy grande. Saca todo, recalienta la sartén por completo, vuelve a empezar con cargas más pequeñas.</li>
+    </ol>
+    <div class="callout callout--pro"><span class="lbl">Mediocre → Excelente</span><p>Los cocineros mediocres llenan la sartén y revuelven todo el tiempo a fuego medio — <em>hierven</em> las verduras dentro de una sartén. Los excelentes ponen la sartén más caliente de lo que se siente cómodo, cocinan menos cantidad a la vez, y aceptan unas cuantas manchas casi negras como el sabor, no como un error.</p></div>
+
+    <h3>Salar para sacar el agua (ósmosis)</h3>
+    <p>Las verduras aguadas — pepino, calabacín/zucchini, repollo — doran mal y diluyen los platillos. Salalas primero: mézclalas con ~1–2% de sal por peso, espera 15–30&nbsp;min, y luego exprime o seca con toalla. La ósmosis saca el agua interior a través de las membranas celulares, dejándolas más firmes, más concentradas y mucho más dispuestas a dorarse o absorber una salmuera de encurtido.</p>
+  </section>
+
+  <!-- ============ 06 TROUBLESHOOTING ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">06</span><h2>Errores de principiante — solución de problemas</h2></div>
+
+    <details class="trouble"><summary>Verduras asadas aguadas, sin costra <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Bandeja amontonada que atrapa vapor; superficies mojadas; horno muy frío; demasiado aceite.</dd>
+        <dt>Diagnóstico</dt><dd>¿Había espacio entre las piezas? ¿Las secaste? Revisa la temperatura real del horno con un termómetro.</dd>
+        <dt>Solución</dt><dd>Repártelas en dos bandejas en una sola capa, seca las verduras, usa 220&nbsp;°C+ con ventilador, y no las voltees hasta que se haya formado costra.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>Pálidas — cocidas por dentro pero sin color <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>La superficie nunca llegó a ~140&nbsp;°C: horno frío, amontonamiento, o vapor de una bandeja tapada.</dd>
+        <dt>Diagnóstico</dt><dd>Tierno por dentro pero rubio por fuera es la señal. Casi siempre es un problema de temperatura/vapor, no de tiempo.</dd>
+        <dt>Solución</dt><dd>Destapa, sube el calor a 230&nbsp;°C los últimos 5–10 min, o mueve la bandeja cerca de la resistencia superior.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>Quemadas por fuera, crudas por dentro <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Calor demasiado alto para el tamaño de la pieza; trozos cortados demasiado grandes; verdura densa (papa, ayote/calabaza) sin precocer.</dd>
+        <dt>Diagnóstico</dt><dd>Costra oscura con un centro duro y almidonoso. La superficie se adelantó al interior.</dd>
+        <dt>Solución</dt><dd>Corta más pequeño y parejo, baja a 200&nbsp;°C, o precuece las verduras densas primero para que el horno solo tenga que dorar, no cocinar por completo.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>Salteado flácido y gris <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Sartén no lo bastante caliente; demasiado en la sartén a la vez; verduras mojadas; revolver constante a fuego bajo.</dd>
+        <dt>Diagnóstico</dt><dd>Líquido acumulado en la sartén significa que estás hirviendo, no salteando.</dd>
+        <dt>Solución</dt><dd>Vacía la sartén, recaliéntala hasta que humee, seca las verduras, y cocina en tandas de la mitad del tamaño.</dd>
+      </dl></div>
+    </details>
+
+    <details class="trouble"><summary>Platillo final aguado y diluido <span class="sig">Falla</span></summary>
+      <div class="trouble-body"><dl>
+        <dt>Causas</dt><dd>Verduras con mucha agua (calabacín, hongo, repollo) soltaron su agua dentro del platillo.</dd>
+        <dt>Diagnóstico</dt><dd>Un charquito delgado y color pálido al final de la cocción.</dd>
+        <dt>Solución</dt><dd>Sala primero para sacar el agua (ósmosis), cocina esas verduras aparte a fuego alto, y agrégalas de vuelta al final.</dd>
+      </dl></div>
+    </details>
+  </section>
+
+  <!-- ============ 07 EXPERIMENTS ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">07</span><h2>Experimentos controlados</h2></div>
+    <p>El mismo principio que calibrar un shot de espresso: cambia una variable, mantén el resto igual, lee el resultado. Haz estos uno tras otro para que la comparación esté viva en tu boca.</p>
+
+    <figure>
+      <svg viewBox="0 0 640 210" role="img" aria-labelledby="m4-tray-t" style="font-family:var(--f-mono)">
+        <title id="m4-tray-t">La bandeja amontonada atrapa vapor y estofa; la bandeja con espacio deja escapar la humedad y dora</title>
+        <!-- crowded tray -->
+        <text x="160" y="24" text-anchor="middle" font-size="12" fill="#bb3a2c">AMONTONADA → SE COCE AL VAPOR</text>
+        <rect x="40" y="34" width="240" height="90" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <!-- packed pieces -->
+        <g fill="#1f7982" opacity=".35" stroke="#1f7982" stroke-width="1">
+          <circle cx="70" cy="80" r="16"/><circle cx="104" cy="80" r="16"/><circle cx="138" cy="80" r="16"/>
+          <circle cx="172" cy="80" r="16"/><circle cx="206" cy="80" r="16"/><circle cx="240" cy="80" r="16"/>
+          <circle cx="88" cy="106" r="15"/><circle cx="122" cy="106" r="15"/><circle cx="156" cy="106" r="15"/>
+          <circle cx="190" cy="106" r="15"/><circle cx="224" cy="106" r="15"/>
+        </g>
+        <!-- trapped steam -->
+        <g stroke="#1f7982" stroke-width="1.4" fill="none" opacity=".8">
+          <path d="M90 60 q-6 -10 0 -20 q6 -10 0 -20"/>
+          <path d="M140 60 q-6 -10 0 -20 q6 -10 0 -20"/>
+          <path d="M190 60 q-6 -10 0 -20 q6 -10 0 -20"/>
+        </g>
+        <text x="160" y="150" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">el agua no puede escapar → la superficie queda atascada en 100 °C</text>
+        <text x="160" y="166" text-anchor="middle" font-size="10" fill="#bb3a2c">resultado: pálido, suave, gris verdoso</text>
+
+        <!-- spaced tray -->
+        <text x="480" y="24" text-anchor="middle" font-size="12" fill="#2f7d57">CON ESPACIO → DORA</text>
+        <rect x="360" y="34" width="240" height="90" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <g fill="#c2481d" opacity=".45" stroke="#c2481d" stroke-width="1">
+          <circle cx="400" cy="70" r="15"/><circle cx="460" cy="70" r="15"/><circle cx="520" cy="70" r="15"/><circle cx="576" cy="70" r="13"/>
+          <circle cx="400" cy="106" r="15"/><circle cx="460" cy="106" r="15"/><circle cx="520" cy="106" r="15"/><circle cx="576" cy="106" r="13"/>
+        </g>
+        <!-- escaping steam arrows -->
+        <g stroke="#cdc9be" stroke-width="1.2" fill="none">
+          <path d="M430 60 v-16" marker-end="url(#m4up)"/>
+          <path d="M490 60 v-16" marker-end="url(#m4up)"/>
+          <path d="M550 60 v-16" marker-end="url(#m4up)"/>
+        </g>
+        <defs><marker id="m4up" markerWidth="7" markerHeight="7" refX="3.5" refY="1" orient="auto"><path d="M0 6 L3.5 0 L7 6 Z" fill="#cdc9be"/></marker></defs>
+        <text x="480" y="150" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">la humedad escapa → la superficie sube más allá de 140 °C</text>
+        <text x="480" y="166" text-anchor="middle" font-size="10" fill="#2f7d57">resultado: crujiente, a caramelo, sabor profundo</text>
+      </svg>
+      <figcaption>Fig. 2 — Las mismas verduras, el mismo horno. Solo cambió el espaciado. Este es el E1, dibujado.</figcaption>
+    </figure>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E1 — amontonada vs. espaciada</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Sentir directamente el mecanismo de vapor vs. dorado.</dd>
+        <dt>Mantener constante</dt><dd>Misma verdura, corte, aceite, horno (220&nbsp;°C con ventilador), tiempo.</dd>
+        <dt>Cambiar</dt><dd>Bandeja A apilada y apretada; Bandeja B en una sola capa con huecos.</dd>
+        <dt>Esperado</dt><dd>A sale pálida y suave; B sale dorada y crujiente.</dd>
+        <dt>Observar</dt><dd>Busca humedad acumulada y color gris en A; bordes acaramelados en B. Prueba ambas.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E2 — superficie seca vs. mojada</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Aislar la humedad superficial como el guardián del dorado.</dd>
+        <dt>Mantener constante</dt><dd>Misma verdura, espaciado, aceite, horno, tiempo. Ambas bien espaciadas.</dd>
+        <dt>Cambiar</dt><dd>Tanda A secada por completo con toalla; Tanda B dejada mojada tras lavarla.</dd>
+        <dt>Esperado</dt><dd>A dora según lo previsto; B pasa sus primeros 8–12 min secándose y termina más pálida.</dd>
+        <dt>Observar</dt><dd>Fíjate cuánto más tarda B en tomar color — ese retraso es el agua evaporándose a 100&nbsp;°C.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E3 — papa precocida y raspada vs. cortada cruda</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Ver por qué funciona la técnica clásica de papa asada crujiente.</dd>
+        <dt>Mantener constante</dt><dd>Mismas papas, aceite, bandeja, 220&nbsp;°C, 50&nbsp;min.</dd>
+        <dt>Cambiar</dt><dd>Tanda A precocida 8–10&nbsp;min, escurrida, secada, raspada en la olla; Tanda B cortada cruda y asada directo.</dd>
+        <dt>Esperado</dt><dd>A desarrolla una cáscara desgreñada, gelatinizada y ultracrujiente; B queda más lisa y notablemente menos crujiente.</dd>
+        <dt>Observar</dt><dd>El área superficial almidonosa y rasposa de A es todo el truco — más microbordes para dorar.</dd>
+      </dl>
+    </div>
+
+    <div class="exp">
+      <div class="exp-h">Experimento controlado · E4 — cebolla a los 5 min vs. a los 30 min</div>
+      <dl>
+        <dt>Objetivo</dt><dd>Probar que la caramelización es un proceso de tiempo, no un atajo de calor.</dd>
+        <dt>Mantener constante</dt><dd>Misma cebolla, mismo corte, mismo fuego medio-bajo, misma sartén y grasa.</dd>
+        <dt>Cambiar</dt><dd>Saca la mitad a los 5 min; cocina el resto hasta 30+ min con desglasado ocasional.</dd>
+        <dt>Esperado</dt><dd>La de 5 min queda suave pero todavía filosa y pálida; la de 30 min queda tipo mermelada, de un dorado profundo, dulce.</dd>
+        <dt>Observar</dt><dd>Pruébalas lado a lado. Por esto las recetas de "caramelizar en 5 minutos" mienten.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ 08 PRACTICE ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">08</span><h2>Sistema de práctica</h2></div>
+
+    <div class="drill">
+      <div class="drill-h">Ejercicio de práctica · repetir semanalmente</div>
+      <h4>El asado en bandeja espaciada</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Dorado profundo y confiable sin nada de estofado.</dd>
+        <dt>Dificultad</dt><dd>Principiante</dd>
+        <dt>Materiales</dt><dd>Cualquier verdura firme, dos bandejas de horno, aceite, sal, horno caliente.</dd>
+        <dt>Pasos</dt><dd>Corta parejo → seca → aceita ligeramente → una sola capa, con espacio → 220&nbsp;°C con ventilador → voltea una vez → saca cuando esté bien dorada.</dd>
+        <dt>Éxito</dt><dd>Bordes acaramelados, centro tierno, sin charquito en la bandeja.</dd>
+        <dt>Modos de falla</dt><dd>Pálida (amontonada/fría/mojada); quemada por fuera y cruda por dentro (piezas muy grandes/calor muy alto).</dd>
+        <dt>Mejorar</dt><dd>Cada semana varía UNA sola cosa — la verdura, luego el corte, luego la posición en el horno.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Ejercicio de práctica</div>
+      <h4>Salteado por tandas con chamuscado</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Chamuscar sin estofar.</dd>
+        <dt>Dificultad</dt><dd>Intermedio</dd>
+        <dt>Materiales</dt><dd>Sartén pesada o wok, fuego alto, verdura seca y cortada, aceite neutro de alto punto de humo.</dd>
+        <dt>Pasos</dt><dd>Calienta la sartén hasta que humee → agrega una tanda pequeña → deja 20–30&nbsp;s para sellar → mueve → repite en cargas de la mitad de lo que se siente natural.</dd>
+        <dt>Éxito</dt><dd>Manchas de chamuscado con ampollas, todavía firme, sin líquido acumulado.</dd>
+        <dt>Modos de falla</dt><dd>Gris y mojado (sartén muy fría / sobrecargada).</dd>
+        <dt>Mejorar</dt><dd>Reduce a la mitad el tamaño de la tanda hasta lograr chamuscado siempre, luego reconstruye desde ahí.</dd>
+      </dl>
+    </div>
+
+    <div class="drill">
+      <div class="drill-h">Ejercicio de práctica</div>
+      <h4>Encurtido rápido al dos por ciento</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Un acompañamiento ácido y salado que se te antoja, listo a demanda.</dd>
+        <dt>Dificultad</dt><dd>Principiante</dd>
+        <dt>Materiales</dt><dd>Cebolla morada o pepino, vinagre, agua, azúcar, sal, frasco.</dd>
+        <dt>Pasos</dt><dd>Corta en rodajas finas → (opcional: sala antes para dar firmeza) → cubre con vinagre y agua tibios en proporción 1:1 con una pizca de azúcar y sal → deja reposar 20&nbsp;min o más.</dd>
+        <dt>Éxito</dt><dd>Vivo, crujiente, con carácter ácido; transforma tacos, sándwiches, verduras asadas.</dd>
+        <dt>Modos de falla</dt><dd>Flácido (te saltaste la sal previa); soso (salmuera con poco sazón).</dd>
+        <dt>Mejorar</dt><dd>Anota las proporciones cada vez; encuentra tu balance preferido de ácido y dulce.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ 09 PROJECTS ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">09</span><h2>Proyectos</h2></div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Principiante</div>
+      <h4>Papas asadas perfectas</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Una cáscara asombrosamente crujiente sobre un centro esponjoso.</dd>
+        <dt>Habilidades entrenadas</dt><dd>Precocido, raspado, bandeja precalentada, espaciado, paciencia.</dd>
+        <dt>Resultado esperado</dt><dd>Dorado profundo, audiblemente crujiente, sin exceso de aceite.</dd>
+        <dt>Evaluación</dt><dd>Golpea una — debería sonar dura. Interior suave y seco, no gomoso.</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Intermedio</div>
+      <h4>Un salteado con chamuscado de verdad</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Verduras crujiente-tiernas con chamuscado visible y un final luminoso.</dd>
+        <dt>Habilidades entrenadas</dt><dd>Manejo de la temperatura de la sartén, división en tandas, sincronización a fuego alto, ácido de cierre.</dd>
+        <dt>Resultado esperado</dt><dd>Textura firme, pecas ahumadas, sin charquito en la sartén.</dd>
+        <dt>Evaluación</dt><dd>Cada pieza tiene al menos una cara dorada; nada queda flácido o gris de vapor.</dd>
+      </dl>
+    </div>
+
+    <div class="drill drill--project">
+      <div class="drill-h">Proyecto · Avanzado</div>
+      <h4>La segunda vuelta de quien odia las verduras</h4>
+      <dl>
+        <dt>Objetivo</dt><dd>Construir una guarnición de verduras tan buena que alguien que se declara enemigo de las verduras pida más.</dd>
+        <dt>Habilidades entrenadas</dt><dd>Superponer dorado + sal + ácido + un acento encurtido/fermentado + contraste de texturas.</dd>
+        <dt>Resultado esperado</dt><dd>por ejemplo: zanahorias bien asadas, yogur salado, cebolla encurtida rápida, semillas tostadas.</dd>
+        <dt>Evaluación</dt><dd>La condición de éxito inequívoca: alguien que "no come verduras" repite. Ese es todo el módulo, comprobado.</dd>
+      </dl>
+    </div>
+
+    <div class="callout callout--mistake"><span class="lbl">Lo que los principiantes hacen mal aquí</span><p>Sirven una verdura asada desnuda y se detienen ahí. El movimiento avanzado es el contraste: algo dorado, algo brillante/ácido, algo cremoso, algo crujiente. Una cebolla encurtida o un chorrito de limón está haciendo trabajo estructural, no decoración.</p></div>
+  </section>
+
+  <!-- ============ 10 VISUAL ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">10</span><h2>Aprendizaje visual</h2></div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>verduras asadas bandeja amontonada vs espaciada</code>
+      <p style="margin:.4em 0 0">Busca: la bandeja apretada se ve pálida y brillosa de húmeda; la bandeja espaciada muestra bordes de un dorado acaramelado. Esta es la Fig.&nbsp;2 en fotos reales.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>cebollas caramelizadas etapas 5 15 30 minutos progresión</code>
+      <p style="margin:.4em 0 0">Busca: la marcha del color de translúcido → dorado → café profundo. Fíjate cuán lejos de los 5 min está la caramelización real.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>papas asadas crujientes bordes rasposos superficie gelatinizada</code>
+      <p style="margin:.4em 0 0">Busca: el exterior desgreñado y escabroso en las papas precocidas y raspadas frente a la cara lisa de las cortadas crudas.</p></div>
+    </div>
+    <div class="imgsearch"><span class="ic">Buscar imagen</span>
+      <div><code>wok hei salteado chamuscado verduras ampolladas</code>
+      <p style="margin:.4em 0 0">Busca: pecas oscuras de chamuscado sobre verduras todavía de color vivo — selladas, no estofadas. El color se mantiene brillante.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ 11 RESOURCES ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">11</span><h2>Recursos externos</h2></div>
+    <div class="resource"><span class="rm">Video · Ethan Chlebowski</span>
+      <span class="rt">Buscar: "Ethan Chlebowski how to roast vegetables"</span>
+      <p>Por qué: metódico, variable por variable, sobre dorado, espaciado y temperatura — el canal de asado para mentes de ingeniero.</p></div>
+    <div class="resource"><span class="rm">Video · J. Kenji López-Alt</span>
+      <span class="rt">Buscar: "Kenji Lopez-Alt crispy roast potatoes" y "Kenji stir fry technique"</span>
+      <p>Por qué: el método de precocer y raspar la papa, y la mecánica de tandas/salteado a fuego alto, explicados desde la ciencia de los alimentos.</p></div>
+    <div class="resource"><span class="rm">Video · Adam Ragusea</span>
+      <span class="rt">Buscar: "Adam Ragusea roasted vegetables" / "why I roast at high heat"</span>
+      <p>Por qué: explica sin rodeos por qué la alta temperatura del horno y la sequedad impulsan el dorado.</p></div>
+    <div class="resource"><span class="rm">Libro · Fundamental</span>
+      <span class="rt">Salt Fat Acid Heat — Samin Nosrat</span>
+      <p>Usa los capítulos de Calor y Ácido: exactamente el marco de dorado y luminosidad sobre el que corre este módulo.</p></div>
+    <div class="resource"><span class="rm">Libro · Referencia</span>
+      <span class="rt">The Food Lab — J. Kenji López-Alt</span>
+      <p>Usa las secciones de verduras y papas para entender el mecanismo detrás del precocido, la gelatinización y el amontonamiento.</p></div>
+    <div class="resource"><span class="rm">Libro · Cocina centrada en verduras</span>
+      <span class="rt">Six Seasons — Joshua McFadden</span>
+      <p>Úsalo para aprender a construir platos de verduras con textura por capas, chamuscado y ácido — la habilidad "pide más" del N4.</p></div>
+  </section>
+
+  <!-- ============ 12 ASSESSMENT ============ -->
+  <section class="section">
+    <div class="h-sec"><span class="idx">12</span><h2>Evaluación</h2></div>
+    <h3>Comprobación de conocimientos — comprensión, no memorización</h3>
+    <div class="check">
+      <div class="q"><p>Cociste brócoli al vapor hasta el punto de ternura perfecta. Explica, en términos de temperatura, por qué de todas formas no puede saber a asado sin importar cuánto tiempo lo cocines.</p></div>
+      <div class="q"><p>Un amigo amontona una sola bandeja "para ahorrar espacio de horno" y le salen verduras pálidas y suaves. Diagrama el mecanismo que lo arruinó, y da dos soluciones que no requieran más bandejas de horno.</p></div>
+      <div class="q"><p>¿Por qué secar las verduras con toalla en realidad cambia la <em>temperatura</em> que puede alcanzar la superficie, en vez de simplemente "ayudar un poco"?</p></div>
+      <div class="q"><p>Una receta dice "caramelizar la cebolla, 5 minutos." ¿Qué obtendrás en realidad a los 5 minutos, y qué tiene que cambiar para lograr una verdadera caramelización?</p></div>
+      <div class="q"><p>Tu platillo de calabacín salió aguado. Nombra el mecanismo que usarías antes de cocinar para prevenirlo, y explica por qué funciona.</p></div>
+    </div>
+
+    <div class="callout callout--pro"><span class="lbl">Reto práctico</span><p>Cocina la <strong>misma verdura de dos maneras en una sola sesión</strong> — hervida/al vapor y bien asada — y pruébalas lado a lado. Después ejecuta el proyecto de N4: una guarnición de verduras lo bastante buena como para que un escéptico de las verduras pida más. Fotografía la bandeja antes de meterla al horno (revisa tu espaciado).</p></div>
+
+    <div class="callout callout--why"><span class="lbl">Reflexión</span><p>Escribe tres líneas: qué variable única movió más tus resultados este mes (probablemente el espaciado o la sequedad de la superficie), dónde seguías estofando sin darte cuenta, y qué significa ahora para ti en la práctica "las verduras como ingrediente, no como castigo". Lleva el instinto de dorado y acidez al Módulo 05.</p></div>
+  </section>
+
+  <nav class="pager">
+    <a class="prev" href="#m3"><span class="d">Anterior</span>Salsas y sabor</a>
+    <a class="next" href="#m5"><span class="d">Siguiente</span>Pan y masa</a>
+  </nav>
+</section>

@@ -1,36 +1,70 @@
   <script>
   (function(){
-    var stage = document.getElementById('stage');
-    var lessons = Array.prototype.slice.call(document.querySelectorAll('.lesson'));
+    var root = document.documentElement;
+    var LANG = (function(){ try { return localStorage.getItem('klm-lang') || 'en'; } catch(e){ return 'en'; } })();
+    var PAGE = (location.hash || '#home').slice(1) || 'home';
+    var sections = Array.prototype.slice.call(document.querySelectorAll('.lesson'));
     var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
-    function show(id){
-      var found=false;
-      lessons.forEach(function(s){
-        var on = ('#'+s.id)===id;
-        s.classList.toggle('show', on);
-        if(on) found=true;
-      });
-      if(!found){ // default to home
-        var h=document.getElementById('home'); if(h) h.classList.add('show'); id='#home';
-      }
-      links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href')===id); });
-      if(stage) stage.scrollTop=0;
-      window.scrollTo(0,0);
+
+    function matches(sec, lang){
+      if(sec.getAttribute('data-page') !== PAGE) return false;
+      var dl = sec.getAttribute('data-lang');
+      return dl === null || dl === lang;
     }
-    window.addEventListener('hashchange', function(){ show(location.hash||'#home'); });
-    show(location.hash||'#home');
+    function apply(){
+      root.setAttribute('data-applang', LANG);
+      root.setAttribute('lang', LANG);
+      // show sections for this page + language (fall back to EN if a translation is missing)
+      var any = sections.some(function(s){ return matches(s, LANG); });
+      var useLang = any ? LANG : 'en';
+      sections.forEach(function(s){ s.classList.toggle('show', matches(s, useLang)); });
+      if(!sections.some(function(s){ return s.classList.contains('show'); })){
+        var home = sections.filter(function(s){ return s.getAttribute('data-page') === 'home'; })[0];
+        if(home) home.classList.add('show');
+      }
+      // nav: active state + label language
+      links.forEach(function(a){
+        a.classList.toggle('active', a.getAttribute('href') === '#' + PAGE);
+        var t = a.querySelector('.t');
+        if(t && t.dataset[LANG]) t.textContent = t.dataset[LANG];
+      });
+      // plain-text chrome with data-en/data-es
+      document.querySelectorAll('[data-en][data-es]').forEach(function(el){
+        if(el.classList.contains('t')) return; // handled above
+        if(el.dataset[LANG] !== undefined) el.textContent = el.dataset[LANG];
+      });
+      // language buttons active state
+      var be = document.getElementById('lang-en'), bs = document.getElementById('lang-es');
+      if(be) be.classList.toggle('on', LANG === 'en');
+      if(bs) bs.classList.toggle('on', LANG === 'es');
+      window.scrollTo(0, 0);
+      var stage = document.getElementById('stage'); if(stage) stage.scrollTop = 0;
+      document.dispatchEvent(new CustomEvent('klm-lang', { detail: { lang: LANG } }));
+    }
+    function setLang(l){
+      LANG = l;
+      try { localStorage.setItem('klm-lang', l); } catch(e){}
+      apply();
+    }
+
+    window.addEventListener('hashchange', function(){
+      PAGE = (location.hash || '#home').slice(1) || 'home';
+      apply();
+    });
+    var be = document.getElementById('lang-en'), bs = document.getElementById('lang-es');
+    if(be) be.addEventListener('click', function(){ setLang('en'); });
+    if(bs) bs.addEventListener('click', function(){ setLang('es'); });
 
     // theme toggle
-    var btn=document.getElementById('themeBtn');
-    if(btn){
-      btn.addEventListener('click', function(){
-        var root=document.documentElement;
-        var cur=root.getAttribute('data-theme');
-        if(!cur){ // infer current from media query
-          cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light';
-        }
-        root.setAttribute('data-theme', cur==='dark'?'light':'dark');
+    var tbtn = document.getElementById('themeBtn');
+    if(tbtn){
+      tbtn.addEventListener('click', function(){
+        var cur = root.getAttribute('data-theme');
+        if(!cur){ cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        root.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
       });
     }
+
+    apply();
   })();
   </script>

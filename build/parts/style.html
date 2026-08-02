@@ -246,6 +246,15 @@ figure svg{max-width:100%;height:auto;display:block}
 figcaption{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-faint);letter-spacing:.03em;margin-top:8px;text-align:center}
 hr.soft{border:0;height:1px;background:var(--line);margin:36px 0}
 
+/* ---------- Bilingual chrome (language toggle) ---------- */
+/* Default (before JS sets data-applang) assume English. */
+:root:not([data-applang]) .only-es{display:none}
+[data-applang="en"] .only-es{display:none}
+[data-applang="es"] .only-en{display:none}
+.langtoggle{display:flex;gap:8px;margin-top:12px}
+.langtoggle .theme-btn{margin-top:0}
+.langtoggle .theme-btn.on{border-color:var(--ember);color:var(--ink)}
+
 /* ---------- Lab instrument widgets ---------- */
 .tool{border:1px solid var(--line);border-top:3px solid var(--probe);border-radius:var(--radius);background:var(--panel);box-shadow:var(--shadow);padding:22px 24px}
 .tool h3{margin-bottom:4px}
