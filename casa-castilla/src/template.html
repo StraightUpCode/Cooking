@@ -74,6 +74,9 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .util-label.gas{fill:#b07e12}.util-label.cist{fill:#237393}.util-label.panel{fill:#a5281a}
 .cochera-label{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;fill:var(--line-soft);text-anchor:middle}
 .orient-note{font-family:var(--mono);font-size:8px;font-weight:600;letter-spacing:.22em;fill:var(--accent);text-anchor:middle}
+.lot-line{fill:none;stroke:#5a8f5a;stroke-width:1.4;stroke-dasharray:10 3 2 3}
+.lot-dim{font-family:var(--mono);font-size:8px;fill:#43703f;text-anchor:middle}
+.lot-area{font-family:var(--mono);font-size:8.5px;font-weight:600;fill:#43703f;text-anchor:middle;letter-spacing:.05em}
 .rarea{font-family:var(--mono);font-size:7px;fill:var(--dim);text-anchor:middle}
 .dimline,.dimtick{stroke:var(--line);stroke-width:.6}
 .dimtext{font-family:var(--mono);font-size:7.5px;fill:var(--line);text-anchor:middle}
@@ -203,8 +206,9 @@ function drawFloor(key){
   const W=F.size.w*S, H=F.size.h*S;
   // extend the view to include exterior elements (cochera, utilities)
   let vx0=0, vy0=0, vx1=F.size.w, vy1=F.size.h;
+  const bump=(x,y)=>{vx0=Math.min(vx0,x);vy0=Math.min(vy0,y);vx1=Math.max(vx1,x);vy1=Math.max(vy1,y);};
+  if(F.lot){const ly=F.lot.poly.map(p=>p[1]);F.lot.poly.forEach(p=>bump(p[0],p[1]));bump(F.lot.poly[0][0]-1.3,0);bump((F.lot.poly[0][0]+F.lot.poly[1][0])/2,Math.max(...ly)+1.1);}
   if(F.exterior){
-    const bump=(x,y)=>{vx0=Math.min(vx0,x);vy0=Math.min(vy0,y);vx1=Math.max(vx1,x);vy1=Math.max(vy1,y);};
     if(F.exterior.cochera) F.exterior.cochera.poly.forEach(p=>bump(p[0],p[1]));
     (F.exterior.utilities||[]).forEach(u=>{
       if(u.poly) u.poly.forEach(p=>bump(p[0],p[1]));
@@ -229,6 +233,7 @@ function drawFloor(key){
   draw.polygon(F.outline.map(p=>[px(p[0]),px(p[1])])).addClass('floor-fill');
   if(F.tintK) draw.polygon(F.tintK.map(p=>[px(p[0]),px(p[1])])).addClass('tint-k');
   if(F.roof){const rp=draw.polygon(F.roof.map(p=>[px(p[0]),px(p[1])]));rp.fill(`url(#roof-${key})`).stroke({color:'var(--wall)',width:1});}
+  if(F.lot) drawLot(draw,F.lot);
   if(F.exterior) drawExterior(draw,F.exterior);
 
   // grid
@@ -343,6 +348,21 @@ function drawFixture(g,f){
 }
 
 function polyArea(poly){let a=0;for(let i=0;i<poly.length;i++){const j=(i+1)%poly.length;a+=poly[i][0]*poly[j][1]-poly[j][0]*poly[i][1];}return Math.abs(a/2);}
+
+function drawLot(draw,lot){
+  const xs=lot.poly.map(p=>p[0]),ys=lot.poly.map(p=>p[1]);
+  const x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+  draw.polygon(lot.poly.map(p=>[px(p[0]),px(p[1])])).addClass('lot-line');
+  // front width dim (bottom, kept clear of the FRENTE·CALLE note)
+  draw.text(`${lot.front_v} v ≈ ${lot.front_m.toFixed(2)} m`).addClass('lot-dim')
+    .attr({x:px((x0+x1)/2),y:px(y1)+34});
+  // depth dim (left, rotated)
+  const dt=draw.text(`${lot.depth_v} v ≈ ${lot.depth_m.toFixed(2)} m`).addClass('lot-dim')
+    .attr({x:px(x0)-14,y:px((y0+y1)/2)});
+  dt.transform({rotate:-90,ox:px(x0)-14,oy:px((y0+y1)/2)});
+  // area label (back-left corner, in garden)
+  draw.text(lot.label).addClass('lot-area').attr({x:px((x0+x1)/2),y:px(y0)-6});
+}
 
 function drawExterior(draw,ext){
   if(ext.cochera){

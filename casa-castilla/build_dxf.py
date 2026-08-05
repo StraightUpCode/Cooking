@@ -44,6 +44,7 @@ LAYERS = {
     "M-GAS":        (2,  "Continuous"),  # gas tank (yellow)
     "P-CIST":       (4,  "DASHED"),      # water cistern (buried, dashed)
     "E-PANEL":      (1,  "Continuous"),  # electric panel
+    "A-PROP":       (3,  "DASHDOT"),     # property / lot boundary
 }
 
 doc = ezdxf.new("R2010", setup=True)
@@ -311,8 +312,33 @@ def draw_exterior(floor, tx):
             (p[0], p[1]), align=TextEntityAlignment.MIDDLE_CENTER)
 
 
+def draw_lot(floor, tx):
+    lot = floor.get("lot")
+    if not lot:
+        return
+    corners = [tx(px, py) for px, py in lot["poly"]]
+    add_poly(corners, "A-PROP", True)
+    xs = [q[0] for q in lot["poly"]]; ys = [q[1] for q in lot["poly"]]
+    x0, x1, y0, y1 = min(xs), max(xs), min(ys), max(ys)
+    # front width dim (front line = max y in plan; kept clear of FRENTE note)
+    p = tx((x0 + x1) / 2, y1 + 0.95)
+    msp.add_text(f"{lot['front_v']} v ~ {lot['front_m']:.2f} m", height=150,
+                 dxfattribs={"layer": "A-PROP"}).set_placement(p, align=TextEntityAlignment.MIDDLE_CENTER)
+    # depth dim (left side, rotated)
+    p = tx(x0 - 0.45, (y0 + y1) / 2)
+    t = msp.add_text(f"{lot['depth_v']} v ~ {lot['depth_m']:.2f} m", height=150,
+                     dxfattribs={"layer": "A-PROP"})
+    t.set_placement(p, align=TextEntityAlignment.MIDDLE_CENTER)
+    t.dxf.rotation = 90
+    # area label (back)
+    p = tx((x0 + x1) / 2, y0 - 0.35)
+    msp.add_text(lot["label"].replace("≈", "~"), height=170,
+                 dxfattribs={"layer": "A-PROP"}).set_placement(p, align=TextEntityAlignment.MIDDLE_CENTER)
+
+
 def draw_floor(key, floor, ox_m):
     tx = make_tx(floor, ox_m)
+    draw_lot(floor, tx)
     draw_roof(floor, tx)
     draw_exterior(floor, tx)
     draw_walls(floor, tx)
