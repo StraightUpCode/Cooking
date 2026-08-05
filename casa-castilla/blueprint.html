@@ -1,0 +1,436 @@
+<title>Casa Castilla — Editable Floor Plan</title>
+<style>
+/* ============================================================
+   CASA CASTILLA — editable floor plan
+   Light theme  = drafting vellum (ink on paper, clay accent)
+   Dark  theme  = blueprint (cyan linework on blueprint blue)
+   ============================================================ */
+
+:root{
+  --ground:#e4e8e2;
+  --paper:#f5f7f2;
+  --paper-edge:#dfe4dc;
+  --ink:#1e2c34;
+  --line:#3f525c;
+  --line-soft:#8a979d;
+  --dim:#6d7b81;
+  --wall:#22333c;
+  --room-fill:#fbfcf9;
+  --room-fill-alt:#eef2ec;
+  --accent:#b6602f;          /* clay — reserved for the kitchen only */
+  --accent-soft:#f0dccb;
+  --grid:#d3dad1;
+  --shadow:0 1px 0 rgba(30,44,52,.04), 0 18px 40px -24px rgba(30,44,52,.35);
+  --mono:ui-monospace,"SF Mono","SFMono-Regular",Menlo,Consolas,monospace;
+  --sans:"Helvetica Neue",Arial,system-ui,sans-serif;
+  --display:"Helvetica Neue",Arial,system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ground:#0b1316;
+    --paper:#0f1c22;
+    --paper-edge:#1c2d34;
+    --ink:#d6e7ee;
+    --line:#5f8493;
+    --line-soft:#3c5560;
+    --dim:#7fa0ab;
+    --wall:#9cc6d6;
+    --room-fill:#122229;
+    --room-fill-alt:#16292f;
+    --accent:#e08a54;
+    --accent-soft:#33231a;
+    --grid:#17282f;
+    --shadow:0 1px 0 rgba(0,0,0,.3), 0 22px 44px -26px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="light"]{
+  --ground:#e4e8e2;--paper:#f5f7f2;--paper-edge:#dfe4dc;--ink:#1e2c34;--line:#3f525c;
+  --line-soft:#8a979d;--dim:#6d7b81;--wall:#22333c;--room-fill:#fbfcf9;--room-fill-alt:#eef2ec;
+  --accent:#b6602f;--accent-soft:#f0dccb;--grid:#d3dad1;
+  --shadow:0 1px 0 rgba(30,44,52,.04), 0 18px 40px -24px rgba(30,44,52,.35);
+}
+:root[data-theme="dark"]{
+  --ground:#0b1316;--paper:#0f1c22;--paper-edge:#1c2d34;--ink:#d6e7ee;--line:#5f8493;
+  --line-soft:#3c5560;--dim:#7fa0ab;--wall:#9cc6d6;--room-fill:#122229;--room-fill-alt:#16292f;
+  --accent:#e08a54;--accent-soft:#33231a;--grid:#17282f;
+  --shadow:0 1px 0 rgba(0,0,0,.3), 0 22px 44px -26px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+  line-height:1.5;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1180px;margin:0 auto;padding:32px 24px 72px;}
+
+/* ---- header ---- */
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+  gap:20px;border-bottom:1.5px solid var(--line);padding-bottom:20px;margin-bottom:8px;}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 8px;}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,5vw,52px);line-height:.98;
+  letter-spacing:-.02em;margin:0;text-wrap:balance;}
+.sub{color:var(--dim);font-size:14px;margin:8px 0 0;max-width:52ch;}
+.specs{display:flex;gap:22px;flex-wrap:wrap;align-items:center;}
+.spec{display:flex;flex-direction:column;gap:2px;}
+.spec b{font-family:var(--mono);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+.spec span{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);}
+
+/* ---- toolbar ---- */
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 26px;}
+button{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink);
+  background:var(--paper);border:1.5px solid var(--line);padding:8px 14px;border-radius:2px;
+  cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
+button:hover{background:var(--ink);color:var(--paper);}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+.note{font-family:var(--mono);font-size:11px;color:var(--dim);margin-left:auto;text-align:right;max-width:44ch;}
+
+/* ---- layout ---- */
+.stage{display:grid;grid-template-columns:1fr 300px;gap:26px;align-items:start;}
+@media(max-width:860px){.stage{grid-template-columns:1fr}}
+
+.plate{background:var(--paper);border:1px solid var(--paper-edge);border-radius:4px;
+  box-shadow:var(--shadow);padding:18px 18px 14px;}
+.plate + .plate{margin-top:24px;}
+.plate h2{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;margin:0 0 2px;}
+.plate .planta-area{font-family:var(--mono);font-size:11px;color:var(--dim);margin:0 0 12px;}
+.svgbox{width:100%;overflow-x:auto;}
+svg{display:block;width:100%;height:auto;font-family:var(--sans);}
+
+/* svg element styles (driven by classes on generated nodes) */
+.wall-inner{fill:var(--room-fill);stroke:var(--line-soft);stroke-width:1;}
+.wall-inner.alt{fill:var(--room-fill-alt);}
+.wall-inner.wet{fill:var(--room-fill-alt);}
+.wall-inner.kitchen{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5;}
+.wall-inner.outdoor{fill:none;stroke:var(--line-soft);stroke-width:1;stroke-dasharray:3 3;}
+.envelope{fill:none;stroke:var(--wall);stroke-width:4;stroke-linejoin:miter;}
+.rlabel{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;fill:var(--ink);
+  text-anchor:middle;font-weight:600;}
+.rlabel.km{fill:var(--accent);}
+.rarea{font-family:var(--mono);font-size:8px;fill:var(--dim);text-anchor:middle;}
+.dimline{stroke:var(--line);stroke-width:.75;}
+.dimtick{stroke:var(--line);stroke-width:.75;}
+.dimtext{font-family:var(--mono);font-size:8px;fill:var(--line);text-anchor:middle;}
+.fixture{fill:none;stroke:var(--accent);stroke-width:1;}
+.fixture-fill{fill:var(--accent);opacity:.16;}
+.flabel{font-family:var(--mono);font-size:6.5px;fill:var(--accent);text-anchor:middle;letter-spacing:.04em;}
+.hit{fill:transparent;cursor:pointer;}
+.room-g.sel .wall-inner{stroke:var(--accent);stroke-width:2;}
+
+/* scale bar */
+.scalebar-line{stroke:var(--ink);stroke-width:1.5;}
+.scalebar-txt{font-family:var(--mono);font-size:8px;fill:var(--ink);}
+
+/* ---- side panel ---- */
+aside{position:sticky;top:20px;display:flex;flex-direction:column;gap:22px;}
+.card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:4px;padding:16px 16px;box-shadow:var(--shadow);}
+.card h3{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  margin:0 0 12px;color:var(--dim);}
+.schedule{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11px;}
+.schedule td{padding:3px 0;border-bottom:1px solid var(--paper-edge);font-variant-numeric:tabular-nums;}
+.schedule td:last-child{text-align:right;color:var(--dim);}
+.schedule tr.km td{color:var(--accent);}
+.schedule tr.total td{border-bottom:none;border-top:1.5px solid var(--line);font-weight:600;padding-top:6px;color:var(--ink);}
+.schedule tr.km td:last-child,.schedule tr.total td:last-child{color:inherit;}
+
+.kfocus{border-left:3px solid var(--accent);}
+.kfocus h3{color:var(--accent);}
+.kfocus p{font-size:12.5px;margin:0 0 10px;color:var(--ink);}
+.kfocus ul{margin:0;padding-left:18px;font-size:12.5px;}
+.kfocus li{margin-bottom:5px;}
+.kfocus li::marker{color:var(--accent);}
+
+.detail{min-height:34px;}
+.detail .dname{font-family:var(--sans);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:14px;margin:0 0 4px;}
+.detail .dmeta{font-family:var(--mono);font-size:11px;color:var(--dim);margin:0;}
+.detail .placeholder{font-family:var(--mono);font-size:11px;color:var(--dim);}
+
+footer{margin-top:40px;border-top:1px solid var(--paper-edge);padding-top:16px;
+  font-family:var(--mono);font-size:11px;color:var(--dim);line-height:1.7;}
+footer b{color:var(--ink);font-weight:600;}
+
+/* ---- print ---- */
+@media print{
+  body{background:#fff;}
+  .toolbar,aside .detail,footer .noprint{display:none;}
+  .wrap{max-width:none;padding:0;}
+  .stage{grid-template-columns:1fr;}
+  .plate,.card{box-shadow:none;break-inside:avoid;}
+  aside{position:static;}
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <p class="eyebrow">Floor plan · planta arquitectónica</p>
+      <h1>Casa Castilla</h1>
+      <p class="sub">Editable, to-scale working plan rebuilt from the developer brochure
+      (Hogares a tu Medida · km 13 carretera a Masaya). Dimensions are approximate
+      pending the official blueprints.</p>
+    </div>
+    <div class="specs">
+      <div class="spec"><b>175</b><span>m² total</span></div>
+      <div class="spec"><b>3</b><span>dormitorios</span></div>
+      <div class="spec"><b>4½</b><span>baños</span></div>
+      <div class="spec"><b>2</b><span>plantas</span></div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <button id="printBtn">⤓ Export to PDF</button>
+    <button id="dimBtn">Toggle dimensions</button>
+    <button id="themeBtn">Toggle theme</button>
+    <p class="note">Tip: on the PDF dialog choose “Save as PDF”. Click any room to inspect it.</p>
+  </div>
+
+  <div class="stage">
+    <div>
+      <div class="plate">
+        <h2>Primera Planta — Ground floor</h2>
+        <p class="planta-area" id="area-ground"></p>
+        <div class="svgbox"><svg id="svg-ground"></svg></div>
+      </div>
+      <div class="plate">
+        <h2>Segunda Planta — Upper floor</h2>
+        <p class="planta-area" id="area-upper"></p>
+        <div class="svgbox"><svg id="svg-upper"></svg></div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card">
+        <h3>Room schedule · ground</h3>
+        <table class="schedule" id="sched-ground"></table>
+      </div>
+      <div class="card kfocus">
+        <h3>Kitchen focus</h3>
+        <p>The cocina con isla is the room we’re shaping. Current fixtures drawn to scale:
+        island, L-run counter, sink, range, fridge.</p>
+        <ul>
+          <li>Work triangle: sink → range → fridge kept under ~7 m walking total.</li>
+          <li>Island doubles as prep + breakfast bar; ~1 m clearance all sides.</li>
+          <li>Open to the comedor — good for entertaining, watch the sightline from the sala.</li>
+          <li>Tell me the change (“island 2.4 m”, “add pantry on the north wall”) and I’ll redraw it.</li>
+        </ul>
+      </div>
+      <div class="card detail" id="detail">
+        <p class="placeholder">Select a room to see its dimensions…</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <b>How to edit this plan.</b> Every room is one entry in the <code>FLOORS</code> data
+    below (name, x, y, width, height in metres). Change the numbers and the walls, labels,
+    areas and schedule all re-render to scale — no manual redrawing.<br>
+    <span class="noprint">Scale 1 m = 40 px · grid = 1 m. This is an interpretation of the brochure, not a surveyed drawing.</span>
+  </footer>
+</div>
+
+<script>
+/* ============================================================
+   EDITABLE DATA MODEL
+   Units = METRES. x,y = top-left corner from the building's
+   top-left. w,h = width/height. Edit freely — everything
+   downstream (walls, labels, areas, schedule) is generated.
+   type: room | wet (bath/laundry) | service | kitchen | outdoor
+   ============================================================ */
+const ENVELOPE = {w:8.4, h:10.8};   // main building footprint (metres)
+
+const FLOORS = {
+  ground:{
+    envelope:{w:8.4, h:10.8},
+    rooms:[
+      {name:"Terraza",        x:0.0, y:0.0, w:3.4, h:2.4, type:"outdoor"},
+      {name:"Comedor",        x:3.4, y:0.0, w:5.0, h:3.0, type:"room"},
+      {name:"Cocina",         x:0.0, y:2.4, w:3.4, h:3.6, type:"kitchen"},
+      {name:"Hab. Servicio",  x:3.4, y:3.0, w:2.6, h:2.4, type:"service"},
+      {name:"S.S.",           x:6.0, y:3.0, w:2.4, h:2.4, type:"wet"},
+      {name:"Lava y plancha", x:3.4, y:5.4, w:2.6, h:1.6, type:"wet"},
+      {name:"Sala",           x:0.0, y:6.0, w:3.4, h:4.8, type:"room"},
+      {name:"Escalera",       x:3.4, y:7.0, w:1.8, h:2.0, type:"service"},
+      {name:"S.S. visita",    x:6.0, y:5.4, w:2.4, h:1.6, type:"wet"},
+      {name:"Estudio",        x:5.2, y:7.0, w:3.2, h:3.8, type:"room"},
+      {name:"Recibidor",      x:3.4, y:9.0, w:1.8, h:1.8, type:"room"},
+    ],
+    fixtures:[  // kitchen furniture, metres, relative to building origin
+      {kind:"rect", x:0.3, y:2.7, w:0.6, h:3.0, label:"COUNTER"},       // L-run vertical
+      {kind:"rect", x:0.3, y:2.7, w:2.4, h:0.6, label:""},              // L-run horizontal
+      {kind:"rect", x:1.3, y:4.2, w:1.6, h:0.9, label:"ISLA"},          // island
+      {kind:"circle", x:1.1, y:3.0, r:0.22, label:"SINK"},             // sink
+      {kind:"rect", x:0.35, y:4.4, w:0.55, h:0.55, label:"RANGE"},      // range
+      {kind:"rect", x:2.55,y:5.0, w:0.6, h:0.6, label:"FRIDGE"},        // fridge
+    ]
+  },
+  upper:{
+    envelope:{w:8.4, h:10.8},
+    rooms:[
+      {name:"Habitación 1",       x:0.0, y:0.0, w:4.2, h:3.4, type:"room"},
+      {name:"Habitación 2",       x:4.2, y:0.0, w:4.2, h:3.4, type:"room"},
+      {name:"S.S.",               x:0.0, y:3.4, w:2.0, h:1.8, type:"wet"},
+      {name:"S.S.",               x:6.4, y:3.4, w:2.0, h:1.8, type:"wet"},
+      {name:"Sala Familiar",      x:4.2, y:5.2, w:4.2, h:2.8, type:"room"},
+      {name:"Escalera",           x:3.4, y:5.2, w:1.8, h:2.0, type:"service"},
+      {name:"Hab. Principal",     x:0.0, y:6.4, w:4.4, h:4.4, type:"room"},
+      {name:"Walk-in closet",     x:4.4, y:8.0, w:2.0, h:2.8, type:"room"},
+      {name:"S.S. principal",     x:6.4, y:8.0, w:2.0, h:2.8, type:"wet"},
+      {name:"Techo terraza",      x:0.0, y:0.0, w:0.0, h:0.0, type:"outdoor"}, // placeholder (roof)
+    ],
+    fixtures:[]
+  }
+};
+
+/* ---- renderer ---- */
+const S = 40;          // px per metre
+const PAD = 34;        // px margin around envelope for dimensions
+let showDims = true;
+
+function el(tag, attrs){
+  const n = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for(const k in attrs) n.setAttribute(k, attrs[k]);
+  return n;
+}
+
+function renderFloor(key){
+  const f = FLOORS[key];
+  const svg = document.getElementById("svg-"+key);
+  svg.innerHTML = "";
+  const W = f.envelope.w*S, H = f.envelope.h*S;
+  svg.setAttribute("viewBox", `${-PAD} ${-PAD} ${W+PAD*2} ${H+PAD*2}`);
+
+  // grid
+  const grid = el("g",{});
+  for(let gx=0; gx<=f.envelope.w; gx++)
+    grid.appendChild(el("line",{x1:gx*S,y1:0,x2:gx*S,y2:H,stroke:"var(--grid)","stroke-width":.5}));
+  for(let gy=0; gy<=f.envelope.h; gy++)
+    grid.appendChild(el("line",{x1:0,y1:gy*S,x2:W,y2:gy*S,stroke:"var(--grid)","stroke-width":.5}));
+  svg.appendChild(grid);
+
+  // rooms
+  f.rooms.forEach((r,i)=>{
+    if(r.w===0||r.h===0) return;
+    const g = el("g",{class:"room-g","data-key":key,"data-idx":i});
+    const cls = "wall-inner"+
+      (r.type==="kitchen"?" kitchen":
+       r.type==="wet"?" wet":
+       r.type==="service"?" alt":
+       r.type==="outdoor"?" outdoor":"");
+    g.appendChild(el("rect",{class:cls, x:r.x*S, y:r.y*S, width:r.w*S, height:r.h*S}));
+    // label
+    const cx=(r.x+r.w/2)*S, cy=(r.y+r.h/2)*S;
+    const t = el("text",{class:"rlabel"+(r.type==="kitchen"?" km":""), x:cx, y:cy-2});
+    t.textContent = r.name;
+    g.appendChild(t);
+    const a = el("text",{class:"rarea", x:cx, y:cy+10});
+    a.textContent = (r.w*r.h).toFixed(1)+" m²";
+    g.appendChild(a);
+    // hit area
+    const hit = el("rect",{class:"hit", x:r.x*S, y:r.y*S, width:r.w*S, height:r.h*S});
+    hit.addEventListener("click",()=>selectRoom(key,i,g));
+    g.appendChild(hit);
+    svg.appendChild(g);
+  });
+
+  // kitchen fixtures
+  (f.fixtures||[]).forEach(fx=>{
+    if(fx.kind==="rect"){
+      svg.appendChild(el("rect",{class:"fixture-fill", x:fx.x*S,y:fx.y*S,width:fx.w*S,height:fx.h*S,rx:2}));
+      svg.appendChild(el("rect",{class:"fixture", x:fx.x*S,y:fx.y*S,width:fx.w*S,height:fx.h*S,rx:2}));
+      if(fx.label){
+        const lt=el("text",{class:"flabel",x:(fx.x+fx.w/2)*S,y:(fx.y+fx.h/2)*S+2});
+        lt.textContent=fx.label; svg.appendChild(lt);
+      }
+    } else if(fx.kind==="circle"){
+      svg.appendChild(el("circle",{class:"fixture", cx:fx.x*S,cy:fx.y*S,r:fx.r*S}));
+    }
+  });
+
+  // envelope outline
+  svg.appendChild(el("rect",{class:"envelope", x:0,y:0,width:W,height:H}));
+
+  if(showDims) drawDims(svg,f,W,H);
+  drawScaleBar(svg,H);
+}
+
+function drawDims(svg,f,W,H){
+  const g=el("g",{});
+  // overall width (top)
+  const oy=-16;
+  g.appendChild(el("line",{class:"dimline",x1:0,y1:oy,x2:W,y2:oy}));
+  g.appendChild(el("line",{class:"dimtick",x1:0,y1:oy-4,x2:0,y2:oy+4}));
+  g.appendChild(el("line",{class:"dimtick",x1:W,y1:oy-4,x2:W,y2:oy+4}));
+  const wt=el("text",{class:"dimtext",x:W/2,y:oy-3}); wt.textContent=f.envelope.w.toFixed(1)+" m"; g.appendChild(wt);
+  // overall height (left)
+  const ox=-16;
+  g.appendChild(el("line",{class:"dimline",x1:ox,y1:0,x2:ox,y2:H}));
+  g.appendChild(el("line",{class:"dimtick",x1:ox-4,y1:0,x2:ox+4,y2:0}));
+  g.appendChild(el("line",{class:"dimtick",x1:ox-4,y1:H,x2:ox+4,y2:H}));
+  const ht=el("text",{class:"dimtext",x:ox-4,y:H/2,transform:`rotate(-90 ${ox-4} ${H/2})`}); ht.textContent=f.envelope.h.toFixed(1)+" m"; g.appendChild(ht);
+  svg.appendChild(g);
+}
+
+function drawScaleBar(svg,H){
+  const g=el("g",{}); const y=H+18, x0=0, len=2*S; // 2 m bar
+  g.appendChild(el("line",{class:"scalebar-line",x1:x0,y1:y,x2:x0+len,y2:y}));
+  g.appendChild(el("line",{class:"scalebar-line",x1:x0,y1:y-3,x2:x0,y2:y+3}));
+  g.appendChild(el("line",{class:"scalebar-line",x1:x0+len,y1:y-3,x2:x0+len,y2:y+3}));
+  g.appendChild(el("line",{class:"scalebar-line",x1:x0+len/2,y1:y-3,x2:x0+len/2,y2:y+3}));
+  const t=el("text",{class:"scalebar-txt",x:x0+len+6,y:y+3}); t.textContent="0    1    2 m"; g.appendChild(t);
+  svg.appendChild(g);
+}
+
+/* ---- schedule + areas ---- */
+function buildSchedule(key){
+  const f=FLOORS[key];
+  const rows = f.rooms.filter(r=>r.w>0&&r.h>0);
+  let total=0;
+  const table=document.getElementById("sched-"+key);
+  if(!table) return sumArea(rows);
+  table.innerHTML="";
+  rows.forEach(r=>{
+    const a=r.w*r.h; total+=a;
+    const tr=el2("tr",r.type==="kitchen"?"km":"");
+    tr.innerHTML=`<td>${r.name}</td><td>${a.toFixed(1)} m²</td>`;
+    table.appendChild(tr);
+  });
+  const tr=el2("tr","total");
+  tr.innerHTML=`<td>Total (gross)</td><td>${total.toFixed(1)} m²</td>`;
+  table.appendChild(tr);
+  return total;
+}
+function sumArea(rows){return rows.reduce((s,r)=>s+r.w*r.h,0);}
+function el2(tag,cls){const n=document.createElement(tag); if(cls)n.className=cls; return n;}
+
+/* ---- interactions ---- */
+let selected=null;
+function selectRoom(key,idx,g){
+  if(selected) selected.classList.remove("sel");
+  g.classList.add("sel"); selected=g;
+  const r=FLOORS[key].rooms[idx];
+  const d=document.getElementById("detail");
+  d.innerHTML=`<p class="dname">${r.name}</p>
+    <p class="dmeta">${r.w.toFixed(1)} × ${r.h.toFixed(1)} m &nbsp;·&nbsp; ${(r.w*r.h).toFixed(1)} m²
+    &nbsp;·&nbsp; ${labelType(r.type)}</p>`;
+}
+function labelType(t){return {room:"Habitable",wet:"Húmedo / baño",service:"Servicio",
+  kitchen:"Cocina",outdoor:"Exterior"}[t]||t;}
+
+/* ---- boot ---- */
+function renderAll(){
+  renderFloor("ground"); renderFloor("upper");
+  const gt=buildSchedule("ground");
+  const ut=FLOORS.upper.rooms.filter(r=>r.w>0&&r.h>0).reduce((s,r)=>s+r.w*r.h,0);
+  document.getElementById("area-ground").textContent=`Gross ≈ ${gt.toFixed(0)} m² · scale 1:100`;
+  document.getElementById("area-upper").textContent=`Gross ≈ ${ut.toFixed(0)} m² · scale 1:100`;
+}
+renderAll();
+
+document.getElementById("printBtn").addEventListener("click",()=>window.print());
+document.getElementById("dimBtn").addEventListener("click",()=>{showDims=!showDims;renderFloor("ground");renderFloor("upper");});
+document.getElementById("themeBtn").addEventListener("click",()=>{
+  const root=document.documentElement;
+  const cur=root.getAttribute("data-theme")||
+    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+  root.setAttribute("data-theme", cur==="dark"?"light":"dark");
+});
+</script>
