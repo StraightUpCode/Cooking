@@ -182,6 +182,11 @@ def draw_fixture(f, tx):
     elif s == "shower":
         rect(x, y, w, h, tx, L)
         line(x, y, x + w, y + h, tx, L); line(x + w, y, x, y + h, tx, L)
+    elif s == "car":
+        add_poly([tx(x + w * 0.42, y), tx(x + w * 0.58, y), tx(x + w, y + h * 0.42),
+                  tx(x + w, y + h * 0.58), tx(x + w * 0.58, y + h), tx(x + w * 0.42, y + h),
+                  tx(x, y + h * 0.58), tx(x, y + h * 0.42)], L, True)
+        rect(x + w * 0.14, y + h * 0.30, w * 0.72, h * 0.42, tx, L)
     elif s == "stairs":
         rect(x, y, w, h, tx, L)
         n = 9
@@ -263,8 +268,8 @@ def draw_exterior(floor, tx):
         corners = [tx(px, py) for px, py in c["poly"]]
         add_poly(corners, "A-SITE", True)
         bx = [q[0] for q in c["poly"]]; by = [q[1] for q in c["poly"]]
-        cx = min(bx) + (max(bx) - min(bx)) * 0.8
-        cy = min(by) + (max(by) - min(by)) * 0.46
+        cx = min(bx) + (max(bx) - min(bx)) * 0.82
+        cy = min(by) + (max(by) - min(by)) * 0.82
         p = tx(cx, cy)
         msp.add_text(f"{c['label']}", height=200, dxfattribs={"layer": "A-SITE"}).set_placement(
             (p[0], p[1] + 140), align=TextEntityAlignment.MIDDLE_CENTER)
@@ -299,6 +304,10 @@ def draw_exterior(floor, tx):
         ly = (u["y"] + u.get("r", 0.3) + 0.35) if "y" in u else (max(p[1] for p in u["poly"]) + 0.45)
         p = tx(lx, ly)
         msp.add_text(u["label"], height=130, dxfattribs={"layer": L}).set_placement(
+            (p[0], p[1]), align=TextEntityAlignment.MIDDLE_CENTER)
+    for nn in ext.get("notes", []):
+        p = tx(nn["x"], nn["y"])
+        msp.add_text(nn["text"], height=150, dxfattribs={"layer": "A-ANNO-TEXT", "color": 30}).set_placement(
             (p[0], p[1]), align=TextEntityAlignment.MIDDLE_CENTER)
 
 
