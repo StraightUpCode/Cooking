@@ -1,0 +1,378 @@
+<title>Casa Castilla — Editable Floor Plan</title>
+<style>
+:root{
+  --ground:#e4e8e2;--paper:#f6f8f3;--paper-edge:#dde3da;--ink:#1e2c34;--line:#39505b;
+  --line-soft:#7d8b91;--dim:#6d7b81;--wall:#1f2d34;--room-fill:#fbfcf9;
+  --accent:#b6602f;--accent-soft:#f2e0d2;--grid:#dbe1d8;
+  --shadow:0 1px 0 rgba(30,44,52,.04),0 18px 40px -24px rgba(30,44,52,.35);
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --sans:"Helvetica Neue",Arial,system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --ground:#0a1215;--paper:#0e1a20;--paper-edge:#1b2c33;--ink:#d6e7ee;--line:#6a8f9e;
+  --line-soft:#4a6773;--dim:#7fa0ab;--wall:#bcd8e2;--room-fill:#0f1e24;
+  --accent:#e79059;--accent-soft:#2c2119;--grid:#152730;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 22px 44px -26px rgba(0,0,0,.7);
+}}
+:root[data-theme="light"]{
+  --ground:#e4e8e2;--paper:#f6f8f3;--paper-edge:#dde3da;--ink:#1e2c34;--line:#39505b;
+  --line-soft:#7d8b91;--dim:#6d7b81;--wall:#1f2d34;--room-fill:#fbfcf9;
+  --accent:#b6602f;--accent-soft:#f2e0d2;--grid:#dbe1d8;
+  --shadow:0 1px 0 rgba(30,44,52,.04),0 18px 40px -24px rgba(30,44,52,.35);
+}
+:root[data-theme="dark"]{
+  --ground:#0a1215;--paper:#0e1a20;--paper-edge:#1b2c33;--ink:#d6e7ee;--line:#6a8f9e;
+  --line-soft:#4a6773;--dim:#7fa0ab;--wall:#bcd8e2;--room-fill:#0f1e24;
+  --accent:#e79059;--accent-soft:#2c2119;--grid:#152730;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 22px 44px -26px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1200px;margin:0 auto;padding:32px 24px 72px}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:1.5px solid var(--line);padding-bottom:20px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+h1{font-weight:800;font-size:clamp(30px,5vw,52px);line-height:.98;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.sub{color:var(--dim);font-size:14px;margin:8px 0 0;max-width:56ch}
+.specs{display:flex;gap:22px;flex-wrap:wrap}
+.spec{display:flex;flex-direction:column;gap:2px}
+.spec b{font-family:var(--mono);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
+.spec span{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 26px}
+button{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);padding:8px 14px;border-radius:2px;cursor:pointer;transition:.15s}
+button:hover{background:var(--ink);color:var(--paper)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.note{font-family:var(--mono);font-size:11px;color:var(--dim);margin-left:auto;text-align:right;max-width:40ch}
+.stage{display:grid;grid-template-columns:1fr 300px;gap:26px;align-items:start}
+@media(max-width:880px){.stage{grid-template-columns:1fr}}
+.plate{background:var(--paper);border:1px solid var(--paper-edge);border-radius:4px;box-shadow:var(--shadow);padding:18px}
+.plate+.plate{margin-top:24px}
+.plate h2{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin:0 0 2px}
+.plate .pa{font-family:var(--mono);font-size:11px;color:var(--dim);margin:0 0 12px}
+.svgbox{width:100%;overflow-x:auto}
+.svgbox svg{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+/* svg element theming via classes */
+.floor-fill{fill:var(--room-fill)}
+.tint-k{fill:var(--accent-soft)}
+.wall{fill:var(--wall)}
+.cut{fill:var(--room-fill)}
+.door{fill:none;stroke:var(--line-soft);stroke-width:1;stroke-linecap:round}
+.window{fill:none;stroke:var(--line-soft);stroke-width:1}
+.fx{fill:none;stroke:var(--line-soft);stroke-width:1;stroke-linejoin:round}
+.fx-fill{fill:var(--line-soft);opacity:.10}
+.fxk{fill:none;stroke:var(--accent);stroke-width:1.2;stroke-linejoin:round}
+.fxk-fill{fill:var(--accent);opacity:.13}
+.rlabel{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;fill:var(--ink);text-anchor:middle}
+.rlabel.k{fill:var(--accent)}
+.rarea{font-family:var(--mono);font-size:7px;fill:var(--dim);text-anchor:middle}
+.dimline,.dimtick{stroke:var(--line);stroke-width:.6}
+.dimtext{font-family:var(--mono);font-size:7.5px;fill:var(--line);text-anchor:middle}
+.sbar{stroke:var(--ink);stroke-width:1.4}
+.sbtxt{font-family:var(--mono);font-size:7.5px;fill:var(--ink)}
+.hit{fill:transparent;cursor:pointer}
+.sel .selbox{stroke:var(--accent);stroke-width:2;fill:none}
+aside{position:sticky;top:20px;display:flex;flex-direction:column;gap:20px}
+.card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:4px;padding:16px;box-shadow:var(--shadow)}
+.card h3{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin:0 0 12px;color:var(--dim)}
+.schedule{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11px}
+.schedule td{padding:3px 0;border-bottom:1px solid var(--paper-edge);font-variant-numeric:tabular-nums}
+.schedule td:last-child{text-align:right;color:var(--dim)}
+.schedule tr.k td{color:var(--accent)}
+.schedule tr.total td{border-bottom:none;border-top:1.5px solid var(--line);font-weight:600;padding-top:6px;color:var(--ink)}
+.kfocus{border-left:3px solid var(--accent)}
+.kfocus h3{color:var(--accent)}
+.kfocus p{font-size:12.5px;margin:0 0 10px}
+.kfocus ul{margin:0;padding-left:18px;font-size:12.5px}
+.kfocus li{margin-bottom:5px}
+.kfocus li::marker{color:var(--accent)}
+.legend{font-family:var(--mono);font-size:10.5px;color:var(--dim);line-height:1.9}
+.legend b{color:var(--ink);font-weight:600}
+.detail .dn{font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:14px;margin:0 0 4px}
+.detail .dm{font-family:var(--mono);font-size:11px;color:var(--dim);margin:0}
+.detail .ph{font-family:var(--mono);font-size:11px;color:var(--dim)}
+footer{margin-top:40px;border-top:1px solid var(--paper-edge);padding-top:16px;font-family:var(--mono);font-size:11px;color:var(--dim);line-height:1.7}
+footer b{color:var(--ink)}
+@media print{body{background:#fff}.toolbar,aside .detail,footer .np{display:none}.wrap{max-width:none;padding:0}.stage{grid-template-columns:1fr}.plate,.card{box-shadow:none;break-inside:avoid}aside{position:static}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <p class="eyebrow">Planta arquitectónica · working drawing</p>
+      <h1>Casa Castilla</h1>
+      <p class="sub">To-scale plan traced from the developer brochure (Hogares a tu Medida ·
+      km 13 carretera a Masaya). This page is the live viewer; the real blueprint is a
+      CAD <b>DXF</b> generated from the same <code>plan.json</code> with the ezdxf library —
+      download it below. Dimensions are approximate pending the official blueprints.</p>
+    </div>
+    <div class="specs">
+      <div class="spec"><b>175</b><span>m² const.</span></div>
+      <div class="spec"><b>3</b><span>dormitorios</span></div>
+      <div class="spec"><b>4½</b><span>baños</span></div>
+      <div class="spec"><b>2</b><span>plantas</span></div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <button id="dxfBtn">⤓ Download DXF (CAD)</button>
+    <button id="pdfBtn">⤓ PDF blueprint</button>
+    <button id="printBtn">Print this view</button>
+    <button id="dimBtn">Toggle dimensions</button>
+    <button id="fxBtn">Toggle furniture</button>
+    <button id="themeBtn">Toggle theme</button>
+    <p class="note">Click a room to inspect it. DXF opens in LibreCAD (free), AutoCAD, QCAD.</p>
+  </div>
+
+  <div class="stage">
+    <div>
+      <div class="plate">
+        <h2>Primera Planta — Ground floor</h2>
+        <p class="pa" id="pa-ground"></p>
+        <div class="svgbox" id="svg-ground"></div>
+      </div>
+      <div class="plate">
+        <h2>Segunda Planta — Upper floor</h2>
+        <p class="pa" id="pa-upper"></p>
+        <div class="svgbox" id="svg-upper"></div>
+      </div>
+    </div>
+    <aside>
+      <div class="card"><h3>Room schedule · ground</h3><table class="schedule" id="sched-ground"></table></div>
+      <div class="card kfocus"><h3>Kitchen focus</h3>
+        <p>The cocina con isla is what we’re shaping — drawn here with counter run, sink, range, fridge and island to scale.</p>
+        <ul>
+          <li>Open to comedor &amp; sala — one social space, good sightlines.</li>
+          <li>Island as prep + breakfast bar; ~1 m clearance kept around it.</li>
+          <li>Work triangle sink → range → fridge stays tight.</li>
+          <li>Say the change (“island 2.4 m”, “add pantry on the service wall”) and I redraw it.</li>
+        </ul>
+      </div>
+      <div class="card"><h3>Legend</h3><div class="legend">
+        Hatched tile = wet rooms (baños, lava)<br>
+        Arc = door swing · triple line = window<br>
+        <span style="color:var(--accent)">■</span> kitchen &amp; its fixtures<br>
+        Scale 1:100 · grid = 1 m
+      </div></div>
+      <div class="card detail" id="detail"><p class="ph">Select a room to see its dimensions…</p></div>
+    </aside>
+  </div>
+
+  <footer>
+    <b>One source, two outputs.</b> <code>plan.json</code> is the single source of truth —
+    <code>outline</code>, <code>walls</code>, <code>openings</code>, <code>rooms</code>,
+    <code>fixtures</code>, all in metres. This viewer renders it live; <code>build_dxf.py</code>
+    turns the same file into the CAD <code>.dxf</code> + <code>.pdf</code> blueprint (ezdxf).
+    Change a number and both regenerate — so “ask AI to move the island” stays a one-line edit.<br>
+    <span class="np">Interpretation of the brochure, not a surveyed drawing. Rebuild with official dimensions when available.</span>
+  </footer>
+</div>
+
+<!--SVGJS-->
+
+<script>
+/* ============================================================
+   CASA CASTILLA — floor-plan engine (built on SVG.js)
+   Units = METRES. Origin = top-left of the building envelope.
+   ============================================================ */
+const S = 46;              // px per metre (screen)
+const PAD = 30;            // px padding for dimension strings
+const T_EXT = 0.22, T_INT = 0.13;   // wall thickness (m)
+let showDims = true, showFx = true, selected = null;
+
+/* ---------- DATA ---------- */
+const FLOORS = window.PLAN.floors;
+
+/* ---------- ENGINE ---------- */
+function px(v){return v*S}
+
+function drawFloor(key){
+  const F=FLOORS[key];
+  const host=document.getElementById('svg-'+key);
+  host.innerHTML='';
+  const W=F.size.w*S, H=F.size.h*S;
+  const draw=SVG().addTo(host).viewbox(-PAD,-PAD,W+PAD*2,H+PAD*2);
+  // defs: hatches
+  const defs=draw.defs();
+  defs.node.insertAdjacentHTML('beforeend',
+   `<pattern id="roof-${key}" width="14" height="14" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="14" height="14" fill="var(--accent-soft)"/>
+      <path d="M0 4 q3.5 -4 7 0 t7 0" fill="none" stroke="var(--accent)" stroke-width="1" opacity=".55"/>
+    </pattern>
+    <pattern id="tile-${key}" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="7" height="7" fill="none"/>
+      <path d="M0 0 H7 M0 3.5 H7" stroke="var(--line-soft)" stroke-width=".5" opacity=".5"/>
+    </pattern>`);
+
+  // floor fill
+  draw.polygon(F.outline.map(p=>[px(p[0]),px(p[1])])).addClass('floor-fill');
+  if(F.tintK) draw.polygon(F.tintK.map(p=>[px(p[0]),px(p[1])])).addClass('tint-k');
+  if(F.roof){const rp=draw.polygon(F.roof.map(p=>[px(p[0]),px(p[1])]));rp.fill(`url(#roof-${key})`).stroke({color:'var(--wall)',width:1});}
+
+  // grid
+  const g=draw.group();
+  for(let x=0;x<=F.size.w;x++) g.line(px(x),0,px(x),H).stroke({color:'var(--grid)',width:.5});
+  for(let y=0;y<=F.size.h;y++) g.line(0,px(y),W,px(y)).stroke({color:'var(--grid)',width:.5});
+  // clip grid to outline
+  const clip=draw.clip().add(draw.polygon(F.outline.map(p=>[px(p[0]),px(p[1])])));
+  g.clipWith(clip);
+
+  // wet-room tile hatch
+  F.rooms.filter(r=>r.t==='wet'&&r.poly).forEach(r=>{
+    draw.polygon(r.poly.map(p=>[px(p[0]),px(p[1])])).fill(`url(#tile-${key})`).stroke('none');
+  });
+
+  // WALLS (poché) — draw as overlapping rects
+  const wl=draw.group();
+  F.walls.forEach(w=>{
+    const t=(w[4]==='e'?T_EXT:T_INT)*S;
+    if(w[0]==='h'){const x1=px(w[1]),x2=px(w[2]),y=px(w[3]);
+      wl.rect(Math.abs(x2-x1)+t,t).move(Math.min(x1,x2)-t/2,y-t/2).addClass('wall');}
+    else{const y1=px(w[2]),y2=px(w[3]),x=px(w[1]);
+      wl.rect(t,Math.abs(y2-y1)+t).move(x-t/2,Math.min(y1,y2)-t/2).addClass('wall');}
+  });
+
+  // OPENINGS — cut walls, draw doors/windows
+  const op=draw.group();
+  F.openings.forEach(o=>{
+    const isH=o.w==='h';
+    const a=px(o.a),b=px(o.b),at=px(o.at), t=T_EXT*S+2;
+    // cut
+    if(isH) op.rect(Math.abs(b-a),t).move(Math.min(a,b),at-t/2).addClass('cut');
+    else op.rect(t,Math.abs(b-a)).move(at-t/2,Math.min(a,b)).addClass('cut');
+    if(o.t==='window'){
+      // three lines across the cut
+      if(isH){op.line(a,at,b,at).addClass('window');
+        op.line(a,at-3,b,at-3).addClass('window').attr('opacity',.6);
+        op.line(a,at+3,b,at+3).addClass('window').attr('opacity',.6);}
+      else{op.line(at,a,at,b).addClass('window');
+        op.line(at-3,a,at-3,b).addClass('window').attr('opacity',.6);
+        op.line(at+3,a,at+3,b).addClass('window').attr('opacity',.6);}
+    } else {
+      // door: jambs -> hinge, leaf + swing arc
+      const L=Math.abs(b-a);
+      let hx,hy,ox,oy; // hinge jamb, other jamb
+      if(isH){hy=at;oy=at; if(o.hinge==='a'){hx=a;ox=b;}else{hx=b;ox=a;}}
+      else{hx=at;ox=at; if(o.hinge==='a'){hy=a;oy=b;}else{hy=b;oy=a;}}
+      const ex=hx+o.n[0]*L, ey=hy+o.n[1]*L;   // open leaf tip
+      op.line(hx,hy,ex,ey).addClass('door');   // leaf
+      const sweep=((ox-hx)*(ey-hy)-(oy-hy)*(ex-hx))>0?1:0;
+      op.path(`M ${ox} ${oy} A ${L} ${L} 0 0 ${sweep} ${ex} ${ey}`).addClass('door').attr('opacity',.7);
+    }
+  });
+
+  // FIXTURES
+  const fxg=draw.group().attr('id','fx-'+key);
+  if(showFx) F.fixtures.forEach(f=>drawFixture(fxg,f));
+
+  // ENVELOPE outline (crisp)
+  draw.polygon(F.outline.map(p=>[px(p[0]),px(p[1])])).fill('none').stroke({color:'var(--wall)',width:3,linejoin:'miter'});
+
+  // ROOM LABELS + hit
+  F.rooms.forEach((r,i)=>{
+    const grp=draw.group().addClass('room-g');
+    const lbl=grp.text(add=>{add.tspan(r.n)}).addClass('rlabel'+(r.t==='k'?' k':'')).attr({x:px(r.cx),y:px(r.cy)});
+    const area=r.area!=null?r.area:(r.poly?polyArea(r.poly):0);
+    grp.text(area.toFixed(1)+' m²').addClass('rarea').attr({x:px(r.cx),y:px(r.cy)+9});
+    if(r.poly){
+      grp.polygon(r.poly.map(p=>[px(p[0]),px(p[1])])).addClass('selbox').fill('transparent').stroke('none');
+      const hit=grp.polygon(r.poly.map(p=>[px(p[0]),px(p[1])])).addClass('hit');
+      hit.node.addEventListener('click',()=>selectRoom(key,i,grp,r));
+    }
+  });
+
+  if(showDims) drawDims(draw,F,W,H);
+  drawScale(draw,H);
+}
+
+function drawFixture(g,f){
+  const x=px(f.x),y=px(f.y),w=px(f.w),h=px(f.h),k=f.k;
+  const C=k?'fxk':'fx', CF=k?'fxk-fill':'fx-fill';
+  const R=(a,b,ww,hh,r)=>g.rect(ww,hh).move(a,b).radius(r||0).addClass(C);
+  switch(f.s){
+    case 'bed':{g.rect(w,h).move(x,y).radius(2).addClass(C);g.rect(w-6,h*0.28).move(x+3,y+3).radius(2).addClass(C).attr('opacity',.7);
+      g.line(x+w*0.5,y+h*0.36,x+w*0.5,y+h).addClass(C).attr('opacity',.4);break;}
+    case 'sofa':{g.rect(w,h).move(x,y).radius(4).addClass(C);g.rect(w*0.28,h).move(x,y).radius(4).addClass(C).attr('opacity',.6);
+      g.rect(w*0.28,h).move(x+w*0.72,y).radius(4).addClass(C).attr('opacity',.6);break;}
+    case 'chair':{g.rect(w,h).move(x,y).radius(3).addClass(C);break;}
+    case 'bench':{g.rect(w,h).move(x,y).radius(2).addClass(C);break;}
+    case 'table':{g.rect(w,h).move(x,y).radius(2).addClass(C);break;}
+    case 'dining':{g.rect(w,h).move(x,y).radius(3).addClass(C);
+      for(let i=0;i<3;i++){g.rect(px(0.34),px(0.34)).move(x-px(0.42),y+px(0.2)+i*px(0.72)).radius(2).addClass(C).attr('opacity',.7);
+        g.rect(px(0.34),px(0.34)).move(x+w+px(0.08),y+px(0.2)+i*px(0.72)).radius(2).addClass(C).attr('opacity',.7);}break;}
+    case 'counter':{g.rect(w,h).move(x,y).addClass(k?'fxk':'fx');g.rect(w,h).move(x,y).addClass(CF);break;}
+    case 'island':{g.rect(w,h).move(x,y).radius(4).addClass(C);g.rect(w,h).move(x,y).radius(4).addClass(CF);
+      for(let i=0;i<3;i++)g.circle(px(0.34)).move(x-px(0.42),y+px(0.15)+i*px(0.58)).addClass(C).attr('opacity',.7);break;}
+    case 'sink':{g.rect(w,h).move(x,y).radius(3).addClass(C);g.circle(Math.min(w,h)*0.5).center(x+w*0.5,y+h*0.5).addClass(C).attr('opacity',.7);break;}
+    case 'range':{g.rect(w,h).move(x,y).radius(2).addClass(C);
+      [[0.3,0.3],[0.7,0.3],[0.3,0.7],[0.7,0.7]].forEach(p=>g.circle(w*0.26).center(x+w*p[0],y+h*p[1]).addClass(C).attr('opacity',.75));break;}
+    case 'fridge':{g.rect(w,h).move(x,y).radius(2).addClass(C);g.line(x,y+h*0.55,x+w,y+h*0.55).addClass(C).attr('opacity',.5);break;}
+    case 'appliance':{g.rect(w,h).move(x,y).radius(2).addClass(C);g.circle(Math.min(w,h)*0.55).center(x+w*0.5,y+h*0.5).addClass(C).attr('opacity',.5);break;}
+    case 'toilet':{g.ellipse(w,h*0.6).move(x,y+h*0.4).addClass(C);g.rect(w*0.8,h*0.34).move(x+w*0.1,y).radius(2).addClass(C);break;}
+    case 'shower':{g.rect(w,h).move(x,y).addClass(C);g.line(x,y,x+w,y+h).addClass(C).attr('opacity',.4);g.line(x+w,y,x,y+h).addClass(C).attr('opacity',.4);
+      g.circle(4).center(x+w*0.5,y+h*0.5).addClass(C);break;}
+    case 'stairs':{const n=9;g.rect(w,h).move(x,y).addClass(C).attr('opacity',.5);
+      for(let i=1;i<n;i++)g.line(x,y+h*i/n,x+w,y+h*i/n).addClass(C).attr('opacity',.6);
+      g.line(x+w*0.5,y+h*0.1,x+w*0.5,y+h*0.9).addClass(C).attr('opacity',.5);break;}
+  }
+}
+
+function polyArea(poly){let a=0;for(let i=0;i<poly.length;i++){const j=(i+1)%poly.length;a+=poly[i][0]*poly[j][1]-poly[j][0]*poly[i][1];}return Math.abs(a/2);}
+
+function drawDims(draw,F,W,H){
+  const g=draw.group();
+  const oy=-14;
+  g.line(0,oy,W,oy).addClass('dimline');g.line(0,oy-4,0,oy+4).addClass('dimtick');g.line(W,oy-4,W,oy+4).addClass('dimtick');
+  g.text(F.size.w.toFixed(1)+' m').addClass('dimtext').attr({x:W/2,y:oy-4});
+  const ox=-14;
+  g.line(ox,0,ox,H).addClass('dimline');g.line(ox-4,0,ox+4,0).addClass('dimtick');g.line(ox-4,H,ox+4,H).addClass('dimtick');
+  g.text(F.size.h.toFixed(1)+' m').addClass('dimtext').attr({x:ox-5,y:H/2}).transform({rotate:-90,ox:ox-5,oy:H/2});
+}
+function drawScale(draw,H){
+  const g=draw.group(),y=H+16,len=2*S;
+  g.line(0,y,len,y).addClass('sbar');[0,len/2,len].forEach(xx=>g.line(xx,y-3,xx,y+3).addClass('sbar'));
+  g.text('0    1    2 m').addClass('sbtxt').attr({x:len+6,y:y+3});
+}
+
+/* ---------- schedule / interaction ---------- */
+function buildSchedule(key){
+  const F=FLOORS[key],table=document.getElementById('sched-'+key);
+  if(!table)return 0;table.innerHTML='';let total=0;
+  F.rooms.filter(r=>r.t!=='roof').forEach(r=>{
+    const a=r.area!=null?r.area:(r.poly?polyArea(r.poly):0);total+=a;
+    const tr=document.createElement('tr');if(r.t==='k')tr.className='k';
+    tr.innerHTML=`<td>${r.n}</td><td>${a.toFixed(1)} m²</td>`;table.appendChild(tr);});
+  const tr=document.createElement('tr');tr.className='total';
+  tr.innerHTML=`<td>Total (gross)</td><td>${total.toFixed(1)} m²</td>`;table.appendChild(tr);
+  return total;
+}
+function floorTotal(key){return FLOORS[key].rooms.filter(r=>r.t!=='roof').reduce((s,r)=>s+(r.area!=null?r.area:(r.poly?polyArea(r.poly):0)),0);}
+const TYPES={open:'Área social',room:'Habitable',wet:'Húmedo / baño',k:'Cocina',stair:'Circulación',out:'Exterior',roof:'Cubierta'};
+function selectRoom(key,i,grp,r){
+  if(selected)selected.removeClass('sel');grp.addClass('sel');selected=grp;
+  const a=r.area!=null?r.area:(r.poly?polyArea(r.poly):0);
+  const d=document.getElementById('detail');
+  let dims='';if(r.poly){const xs=r.poly.map(p=>p[0]),ys=r.poly.map(p=>p[1]);
+    dims=(Math.max(...xs)-Math.min(...xs)).toFixed(1)+' × '+(Math.max(...ys)-Math.min(...ys)).toFixed(1)+' m · ';}
+  d.innerHTML=`<p class="dn">${r.n}</p><p class="dm">${dims}${a.toFixed(1)} m² · ${TYPES[r.t]||r.t}</p>`;
+}
+
+/* ---------- boot ---------- */
+function renderAll(){
+  drawFloor('ground');drawFloor('upper');
+  const gt=buildSchedule('ground'),ut=floorTotal('upper');
+  document.getElementById('pa-ground').textContent=`Gross ≈ ${gt.toFixed(0)} m² incl. terraza · scale 1:100`;
+  document.getElementById('pa-upper').textContent=`Gross ≈ ${ut.toFixed(0)} m² · scale 1:100`;
+}
+renderAll();
+function download(name,dataurl){const a=document.createElement('a');a.href=dataurl;a.download=name;document.body.appendChild(a);a.click();a.remove();}
+document.getElementById('dxfBtn').addEventListener('click',()=>{
+  download('casa-castilla.dxf','data:application/dxf;base64,'+window.__DXF_B64__);});
+document.getElementById('pdfBtn').addEventListener('click',()=>{
+  download('casa-castilla.pdf','data:application/pdf;base64,'+window.__PDF_B64__);});
+document.getElementById('printBtn').addEventListener('click',()=>window.print());
+document.getElementById('dimBtn').addEventListener('click',()=>{showDims=!showDims;renderAll();});
+document.getElementById('fxBtn').addEventListener('click',()=>{showFx=!showFx;renderAll();});
+document.getElementById('themeBtn').addEventListener('click',()=>{
+  const root=document.documentElement,cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  root.setAttribute('data-theme',cur==='dark'?'light':'dark');renderAll();
+});
+</script>
