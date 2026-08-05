@@ -63,6 +63,16 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .fxk-fill{fill:var(--accent);opacity:.13}
 .rlabel{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;fill:var(--ink);text-anchor:middle}
 .rlabel.k{fill:var(--accent)}
+.cochera-fill{fill:var(--room-fill);opacity:.5}
+.cochera-line{fill:none;stroke:var(--line-soft);stroke-width:1.2;stroke-dasharray:6 4}
+.util-gas{fill:none;stroke:#d99a1c;stroke-width:1.4}
+.util-gas-fill{fill:#d99a1c;opacity:.18}
+.util-cist{fill:none;stroke:#2b8fb3;stroke-width:1.4;stroke-dasharray:5 3}
+.util-cist-fill{fill:#2b8fb3;opacity:.10}
+.util-panel{fill:none;stroke:#c0392b;stroke-width:1.4}
+.util-label{font-family:var(--mono);font-size:7px;text-anchor:middle}
+.util-label.gas{fill:#b07e12}.util-label.cist{fill:#237393}.util-label.panel{fill:#a5281a}
+.cochera-label{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;fill:var(--line-soft);text-anchor:middle}
 .rarea{font-family:var(--mono);font-size:7px;fill:var(--dim);text-anchor:middle}
 .dimline,.dimtick{stroke:var(--line);stroke-width:.6}
 .dimtext{font-family:var(--mono);font-size:7.5px;fill:var(--line);text-anchor:middle}
@@ -150,6 +160,7 @@ footer b{color:var(--ink)}
         Hatched tile = wet rooms (baños, lava)<br>
         Arc = door swing · triple line = window<br>
         <span style="color:var(--accent)">■</span> kitchen &amp; its fixtures<br>
+        <span style="color:#d99a1c">●</span> gas · <span style="color:#2b8fb3">▨</span> cisterna · <span style="color:#c0392b">▪</span> tablero<br>
         Scale 1:100 · grid = 1 m
       </div></div>
       <div class="card detail" id="detail"><p class="ph">Select a room to see its dimensions…</p></div>
@@ -189,7 +200,17 @@ function drawFloor(key){
   const host=document.getElementById('svg-'+key);
   host.innerHTML='';
   const W=F.size.w*S, H=F.size.h*S;
-  const draw=SVG().addTo(host).viewbox(-PAD,-PAD,W+PAD*2,H+PAD*2);
+  // extend the view to include exterior elements (cochera, utilities)
+  let vx0=0, vy0=0, vx1=F.size.w, vy1=F.size.h;
+  if(F.exterior){
+    const bump=(x,y)=>{vx0=Math.min(vx0,x);vy0=Math.min(vy0,y);vx1=Math.max(vx1,x);vy1=Math.max(vy1,y);};
+    if(F.exterior.cochera) F.exterior.cochera.poly.forEach(p=>bump(p[0],p[1]));
+    (F.exterior.utilities||[]).forEach(u=>{
+      if(u.poly) u.poly.forEach(p=>bump(p[0],p[1]));
+      else {bump(u.x+1.2,u.y+0.7);bump(u.x-0.6,u.y-0.6);}   // room for point-utility label
+    });
+  }
+  const draw=SVG().addTo(host).viewbox(vx0*S-PAD,vy0*S-PAD,(vx1-vx0)*S+PAD*2,(vy1-vy0)*S+PAD*2);
   // defs: hatches
   const defs=draw.defs();
   defs.node.insertAdjacentHTML('beforeend',
@@ -206,6 +227,7 @@ function drawFloor(key){
   draw.polygon(F.outline.map(p=>[px(p[0]),px(p[1])])).addClass('floor-fill');
   if(F.tintK) draw.polygon(F.tintK.map(p=>[px(p[0]),px(p[1])])).addClass('tint-k');
   if(F.roof){const rp=draw.polygon(F.roof.map(p=>[px(p[0]),px(p[1])]));rp.fill(`url(#roof-${key})`).stroke({color:'var(--wall)',width:1});}
+  if(F.exterior) drawExterior(draw,F.exterior);
 
   // grid
   const g=draw.group();
@@ -316,6 +338,40 @@ function drawFixture(g,f){
 }
 
 function polyArea(poly){let a=0;for(let i=0;i<poly.length;i++){const j=(i+1)%poly.length;a+=poly[i][0]*poly[j][1]-poly[j][0]*poly[i][1];}return Math.abs(a/2);}
+
+function drawExterior(draw,ext){
+  if(ext.cochera){
+    const c=ext.cochera, pts=c.poly.map(p=>[px(p[0]),px(p[1])]);
+    draw.polygon(pts).addClass('cochera-fill');
+    draw.polygon(pts).addClass('cochera-line');
+    const bx=c.poly.map(p=>p[0]),by=c.poly.map(p=>p[1]);
+    const lx=Math.min(...bx)+(Math.max(...bx)-Math.min(...bx))*0.8, ly=Math.min(...by)+(Math.max(...by)-Math.min(...by))*0.46;
+    draw.text(add=>add.tspan(c.label)).addClass('cochera-label').attr({x:px(lx),y:px(ly)});
+    draw.text(c.area.toFixed(1)+' m²').addClass('rarea').attr({x:px(lx),y:px(ly)+11});
+  }
+  (ext.utilities||[]).forEach(u=>{
+    if(u.kind==='gas'){
+      draw.circle(u.r*2*S).center(px(u.x),px(u.y)).addClass('util-gas-fill');
+      draw.circle(u.r*2*S).center(px(u.x),px(u.y)).addClass('util-gas');
+      draw.circle(u.r*1.1*S).center(px(u.x),px(u.y)).addClass('util-gas');
+      draw.text(u.label).addClass('util-label gas').attr({x:px(u.x),y:px(u.y+u.r+0.5)});
+    } else if(u.kind==='cistern'){
+      const pts=u.poly.map(p=>[px(p[0]),px(p[1])]);
+      draw.polygon(pts).addClass('util-cist-fill');
+      draw.polygon(pts).addClass('util-cist');
+      const xs=u.poly.map(p=>p[0]),ys=u.poly.map(p=>p[1]);
+      const x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+      for(let i=1;i<4;i++){const yy=y0+(y1-y0)*i/4;let d='M '+px(x0)+' '+px(yy);
+        for(let k=1;k<=24;k++){const xx=x0+(x1-x0)*k/24;d+=' L '+px(xx)+' '+px(yy+0.07*Math.sin(k/24*6*Math.PI));}
+        draw.path(d).addClass('util-cist').attr('stroke-dasharray','none').attr('opacity',.5);}
+      const label=u.cap?u.label+' · '+u.cap:u.label;
+      draw.text(label).addClass('util-label cist').attr({x:px((x0+x1)/2),y:px(y1+0.5)});
+    } else if(u.kind==='panel'){
+      draw.rect(0.4*S,0.5*S).move(px(u.x-0.2),px(u.y-0.25)).addClass('util-panel');
+      draw.text(u.label).addClass('util-label panel').attr({x:px(u.x),y:px(u.y+0.6)});
+    }
+  });
+}
 
 function drawDims(draw,F,W,H){
   const g=draw.group();

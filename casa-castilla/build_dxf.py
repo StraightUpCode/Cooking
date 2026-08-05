@@ -40,6 +40,10 @@ LAYERS = {
     "A-ANNO-TEXT":  (7,  "Continuous"),
     "A-ANNO-DIMS":  (2,  "Continuous"),
     "A-KITCHEN":    (30, "Continuous"),  # orange-ish
+    "A-SITE":       (8,  "DASHED"),      # cochera / site outline
+    "M-GAS":        (2,  "Continuous"),  # gas tank (yellow)
+    "P-CIST":       (4,  "DASHED"),      # water cistern (buried, dashed)
+    "E-PANEL":      (1,  "Continuous"),  # electric panel
 }
 
 doc = ezdxf.new("R2010", setup=True)
@@ -249,9 +253,59 @@ def title(floor_key, floor, ox_m, tx):
         ((ox_m) * MM, -0.9 * MM), align=TextEntityAlignment.LEFT)
 
 
+def draw_exterior(floor, tx):
+    ext = floor.get("exterior")
+    if not ext:
+        return
+    # cochera outline + label
+    if "cochera" in ext:
+        c = ext["cochera"]
+        corners = [tx(px, py) for px, py in c["poly"]]
+        add_poly(corners, "A-SITE", True)
+        bx = [q[0] for q in c["poly"]]; by = [q[1] for q in c["poly"]]
+        cx = min(bx) + (max(bx) - min(bx)) * 0.8
+        cy = min(by) + (max(by) - min(by)) * 0.46
+        p = tx(cx, cy)
+        msp.add_text(f"{c['label']}", height=200, dxfattribs={"layer": "A-SITE"}).set_placement(
+            (p[0], p[1] + 140), align=TextEntityAlignment.MIDDLE_CENTER)
+        msp.add_text(f"{c['area']:.1f} m2", height=130,
+                     dxfattribs={"layer": "A-SITE"}).set_placement(
+            (p[0], p[1] - 130), align=TextEntityAlignment.MIDDLE_CENTER)
+    for u in ext.get("utilities", []):
+        if u["kind"] == "gas":
+            L = "M-GAS"
+            circle(u["x"], u["y"], u["r"], tx, L)
+            circle(u["x"], u["y"], u["r"] * 0.6, tx, L)
+        elif u["kind"] == "cistern":
+            L = "P-CIST"
+            corners = [tx(px, py) for px, py in u["poly"]]
+            add_poly(corners, L, True)
+            # water waves
+            xs = [p[0] for p in u["poly"]]; ys = [p[1] for p in u["poly"]]
+            x0, x1 = min(xs), max(xs); y0, y1 = min(ys), max(ys)
+            for i in range(1, 4):
+                yy = y0 + (y1 - y0) * i / 4
+                pts = []
+                N = 24
+                for k in range(N + 1):
+                    xx = x0 + (x1 - x0) * k / N
+                    pts.append(tx(xx, yy + 0.08 * math.sin(k / N * 6 * math.pi)))
+                msp.add_lwpolyline(pts, dxfattribs={"layer": L})
+        elif u["kind"] == "panel":
+            L = "E-PANEL"
+            circle(u["x"], u["y"], 0.16, tx, L)
+        # utility label
+        lx = u["x"] if "x" in u else (min(p[0] for p in u["poly"]) + max(p[0] for p in u["poly"])) / 2
+        ly = (u["y"] + u.get("r", 0.3) + 0.35) if "y" in u else (max(p[1] for p in u["poly"]) + 0.45)
+        p = tx(lx, ly)
+        msp.add_text(u["label"], height=130, dxfattribs={"layer": L}).set_placement(
+            (p[0], p[1]), align=TextEntityAlignment.MIDDLE_CENTER)
+
+
 def draw_floor(key, floor, ox_m):
     tx = make_tx(floor, ox_m)
     draw_roof(floor, tx)
+    draw_exterior(floor, tx)
     draw_walls(floor, tx)
     for o in floor["openings"]:
         draw_opening(o, tx)
