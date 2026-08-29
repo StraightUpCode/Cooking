@@ -1,0 +1,277 @@
+[
+  {
+    "file": "lesson_p0",
+    "id": "p0",
+    "slug": "kitchen-foundation",
+    "phase": 0,
+    "order": 0,
+    "level": "foundation",
+    "sections": 12,
+    "blocks": 57,
+    "words": 4301,
+    "counts": {
+      "prose": 14,
+      "callout": 6,
+      "levels": 1,
+      "figure": 2,
+      "table": 2,
+      "cards": 1,
+      "spec": 3,
+      "levelBand": 2,
+      "troubleshoot": 5,
+      "experiment": 4,
+      "drill": 7,
+      "imageSearch": 4,
+      "resource": 6
+    },
+    "title": {
+      "en": "The Sharp, Organised Base",
+      "es": "La Base Afilada y Organizada"
+    }
+  },
+  {
+    "file": "lesson_m1",
+    "id": "m1",
+    "slug": "proteins",
+    "phase": 1,
+    "order": 1,
+    "level": "core",
+    "sections": 13,
+    "blocks": 77,
+    "words": 5323,
+    "counts": {
+      "prose": 23,
+      "callout": 9,
+      "figure": 3,
+      "table": 1,
+      "cards": 2,
+      "spec": 2,
+      "levels": 1,
+      "levelBand": 4,
+      "experiment": 5,
+      "troubleshoot": 6,
+      "drill": 9,
+      "imageSearch": 5,
+      "resource": 6,
+      "knowledgeCheck": 1
+    },
+    "title": {
+      "en": "Cook Protein Without Wrecking It",
+      "es": "Cocina proteína sin arruinarla"
+    }
+  },
+  {
+    "file": "lesson_m2",
+    "id": "m2",
+    "slug": "rice-beans-grains",
+    "phase": 1,
+    "order": 2,
+    "level": "core",
+    "sections": 12,
+    "blocks": 62,
+    "words": 4594,
+    "counts": {
+      "prose": 19,
+      "callout": 6,
+      "figure": 1,
+      "table": 1,
+      "cards": 1,
+      "spec": 1,
+      "levelBand": 4,
+      "troubleshoot": 6,
+      "experiment": 4,
+      "levels": 1,
+      "drill": 6,
+      "imageSearch": 5,
+      "resource": 6,
+      "knowledgeCheck": 1
+    },
+    "title": {
+      "en": "The Cheap, Reliable Meal Base",
+      "es": "La base de comidas barata y confiable"
+    }
+  },
+  {
+    "file": "lesson_m3",
+    "id": "m3",
+    "slug": "sauces-flavour",
+    "phase": 2,
+    "order": 3,
+    "level": "core",
+    "sections": 12,
+    "blocks": 67,
+    "words": 4443,
+    "counts": {
+      "prose": 21,
+      "callout": 7,
+      "levels": 1,
+      "figure": 2,
+      "table": 3,
+      "cards": 1,
+      "spec": 2,
+      "levelBand": 3,
+      "troubleshoot": 6,
+      "experiment": 4,
+      "drill": 5,
+      "imageSearch": 5,
+      "resource": 6,
+      "knowledgeCheck": 1
+    },
+    "title": {
+      "en": "Where Food Turns Restaurant-Like",
+      "es": "Donde la comida se vuelve de restaurante"
+    }
+  },
+  {
+    "file": "lesson_m4",
+    "id": "m4",
+    "slug": "vegetables",
+    "phase": 2,
+    "order": 4,
+    "level": "core",
+    "sections": 12,
+    "blocks": 63,
+    "words": 3423,
+    "counts": {
+      "prose": 19,
+      "callout": 6,
+      "figure": 2,
+      "table": 1,
+      "cards": 2,
+      "spec": 4,
+      "levels": 1,
+      "levelBand": 2,
+      "troubleshoot": 5,
+      "experiment": 4,
+      "drill": 6,
+      "imageSearch": 4,
+      "resource": 6,
+      "knowledgeCheck": 1
+    },
+    "title": {
+      "en": "Vegetables As Ingredients, Not Punishment",
+      "es": "Las verduras como ingrediente, no como castigo"
+    }
+  },
+  {
+    "file": "lesson_m5",
+    "id": "m5",
+    "slug": "bread-dough",
+    "phase": 3,
+    "order": 5,
+    "level": "applied",
+    "sections": 12,
+    "blocks": 58,
+    "words": 4120,
+    "counts": {
+      "prose": 15,
+      "levels": 1,
+      "figure": 1,
+      "callout": 4,
+      "table": 1,
+      "cards": 1,
+      "spec": 3,
+      "levelBand": 2,
+      "troubleshoot": 6,
+      "experiment": 4,
+      "drill": 7,
+      "imageSearch": 5,
+      "resource": 7,
+      "knowledgeCheck": 1
+    },
+    "title": {
+      "en": "Understand Dough Instead of Following Recipes",
+      "es": "Entender la masa en lugar de seguir recetas"
+    }
+  },
+  {
+    "file": "lesson_m6",
+    "id": "m6",
+    "slug": "fermentation",
+    "phase": 3,
+    "order": 6,
+    "level": "applied",
+    "sections": 12,
+    "blocks": 64,
+    "words": 4523,
+    "counts": {
+      "prose": 13,
+      "callout": 8,
+      "figure": 1,
+      "table": 2,
+      "cards": 1,
+      "spec": 2,
+      "levelBand": 8,
+      "troubleshoot": 6,
+      "experiment": 4,
+      "drill": 9,
+      "imageSearch": 4,
+      "resource": 6
+    },
+    "title": {
+      "en": "Controlled Rot That Makes Food Better",
+      "es": "Podredumbre controlada que mejora la comida"
+    }
+  },
+  {
+    "file": "lesson_m7",
+    "id": "m7",
+    "slug": "meat-fire",
+    "phase": 4,
+    "order": 7,
+    "level": "applied",
+    "sections": 14,
+    "blocks": 64,
+    "words": 4392,
+    "counts": {
+      "prose": 17,
+      "callout": 6,
+      "figure": 2,
+      "table": 2,
+      "cards": 1,
+      "spec": 3,
+      "levels": 1,
+      "troubleshoot": 7,
+      "experiment": 4,
+      "levelBand": 3,
+      "drill": 6,
+      "imageSearch": 5,
+      "resource": 6,
+      "knowledgeCheck": 1
+    },
+    "title": {
+      "en": "Direct, Indirect, and the Rest",
+      "es": "Directo, indirecto y el reposo"
+    }
+  },
+  {
+    "file": "lesson_m8",
+    "id": "m8",
+    "slug": "restaurant-projects",
+    "phase": 4,
+    "order": 8,
+    "level": "capstone",
+    "sections": 12,
+    "blocks": 73,
+    "words": 6482,
+    "counts": {
+      "prose": 19,
+      "callout": 7,
+      "levels": 1,
+      "figure": 1,
+      "table": 2,
+      "cards": 1,
+      "spec": 4,
+      "levelBand": 4,
+      "troubleshoot": 7,
+      "experiment": 4,
+      "drill": 9,
+      "imageSearch": 6,
+      "resource": 8
+    },
+    "title": {
+      "en": "Cook Because You Want To",
+      "es": "Cocina Porque Quieres"
+    }
+  }
+]

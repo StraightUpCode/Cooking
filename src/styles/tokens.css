@@ -1,0 +1,117 @@
+/**
+ * Design tokens — carried over from the v1 manual so the visual identity
+ * survives the refactor.
+ *
+ * Palette: warm stone + stainless neutrals, an ember accent (heat) and a
+ * probe-teal secondary (temperature/measurement). Type: heavy grotesque
+ * display, serif reading body, mono for data and labels.
+ *
+ * Light is the base. Dark is redefined at token level only, once for the OS
+ * preference and once for the explicit toggle, so components never branch.
+ */
+
+:root {
+  --ground: #e7e4dc;
+  --ground-2: #dedbd1;
+  --panel: #faf9f5;
+  --panel-2: #f1efe8;
+  --ink: #191c1d;
+  --ink-soft: #4c514f;
+  --ink-faint: #787d79;
+  --line: #cdc9be;
+  --line-soft: #dcd8cd;
+  --ember: #c2481d;
+  --ember-deep: #9c3612;
+  --probe: #1f7982;
+  --probe-deep: #155a61;
+  --good: #2f7d57;
+  --warn: #b6851f;
+  --crit: #bb3a2c;
+
+  --shadow: 0 1px 0 rgba(0, 0, 0, 0.03), 0 2px 8px rgba(20, 20, 15, 0.05);
+  --radius: 3px;
+
+  --f-display: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --f-body: "Iowan Old Style", Charter, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --f-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code", Menlo, Consolas, monospace;
+
+  --maxread: 68ch;
+
+  /* Spacing scale */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+
+  /* Minimum comfortable touch target */
+  --touch: 44px;
+
+  --sidebar-w: 288px;
+  --topbar-h: 56px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #141718;
+    --ground-2: #0f1213;
+    --panel: #1e2325;
+    --panel-2: #262c2e;
+    --ink: #ece9e1;
+    --ink-soft: #aab0ad;
+    --ink-faint: #7d837f;
+    --line: #333b3c;
+    --line-soft: #2a3132;
+    --ember: #e46232;
+    --ember-deep: #f0774a;
+    --probe: #4bb4bf;
+    --probe-deep: #7ccfd8;
+    --good: #54b184;
+    --warn: #d7a94a;
+    --crit: #e06a5c;
+    --shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 4px 14px rgba(0, 0, 0, 0.3);
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground: #141718;
+  --ground-2: #0f1213;
+  --panel: #1e2325;
+  --panel-2: #262c2e;
+  --ink: #ece9e1;
+  --ink-soft: #aab0ad;
+  --ink-faint: #7d837f;
+  --line: #333b3c;
+  --line-soft: #2a3132;
+  --ember: #e46232;
+  --ember-deep: #f0774a;
+  --probe: #4bb4bf;
+  --probe-deep: #7ccfd8;
+  --good: #54b184;
+  --warn: #d7a94a;
+  --crit: #e06a5c;
+  --shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+:root[data-theme="light"] {
+  --ground: #e7e4dc;
+  --ground-2: #dedbd1;
+  --panel: #faf9f5;
+  --panel-2: #f1efe8;
+  --ink: #191c1d;
+  --ink-soft: #4c514f;
+  --ink-faint: #787d79;
+  --line: #cdc9be;
+  --line-soft: #dcd8cd;
+  --ember: #c2481d;
+  --ember-deep: #9c3612;
+  --probe: #1f7982;
+  --probe-deep: #155a61;
+  --good: #2f7d57;
+  --warn: #b6851f;
+  --crit: #bb3a2c;
+  --shadow: 0 1px 0 rgba(0, 0, 0, 0.03), 0 2px 8px rgba(20, 20, 15, 0.05);
+}

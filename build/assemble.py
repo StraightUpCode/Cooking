@@ -110,13 +110,23 @@ body_inner = (
 )
 app = '  <div class="app">\n' + body_inner + "  </div>\n"
 
+FAVICON = ("<link rel=\"icon\" href=\"data:image/svg+xml,"
+    "%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E"
+    "%3Ctext%20y='.9em'%20font-size='88'%3E\U0001F373%3C/text%3E%3C/svg%3E\">")
 full = (
     "<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n"
     "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
     "<title>The Kitchen Lab Manual — Home Cooking, Engineered</title>\n"
     "<meta name=\"description\" content=\"A bilingual (EN/ES) home-cooking curriculum that treats the kitchen as a control system.\">\n"
+    "<meta name=\"color-scheme\" content=\"light dark\">\n"
+    + FAVICON + "\n"
     + style + "\n</head>\n<body>\n" + app + script + "\n</body>\n</html>\n"
 )
 open(os.path.join(REPO, "index.html"), "w", encoding="utf-8").write(full)
 open(os.path.join(BUILD, "artifact_body.html"), "w", encoding="utf-8").write(style + "\n" + app + script + "\n")
-print(f"OK  index.html written ({len(full)//1024} KB) · {len(sections)} sections")
+
+# Cloudflare Pages deploy output (prebuilt, zero build step)
+public = os.path.join(REPO, "public")
+os.makedirs(public, exist_ok=True)
+open(os.path.join(public, "index.html"), "w", encoding="utf-8").write(full)
+print(f"OK  index.html + public/index.html written ({len(full)//1024} KB) · {len(sections)} sections")

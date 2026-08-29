@@ -1,0 +1,20 @@
+{
+  // Cloudflare Workers + Static Assets (the current recommended architecture for
+  // static sites / SPAs — not Pages, not the deprecated Workers Sites).
+  // Docs: https://developers.cloudflare.com/workers/static-assets/
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "cooking-curriculum",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-08-27",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    // Vite build output. Static assets are served directly from Cloudflare's
+    // edge; anything that isn't an asset falls through to the Worker.
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // Client-side routing: unknown paths return index.html instead of a 404.
+    "not_found_handling": "single-page-application"
+  }
+}
