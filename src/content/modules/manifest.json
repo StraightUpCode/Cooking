@@ -273,5 +273,30 @@
       "en": "Cook Because You Want To",
       "es": "Cocina Porque Quieres"
     }
+  },
+  {
+    "id": "taste",
+    "slug": "taste-calibration",
+    "authored": true,
+    "sections": 12,
+    "blocks": 65,
+    "words": 9521,
+    "counts": {
+      "prose": 22,
+      "callout": 12,
+      "spec": 5,
+      "levels": 1,
+      "cards": 2,
+      "table": 5,
+      "experiment": 6,
+      "troubleshoot": 5,
+      "drill": 5,
+      "knowledgeCheck": 1,
+      "levelBand": 1
+    },
+    "title": {
+      "en": "The Calibrated Palate",
+      "es": "El Paladar Calibrado"
+    }
   }
 ]

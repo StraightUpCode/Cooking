@@ -30,6 +30,13 @@ const OUT = join(ROOT, "src", "content", "modules");
 
 const CHECK_ONLY = process.argv.includes("--check");
 
+/**
+ * Modules authored directly as JSON rather than migrated from the v1 HTML.
+ * They still need manifest entries and search documents, so they are folded
+ * into the same pipeline instead of being special-cased in the app.
+ */
+const HAND_AUTHORED = [{ id: "taste", slug: "taste-calibration" }];
+
 /** Module order and metadata. Language-independent by design. */
 const MODULES = [
   { file: "lesson_p0", id: "p0", slug: "kitchen-foundation", phase: 0, order: 0, level: "foundation" },
@@ -556,6 +563,114 @@ for (const mod of MODULES) {
     writeFileSync(join(OUT, `${mod.id}.en.json`), JSON.stringify(en), "utf8");
     if (es) writeFileSync(join(OUT, `${mod.id}.es.json`), JSON.stringify(es), "utf8");
   }
+}
+
+/* ------------------------------------------------------------------ *
+ * Hand-authored modules
+ *
+ * Authored directly as JSON, so there is nothing to parse — but they still
+ * need manifest entries and search documents, and they are held to the same
+ * cross-language alignment rule as the migrated ones.
+ * ------------------------------------------------------------------ */
+
+for (const mod of HAND_AUTHORED) {
+  const enPath = join(OUT, `${mod.id}.en.json`);
+  const esPath = join(OUT, `${mod.id}.es.json`);
+  if (!existsSync(enPath)) {
+    console.log(`note: hand-authored module "${mod.id}" not present yet — skipping`);
+    continue;
+  }
+
+  const en = JSON.parse(readFileSync(enPath, "utf8"));
+  const es = existsSync(esPath) ? JSON.parse(readFileSync(esPath, "utf8")) : null;
+
+  if (es) {
+    if (en.sections.length !== es.sections.length) {
+      problems.push(
+        `${mod.id}: section count differs (en=${en.sections.length} es=${es.sections.length})`,
+      );
+    }
+    en.sections.forEach((s, i) => {
+      const e = es.sections[i];
+      if (!e) return;
+      if (s.id !== e.id) problems.push(`${mod.id}/${s.id}: section id differs from ES (${e.id})`);
+      if (s.blocks.length !== e.blocks.length) {
+        problems.push(
+          `${mod.id}/${s.id}: block count differs (en=${s.blocks.length} es=${e.blocks.length})`,
+        );
+        return;
+      }
+      s.blocks.forEach((b, j) => {
+        const c = e.blocks[j];
+        if (b.kind !== c.kind) problems.push(`${mod.id}/${s.id}[${j}]: kind differs`);
+        if (b.id && b.id !== c.id) problems.push(`${mod.id}/${s.id}[${j}]: block id differs`);
+      });
+    });
+  } else {
+    problems.push(`${mod.id}: missing Spanish content`);
+  }
+
+  const counts = {};
+  for (const s of en.sections) for (const b of s.blocks) counts[b.kind] = (counts[b.kind] ?? 0) + 1;
+  const blockCount = en.sections.reduce((n, s) => n + s.blocks.length, 0);
+
+  manifest.push({
+    id: mod.id,
+    slug: mod.slug,
+    authored: true,
+    sections: en.sections.length,
+    blocks: blockCount,
+    words: wordCount(capturedStrings(en)),
+    counts,
+    title: { en: en.title, es: es?.title ?? en.title },
+  });
+
+  searchDocs.push({
+    id: mod.id,
+    category: "module",
+    href: `/module/${mod.slug}`,
+    title: { en: en.title, es: es?.title ?? en.title },
+    context: { en: "Module", es: "Módulo" },
+    text: {
+      en: indexText(`${en.title} ${en.lede} ${(en.tags ?? []).join(" ")}`),
+      es: indexText(`${es?.title ?? ""} ${es?.lede ?? ""}`),
+    },
+  });
+
+  en.sections.forEach((s, i) => {
+    const esSec = es?.sections[i];
+    searchDocs.push({
+      id: s.id,
+      category: "section",
+      href: `/module/${mod.slug}#${s.id}`,
+      title: { en: s.title, es: esSec?.title ?? s.title },
+      context: { en: `${en.title} → Section`, es: `${es?.title ?? en.title} → Sección` },
+      text: {
+        en: indexText(`${s.title} ${s.blocks.map((b) => wordsOf(b)).join(" ")}`),
+        es: esSec ? indexText(`${esSec.title} ${esSec.blocks.map((b) => wordsOf(b)).join(" ")}`) : "",
+      },
+    });
+    for (const b of s.blocks) {
+      if (b.kind !== "experiment" && b.kind !== "drill") continue;
+      const j = s.blocks.indexOf(b);
+      const esB = esSec?.blocks[j];
+      const category = b.kind === "experiment" ? "experiment" : b.variant;
+      searchDocs.push({
+        id: b.id,
+        category,
+        href: `/module/${mod.slug}#${b.id}`,
+        title: { en: b.title, es: esB?.title ?? b.title },
+        context: {
+          en: `${en.title} → ${label(category, "en")}`,
+          es: `${es?.title ?? en.title} → ${label(category, "es")}`,
+        },
+        text: {
+          en: indexText(`${b.title} ${wordsOf(b)}`),
+          es: esB ? indexText(`${esB.title} ${wordsOf(esB)}`) : "",
+        },
+      });
+    }
+  });
 }
 
 function wordsOf(block) {
