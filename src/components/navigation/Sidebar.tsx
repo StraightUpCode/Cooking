@@ -156,6 +156,7 @@ export function Sidebar({
         </button>
       </div>
 
+      {!__ARTIFACT__ && (
       <div className="segmented" role="group" aria-label={t("theme")}>
         {(["light", "system", "dark"] as const).map((mode) => (
           <button
@@ -169,6 +170,7 @@ export function Sidebar({
           </button>
         ))}
       </div>
+      )}
     </aside>
   );
 }

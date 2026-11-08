@@ -16,11 +16,28 @@ export type Route =
   | { name: "log" }
   | { name: "notFound"; path: string };
 
+/**
+ * The artifact build runs inside a sandboxed iframe where History-API paths are
+ * unavailable, so it routes on the URL hash instead ("#/module/proteins").
+ * The Workers build keeps clean paths. Everything below the two helpers is
+ * identical in both modes.
+ */
+const HASH_MODE = typeof __ARTIFACT__ !== "undefined" && __ARTIFACT__;
+
+/** The app-relative location, e.g. "/module/proteins#m1.e01". */
+function readLocation(): string {
+  if (!HASH_MODE) return location.pathname + location.hash;
+  const raw = location.hash.replace(/^#/, "");
+  if (raw.startsWith("/")) return raw;
+  // v1 links ("#m1", "#home", "#tools") and the bare URL
+  return legacyTarget(raw) ?? "/";
+}
+
 const listeners = new Set<() => void>();
-let current = parse(location.pathname + location.hash);
+let current = parse(readLocation());
 
 function emit() {
-  current = parse(location.pathname + location.hash);
+  current = parse(readLocation());
   for (const l of listeners) l();
 }
 
@@ -28,14 +45,18 @@ function emit() {
  * v1 of the manual was a single page using hash links (#m1, #tools).
  * Those links exist in the wild, so translate them rather than 404.
  */
-function legacyHashRedirect(): string | null {
-  const hash = location.hash.replace(/^#/, "");
+function legacyTarget(hash: string): string | null {
   if (!hash) return null;
   if (hash === "home") return "/";
   if (hash === "tools") return "/reference";
   const meta = MODULE_BY_ID.get(hash);
   if (meta) return `/module/${meta.slug}`;
   return null;
+}
+
+function legacyHashRedirect(): string | null {
+  if (HASH_MODE) return null; // readLocation() already maps these
+  return legacyTarget(location.hash.replace(/^#/, ""));
 }
 
 export function parse(full: string): Route {
@@ -65,6 +86,12 @@ export function parse(full: string): Route {
 }
 
 export function navigate(to: string, opts: { replace?: boolean } = {}) {
+  if (HASH_MODE) {
+    // Setting the hash fires "hashchange", which re-parses the route.
+    if (opts.replace) location.replace(`#${to}`);
+    else location.hash = to;
+    return;
+  }
   const url = new URL(to, location.origin);
   if (url.pathname + url.hash === location.pathname + location.hash) return;
   if (opts.replace) history.replaceState(null, "", url);
@@ -75,7 +102,8 @@ export function navigate(to: string, opts: { replace?: boolean } = {}) {
 export function initRouter() {
   const redirect = legacyHashRedirect();
   if (redirect) history.replaceState(null, "", redirect);
-  window.addEventListener("popstate", emit);
+  window.addEventListener(HASH_MODE ? "hashchange" : "popstate", emit);
+  if (HASH_MODE) emit();
 }
 
 function subscribe(listener: () => void) {

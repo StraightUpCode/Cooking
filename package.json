@@ -10,7 +10,8 @@
     "build": "tsc --noEmit && vite build",
     "preview": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "build:artifact": "tsc --noEmit && vite build --config vite.artifact.config.ts && node scripts/make-artifact.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",

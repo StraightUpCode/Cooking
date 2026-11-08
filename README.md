@@ -18,6 +18,7 @@ npm run dev         # http://localhost:5173
 npm run build       # typecheck + vite build -> dist/
 npm run preview     # build, then serve through the real Worker (wrangler dev)
 npm run deploy      # build, then wrangler deploy
+npm run build:artifact   # single-file build for a Claude artifact (hash routing, inlined content)
 ```
 
 ## Architecture

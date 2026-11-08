@@ -23,7 +23,11 @@ export function App() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [logSubject, setLogSubject] = useState<string | undefined>(undefined);
 
-  useEffect(() => applyTheme(theme), [theme]);
+  // In the artifact the host page owns light/dark and stamps data-theme itself;
+  // applying ours would overwrite the viewer's choice.
+  useEffect(() => {
+    if (!__ARTIFACT__) applyTheme(theme);
+  }, [theme]);
 
   // Close transient UI on navigation.
   useEffect(() => {
